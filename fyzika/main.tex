@@ -2,6 +2,7 @@
 \usepackage{fullpage}
 \usepackage[czech]{babel}
 \usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
 \graphicspath{{images/}}
@@ -13,7 +14,7 @@
 \begin{document}
 \maketitle
 
-\section{Deformace}
+\part{Deformace}
 
   \begin{minipage}{0.25\textwidth}\raggedleft
     \begin{itemize}
@@ -31,27 +32,27 @@
     \includegraphics[width=0.9\linewidth]{deformace}
   \end{minipage}
 
-  \subsection{Deformace tahem/tlakem}
+  \section{Deformace tahem/tlakem}
 
     \begin{itemize}
       \item Normálové nápětí:
-      	\begin{equation}
+      	\begin{equation*}
           \sigma=F/S; \ [N/m^2] = [Pa]
-        \end{equation}
+        \end{equation*}
         \begin{center}
           \vspace{-0.25cm}\includegraphics[width=0.12\textwidth]{normalove_napeti}\vspace{-0.25cm}
         \end{center}
       \item Změna délky:
-        \begin{equation}
+        \begin{equation*}
           \Delta l = l - l_0; \ [m]
-        \end{equation}
+        \end{equation*}
       užitečnější většinou relativní prodloužení:
-        \begin{equation}
+        \begin{equation*}
           \varepsilon = \Delta l/l_0; \ [bezrozm.]
-        \end{equation}
+        \end{equation*}
     \end{itemize}
 
-    \subsubsection{Deformační křivka}
+    \subsection{Deformační křivka}
       \begin{center}
         \vspace{-0.1cm}\includegraphics[width=0.75\linewidth]{deformacni_krivka}\vspace{-0.25cm}
       \end{center}
@@ -62,16 +63,38 @@
           \item pružná deformace
           \item vratná
           \item platí Hookův zákon:
-            \begin{equation}
+            \begin{equation*}
               \varepsilon \propto \sigma
-              \end{equation}
+            \end{equation*}
           tedy slovy: relativní prodloužení je přímo úměrné napětí (ano, to je symbol pro přímou úměrnost, zapamatujte si ho)
-            \begin{equation}
+            \begin{equation*}
               \sigma = E*\varepsilon
-            \end{equation}
+            \end{equation*}
           E - Youngův modul pružnosti (např. ocel = 220 GPa, cín = 55 GPa, tj. tlak potřebný, abychom objekt roztáhli na dvojnásobnou délku)
         \end{itemize}
         \item potrolenicko
       \end{itemize}
+      
+        \subsubsection{Příklady}
+        \begin{enumerate}
+          \item O kolik se protáhne drát když na něj zavěsíme závaží:
+          d = 1 mm;
+          l = 5 m;
+          m = 30 kg;
+          E = 220 GPa
+          \begin{equation*}
+            \sigma=\frac{F}{S}=\frac{300}{\pi*0,0005^2}
+          \end{equation*}
+          \begin{equation*}
+            \varepsilon = \frac{\sigma}{E}
+          \end{equation*}
+          \begin{equation*}
+            \varepsilon = \frac{F}{S*E}=\frac{\Delta l}{l_0}
+          \end{equation*}
+          \begin{equation*}
+            \Delta l = \frac{F*l*0}{S*E}=8,7*10^{-3} m = 8,7 mm
+          \end{equation*}
+        \end{enumerate}
+
 
 \end{document}
