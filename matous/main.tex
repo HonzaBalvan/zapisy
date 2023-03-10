@@ -2,13 +2,16 @@
 \usepackage{fullpage}
 \usepackage[czech]{babel}
 \usepackage{amsfonts}
+\usepackage{amsmath}
 
-\title{\vspace{-2cm}Divná geometrie\vspace{-1.7cm}}
+\title{\vspace{-2cm}Matouš Trnka swag\vspace{-1.7cm}}
 \date{}
 \author{}
 
 \begin{document}
 \maketitle
+
+\part{Divná geometrie}
 
 \section{Projektivní geometrie}
 
@@ -23,7 +26,6 @@ Z tohoto plyne:
   \item každý bod má stejně přímek
   \item každá přímka má stejně bodů
   \item je stejně přímek jako bodů - $n^2+n+1$
-  \end{equation}
 \end{itemize}
 
 \section{Afinní rovina}
@@ -67,4 +69,48 @@ AAAAAA VYSVĚTLI TO MAGORE A OBRÁZEK NEJLÉPE
   \item Eulerův úkol můžeme vyřešit tak, že zkombinujeme 2 latinské čtverce
   \item což má nějakou souvislost s afinní rovinou
 \end{itemize}
+AAAAAAA vybil se mi počítač 1.3., tady zjevena souvislost s afinní rovinou
+
+\part{Diferenční počet}
+
+\section{Posloupnosti}
+\begin{itemize}
+  \item řada čísel idk, jakoby fce ale diskrétní, tj. počitatelné
+\end{itemize}
+
+\subsection{Definice}
+\begin{itemize}
+  \item předpisem - pro výpočet prvku je vzorec
+  \item rekursí - pro výpočet prvku využíváme hodnoty předchozích prvků
+  \item jako řešení diferenčních rcí (jakože diferenciální, ale diskrétní takže diferenční)
+\end{itemize}
+
+\subsection{Operátory na posloupnostech}
+\begin{itemize}
+  \item unární - potřebují jen jeden vstup, např. $\Delta$ (diference - rozdíl dvou prvků (derivace ekvivalent z fcí)), E (viz níže), umocnění/odmocnění, reciproká hodnota, atd.
+  \item binární - potřebují dva vstupy, např. sčítání/odčítání, násobení/dělení, atd.
+\end{itemize}
+
+\subsection{Diference - $\Delta$}
+$$\Delta a_n = a_{n+1} - a_n$$
+
+\subsection{Shift operátor - E}
+  $$E a_n = a_{n+1}$$
+  Např. M = {1,2,3,...}, tak potom E M = {2,3,4,...}, můžeme dosadit do diference
+  $$\Delta a_n = E a_n - a_n$$
+  $$\Delta = E - 1$$ $\Rightarrow$ aritmetika operátorů (fokin pointery v programování, ale v matice) - nepočítám s číslama ale s operacema, tedy takto diference se rovná shift méně jedna, pomocí tohoto operátoru tedy můžeme vyjadřovat diference
+
+\subsection{Příklady}
+\begin{enumerate}
+  \item rekurentní posloupnosti převést na předpis
+  \item diferenční rovnice
+\end{enumerate}
+A zjišťujeme, že když převedem na shift operátor tak je to ten samý problém.
+
+\section{Diferenční rovnice}
+\begin{itemize}
+  \item obecná nehomogenní řádu r: $$V(\Delta^r a_n, \Delta^{r-1} a_n,..., \Delta a_n, a_n, n) = 0$$ obecně neumíme řešit
+  \item lineární homogenní diferenční rovnice s konstantními koeficienty: $$ k_r \Delta^r a_n + k_{r-1} \Delta^{r-1} a_n + ... + k_1 \Delta a_n + k_0 a_n = 0$$
+\end{itemize}
+
 \end{document}
