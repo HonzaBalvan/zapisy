@@ -42,7 +42,7 @@ AAAAAAA
     \begin{itemize}
       \item Normálové nápětí:
       	\begin{equation*}
-          \sigma=F/S; \ [N/m^2] = [Pa]
+          \sigma=F/S; [N/m^2] = [Pa]
         \end{equation*}
         \begin{center}
           \vspace{-0.25cm}\includegraphics[width=0.12\textwidth]{normalove_napeti}\vspace{-0.25cm}
@@ -154,17 +154,34 @@ Oscilátor: cokoliv co kmitá, např. kyvadlo, pravítko (lol)
 
 \section{Kinematika oscilátoru}
 Zjednodušení: uvažujeme tzv. harmonický oscilátor -- nemá ztráty, kmitá stále stejně (grafem je sinusoida)
-Značení: y -- okamžitá výchylka
-         y_m -- maximální výchylka (max. amplituda), y je z [-y_m;y_m] AAAAAAA
+Značení: $y$ -- okamžitá výchylka
+         $y_m$ -- maximální výchylka (max. amplituda), y je z [$-y_m$;$y_m$] AAAAAAA
          T -- perioda [s]
-         f -- frekvence [s^{-1}=Hz], $f*T=1$
-        \omega -- úhlová frekvence (ekviv. úhlová rychlost), $\omega=\frac{\alpha}{t}=\frac{2\pi}{T}=2\pi f [s^{-1}]$
+         f -- frekvence [$s^{-1}$=Hz], $f*T=1$
+        $\omega$ -- úhlová frekvence (ekviv. úhlová rychlost), $\omega=\frac{\alpha}{t}=\frac{2\pi}{T}=2\pi f [s^{-1}]$
         v -- obvodová rychlost, $v=\frac{s}{t}=\frac{2\pi r}{T}=2\pi rf [ms^{-1}]$
 Pozn.: Průmět přímoč. pohybu po kružnici na jedné ose je sinusoida -- kmitání je točení v jedné ose
-Poloha: OBRAZEKOBRAZEK $y=y_m*sin(\alpha), přejmenujeme r\rightarrow y_m, \alpha = \omega t \Rightarrow y=y_m*sin(\omega t), popř. y=y_m*sin(\omega t+{\phi}_0), {\phi}_0 -- počáteční fáze (případný offset na začátku od nul. úhlu)$
-Př.: pružinový oscilátor: y_m=10cm, T=1,2s
+Poloha: OBRAZEKOBRAZEK $y=y_m*sin(\alpha)$, přejmenujeme $\rightarrow y_m$, $\alpha = \omega t \Rightarrow y=y_m*sin(\omega t)$, popř. $y=y_m*sin(\omega t+{\phi}_0)$, ${\phi}_0$ -- počáteční fáze (případný offset na začátku od nul. úhlu)
+Př.: pružinový oscilátor: $y_m=10cm$, $T=1,2s$
         a) rovnice: $\omega = \frac{2\pi}{T}=\frac{5\pi}{3}s^{-1}$
                     $y=0,1*sin(\frac{5\pi t}{3})$
         b) poloha v čase t=0,5 s: $y=0,1*sin(\frac{5\pi t}{6})$ POZOR RAD!!!
                                   $y=5cm$
+Př.: Rychlost oscilátoru
+     $cos (\alpha) = v/v_0$
+     $v=v_0*cos (\alpha)$
+        1) $\alpha = \omega * t$
+        2) $v_0 = \omega * r$
+        3) $r = y_m$
+     $\Rightarrow v = \omega * y_m * cos(\omega t + {\phi}_0)$
+     $v = \frac{2 \pi}{1,1}*cos(t)$
+
+Zrychlení: OBRAZEKOBRAZEK
+           $v_1 = \omega * r$
+           $a_d = \frac{{v_1}^2}{r} = \omega^2 * r = \omega^2 * y_m$
+
+           $a = a_d * sin(\omega t + {\phi}_0)$
+           $a = \omega^2 * y_m * sin(\omega t + {\phi}_0) = \omega^2 * y$ $\Rightarrow$ velikost zrychlení je přímo úměrná okamžité odchylce
+           $a_{max} = \omega^2 * y_m$
+
 \end{document}
