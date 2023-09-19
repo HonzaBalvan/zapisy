@@ -203,7 +203,7 @@ Př.: Závisí tuhost pružiny na počtu závitů
   \item důsledky
   \begin{enumerate}
     \item je-li b malé ($b^2 << 4mk$); AAAA Př.: tlumí se to velmi pomalu
-    \item Je-li b velké ($b^2 > 4mk$), kmitání je ztlumeno tak moc, že ani nekmitá, nemá to dost velkou sílu -- $\omega' = \sqrt{záporné číslo}$ OBRAZEKOBRAZEK
+    \item Je-li b velké ($b^2 > 4mk$), kmitání je ztlumeno tak moc, že ani nekmitá, nemá to dost velkou sílu -- $\omega$ = sqrt{záporné číslo} OBRAZEKOBRAZEK
   \end{enumerate}
 \end{itemize}
 
@@ -211,7 +211,39 @@ Př.: Závisí tuhost pružiny na počtu závitů
 \begin{itemize}
   \item kinetická: $E_k = \frac{1}{2}mv^2=\frac{1}{2}m*{y_m}^2*\omega^2*cos^2(\omega t)=\frac{1}{2}k*{y_m}^2*cos^2(\omega t)$
   \item $cos(2x)=2cos^2(x)-1$; $cos^2(x) = \frac{1+cos(2x)}{2}$ OBRAZEKOBRAZEK y a Ek
-  \item potenciální: $E_p = W = \frac{1}{2}F*y
+  \item potenciální: $E_p = W = \frac{1}{2}F*y$
+\end{itemize}
+
+\section{Vlnění}
+\begin{itemize}
+  \item $y(x, t) = y_m \sin\left(\frac{2\pi}{\lambda} x - 2\pi f t + \phi\right)$
+\end{itemize}
+
+\subsection{Interference vlnění}
+\begin{itemize}
+  \item skládání vlnění, když se vlny potkají, tak se jednoduše sečtou $y = y_1 + y_2$ OBRAZEKOBRAZEK
+  \item pro jednoduchost budeme skládat vlnění se stejnou $\lambda$, f a s různou fází
+  \item vlny můžeme jednoduše sčítat pomocí fázorů a kosinové věty
+  \item speciální případy
+  \begin{itemize}
+    \item fázory jsou identické -- konstruktivní interference, dvakrát větší amplituda, stejná frekvence, vln. délka
+    \item fázory jsou protilehlé -- destruktivní interference, nulová amplituda
+  \end{itemize}
+\end{itemize}
+
+\subsection{Stojaté vlnění}
+\begin{itemize}
+  \item interference postupné a odražené vlny
+  \item $y_1 = y_m sin(\omega t - kx)$
+  \item $y_2 = y_m sin(\omega t + kx)$
+  \item $y = y_1 + y_2 = y_m(sin(\omega t - kx)+sin(\omega t + kx)) = 2y_m cos(kx)sin(\omega t) = Y_m sin(\omega t)$ OBRAZEKOBRAZEK
+  \item najdeme tady uzly (vždy 0, čili cos(kx)=0 čili v každém lichém násobku $\frac{\pi}{2}$) a kmitny (kmitají nejvíc, čili cos(kx)=max. čili v každém násobku $\pi$)
+  \item odraz vlnění
+  \begin{itemize}
+    \item pevný konec: po odrazu se otočí fáze, interferují tedy destruktivně a pevný konec je uzel (logicky)
+    \item volný konec: neotáčí se fáze, vznikne tedy kmitna
+  \end{itemize}
+  \item Př.: stojaté vlnění na struně g
 \end{itemize}
 
 \end{document}
