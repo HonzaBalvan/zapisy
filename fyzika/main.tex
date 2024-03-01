@@ -73,7 +73,7 @@ AAAAAAA
             \end{equation*}
           tedy slovy: relativní prodloužení je přímo úměrné napětí (ano, to je symbol pro přímou úměrnost, zapamatujte si ho)
             \begin{equation*}
-              \sigma = E*\varepsilon
+              \sigma = E\cdot\varepsilon
             \end{equation*}
           E - Youngův modul pružnosti (např. ocel = 220 GPa, cín = 55 GPa, tj. tlak potřebný, abychom objekt roztáhli na dvojnásobnou délku)
         \end{itemize}
@@ -99,16 +99,16 @@ AAAAAAA
             \item[]
           \end{itemize}
           \begin{equation*}
-            \sigma=\frac{F}{S}=\frac{300}{\pi*0,0005^2}
+            \sigma=\frac{F}{S}=\frac{300}{\pi\cdot0,0005^2}
           \end{equation*}
           \begin{equation*}
             \varepsilon = \frac{\sigma}{E}
           \end{equation*}
           \begin{equation*}
-            \varepsilon = \frac{F}{S*E}=\frac{\Delta l}{l_0}
+            \varepsilon = \frac{F}{S\cdot E}=\frac{\Delta l}{l_0}
           \end{equation*}
           \begin{equation*}
-            \Delta l = \frac{F*l*0}{S*E}=8,7*10^{-3} m = 8,7 mm
+            \Delta l = \frac{F\cdot l\cdot 0}{S\cdot E}=8,7\cdot 10^{-3} m = 8,7 mm
           \end{equation*}
           \item Na ocelové lanko zavěsíme závaží. Jak těžké může být, aby se lanko nepřetrhlo:
           \begin{equation*}
@@ -130,8 +130,8 @@ AAAAAAA
 Př.: OBRAZEKOBRAZEK
 $m = 0,2 kg$
 a) teplota varu: 50 stupnu
-b) c(kap.) $c = Q/(m*deltat)=200/(0,2*40) = 25$ $Jkg^{-1}K^{-1}$
-c) c(plyn) $c = Q/(m*deltat)=200/(0,2*20) = 50$ $Jkg^{-1}K^{-1}$
+b) c(kap.) $c = Q/(m\cdotdeltat)=200/(0,2\cdot 40) = 25$ $Jkg^{-1}K^{-1}$
+c) c(plyn) $c = Q/(m\cdotdeltat)=200/(0,2\cdot 20) = 50$ $Jkg^{-1}K^{-1}$
 d)$L_v$ -- skupenské teplo varu [J]
 $L_v = 300 J$
 $l_v = $ měrné skupenské teplo varu $l_v = L_v/m$ $[Jkg^{-1}]$
@@ -141,10 +141,10 @@ Pozn.: pro vodu: $l_t$ (tání) $= 332 Jkg^{-1}$
 $l_v = 2257 Jkg^{-1}$
 
 Př.: 1 kg vody z teploty -20 stupnu -> pára 100 stupnu, $P = 1 kW$
-led -20 stupnu -> led 0 stupnu: ($c_{ledu} = 2100 Jkg^{-1}$) $Q = m*c*deltat = 42 kJ$ -> 42 s
-led 0 stupnu -> voda 0 stupnu: $L_t = m*l_t = 332 kJ$ -> 5 min 32 s
-voda 0 stupnu -> voda 100 stupnu ($c_{vody} = 4180 Jkg^{-1}$) $Q = m*c*deltat = 418 kJ$ -> 6 min 58 s
-voda 100 stupnu -> pára 100 stupnu: $L_v = m*l_v = 2257 kJ$ -> 37 min 37 s (to je šílený)
+led -20 stupnu -> led 0 stupnu: ($c_{ledu} = 2100 Jkg^{-1}$) $Q = m\cdot c\cdotdeltat = 42 kJ$ -> 42 s
+led 0 stupnu -> voda 0 stupnu: $L_t = m\cdot l_t = 332 kJ$ -> 5 min 32 s
+voda 0 stupnu -> voda 100 stupnu ($c_{vody} = 4180 Jkg^{-1}$) $Q = m\cdot c\cdotdeltat = 418 kJ$ -> 6 min 58 s
+voda 100 stupnu -> pára 100 stupnu: $L_v = m\cdot l_v = 2257 kJ$ -> 37 min 37 s (to je šílený)
 
 Pozn.: Hranaty graf plati u krystalickych latek, u amorfnich latek (kvuli nedokonalostem v uskupeni) je graf obly OBRAZEKOBRAZEK
 AAAAAAAAA REALNE TOHLE NEMAM SANCI DODELAT
@@ -157,32 +157,32 @@ Zjednodušení: uvažujeme tzv. harmonický oscilátor -- nemá ztráty, kmitá 
 Značení: $y$ -- okamžitá výchylka
          $y_m$ -- maximální výchylka (max. amplituda), y je z [$-y_m$;$y_m$] AAAAAAA
          T -- perioda [s]
-         f -- frekvence [$s^{-1}$=Hz], $f*T=1$
+         f -- frekvence [$s^{-1}$=Hz], $f\cdot T=1$
         $\omega$ -- úhlová frekvence (ekviv. úhlová rychlost), $\omega=\frac{\alpha}{t}=\frac{2\pi}{T}=2\pi f [s^{-1}]$
         v -- obvodová rychlost, $v=\frac{s}{t}=\frac{2\pi r}{T}=2\pi rf [ms^{-1}]$
 Pozn.: Průmět přímoč. pohybu po kružnici na jedné ose je sinusoida -- kmitání je točení v jedné ose
-Poloha: OBRAZEKOBRAZEK $y=y_m*sin(\alpha)$, přejmenujeme $\rightarrow y_m$, $\alpha = \omega t \Rightarrow y=y_m*sin(\omega t)$, popř. $y=y_m*sin(\omega t+{\phi}_0)$, ${\phi}_0$ -- počáteční fáze (případný offset na začátku od nul. úhlu)
+Poloha: OBRAZEKOBRAZEK $y=y_m\cdot \sin(\alpha)$, přejmenujeme $\rightarrow y_m$, $\alpha = \omega t \Rightarrow y=y_m\cdot \sin(\omega t)$, popř. $y=y_m\cdot \sin(\omega t+{\phi}_0)$, ${\phi}_0$ -- počáteční fáze (případný offset na začátku od nul. úhlu)
 Př.: pružinový oscilátor: $y_m=10cm$, $T=1,2s$
         a) rovnice: $\omega = \frac{2\pi}{T}=\frac{5\pi}{3}s^{-1}$
-                    $y=0,1*sin(\frac{5\pi t}{3})$
-        b) poloha v čase t=0,5 s: $y=0,1*sin(\frac{5\pi t}{6})$ POZOR RAD!!!
+                    $y=0,1\cdot \sin(\frac{5\pi t}{3})$
+        b) poloha v čase t=0,5 s: $y=0,1\cdot \sin(\frac{5\pi t}{6})$ POZOR RAD!!!
                                   $y=5cm$
 Př.: Rychlost oscilátoru
-     $cos (\alpha) = v/v_0$
-     $v=v_0*cos (\alpha)$
-        1) $\alpha = \omega * t$
-        2) $v_0 = \omega * r$
+     $\cos (\alpha) = v/v_0$
+     $v=v_0\cdot \cos (\alpha)$
+        1) $\alpha = \omega \cdot t$
+        2) $v_0 = \omega \cdot r$
         3) $r = y_m$
-     $\Rightarrow v = \omega * y_m * cos(\omega t + {\phi}_0)$
-     $v = \frac{2 \pi}{1,1}*cos(t)$
+     $\Rightarrow v = \omega \cdot y_m \cdot \cos(\omega t + {\phi}_0)$
+     $v = \frac{2 \pi}{1,1}\cdot \cos(t)$
 
 Zrychlení: OBRAZEKOBRAZEK
-           $v_1 = \omega * r$
-           $a_d = \frac{{v_1}^2}{r} = \omega^2 * r = \omega^2 * y_m$
+           $v_1 = \omega \cdot r$
+           $a_d = \frac{{v_1}^2}{r} = \omega^2 \cdot r = \omega^2 \cdot y_m$
 
-           $a = a_d * sin(\omega t + {\phi}_0)$
-           $a = \omega^2 * y_m * sin(\omega t + {\phi}_0) = \omega^2 * y$ $\Rightarrow$ velikost zrychlení je přímo úměrná okamžité odchylce
-           $a_{max} = \omega^2 * y_m$
+           $a = a_d \cdot sin(\omega t + {\phi}_0)$
+           $a = \omega^2 \cdot y_m \cdot sin(\omega t + {\phi}_0) = \omega^2 \cdot y$ $\Rightarrow$ velikost zrychlení je přímo úměrná okamžité odchylce
+           $a_{max} = \omega^2 \cdot y_m$
 
 AAAAAAA hrozně moc pomooc
 
@@ -198,8 +198,8 @@ Př.: Závisí tuhost pružiny na počtu závitů
 
 \section{Tlumené kmitání}
 \begin{itemize}
-  \item kromě síly, která je $F \propto -y$ působí i odporová síla, $F_{ODP} \propto -v, F_{ODP} \propto -b*v$; b -- součinitel linearního odporu [$kg/s$] OBRAZEKOBRAZEK
-  \item $y = y_m * e^{- \frac{bt}{2m}}*sin(\omega' t + {\phi}_{0})$
+  \item kromě síly, která je $F \propto -y$ působí i odporová síla, $F_{ODP} \propto -v, F_{ODP} \propto -b\cdot v$; b -- součinitel linearního odporu [$kg/s$] OBRAZEKOBRAZEK
+  \item $y = y_m \cdot e^{- \frac{bt}{2m}}\cdot \sin(\omega' t + {\phi}_{0})$
   \item důsledky
   \begin{enumerate}
     \item je-li b malé ($b^2 << 4mk$); AAAA Př.: tlumí se to velmi pomalu
@@ -209,9 +209,9 @@ Př.: Závisí tuhost pružiny na počtu závitů
 
 \section{Energie pružinového oscilátoru}
 \begin{itemize}
-  \item kinetická: $E_k = \frac{1}{2}mv^2=\frac{1}{2}m*{y_m}^2*\omega^2*cos^2(\omega t)=\frac{1}{2}k*{y_m}^2*cos^2(\omega t)$
-  \item $cos(2x)=2cos^2(x)-1$; $cos^2(x) = \frac{1+cos(2x)}{2}$ OBRAZEKOBRAZEK y a Ek
-  \item potenciální: $E_p = W = \frac{1}{2}F*y$
+  \item kinetická: $E_k = \frac{1}{2}mv^2=\frac{1}{2}m\cdot{y_m}^2\cdot\omega^2\cdot \cos^2(\omega t)=\frac{1}{2}k\cdot{y_m}^2\cdot \cos^2(\omega t)$
+  \item $cos(2x)=2 \cos^2(x)-1$; $\cos^2(x) = \frac{1+cos(2x)}{2}$ OBRAZEKOBRAZEK y a Ek
+  \item potenciální: $E_p = W = \frac{1}{2}F\cdot y$
 \end{itemize}
 
 \section{Vlnění}
@@ -252,17 +252,17 @@ Př.: Závisí tuhost pružiny na počtu závitů
 \end{itemize}
 \section{Elektrické pole}
 \begin{itemize}
-  \item intensita elektrického pole -- $E^{\rightarrow}$ = $\frac{F_e^{\rightarrow}}{Q}$ [N/C]
-  \item směr $E^{\rightarrow}$ = směr síly na kladný náboj OBRAZEKOBRAZEK
+  \item intensita elektrického pole -- $\overrightarrow{E} = \frac{\overrightarrow{F_e}}{Q}$ [N/C]
+  \item směr $\overrightarrow{E}$ = směr síly na kladný náboj OBRAZEKOBRAZEK
 \end{itemize}
 \subsection{Typy elektrického pole}
 \subsubsection{Homogenní pole}
 \begin{itemize}
-  \item $E^{\rightarrow}$ = konst. OBRAZEKOBRAZEK
+  \item $\overrightarrow{E}$ = konst. OBRAZEKOBRAZEK
 \end{itemize}
 \subsubsection{Radiální pole}
 \begin{itemize}
-  \item E = $\frac{k*\frac{Q_1 Q_2}{r^2}}{Q_2} = k*\frac{Q_1}{r^2}$ OBRAZEKOBRAZEK
+  \item E = $\frac{k\cdot\frac{Q_1 Q_2}{r^2}}{Q_2} = k\cdot\frac{Q_1}{r^2}$ OBRAZEKOBRAZEK
 \end{itemize}
 \subsubsection{Dipólové pole}
 \begin{itemize}
@@ -275,31 +275,31 @@ Př.: Závisí tuhost pružiny na počtu závitů
 \end{itemize}
 \subsection{Práce, energie}
 \begin{itemize}
-  \item $W = F*s = F*s*cos \alpha $
+  \item $W = F\cdot s = F\cdot s\cdot \cos \alpha $
 \end{itemize}
 \subsubsection{V homogenním poli}
 \begin{itemize}
   \item $E = \frac{F}{Q} = konst.$
   \item $F = EQ$
-  \item $W = E*Q*s = E*Q*s*\cos \alpha = E*Q*d$; d je vzdálenost kolmá na siločary OBRAZEKOBRAZEK elektricka\_prace
+  \item $W = E\cdot Q\cdot s = E\cdot Q\cdot s\cdot \cos \alpha = E\cdot Q\cdot d$; d je vzdálenost kolmá na siločary OBRAZEKOBRAZEK elektricka\_prace
   \item $W = \Delta E_p$
   \item volba 0 u $E_p$: na záporné nebo uzemněné desce OBRAZEKOBRAZEK volt\_deska
-  \item Potenciál: $\phi = \frac{E_p}{Q} = \frac{W}{Q} = \frac{EQd}{Q} = E*d$
+  \item Potenciál: $\phi = \frac{E_p}{Q} = \frac{W}{Q} = \frac{EQd}{Q} = E\cdot d$
   \item Rozdíl potenciálů = napětí $U = \Delta \phi$ [J/C]=[V]
   \item Intenzita: $E=\frac{U}{d}$ [V/m]
-  \item Pozn: elektron urychlený napětím 1 V získá energii: $E = W = U*e = 1*1,6*10^{-19}J = 1 eV$ -- elektronvolt
+  \item Pozn: elektron urychlený napětím 1 V získá energii: $E = W = U\cdot e = 1\cdot 1,6\cdot 10^{-19}J = 1 eV$ -- elektronvolt
 \end{itemize}
 \subsubsection{V radiálním poli}
 \begin{itemize}
-  \item OBRAZEKOBRAZEK z A do B: $W = F*s$, ale F v bodě A je jiná než v B $\Rightarrow$ sílu nahradíme \uv{průměrnou} (geometrický průměrnou) silou mezi A a B
-  \item $F_A = k*\frac{Q}{r_A^2}; F_B = k*\frac{Q}{r_B^2} \Rightarrow F_{prům} = \sqrt{F_A*F_B} = \frac{kQ}{r_A r_B}$
-  \item $W=F_{prům}*s = k*\frac{Q_1 Q_2}{r_A r_B}*(r_B-r_A) = -kQ_1 Q_2*\frac{1}{r} = E_p$
+  \item OBRAZEKOBRAZEK z A do B: $W = F \cdot s$, ale F v bodě A je jiná než v B $\Rightarrow$ sílu nahradíme \uv{průměrnou} (geometrický průměrnou) silou mezi A a B
+  \item $F_A = k \cdot \frac{Q}{{r_A}^2}; F_B = k \cdot \frac{Q}{{r_B}^2} \Rightarrow F_{prům} = \sqrt{F_A \cdot F_B} = \frac{kQ}{r_A r_B}$
+  \item $W = F_{prům}\cdot s = k \cdot \frac{Q_1 Q_2}{r_A r_B}\cdot (r_{B}-r_A) = -kQ_1 Q_2\cdot \frac{1}{r} = E_p$
 \end{itemize}
-Pozn.: $F = k*\frac{Q_1 Q_2}{r^2}$; $k = \frac{1}{4 \pi \epsilon}$
+Pozn.: $F = k\cdot\frac{Q_1 Q_2}{r^2}$; $k = \frac{1}{4 \pi \epsilon}$
 $\epsilon$ -- permitivita prostředí -- \uv{prostupnost prostředí pro el. pole}
-$\epsilon_0 = 8,85 * 10^{-12} C^2 N^{-1} m^{-2}$
+$\epsilon_0 = 8,85 \cdot 10^{-12} C^2 N^{-1} m^{-2}$
 $\epsilon >= \epsilon_0$
-$\epsilon_r -- relativní permitivita$
+$\epsilon_r$ -- relativní permitivita
 vzduch -- $\epsilon_r = 1,0006$
 olivový olej -- $\epsilon_r = 3,1$
 sklo -- $\epsilon_r = 5-16$
@@ -308,8 +308,8 @@ voda -- $\epsilon_r = 82$
 \begin{itemize}
   \item[A)] vodiče: náboje se mohou pohybovat OBRAZEKOBRAZEK vodic.png
   \begin{itemize}
-    \item elektrostatická indukce -- rozdělím vodič, zůstává trvale nabitý OBRAZEKOBRAZEK skin_effect.png
-    \item plošná hustota náboje -- $\sigma = \frac{Q}{S}$; z předch. vzorce: $E = \frac{Q}{S*\epsilon} \Rightarrow \sigma = E*\epsilon$
+    \item elektrostatická indukce -- rozdělím vodič, zůstává trvale nabitý OBRAZEKOBRAZEK skin\_effect.png
+    \item plošná hustota náboje -- $\sigma = \frac{Q}{S}$; z předch. vzorce: $E = \frac{Q}{S\cdot \epsilon} \Rightarrow \sigma = E\cdot \epsilon$
   \end{itemize}
   \item[B)] nevodiče: OBRAZEKOBRAZEK nevodic.png
 \end{itemize}
@@ -324,14 +324,14 @@ $\Rightarrow$ polarisuje se
   \item při nabíjení vodiče nábojem Q se zvyšuje jeho napětí U přímo úměrně
 \end{itemize}
   $Q \propto U$
-  $Q = C*U$
+  $Q = C \cdot U$
 \begin{itemize}
   \item C - kapacita vodiče $[C/V] = [F]$ -- farad
 \end{itemize}
 Př.: Určete kapacitu koule r = 10 cm
-$C = \frac{Q}{U} = \frac{Q}{k*\frac{Q}{r}} = \frac{r}{k} = 4\pi \epsilon r = 4\pi*8,85*10^{-12}*0,1 = 11 pF$
+$C = \frac{Q}{U} = \frac{Q}{k\cdot \frac{Q}{r}} = \frac{r}{k} = 4\pi \epsilon r = 4\pi\cdot8,85\cdot10^{-12}\cdot0,1 = 11 pF$
 \begin{itemize}
-  \item koule s kapacitou 1 F by měla $9*10^{9}$ m, proto používáme pF, nF, mkF
+  \item koule s kapacitou 1 F by měla $9\cdot 10^{9}$ m, proto používáme pF, nF, mkF
   \item samostatný vodič má kapacitu malou $\Rightarrow$ vhodným tvarem ji můžeme zvětšit
   \item[ $\Rightarrow$ ] KONDENSÁTOR
 \end{itemize}
@@ -341,7 +341,7 @@ $C = \frac{Q}{U} = \frac{Q}{k*\frac{Q}{r}} = \frac{r}{k} = 4\pi \epsilon r = 4\p
   \item válcový OBRAZEKOBRAZEK kondensator.png
 \end{itemize}
 Př.: Deskový kondensátor: S = $20 cm^2$, d = 5 cm, C = ?\\
-$C = \frac{Q}{U}=\frac{Q}{E*d}=\frac{Q}{\frac{Q*d}{S*\epsilon}} = \epsilon_{pr. mezi deskami} * \frac{S}{d}$
+$C = \frac{Q}{U}=\frac{Q}{E\cdot d}=\frac{Q}{\frac{Q\cdot d}{S\cdot \epsilon}} = \epsilon_{pr. mezi deskami} \cdot \frac{S}{d}$
 \begin{itemize}
   \item Spojování kondensátorů
   \begin{itemize}
@@ -356,8 +356,8 @@ $C = \frac{Q}{U}=\frac{Q}{E*d}=\frac{Q}{\frac{Q*d}{S*\epsilon}} = \epsilon_{pr. 
       \item napětí se rozdělí $U = U_1 + U_2; \frac{U}{Q} = \frac{U_1}{Q_1} + \frac{U_2}{Q_2}; \frac{1}{C} = \frac{1}{C_1} + \frac{1}{C_2}$
     \end{itemize}
   \end{itemize}
-  \item E = W != Q*U -- platí jen je-li U = konst.
-  \item v kondensátoru je napětí přímo úměrné náboji, tedy v grafu \uv{trojúhelník}, tedy $E = W = \frac{Q*U}{2} = \frac{C*U^2}{2}$
+  \item $E = W != Q \cdot U$ -- platí jen je-li U = konst.
+  \item v kondensátoru je napětí přímo úměrné náboji, tedy v grafu \uv{trojúhelník}, tedy $E = W = \frac{Q\cdot U}{2} = \frac{C\cdot U^2}{2}$
 \end{itemize}
 
 \part{Elektrodynamika}
@@ -366,15 +366,15 @@ $C = \frac{Q}{U}=\frac{Q}{E*d}=\frac{Q}{\frac{Q*d}{S*\epsilon}} = \epsilon_{pr. 
   \item usměrněný pohyb nosičů náboje (elektrony, ionty)
   \item $I = \frac{Q}{t}; [C/s] = [A]$
 \end{itemize}
-Př.: Rychlost elektronu ve vodiči způsobená tepelným pohybem je asi milion $m/s$ (neuspoř. pohyb). Určete unášivou rychlost elektronu (driftová rychlost) při průtoku proudu 1 A měděným vodičem s průřezem 1 $mm^2$. $\ro (Cu) = 8300 kg/ m^3, A_r (Cu) = 63,5$ a 1 elektronu z každého atomu mědi vede el. proud.
+Př.: Rychlost elektronu ve vodiči způsobená tepelným pohybem je asi milion m/s (neuspoř. pohyb). Určete unášivou rychlost elektronu (driftová rychlost) při průtoku proudu 1 A měděným vodičem s průřezem 1 $mm^2$. $\rho$ (Cu) = 8300 kg/ $m^3$, $A_r$ (Cu) = 63,5 a 1 elektronu z každého atomu mědi vede el. proud.
 
-Za 1 s projde projde průřezem 1C (protože vedeme 1 A), což je $\frac{1}{e} = \frac{1}{1,6* 10^{-19}} = 6* 10^{18}$ ks elektronů
+Za 1 s projde projde průřezem 1C (protože vedeme 1 A), což je $\frac{1}{e} = \frac{1}{1,6\cdot 10^{-19}} = 6\cdot 10^{18}$ ks elektronů
 
-Hmotnost $6*10^{18}$ atomů mědi:
+Hmotnost $6\cdot10^{18}$ atomů mědi:
 
-  \hspace{10 px} 1 atom: $A_r * u = 63,5 * 1,66 * 10^{-27} = 10^{-25}$ kg
+  \hspace{10 px} 1 atom: $A_r \cdot u = 63,5 \cdot 1,66 \cdot 10^{-27} = 10^{-25}$ kg
 
-  \hspace{10 px} $6* 10^{18}$ atomů: $6* 10^{-7}$ kg ... objem: $V = \frac{m}{\ro} \Rightarrow h = \frac{m}{\ro*S} = 7* 10^{-5} m$
+  \hspace{10 px} $6 \cdot 10^{18}$ atomů: $6 \cdot 10^{-7}$ kg ... objem: $V = \frac{m}{\rho} \Rightarrow h = \frac{m}{\rho \cdot S} = 7 \cdot 10^{-5} m$
 
 \hspace{-10 px} $\Rightarrow$ $v = 10^{-4} $ m/s
 
@@ -413,8 +413,7 @@ Př.: částice vlétne rychlostí $v$ do mag. pole
 \begin{itemize}
   \item[$a)$] ve směru siločar -- $F_n = 0$ ($\overrightarrow{v}$ a $\overrightarrow{B}$ rovnob.)
   \item[$b)$] kolmo na siločáry -- udělá půlkroužek a poletí ven OBRAZEKOBRAZEK urychlovac\_castic.png
-\end{itemize}
-\newline
+\end{itemize} \newline
 využití
 
 \begin{itemize}
@@ -430,7 +429,7 @@ $\Rightarrow$ $F_{12} = F_{21} = \frac{\mu}{2 \pi} \cdot \frac{I_1 I_2 l}{d}$
 Př.: Smyčka s proudem v magnetickém poli OBRAZEKOBRAZEK civecka\_1.png, civecka\_2.png
 magnetické pole cívky se natočí tak, aby bylo souhlasné s polem magnetů -- když ale potom cíku přeopoluju bude se točit dál -- mám motor!
 
-\section{Látky v magentickém poli}
+\section{Látky v magnetickém poli}
 \begin{itemize}
   \item každá látka složená z atomů, které v sobě mají pohybující se elektrony, o kterých můžeme uvažovat jako o hýbajících se nosičích náboje -- každá látka tak bude mít nějakou reakci na magnetické pole (většina ale velmi slabou), podle reakcí se látky dělí do skupin:
   \begin{itemize}
@@ -443,4 +442,7 @@ magnetické pole cívky se natočí tak, aby bylo souhlasné s polem magnetů --
     \item magneticky tvrdé látky -- permanentní magnety, HDD -- zápis pomocí magnetace disku
   \end{itemize}
 \end{itemize}
+
+\section{Nestacionární pole}
+nechapu to ne ok trochu to chapu
 \end{document}
