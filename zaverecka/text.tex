@@ -1,0 +1,87 @@
+% soctepmlate unofficial - SOČ = Středoškolská odborná činnost - Czech competition
+% Author: Vojtěch Boček
+% Edit by: Jaroslav Páral
+% Version: 2018-02-12
+% Source code: https://github.com/RoboticsBrno/soctemplate/
+% Base on: http://www.jcmm.cz/cz/sablona-soc.html
+% License: CC BY 4.0
+
+\documentclass{template/socthesis}
+
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\addbibresource{text.bib}
+
+\titlecz{Chemické pokusy}
+\titleen{Chemical expermients}
+\author{Jan Romanovský}
+\field{12}
+\school{Gymnázium Brno, třída kpt.~Jaroše}
+\mentor{Mgr. Zdeněk Moravec, Ph.D.}
+\mentorstatement{Mgr. Zdeňka Moravce, Ph.D.}
+
+% Změňte, pokud se liší
+%\region{Jihomoravský}
+%\placefooter{Brno 2023}
+
+\begin{document}
+
+	\maketitle
+
+	\makecopyrightstatement{V~Brně}
+
+	\makethanks{Děkuji}
+
+	\pagestyle{empty}
+
+	\section*{Anotace}
+	Cílem práce je pojednání o důležitosti chemických pokusů v moderní výuce chemie, dále lehce přístupný katalog efektních chemických pokusů, který by sloužil jako pomůcka při výuce chemie na ZŠ a SŠ. Práce je členěna do teoretické a praktické části, dále do podcelků podle logické návaznosti k tématu textu.
+	Cílem teoretické části je podat shrnutou historii výuky chemie v ČR, vymezení chemických pokusů jako pomůcek při výuce a význam chemických pokusů ve výuce.
+	Cílem praktické části je provedení několika pokusů a jejich následné zpracování do katalogu pro potřeby výuky na ZŠ a SŠ, dále ověření funkčnosti tohoto katalogu.
+
+	\subsection*{Klíčová slova}
+	chemický pokus, výuka chemie
+
+	\vspace{20mm}
+
+	\section*{Annotation}
+	Insert annotation
+
+	\subsection*{Keywords}
+	chemical experiment, chemistry teaching
+
+	\newpage
+	\pagestyle{plain}
+
+    \tableofcontents % vysází obsah
+
+	%%% Začátek práce
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\newpage
+
+	%%% Vložení jednotlivých částí
+	\input{text-01-uvod.tex}
+
+	\input{text-02-teoreticka-cast.tex}
+
+	\input{text-03-prakticka-cast.tex}
+
+	\input{text-04-zaver.tex}
+
+	\newpage
+	\printbibliography[title=Literatura]
+	\addcontentsline{toc}{chapter}{Literatura}
+
+	%%%\listoffigures
+	%%%\addcontentsline{toc}{section}{Seznam obrázků}
+
+	%%%\listoftables
+	%%%\addcontentsline{toc}{section}{Seznam tabulek}
+
+	%%%\listoflistedequation
+	%%%\addcontentsline{toc}{section}{Seznam rovnic}
+
+\end{document}
