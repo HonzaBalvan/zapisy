@@ -62,7 +62,7 @@
     {9}{\def\@field{9. Strojírenství, hutnictví, doprava a~průmyslový design}}
     {10}{\def\@field{10. Elektrotechnika, elektronika a~telekomunikace}}
     {11}{\def\@field{11. Stavebnictví, architektura a~design interiérů}}
-    {12}{\def\@field{12. Tvorba učebních pomůcek, didaktická technologie}}
+    {12}{\def\@field{   }}
     {13}{\def\@field{13. Ekonomika a~řízení}}
     {14}{\def\@field{14. Pedagogika, psychologie, sociologie a~problematika volného času}}
     {15}{\def\@field{15. Teorie kultury, umění a~umělecké tvorby}}
@@ -84,9 +84,9 @@
 	\voffset = -20mm % posun začátku textu výš
     \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
 	\begin{center}
-	    {\large \B{STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}} \\
+	    {\large \B{ZÁVĚREČNÁ PRÁCE}} \\
 	    \vspace{5mm}
-		\normalsize \B{Obor: \@field} \\
+		\normalsize \B{\@field} \\
 
 		\vspace{40mm}
 
@@ -105,7 +105,7 @@
 	\pagestyle{empty}
     \enlargethispage{40mm} % zvětší oblast tisku pro tuto stránku
 	\begin{center}
-	    {\large \B{STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}} \\
+	    {\large \B{ZÁVĚREČNÁ PRÁCE}} \\
 
 		\vspace{40mm}
 
@@ -122,9 +122,7 @@
 		\begin{tabularx}{\textwidth}{r >{\raggedright}p{90mm} c}
 		\large \B{AUTOR} & \large \B{\@author} & \\
 		\large \B{ŠKOLA} & \large \B{\@school} & \\
-		\large \B{KRAJ} & \large \B{\@region} & \\
 		\large \B{ŠKOLITEL} & \large \B{\@mentor} & \\
-		\large \B{OBOR} & \large \B{\@field} & \\
 		\end{tabularx}
 		\setlength{\tabcolsep}{6pt}
         \renewcommand{\arraystretch}{1.0}
@@ -149,7 +147,7 @@
 	\section*{Prohlášení}
 	Prohlašuji, že svou práci na téma \It{\@titlecz} jsem vypracoval/a samostatně pod vedením {\@mentorstatement} a~s~použitím odborné literatury a~dalších informačních zdrojů, které jsou všechny citovány v~práci a~uvedeny v~seznamu literatury na~konci práce.
 
-	Dále prohlašuji, že tištěná i~elektronická verze práce SOČ jsou shodné a~nemám závažný důvod proti zpřístupňování této práce v~souladu se~zákonem č.~121/2000~Sb., o~právu autorském, o~právech souvisejících s~právem autorským a~změně některých zákonů (autorský zákon) v~platném změní.
+	Dále prohlašuji, že nemám závažný důvod proti zpřístupňování této práce v~souladu se~zákonem č.~121/2000~Sb., o~právu autorském, o~právech souvisejících s~právem autorským a~změně některých zákonů (autorský zákon) v~platném změní.
 
 	\vspace{10mm}
 
