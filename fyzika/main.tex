@@ -130,8 +130,8 @@ AAAAAAA
 Př.: OBRAZEKOBRAZEK
 $m = 0,2 kg$
 a) teplota varu: 50 stupnu
-b) c(kap.) $c = Q/(m\cdotdeltat)=200/(0,2\cdot 40) = 25$ $Jkg^{-1}K^{-1}$
-c) c(plyn) $c = Q/(m\cdotdeltat)=200/(0,2\cdot 20) = 50$ $Jkg^{-1}K^{-1}$
+b) c(kap.) $c = Q(m\cdot \Delta t)=200/(0,2 \cdot 40) = 25$ $Jkg^{-1}K^{-1}$
+c) c(plyn) $c = Q(m\cdot \Delta t)=200/(0,2 \cdot 20) = 50$ $Jkg^{-1}K^{-1}$
 d)$L_v$ -- skupenské teplo varu [J]
 $L_v = 300 J$
 $l_v = $ měrné skupenské teplo varu $l_v = L_v/m$ $[Jkg^{-1}]$
@@ -141,9 +141,9 @@ Pozn.: pro vodu: $l_t$ (tání) $= 332 Jkg^{-1}$
 $l_v = 2257 Jkg^{-1}$
 
 Př.: 1 kg vody z teploty -20 stupnu -> pára 100 stupnu, $P = 1 kW$
-led -20 stupnu -> led 0 stupnu: ($c_{ledu} = 2100 Jkg^{-1}$) $Q = m\cdot c\cdotdeltat = 42 kJ$ -> 42 s
+led -20 stupnu -> led 0 stupnu: ($c_{ledu} = 2100 Jkg^{-1}$) $Q = m\cdot c\cdot \Delta t = 42 kJ$ -> 42 s
 led 0 stupnu -> voda 0 stupnu: $L_t = m\cdot l_t = 332 kJ$ -> 5 min 32 s
-voda 0 stupnu -> voda 100 stupnu ($c_{vody} = 4180 Jkg^{-1}$) $Q = m\cdot c\cdotdeltat = 418 kJ$ -> 6 min 58 s
+voda 0 stupnu -> voda 100 stupnu ($c_{vody} = 4180 Jkg^{-1}$) $Q = m\cdot c \cdot \Delta t = 418 kJ$ -> 6 min 58 s
 voda 100 stupnu -> pára 100 stupnu: $L_v = m\cdot l_v = 2257 kJ$ -> 37 min 37 s (to je šílený)
 
 Pozn.: Hranaty graf plati u krystalickych latek, u amorfnich latek (kvuli nedokonalostem v uskupeni) je graf obly OBRAZEKOBRAZEK
@@ -311,12 +311,9 @@ voda -- $\epsilon_r = 82$
     \item elektrostatická indukce -- rozdělím vodič, zůstává trvale nabitý OBRAZEKOBRAZEK skin\_effect.png
     \item plošná hustota náboje -- $\sigma = \frac{Q}{S}$; z předch. vzorce: $E = \frac{Q}{S\cdot \epsilon} \Rightarrow \sigma = E\cdot \epsilon$
   \end{itemize}
-  \item[B)] nevodiče: OBRAZEKOBRAZEK nevodic.png
-\end{itemize}
-$\Rightarrow$ polarisuje se
-\begin{itemize}
+  \item[B)] nevodiče: OBRAZEKOBRAZEK nevodic.png $\Rightarrow$ polarisuje se
   \begin{itemize}
-    \item některé molekuly jsou už \uv{z výroby} polární, např. $H_2O$
+    \item některé molekuly jsou už \uv{z výroby} polární, např. $H_2 O$
   \end{itemize}
 \end{itemize}
 \subsection{Kapacita vodiče}
@@ -372,11 +369,11 @@ Za 1 s projde projde průřezem 1C (protože vedeme 1 A), což je $\frac{1}{e} =
 
 Hmotnost $6\cdot10^{18}$ atomů mědi:
 
-  \hspace{10 px} 1 atom: $A_r \cdot u = 63,5 \cdot 1,66 \cdot 10^{-27} = 10^{-25}$ kg
+  \hspace{10 pt} 1 atom: $A_r \cdot u = 63,5 \cdot 1,66 \cdot 10^{-27} = 10^{-25}$ kg
 
-  \hspace{10 px} $6 \cdot 10^{18}$ atomů: $6 \cdot 10^{-7}$ kg ... objem: $V = \frac{m}{\rho} \Rightarrow h = \frac{m}{\rho \cdot S} = 7 \cdot 10^{-5} m$
+  \hspace{10 pt} $6 \cdot 10^{18}$ atomů: $6 \cdot 10^{-7}$ kg ... objem: $V = \frac{m}{\rho} \Rightarrow h = \frac{m}{\rho \cdot S} = 7 \cdot 10^{-5} m$
 
-\hspace{-10 px} $\Rightarrow$ $v = 10^{-4} $ m/s
+\hspace{-10 pt} $\Rightarrow$ $v = 10^{-4} $ m/s
 
 Pozn.: I je skalár, ale má def. směr (a ten je proti směru toku elektronů, tedy z kladného na záporný)
 Pozn.: Proud měříme ampérmetrem, který se zapojuje sériově
@@ -412,8 +409,8 @@ Náboj v mag. poli: $\overrightarrow{F_n} = I \cdot (\overrightarrow{l} \times \
 Př.: částice vlétne rychlostí $v$ do mag. pole
 \begin{itemize}
   \item[$a)$] ve směru siločar -- $F_n = 0$ ($\overrightarrow{v}$ a $\overrightarrow{B}$ rovnob.)
-  \item[$b)$] kolmo na siločáry -- udělá půlkroužek a poletí ven OBRAZEKOBRAZEK urychlovac\_castic.png
-\end{itemize} \newline
+  \item[$b)$] kolmo na siločáry -- udělá půlkroužek a poletí ven OBRAZEKOBRAZEK urychlovac\_castic.png \newline
+\end{itemize}
 využití
 
 \begin{itemize}
@@ -444,5 +441,59 @@ magnetické pole cívky se natočí tak, aby bylo souhlasné s polem magnetů --
 \end{itemize}
 
 \section{Nestacionární pole}
-nechapu to ne ok trochu to chapu
+zase toho hrozne moc chybi hilfe
+kdyz mame nestacionární magnetické pole ve vodiči tak se mi indukuje proud -- tedy naopak než elektromagnet
+nějaká veličina $\Phi$ -- magnetický indukční tok $\Phi = B \cdot S \cdot \cos \alpha$,
+kde $\alpha$ je úhel, který svírá normálový vektor plochy s vektorem magnetické indukce, S je plocha smyčky a B je magnetické pole
+
+\subsection{Vlastní indukce}
+\begin{itemize}
+  \item když cívkou poteče proud, bude indukovat magnetické pole, ale toto magnetické pole bude nazpět indukovat napětí v této cívce, toto bude opačné
+  \item $\Phi \propto I$ -- mag. indukční tok je přímo úměrný proudu v cívce
+  \item $\Phi = L \cdot I$ -- L -- indukčnost cívky (schopnost cívky samotné v sobě indukovat napětí), spolu s odporem a kapacitou je indukčnost důležitou vlastností obvodu
+  \item Jednotka $[\frac{T \cdot m^2}{A}] = [H]$ -- henry
+  \item Elmag. indukce: $U_i = -\frac{\Delta \Phi}{t} = -\frac{L \cdot \Delta I}{t} = -L \cdot  \frac{\Delta I}{t}$ -- cívka má indukčnost 1H, pokus se při změně proudu o 1A za 1s naindukuje napětí 1V
+  \item  Indukčnost cívky: $L= \frac{\Phi}{I}= \frac{B \cdot S \cdot N}{I}$, N -- počet závitů, u solenoidu $B=\frac{\mu \cdot N \cdot I}{l}$ $\Rightarrow$ $L= \mu \cdot \frac{N^2 \cdot S}{l}$, vzorec podobný vzorcům pro výpočet kapacity deskvého kondenzátoru a odporu drátu
+\end{itemize}
+Př.: Vypočtěte indukčnost cívky:\\
+    $\mu = 4\pi \cdot 10^{-7} H/m$, $N = 1200$, $S= 10 cm^2$, $l = 5 cm$\\
+    $L = 36 mH$\\\\
+Př.: Zapojme paralelně žárovky, jednu přes cívku a jednu přes resistor:\\
+    Ta, která je zapojená přes cívku se rozžhne později -- cívka \uv{brzdí} napětí tím, jak si generuje vlastní mag. pole\\
+
+\subsection{Přechodové jevy}
+\begin{itemize}
+  \item když obvod zapínám/vypínám a mám tam cívku, tak jsou tam čachry s napětím kvůli indukci, toto napětí může být mnohonásobně větší než napětí zdroje, třeba elektrické ohradníky OBRAZEKOBRAZEK \begin{figure}[h]
+      \includegraphics[width=\linewidth]{prechodove_jevy.png}
+      \caption{}
+  \end{figure}
+  \item ZZE platí, to co ztratíme po sepnutí získame po vypnutí -- je to uložené v energii magnetického pole:\\ $E = W = U \cdot I \cdot t = L \cdot \frac{\Delta I}{t} \cdot I \cdot t = L \cdot I \cdot \Delta I = \Phi \cdot \Delta I$ -- mag. tok je přímo úměrný proudu, grafem je zřejmý, energie je plocha pod křivkou, takže energie mag. pole je plocha trojúhelníku $\Rightarrow \Phi \cdot \Delta I = \frac{\Phi \cdot I}{2} = \frac{LI^2}{2}$
+\end{itemize}
+
+\subsection{Střídavý proud}
+\begin{itemize}
+  \item vzniká např. otáčením cívkou v mag. poli (alternátor)
+  \item $\Phi = \overrightarrow{B} \cdot \overrightarrow{S} = B \cdot S \cdot \cos \alpha$
+  \item $U_i = -\frac{\Delta \Phi}{t} (= -\frac{d \Phi}{dt})$
+  \item Okamžitá hodnota: $U = U_m \cdot \sin \omega t$
+\end{itemize}
+Obvody:
+\begin{itemize}
+  \item[A)] rezistor:
+  \begin{itemize}
+    \item platí Ohmův zákon: $i \propto u$
+    \item střední hodnota napětí a proudu: $<u> = <i> = 0$
+    \item výkon: $p = u \cdot i = U_m \cdot \sin \omega t \cdot I_m \cdot \sin \omega t = U_m \cdot I_m \cdot \sin^2 \omega t = P_m \sin^2 \omega t$
+    \item střední hodnota výkonu: $<p> = \frac{P_m}{2}$
+    \item Efektivní hodnota: hodnoty takové stejnosměrného proudu/napětí, které kdybychom zapojili tak máme stejný výkon jako střídavý
+    $$<p> = P_{STEJNOSM.}$$
+    $$\frac{P_m}{2} = P$$
+    $$\frac{U_m \cdot I_m}{2} = U \cdot I$$
+    $$\frac{RI_m^2}{2} = RI^2$$
+    $$\frac{I_m^2}{2} = I^2$$
+    $\frac{\sqrt{2}}{2}I_m = I$, $\frac{\sqrt{2}}{2}U_m = U$
+    \item takže když se řekne, že je v zásuvce 230V tak to je efektivní napětí -- takže peak napětí je $\sqrt{2} \cdot 230 = 325 V$  CHYBI TADY VSUDE OBRAZKY
+  \end{itemize}
+
+\end{itemize}
 \end{document}
