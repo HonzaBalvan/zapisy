@@ -464,7 +464,7 @@ Př.: Zapojme paralelně žárovky, jednu přes cívku a jednu přes resistor:\\
 \subsection{Přechodové jevy}
 \begin{itemize}
   \item když obvod zapínám/vypínám a mám tam cívku, tak jsou tam čachry s napětím kvůli indukci, toto napětí může být mnohonásobně větší než napětí zdroje, třeba elektrické ohradníky OBRAZEKOBRAZEK \begin{figure}[h]
-      \includegraphics[width=\linewidth]{prechodove_jevy.png}
+      \includegraphics[width=0.3\linewidth]{prechodove_jevy.png}
       \caption{}
   \end{figure}
   \item ZZE platí, to co ztratíme po sepnutí získame po vypnutí -- je to uložené v energii magnetického pole:\\ $E = W = U \cdot I \cdot t = L \cdot \frac{\Delta I}{t} \cdot I \cdot t = L \cdot I \cdot \Delta I = \Phi \cdot \Delta I$ -- mag. tok je přímo úměrný proudu, grafem je zřejmý, energie je plocha pod křivkou, takže energie mag. pole je plocha trojúhelníku $\Rightarrow \Phi \cdot \Delta I = \frac{\Phi \cdot I}{2} = \frac{LI^2}{2}$
@@ -479,7 +479,7 @@ Př.: Zapojme paralelně žárovky, jednu přes cívku a jednu přes resistor:\\
 \end{itemize}
 Obvody:
 \begin{itemize}
-  \item[A)] rezistor:
+  \item[A)] rezistor zapojený na střídavé napětí:
   \begin{itemize}
     \item platí Ohmův zákon: $i \propto u$
     \item střední hodnota napětí a proudu: $<u> = <i> = 0$
@@ -493,6 +493,16 @@ Obvody:
     $$\frac{I_m^2}{2} = I^2$$
     $\frac{\sqrt{2}}{2}I_m = I$, $\frac{\sqrt{2}}{2}U_m = U$
     \item takže když se řekne, že je v zásuvce 230V tak to je efektivní napětí -- takže peak napětí je $\sqrt{2} \cdot 230 = 325 V$  CHYBI TADY VSUDE OBRAZKY
+  \end{itemize}
+  \item[B)] kondenzátor:
+  \begin{itemize}
+    \item[a)] stejnosměrný proud: žárovka při supštění blikne a pak se vypne -- proud teče jen, dokud se nenabije kondenzátor
+    \item[b)] střídavý proud: kondenzátor se střídavě nabíjí a vybíjí a proud jde přes žárovku -- svítí
+    \begin{itemize}
+      \item napětí: $u = U_m \cdot \sin \omega t$
+      \item náboj: $q = C \cdot u = C \cdot U_m \cdot \omega \cdot \cos \omega t =  \frac{U_m}{\frac{1}{\omega C}} \cdot \cos \omega t$
+      \item odpor: $\frac{U}{R}$ chybííí
+    \end{itemize}
   \end{itemize}
 
 \end{itemize}
