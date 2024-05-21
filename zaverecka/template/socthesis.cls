@@ -122,7 +122,7 @@
 		\begin{tabularx}{\textwidth}{r >{\raggedright}p{90mm} c}
 		\large \B{AUTOR} & \large \B{\@author} & \\
 		\large \B{ŠKOLA} & \large \B{\@school} & \\
-		\large \B{ŠKOLITEL} & \large \B{\@mentor} & \\
+		\large \B{ŠKOLITELÉ} & \large \B{\@mentor} & \\
 		\end{tabularx}
 		\setlength{\tabcolsep}{6pt}
         \renewcommand{\arraystretch}{1.0}
@@ -145,7 +145,7 @@
 	\vfill
 
 	\section*{Prohlášení}
-	Prohlašuji, že svou práci na téma \It{\@titlecz} jsem vypracoval/a samostatně pod vedením {\@mentorstatement} a~s~použitím odborné literatury a~dalších informačních zdrojů, které jsou všechny citovány v~práci a~uvedeny v~seznamu literatury na~konci práce.
+	Prohlašuji, že svou práci na téma \It{\@titlecz} jsem vypracoval samostatně pod vedením {\@mentorstatement} a~s~použitím odborné literatury a~dalších informačních zdrojů, které jsou všechny citovány v~práci a~uvedeny v~seznamu literatury na~konci práce.
 
 	Dále prohlašuji, že nemám závažný důvod proti zpřístupňování této práce v~souladu se~zákonem č.~121/2000~Sb., o~právu autorském, o~právech souvisejících s~právem autorským a~změně některých zákonů (autorský zákon) v~platném změní.
 
