@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{enumerate}
 \graphicspath{{images/}}
 
 \title{\vspace{-2cm}Fyzika druháku\vspace{-1.7cm}}
@@ -292,8 +293,8 @@ Př.: Závisí tuhost pružiny na počtu závitů
 \subsubsection{V radiálním poli}
 \begin{itemize}
   \item OBRAZEKOBRAZEK z A do B: $W = F \cdot s$, ale F v bodě A je jiná než v B $\Rightarrow$ sílu nahradíme \uv{průměrnou} (geometrický průměrnou) silou mezi A a B
-  \item $F_A = k \cdot \frac{Q}{{r_A}^2}; F_B = k \cdot \frac{Q}{{r_B}^2} \Rightarrow F_{prům} = \sqrt{F_A \cdot F_B} = \frac{kQ}{r_A r_B}$
-  \item $W = F_{prům}\cdot s = k \cdot \frac{Q_1 Q_2}{r_A r_B}\cdot (r_{B}-r_A) = -kQ_1 Q_2\cdot \frac{1}{r} = E_p$
+  \item $F_A = k \cdot \frac{Q}{{r_A}^2}; F_B = k \cdot \frac{Q}{{r_B}^2} \Rightarrow F_{\text{prům}} = \sqrt{F_A \cdot F_B} = \frac{kQ}{r_A r_B}$
+  \item $W = F_{\text{prům}}\cdot s = k \cdot \frac{Q_1 Q_2}{r_A r_B}\cdot (r_{B}-r_A) = -kQ_1 Q_2\cdot \frac{1}{r} = E_p$
 \end{itemize}
 Pozn.: $F = k\cdot\frac{Q_1 Q_2}{r^2}$; $k = \frac{1}{4 \pi \epsilon}$
 $\epsilon$ -- permitivita prostředí -- \uv{prostupnost prostředí pro el. pole}
@@ -513,25 +514,24 @@ nevim nebyl jsem tu jaderná maturita londýn
   \item transformátor, když má sekundární cívka větší počet závitů tak se zvětšuje napětí, transf. nahoru (V nahoru) x dolů
   \item pojistky, jističe
 \end{itemize}
-\end{document}
 
 \section{Elektromagnetické vlnění}
-\item elmag oscilátor
+elmag oscilátor
 
 \part{Optika}
 pomoc
 
 \part{Relativita}
-nevim neco domyslete si to albert einstein atd. 
+nevim neco domyslete si to albert einstein atd.
 
 \section{Relativistická dynamika}
 
-2. NZ.: $F = \frac{\Delta p}{t} = \frac{\Delta \left\( m \cdot v \right\)}{t} = $ -- při působení konstatntní síly se zvětšuje hybnost. ale rychlost bude vždy $<c \implies$ zvyšuje se hmotnost 
+2. NZ.: $F = \frac{\Delta p}{t} = \frac{\Delta \left( m \cdot v \right)}{t} = $ -- při působení konstatntní síly se zvětšuje hybnost. ale rychlost bude vždy $<c \implies$ zvyšuje se hmotnost
 $= \frac{\Delta m \cdot v + \Delta v \cdot m}{t} = m \cdot a + \frac{\Delta m \cdot v}{t}$
 
-Odvození m = $f\left\(v\right\)$
+Odvození m = $f\left(v\right)$
 Předpoklady: \begin{enumerate}[1.]
-  \item $m = f\left\(v\right\)$
+  \item $m = f\left(v\right)$
   \item ZZHybnosti
   \item ZZHmotnosti
 \end{enumerate}
@@ -540,21 +540,26 @@ Př.: Dokonale nepružná srážka 2 těles se stejnou klidovou hmotností, $v_2
 
 \subsection{Kinetická energie}
 
-$E_k = W = \int_{}^{} F dr = \int \frac{dp}{dt} \cdot dr = \int \frac{m \cdot dv + dm \cdot v}{dt} \cdot dr = mc^2 - m_0 c^2$ 
-$\implies E = mc^2$ -- celková energie, $E_0 = m_0 c^2$ -- klidová energie 
-$E_k = E - E_0 = mc^2 - m_0 c^2 = m_0 \gamma c^2 - m_0 c^2 = m_0 c^2 (\gamma - 1)$ ($m = \gamma m_0$)
+$E_k = W = \int_{}^{} F dr = \int \frac{dp}{dt} \cdot dr = \int \frac{m \cdot dv + dm \cdot v}{dt} \cdot dr = mc^2 - m_0 c^2$\\
+$\implies E = mc^2$ -- celková energie, $E_0 = m_0 c^2$ -- klidová energie\\
+$E_k = E - E_0 = mc^2 - m_0 c^2 = m_0 \gamma c^2 - m_0 c^2 = m_0 c^2 (\gamma - 1)$ ($m = \gamma m_0$)\\
 
-Původní vzorec pro kinetickou energii nebyl úplně nepravdivý, je to jenom zanedbání miniaturních členů v této rovnici pro $v << c$ (má to smysl asi do $1\% c$)
+Původní vzorec pro kinetickou energii nebyl úplně nepravdivý, je to jenom zanedbání miniaturních členů v této rovnici pro $v \ll c$ (má to smysl asi do $1\% c$)\\
 
 Př.: Urychlíme elektron napětím $1000V$, jakou bude mít rychlost:
 \begin{enumerate}[a.]
-  \item klasickým vzorcem: $UQ = \frac{1}{2}mv^2 \implies v = \sqrt{\frac{2Ue}{m}} \approxeq 0,0625 c = 1,8752 \cdot 10^7 m/s$
-  \item spec. teor. rel.: $UQ = m_0 c^2 (\gamma - 1), \gamma = \frac{1}{\sqrt{1-\Beta^2}} \implies v = \sqrt{\frac{(\frac{Ue}{m_0 c^2}+1)^2-1}{(\frac{Ue}{m_0 c^2}+1)^2}} \cdot c \approxeq 1,8725 \cdot 10^7 m/s$ 
+  \item klasickým vzorcem: $UQ = \frac{1}{2}mv^2 \implies v = \sqrt{\frac{2Ue}{m}} \doteq 0,0625 c = 1,8752 \cdot 10^7 m/s$
+  \item spec. teor. rel.: $UQ = m_0 c^2 (\gamma - 1), \gamma = \frac{1}{\sqrt{1-\beta^2}} \implies v = \sqrt{\frac{(\frac{Ue}{m_0 c^2}+1)^2-1}{(\frac{Ue}{m_0 c^2}+1)^2}} \cdot c \doteq 1,8725 \cdot 10^7 m/s$
 \end{enumerate}
-$\implies$ výsledky stejné na tři platné číslice -- klasický vzorec není naprosto správně, ale je mnohem rychlejší a pro menší rychlosti je naprosto dostatečný
+$\implies$ výsledky stejné na tři platné číslice -- klasický vzorec není naprosto správně, ale je mnohem rychlejší a pro menší rychlosti je úplně dostatečný
+\pagebreak
 
-Vraťme se k $E_0 = m_0 c^2$ -- klidová energie 
--- co to ale znamená? $c^2$ jako universální konstanta je jen nějaké číslo, závisející na jednotkové soustavě
--- hmotnost a energie jsou tedy ekvivalentní, v dobře zvoleném systému jednotek se rovnají 
--- to mi umožňuje počítat hmotnost v Joulech a energii v kilogramech
-$\implies$ hmotnost elektronu: $9,1 \cdot 10^{-31} kg \iff E = mc^2 = 8,19 \cdot 10^{-14} J = 0,511 MeV$
+Vraťme se k $E_0 = m_0 c^2$ -- klidová energie
+\begin{itemize}
+  \item co to ale znamená? $c^2$ jako universální konstanta je jen nějaké číslo, závisející na jednotkové soustavě
+  \item hmotnost a energie jsou tedy ekvivalentní, v dobře zvoleném systému jednotek se rovnají
+  \item to mi umožňuje počítat hmotnost v Joulech a energii v kilogramech
+  \item[$\implies$] hmotnost elektronu: $9,1 \cdot 10^{-31} kg \iff E = mc^2 = 8,19 \cdot 10^{-14} J = 0,511 MeV$
+\end{itemize}
+
+\end{document}
