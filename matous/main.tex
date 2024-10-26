@@ -3,6 +3,9 @@
 \usepackage[czech]{babel}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\graphicspath{{images/}}
 
 \title{\vspace{-2cm}Matouš Trnka swag\vspace{-1.7cm}}
 \date{}
@@ -136,18 +139,19 @@ jak se píšou matice -- odporoučím se na papír
 
 \part{4tvrtý ročník}
 
-Def.: Relace $R$ je \textbf{uspořádání}, jestliže je: 
+Def.: Relace $R$ je \textbf{uspořádání}, jestliže je:
 \begin{enumerate}
   \item reflexivní: $aRa$
-  \item antisymetrická: $aRb  \land bRa \implies a = b$ 
-  \item tranzitivní: $aRb \land bRc \implies aRc$ 
+  \item antisymetrická: $aRb  \land bRa \implies a = b$
+  \item tranzitivní: $aRb \land bRc \implies aRc$
 \end{enumerate}
 
-Každé uspořádání se dá zapsat pomocí tzv. \textbf{Hasseova diagramu} 
+Každé uspořádání se dá zapsat pomocí tzv. \textbf{Hasseova diagramu}
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.5\textwidth]{figures/hasseuv.png}
+    \includegraphics[width=0.5\textwidth]{hasseuv.png}
+    \caption{Hasseův diagram relace \uv{dělí na $\mathbb N$} pro $1000$}
   \end{center}
 \end{figure}
 
