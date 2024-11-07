@@ -797,4 +797,29 @@ Molární objemová konstanta -- $1 mol$ ideálního plynu zaujímá při normá
 Když s tím chci počítat -- \uv{náhodou} je počet gramů látky na mol stejný jako jeho relativní molekulová hmotnost. Potom $n = \frac{m}{M_R}$ pokud $m$ je v gramech. Dále $A_r = \frac{m}{m_u}$ (vychází z předch. vzorců).\\
 V tabulkách se uvádí střední hmotnost, daná přirozeným zastoupením jednotlivých nuklidů v dané látce. Počítáme jako vážený průměr ez. Viz tu učebnici na disku.
 
+\section{Chemické rovnice}
+Více typů, některé jdou lehce, na některé jsou potřeba fígly.
+
+\subsection{Bez redoxní změny}
+\ce{NaF + Al2 (SO4)3 -> Na2SO4^{+} + Na3[AlF6]}
+Před sloučeniny si dám proměnné a dopočítám jako soustavu rovnic pro jednotlivé prvky: \ce{\textit{a}NaF+\textit{b}Al2(SO4)3 -> \textit{c}Na2SO4 + \textit{d}Na3[AlF6]}
+Na: $1a = 2c + 3d$
+F: $1a = 6d$
+Al: $2b = 1d$
+S: $3b = c$
+Zvolím si jednu jako $1$ nebo $2$ a pak ostatní dopočítám podle toho: $b=1 \implies d = 2 \implies c = 3 \implies a = 12$.
+
+\subsection{S redoxní změnou}
+Mění se mi oxidační čísla, takže první co udělám je, že si najdu atomy, které mění oxidační čísla, pak pokračuju obdobně.
+\ce{Cr2^{III}O3^{-II} + K^{I}N^{V}O3^{-II} + K^{I}O^{-II}H^{I} -> K3CrO4 + KNO2 + H2O}, takže změny u $Cr, N$
+oxidace: \ce{2Cr^{III}->^{6e}2Cr^{VI}} - - křížové pravidlo 2 -> 1
+redukce: \ce{N^{V}->^{2e}N^{III}} - - křížové pravidlo 6 -> 3
+\ce{\textit{1}Cr2O3 + \textit{3}KNO3 + 4KOH -> 2K_3CrO4 + 3KNO2 + 2H2O}
+
+\subsubsection{V iontové formě}
+\ce{IO3^{-}+Cl2 + OH^{-} -> IO6^{5-} + Cl^{-}+ H2O}
+
+\subsubsection{Disproporcionační rovnice}
+\ce{MnO4^{2-}+ H3O^{+} -> MnO4^{-} + MnO2 + H2O}
+\ce{H2S + SO2 -> S + H2O}
 \end{document}
