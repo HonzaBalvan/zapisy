@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage[czech]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{enumerate}
+\graphicspath{{images/}}
+
+\title{\vspace{-2cm}\vspace{-1.7cm}}
+\date{}
+\author{}
+
+\begin{document}
+\maketitle
+\noindent \textbf{Jan Romanovský}
+
+\noindent \textbf{Gymnázium Brno, tř. Kpt. Jaroše}
+
+\noindent \textbf{4.A}
+
+\noindent \textbf{A-\textrm{I}-1}
+
+\textbf{ }
+
+\textit{Předpokládejme, že pro reálná čísla $a, b$ mají výrazy $a^2 + b$ a $a + b^2$ stejnou hodnotu. Jaká nejmenší může tato hodnota být?}
+
+\textbf{ }
+
+\begin{align*}
+  a^2 + b &= a + b^2\\
+  a^2 - b^2 &= a-b\\
+  (a+b)(a-b) &= a-b
+\end{align*}
+
+\textbf{ }
+
+{\begin{minipage}[t]{0.49\textwidth}
+    i. $a-b=0 \implies a =b$:
+  \begin{align*}
+    &\implies \text{hledáme min. fce } f: y = x^2 + x\\
+    &f^\prime :y = 2x + 1 \text{, extrém pro } y = 0 \implies x = \frac{-1}{2}\\
+    &f^{\prime \prime}: y = 2 \implies \text{minimum}\\
+    &\implies a = b = \frac{-1}{2} \text{, } a^2 + b = a + b^2 = \frac{-1}{4}
+  \end{align*}
+\end{minipage}
+\hfill
+\noindent\begin{minipage}[t]{0.49\textwidth}
+    ii. $a-b \neq 0 \implies a \neq b$
+  \begin{align*}
+    &(a+b)(a-b)=(a-b)\\
+    &a+b = 1\\
+  &b = 1-a\\
+    &\implies \text{hledáme min. fce } F: y = x^2 -x +1\\
+    &f^\prime: y = 2x -1 \text{, extrém pro } y = 0 \implies x = \frac{1}{2}\\
+    &f^{\prime \prime}:y =2 \implies \text{minimum}\\
+    &\implies a = \frac{1}{2}, a^2 - a + 1 = \frac{3}{4} > \frac{-1}{4}
+  \end{align*}
+\end{minipage}}
+
+\,\\
+
+Tato hodnota bude nejmenší pro $a = b = \frac{-1}{2}$, $a^2 + b = a + b^2 = \frac{-1}{4}$.
+\end{document}
