@@ -3,6 +3,7 @@
 \usepackage[czech]{babel}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{enumerate}
@@ -28,4 +29,43 @@
 
 \textbf{ }
 
-\textit{Pro trojúhelník $ABC$ platí $|AB| = 13$, $|BC| = 14$, $|CA| = 15$. Jeho posunutím o vektor délky 1 vznikne trojúhelník $A^\prime B^\prime C^\prime$. Určete nejmenší možný obsah průniku trojúhelníků $ABC$ a $A^\prime B^\prime C^\prime$.}\end{document}
+\textit{Pro trojúhelník $ABC$ platí $|AB| = 13$, $|BC| = 14$, $|CA| = 15$. Jeho posunutím o vektor délky 1 vznikne trojúhelník $A^\prime B^\prime C^\prime$. Určete nejmenší možný obsah průniku trojúhelníků $ABC$ a $A^\prime B^\prime C^\prime$.}
+
+\textbf{ }
+
+$ABC \cong A^\prime B^\prime C^\prime$ -- posunutí je shodné zobrazení\\
+$\implies$ je jedno pokud trojúhelníky zaměníme\\
+$\implies$ posunutí o vektor $\mathbf{v}$ pro naše účely to stejné jako posun o $\mathbf{-v}$, budeme uvažovat vektory mířící do té poloroviny vymezené přímkou $\overleftrightarrow{AB}$, kde je bod $C$\\
+$\implies$ tento přímý úhel, který bude vektor svírat s přímkou $\overleftrightarrow{AB}$ můžeme rozdělit na tři, a to na úhly po řadě v kladném směru $\alpha, \beta, \gamma$ trojúhelníku $ABC$. Toto jsou tři případy které dále blíže rozebereme.
+
+\textbf{ }
+
+Vektor $\mathbf{v}$ je v prvním segmentu:\\
+Průsečíkem je trojúhelník $A^\prime XY$, kde $X = BC \cap A^\prime B^\prime$, $Y = BC \cap C^\prime A^\prime$\\
+$AC || A^\prime C^\prime$ -- posunutí zachovává rovnoběžnost\\
+$\implies | \sphericalangle ACB| = | \sphericalangle A^\prime YX|$ -- souhlasné úhly, obdobně úhel u X\\
+$\implies ABC \approx A^\prime XY$ -- věta \textit{uu}, střed podobnosti $S = CY \cap AA^\prime$, koeficient podobnosti $k = \frac{|A^\prime S|}{|AS|} = \frac{|AS|-|\textbf{v}|}{|AS|}$\\
+Obsah je přímo úměrný druhé mocnině koeficientu podobnosti, hledáme tedy ten co nejmenší. Jeho hodnota závisí na poloze bodu $S$. Velikost vektoru je daná, koeficient tak bude nejmenší, když bude $|\textbf{v}|$ oproti $|AS|$ co největší, tedy hledáme co nejmenší $|AS|$. $S$ ale zřejmě leží na $XY$, nejmenší tato vzdálenost tak bude, pokud bude $S$ kolmým průmětem $A$ na $BC$, tedy když $AS$ bude výška trojúhelníku $ABC$.\\
+
+\textbf{ }
+
+Obdobně pro dva ostatní segmenty, nejmenší bude obsah když $S$ bude patou výšky trojúhelníku $ABC$, označme paty výšek $A_0, B_0, C_0$:
+\begin{flalign*}
+  S &= \sqrt{s(s-a)(s-b)(s-c)}, s = \frac{a+b+c}{2}\\
+  S &= \sqrt{21*8*7*6} = 84\text{ cm}^2\\
+\end{flalign*}
+\begin{flalign*}
+  v_a &= \frac{2S}{a} = \frac{168}{13}\\
+  v_b &= \frac{2S}{b} = \frac{168}{14}\\
+  v_c &= \frac{2S}{C} = \frac{168}{15}\text{ -- nejmenší}
+\end{flalign*}
+\begin{flalign*}
+  k &= \frac{v_c - |\textbf{v}|}{v_c} = \frac{153}{168}\\
+  S_{A^\prime XY} &= k^2 \cdot S_{ABC} = \frac{2601}{3136}\cdot 84 = \frac{7803}{112} \doteq 69,6696\text{ cm}^2
+\end{flalign*}
+
+\textbf{ }
+
+Nejmenší možný obsah průniku je 69,6696 cm$^2$.
+
+\end{document}
