@@ -7,6 +7,7 @@
 \usepackage{caption}
 \usepackage{enumerate}
 \graphicspath{{images/}}
+\setlength\parindent{0pt}
 
 \title{\normalsize{\vspace{-2cm}\textsc{74. ročník Matematické olympiády (2024/2025)}\vspace{-1.7cm}}}
 \date{}
@@ -27,9 +28,38 @@
 
 \textbf{ }
 
-\textit{Na tabuli jsou napsána navzájem různá přirozená čísla se součtem 2024. Každé z nich kromě nejmenšího je násobkem součtu všech menších napsaných čísel. Kolik nejvíce čísel může na tabuli být?}
+\textit{Na tabuli jsou napsána navzájem různá přirozená čísla se součtem $2024$. Každé z nich kromě nejmenšího je násobkem součtu všech menších napsaných čísel. Kolik nejvíce čísel může na tabuli být?}
 
 \textbf{ }
 
-$2024 = 2 \cdot 2 \cdot 2 \cdot 11 \cdot 23$
+Čísla napsaná na tabuli můžeme brát jako členy rostoucí posloupnosti z přirozených čísel, kdy pro všechny členy kromě prvního platí, že jsou násobkem součtu všech předchozích členů. Součet této posloupnosti je 2024.
+\begin{gather*}
+  a_1,\, a_2,\, a_3,\, ...,\, a_n\\
+  a_n = k_n\cdot\sum_{i=1}^{n-1} a_i,\, k_n \in \mathbb N\\
+  S_{a_n} = 2024
+\end{gather*}
+
+%To znamená, že n-tý člen dělí ten (n+1)tý, a že součet (n)tého a (n+1)tého dělí ten (n+2)tý. Ten druhý je ale také dělitelný tím prvním, takže i třetí musí být dělitelný prvním, atd. $\implies$ n-tý člen dělí všechny další členy, takže dělí i jejich součet, tedy 2024.
+Rozepišme si každý člen:
+\begin{flalign*}
+  &a_1 = a_1\\
+  &a_2 = k_2 \cdot a_1\\
+  &a_3 = k_3 \cdot (a_1 + a_2) = k_3 \cdot (k_2 + 1) \cdot a_1 \\
+  &a_4 = k_4 \cdot (a_1 + a_2 + a_3) = k_4 \cdot (a_1 + k_2 \cdot a_1 + k_3 \cdot (k_2 + 1) \cdot a_1) = k_4 \cdot (k_3 + 1) \cdot (k_2 + 1) \cdot a_1\\
+  &...\\
+  &a_n = k_n \cdot (k_{n-1} + 1) \cdot (k_{n-2} + 1) \cdot ... \cdot (k_2 + 1) \cdot a_1
+\end{flalign*}
+
+\begin{flalign*}
+  S_{a_n} &= a_n + (k_{n-1} + 1) \cdot (k_{n-2} + 1) \cdot ... \cdot (k_2 + 1) \cdot a_1 = \\
+  &= k_n \cdot (k_{n-1} + 1) \cdot (k_{n-2} + 1) \cdot ... \cdot (k_2 + 1) \cdot a_1 + (k_{n-1} + 1) \cdot (k_{n-2} + 1) \cdot ... \cdot (k_2 + 1) \cdot a_1 = \\
+  &= (k_n + 1) \cdot (k_{n-1} + 1) \cdot (k_{n-2} + 1) \cdot ... \cdot (k_2 + 1) \cdot a_1 = 2024
+\end{flalign*}
+
+Zaměřme se na poslední rovnost. Všechny $k$ jsou přirozená, $a_1$ také, takže všichni činitelé jsou přirození a jejich součin je $2024$. Chceme, aby jich bylo co nejvíc -- takový součin ale známe, je to rozklad na prvočinitele, protože žádný prvočinitel už nejde v přirozeném oboru dále rozložit. Každá závorka tedy reprezentuje jednoho prvočinitele čísla $2024 = 2 \cdot 2 \cdot 2 \cdot 11 \cdot 23$, za první člen $a_1$ nám zbývá vybrat $1$, aby se $S_{a_n}$ opravdu rovnal $2024$. Tento součin tedy může mít maximálně $6$ činitelů.
+
+\textbf{ }
+
+Na tabuli může být maximálně $6$ čísel.
+
 \end{document}
