@@ -44,23 +44,24 @@ Vektor $\mathbf{v}$ je v prvním segmentu:\\
 Průsečíkem je trojúhelník $A^\prime XY$, kde $X = BC \cap A^\prime B^\prime$, $Y = BC \cap C^\prime A^\prime$\\
 $AC || A^\prime C^\prime$ -- posunutí zachovává rovnoběžnost\\
 $\implies | \sphericalangle ACB| = | \sphericalangle A^\prime YX|$ -- souhlasné úhly, obdobně úhel u X\\
-$\implies ABC \approx A^\prime XY$ -- věta \textit{uu}, střed podobnosti $S = CY \cap AA^\prime$, koeficient podobnosti $k = \frac{|A^\prime S|}{|AS|} = \frac{|AS|-|\textbf{v}|}{|AS|}$\\
-Obsah je přímo úměrný druhé mocnině koeficientu podobnosti, hledáme tedy ten co nejmenší. Jeho hodnota závisí na poloze bodu $S$. Velikost vektoru je daná, koeficient tak bude nejmenší, když bude $|\textbf{v}|$ oproti $|AS|$ co největší, tedy hledáme co nejmenší $|AS|$. $S$ ale zřejmě leží na $XY$, nejmenší tato vzdálenost tak bude, pokud bude $S$ kolmým průmětem $A$ na $BC$, tedy když $AS$ bude výška trojúhelníku $ABC$.\\
+$\implies ABC \approx A^\prime XY$ -- věta \textit{uu}, střed podobnosti $S = CY \cap AA^\prime$, koeficient podobnosti $k = \frac{|A^\prime S|}{|AS|} = \frac{|AS|-|\textbf{v}|}{|AS|}$
 
 \textbf{ }
 
-Obdobně pro dva ostatní segmenty, nejmenší bude obsah když $S$ bude patou výšky trojúhelníku $ABC$, označme paty výšek $A_0, B_0, C_0$:
+Obsah je přímo úměrný druhé mocnině koeficientu podobnosti, hledáme tedy ten co nejmenší. Jeho hodnota závisí na poloze bodu $S$. Velikost vektoru je daná, koeficient tak bude nejmenší, když bude $|\textbf{v}|$ oproti $|AS|$ co největší, tedy hledáme co nejmenší $|AS|$. $S$ ale zřejmě leží na $XY$, nejmenší tato vzdálenost tak bude, pokud bude $S$ kolmým průmětem $A$ na $BC$, tedy když $AS$ bude výška trojúhelníku $ABC$.
+
+\textbf{ }
+
+Obdobně pro dva ostatní segmenty, nejmenší bude obsah když $S$ bude patou výšky trojúhelníku $ABC$, hledejme délky výšek $v_a$, $v_b$, $v_c$:
 \begin{flalign*}
-  S &= \sqrt{s(s-a)(s-b)(s-c)}, s = \frac{a+b+c}{2}\\
-  S &= \sqrt{21*8*7*6} = 84\text{ cm}^2\\
-\end{flalign*}
-\begin{flalign*}
-  v_a &= \frac{2S}{a} = \frac{168}{13}\\
-  v_b &= \frac{2S}{b} = \frac{168}{14}\\
-  v_c &= \frac{2S}{C} = \frac{168}{15}\text{ -- nejmenší}
-\end{flalign*}
-\begin{flalign*}
-  k &= \frac{v_c - |\textbf{v}|}{v_c} = \frac{153}{168}\\
+  S &= \sqrt{s(s-a)(s-b)(s-c)}\text{, } s = \frac{a+b+c}{2}\\
+  S &= \sqrt{21\cdot8\cdot7\cdot6} = 84\text{ cm}^2
+\end{flalign*}\begin{flalign*}
+  v_a &= \frac{2S}{a} = \frac{168}{14}\\
+  v_b &= \frac{2S}{b} = \frac{168}{15}\text{ -- nejmenší}\\
+  v_c &= \frac{2S}{c} = \frac{168}{13}
+\end{flalign*}\begin{flalign*}
+  k &= \frac{v_b - |\textbf{v}|}{v_b} = \frac{153}{168}\\
   S_{A^\prime XY} &= k^2 \cdot S_{ABC} = \frac{2601}{3136}\cdot 84 = \frac{7803}{112} \doteq 69,6696\text{ cm}^2
 \end{flalign*}
 
