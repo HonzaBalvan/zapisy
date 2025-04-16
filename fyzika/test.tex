@@ -3,6 +3,8 @@
 \usepackage[czech]{babel}
 \usepackage{amsfonts}
 \usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{tabularx}
 
 \title{\vspace{-2cm}Fyzika DÚ\vspace{-1.7cm}}
 \date{}
@@ -41,17 +43,17 @@ hmotnosti tak, že její parametry porovnáte se Sluncem.
 \section*{Zářivý výkon Slunce}
 \textbf{Zadání:} Nalezněte celkový zářivý výkon Slunce, znáte-li jeho povrchovou teplotu $T$ = 5800 K.
 
-\textbf{Řešení:} $r = 6.96 \cdot 10^8 m \implies S = 4 \pi r^2 \doteq 8.7 \cdot 10^{17}$ m\textsuperscript{2}, $I = \sigma T^4 = 5.67 \cdot 10^{-8} \cdot 5800^4 \doteq 6.42 \cdot 10^7$ W/m\textusperscript{2} $ \implies P = I \cdot S = 6.42 \cdot 10^7 \cdot 8.7 \times 10^{17} \doteq 5.59 \cdot 10^{25}$ W
+\textbf{Řešení:} $r = 6.96 \cdot 10^8$ m $\implies S = 4 \pi r^2 \doteq 6.08 \cdot 10^{18}$ m\textsuperscript{2}, $I = \sigma T^4 = 5.67 \cdot 10^{-8} \cdot 5800^4 \doteq 6.42 \cdot 10^7$ W/m\textsuperscript{2} $ \implies P = I \cdot S = 6.42 \cdot 10^7 \cdot 6.08 \cdot 10^{18} \doteq 3.91 \cdot 10^{26}$ W
 
 \section*{Měrný výkon Slunce}
 \textbf{Zadání:} Jaký výkon se průměrně uvolňuje v jednom kilogramu sluneční hmoty?
 
-\textbf{Řešení:} $p_m = \frac{P}{m_S} = \frac{}{} \doteq \cdot 10^{}$
+\textbf{Řešení:} $P_m = \frac{P}{m_S} = \frac{3.91 \cdot 10^{26}}{2 \cdot 10^{30}} \doteq 2 \cdot 10^{-4}$ W/kg
 
 \section*{Sluneční konstanta}
 \textbf{Zadání:} Určete intenzitu slunečního záření v okolí Země.
 
-\textbf{Řešení:}
+\textbf{Řešení:} $S = 4\pi R^2 = 4 \pi \cdot 1.5^2 \times 10^{22} \doteq 2.83 \cdot 10^{23}$ m\textsuperscript{2}, $P_S = \frac{P}{S} \doteq \frac{3.91 \cdot 10^{26}}{2.83 \cdot 10^{23}} \doteq 1380$ W/m\textsuperscript{2}
 
 \section*{Určení poloměru hvězdy}
 \textbf{Zadání:} Hvězda s paralaxou $0,03^{\prime\prime}$ a vizuální magnitudou 3,9\textsuperscript{m} má maximum vyzařování na
@@ -64,7 +66,7 @@ vlnové délce 500 nm. Určete poloměr této hvězdy.
 \section*{Úbytek sluneční hmoty}
 \textbf{Zadání:} Kolik procent sluneční hmoty se přemění v energii za jedno tisíciletí?
 
-\textbf{Řešení:} $E = mc^2  \implies m = \frac{E}{c^2}$, $E = W \cdot t = \cdot \pi \cdot 10^10 = $ J
+\textbf{Řešení:} $E = W = P \cdot t = 3.91 \cdot 10^{26} \cdot \pi \cdot 10^{10} \doteq 1.23 \cdot 10^{37} $ J, $E = mc^2  \implies \Delta m = \frac{E}{c^2} \doteq \frac{1.23 \cdot 10^{37}}{9\cdot 10^{16}} \doteq 1.37 \cdot 10^{20}$ kg, $\frac{\Delta m}{m_s} \doteq \frac{1.37 \cdot 10^{20}}{2 \cdot 10^30} \doteq 6.83 \cdot 10^{-11} = 6.83 \cdot 10^{-9}$ \%
 
 \part*{Kapitola \textrm{I\hspace{-.1em}V}}
 
@@ -78,7 +80,7 @@ V jaké vzdálenosti bude v tom okamžiku od Slunce a od Země?
 \section*{Pád Země do Slunce}
 \textbf{Zadání:} Jak dlouho by padala Země do Slunce, kdybychom ji zastavili?
 
-\textbf{Řešení:} F = G\frac{m_Zm_S}{r^2}$, $r = \frac{1}{2}at^2$, $a = \frac{F}{m_Z} \implies r = \frac{Gm_St^2}{2r^2} \implies t = \sqrt{\frac{2r^3}{Gm_S}} \doteq 7.11 \cdot 10^6$ s $\doteq 22.53$ y
+\textbf{Řešení:} $F = G\frac{m_Zm_S}{r^2}$, $r = \frac{1}{2}at^2$, $a = \frac{F}{m_Z} \implies r = \frac{Gm_St^2}{2r^2} \implies t = \sqrt{\frac{2r^3}{Gm_S}} \doteq 7.11 \cdot 10^6$ s $\doteq 82.3$ d
 
 \section*{Gravitační působení Slunce a Země na Měsíc}
 \textbf{Zadání:}  Nalezněte poměr gravitačních sil, kterými působí na Měsíc Země a Slunce. Která síla je
@@ -93,6 +95,17 @@ větší?
 podle následující tabulky (stalo se obrem, bílým trpaslíkem nebo neutronovou hvězdou).
 Předpokládejte, že se při hvězdném vývoji zachovává moment hybnosti a magnetický indukční
 tok.
+
+\begin{tabular}{| c || c | c | c |}
+  \hline
+  & poloměr [m] & perioda [s] & magn. pole [T]\\
+  \hline \hline
+  Slunce & $7 \cdot 10^{8}$ & $2.16 \cdot 10^{6}$ & $10^{-4}$\\
+  obr & $1.4 \cdot 10^{11}$ & ? & ?\\
+  bílý trpaslík & $2 \cdot 10^{7}$ & ? & ?\\
+  neutronová hvězda & $5 \cdot 10^{4}$ & ? & ?\\
+  \hline
+\end{tabular}
 
 \textbf{Řešení:}
 
