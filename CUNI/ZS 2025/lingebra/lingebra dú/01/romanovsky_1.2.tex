@@ -1,0 +1,50 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 1}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(1.2)} Označme $O_p : \mathbb R^2 \to \mathbb R^2$ osovou symetrii podle přímky $p$ a $O_q : \mathbb R^2 \to R^2$ osovou symetrii podle přímky $q$, kde
+
+$$p = \{(1, 0) + t(0, 1) : t \in \mathbb R\}, q = {(x, y) \in \mathbb R^2: x + y = 4}.$$
+
+\begin{enumerate}[a)]
+    \item Najděte obraz bodu $(x, y)$ při zobrazení $O_p$ a při zobrazení $O_q$.
+    \item Najděte obraz bodu $(x, y)$ při složených zobrazení $O_q \circ O_p$ a $O_p \circ O_q$.
+\end{enumerate}
+\,\newline
+
+\begin{enumerate}[a)]
+    \item Vyčteme z grafu a definice osové souměrnosti (vidíme, že zobrazujeme počátek a souřadné osy):
+    \begin{itemize}
+        \item $O_p: (x,y) \mapsto (-x+2,y)$
+        \item $O_q: (x,y) \mapsto (4-y, 4-x)$
+    \end{itemize}
+    \item Zjistíme tak, že najdeme obraz obrazu, obdobně jak v a), tzn.:
+        \begin{itemize}
+            \item $O_q \circ O_p: O_p: (x,y)\mapsto (-x+2,y)$, $O_q: (-x+2,y) \mapsto (4-y,2+x)$
+            \item $O_p \circ O_q: O_q: (x,y) \mapsto (4-y, 4-x)$, $O_p: (4-y, 4-x) \mapsto (y-2, 4-x)$
+        \end{itemize}
+\end{enumerate}
+\end{document}

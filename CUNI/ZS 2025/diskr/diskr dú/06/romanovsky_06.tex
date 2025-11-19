@@ -1,0 +1,66 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+\usepackage{tikzit}
+\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 5}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Příklad 1. Různé cesty.}\\
+
+Máme obdélník $m\times n$, čili mřížku $m+1 \times n+1$. Smíme se pohybovat jen nahoru nebo doprava, tzn. nesmíme se vracet. Každá cesta tak bude stejně dlouhá a každá bude mít stejný počet pohybů nahoru a doprava. pohybů doprava bude $m$ a pohybů nahoru bude $n$. Hledáme tedy permutace s opakováním $P_0(m,n) = \frac{(m+n)!}{m!n!}$.\\
+
+\noindent\textbf{Příklad 2. Slova.}
+
+\noindent$\Omega \hdots$ všechna možná pořadí
+
+\noindent$A \hdots$ to, co chceme
+
+\noindent$A^\prime \hdots$ doplněk $A$ v $\Omega$, tj. vypuštěním lze dostat alespoň jedno ze slov
+
+\noindent$K \hdots$ vypuštěním lze poskládat \uv{PONK}
+
+\noindent$L \hdots$ vypuštěním lze poskládat \uv{DOBA}
+
+\noindent$M \hdots$ vypuštěním lze poskládat \uv{COP}\\
+
+\noindent$|\Omega|=16!$ -- permutace šestnácti prvků
+
+\noindent$|A^\prime|=|K|+|L|+|M|-|K\cap L|-|K\cap M| - |L \cap M| + |K\cap L \cap M|$
+
+\noindent$|K|={16\choose 4}\cdot12!$ -- vyberu, kde budou v pořadí písmena $P, O, N, K$ a potom skládám pořadí zbylých písmen
+
+\noindent$|L|={16\choose 4}\cdot12!$ -- vyberu, kde budou v pořadí písmena $D,O,B,A$ a potom skládám pořadí zbylých písmen
+
+\noindent$|M|={16\choose 3}\cdot13!$ -- vyberu, kde budou v pořadí písmena $C,O,P$ a potom skládám pořadí zbylých písmen
+
+\noindent$|K\cap L|={16 \choose 7}\cdot2\cdot 5\cdot9!$ -- kombinačním číslem vybírám, kde budou písmena $P,O,N,K,D,B,A$, dalšími dvěma činiteli počítám pořadí těchto písmen ($O$ uprostřed, dvě možnosti před $O$, pět po něm) a posledním činitelem skládám pořadí zbylých písmen
+
+\noindent$|K\cap M|=0$ -- ve slově \uv{PONK} je $P$ před $O$, ve slově \uv{COP} naopak -- nelze poskládat nikdy
+
+\noindent$|L\cap M|={16 \choose 6}\cdot2\cdot 3\cdot10!$ -- kombinačním číslem vybírám, kde budou písmena $D,O,B,A,C,P$, dalšími dvěma činiteli počítám pořadí těchto písmen ($O$ uprostřed, dvě možnosti před $O$, tři po něm) a posledním činitelem skládám pořadí zbylých písmen
+
+\noindent$|K\cap L\cap M|= 0$ -- viz $|K\cap M|$\\
+
+\noindent$|A|=|\Omega|-|A^\prime|=|\Omega|-|K|-|L|-|M|+|K\cap L|+|K\cap M|+|L \cap M| - |K\cap L \cap M| = 15\,907\,962\,470\,400$
+
+\end{document}

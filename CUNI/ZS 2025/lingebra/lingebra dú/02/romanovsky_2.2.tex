@@ -1,0 +1,51 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 2}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(2.2)} (a) Obecnou rovnici roviny zjistíme přes normálový vektor roviny $\textbf{n} = (a, b, c)$. Víme, že směrový vektor přímky leží v rovině, tj. je kolmý na normálový vektor roviny. To nám dává první rovnici (skalární součin):
+$$a(1)+b(0)+c(1)=0$$
+$$a = -c$$
+Dále víme že bod $(1, 2, 4)$ leží na přímce $p$, leží tak i v rovině, z toho dostaneme druhou rovnici:
+$$a(1)+b(2)+c(4)+d=0$$
+$$a + 2b + 4c + d = 0$$
+Máme tedy 2 rovnice o 4 neznámých, první dosadíme do druhé
+$$2b + 3c + d = 0$$
+$$d = u$$
+$$c = v$$
+$$b = \frac{3v + u}{2}$$
+$$a = -v$$
+Obecná rovnice roviny obsahující přímku $p$ bude tedy:
+$$-vx +  \frac{3v + u}{2}y+vz+u = 0$$
+ještě nesmíme zapomenout vyloučit případy, kdy tato rovnice nezadává rovinu (tj. zadává $\emptyset$ nebo $\mathbb R^3$ -- v tomhle případě jen $\mathbb R^3$):
+$$P = \left\{-vx +  \frac{3v + u}{2}y+vz+u = 0; u,v \in \mathbb R, (u,v) \neq (0,0)\right\}$$
+
+(b) Rovnice, které hledáme, budou obecné rovnice rovin, jejich průsečnice bude přímka $p$, tj. musí obě obsahovat přímku $p$ a nesmí se rovnat (pokud se roviny nerovnají, je jejich průsečíkem jedna přímka, pokud obě roviny obsahují přímku $p$ a nerovnají se, jejich průsečíkem, tj. řešením soustavy jejich obecných rovnic, bude přímka $p$), generátor rovin obsahujících přímku $p$ jsme ale přesně vytvořili v podúloze (a), vyberme lib. $(u,v)=(1,1)$ a $(u,v) = (1,2)$:
+$$\left(\begin{array}{c c c | c}
+   -1 & 2 & 1 & -1\\
+    -2 & \frac{7}{2} & 2 & -1\\
+\end{array}\right)$$
+\end{document}
+

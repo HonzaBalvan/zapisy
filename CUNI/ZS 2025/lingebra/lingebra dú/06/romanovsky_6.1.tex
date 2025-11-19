@@ -1,0 +1,47 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 6}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(6.1)} Hledáme předpis pro prvky $P$ množiny $V$.
+$$P=ax^4+bx^3+cx^2+dx+e$$
+$$a+b+c+d+e=0$$
+$$P(-1)=P(2):a-b+c-d+e=16a+8b+4c+2d+e$$
+Nyní řešíme soustavu dvou rovnic o pěti neznámých.
+$$a+b+c+d+e=0$$
+$$a-b+c-d+e=16a+8b+4c+2d+e$$
+
+$$0=15a+9b+3c+3d$$
+$$a = k, b = l, c = m$$
+$$d = -5k-3l-m$$
+$$e = 4k+2l$$
+
+$$P = kx^4+lx^3+mx^2+(-5k-3l-m)x+(4k+2l)$$
+Dále zapíšeme obecný polynom $P$ jako lineární kombinaci tří konkrétních polynomů $P_1, P_2, P_3$, které najdeme vhodnou volbou parametrů.
+$$k=1, l = 0, m=0: P_1 = x^4-5x+4$$
+$$k = 0, l = 1, m = 0: P_2 = x^3-3x+2$$
+$$k = 0, l = 0, m = 1: P_3 = x^2-x$$
+S touto volbou parametrů potom přímo $V = \left\{kP_1+lP_2+mP_3;k, l, m \in \mathbb R\right\}$, vidíme lineární kombinaci, tedy přímo $V = \text{span}(P_1,  P_2, P_3)$ což je zjevně podprostor $\mathbb R[x]_{\leq4}$.
+\end{document}

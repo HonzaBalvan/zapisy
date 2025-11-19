@@ -1,0 +1,60 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 1}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(1.1)} Pro která $a \in \mathbb R$ je zobrazení $f_a : \mathbb R^2 \rightarrow \mathbb R^2$ \uv{na}?
+$$f_a(x, y) = \left((a + 2)x + ay, ax + y\right)$$
+
+Převedeme předpis fce na soustavu rovnic, pokud $\exists$ řešení pro každou pravou stranu, tj. \uv{parametry} na sobě budou nezávislé, pokryjí celou množinu do které zobrazujeme, tj. fce bude \uv{na}. Hledáme $a$ pro která toto platí:
+\begin{align*}
+    (a+2)x+ay &= k\\
+    ax + y &= l
+\end{align*}
+\begin{enumerate}[i.]
+    \item $a = 0$:
+    \begin{align*}
+        x &= \frac{k}{2}\\
+        y &= l
+    \end{align*}
+    \item $a \neq 0$:
+    \begin{gather*}
+        y = \frac{k-(a+2)x}{a}\\
+    ax + \frac{k-(a+2)x}{a} = l\\
+    ax-x-\frac{2}{a}x=l-\frac{k}{a}\\
+    \left(a-1-\frac{2}{a}\right)x=l-\frac{k}{a}
+    \end{gather*}
+    \begin{enumerate}[1.]
+        \item $a-1-\frac{2}{a}= 0\implies a^2-a-2=0\implies (a-2)(a+1) = 0:$
+            \begin{gather*}
+                k=al
+            \end{gather*}
+        \item $a-1-\frac{2}{a}\neq 0:$
+        $$x = \frac{l-\frac{k}{a}}{a-1-\frac{2}{a}}$$
+    \end{enumerate}
+
+\end{enumerate}
+Vidíme, že v případech $a=2, a=-1$ nelze $(k, l)$ vybrat libovolně, fce $f_a$ pro ně tedy není \uv{na}. Jinak vždy jindy lze vybrat $(k, l)$ libovolně, funkce $f_a$ pro $a \in \mathbb R \smallsetminus \{2, -1\}$ je \uv{na}.
+\end{document}

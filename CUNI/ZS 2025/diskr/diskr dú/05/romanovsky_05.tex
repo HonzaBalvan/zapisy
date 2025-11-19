@@ -1,0 +1,37 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+\usepackage{tikzit}
+\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 5}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Příklad 1. Kuličky -- s vracením, nebo bez?}\\
+
+Pravděpodobnost, že vytáhnu přesně tři skleněnky bude vyšší v případě, kdy kuličky nebudu vracet, protože když chci tři skleněnky (což je méně než polovina ze sedmi) mám čtyři výběry, kterými vyberu hliněnky a když je nevrátím, zvýší se mi pravděpodobnost táhnutí skleněnky v dalším táhnutí -- zvýšení pravděpodobnosti táhnutí skleněnky, protože nevrátím čtyři hliněnky, převáží snížení pravděpodobnosti táhnutí skleněnky, protože nevrátím tři skleněnky.\\
+
+\noindent\textbf{Příklad 2. Dvoustupňový screening -- Bayes na steroidech}
+\begin{enumerate}[(a)]
+    \item Ze všech lidí vyjde první test pozitivní $0{,}01 \cdot 0{,}95 = 0{,}0095 = 0{,}95 \,\%$ lidí, ti užívají opium, plus $0{,}99 \cdot 0{,}02 = 0{,}0198 = 1{,}98 \,\%$ lidí, kteří neužívají opium. Když si udělají druhý test, 95 \% z prvně pozitivních, kteří užívají, je i při druhém testu pozitivních, tedy celkem $0{,}0095 \cdot 0{,}95 = 0{,}009025 = 0{,}9025 \,\%$ všech otestovaných lidí bude mít dva pozitivní testy a užívají opium, 2~\% z prvně pozitivních lidí, kteří neužívají opium budou mít také druhý pozitivní test, tedy celkem $0{,}0198 \cdot 0{,}02 = 0{,}000396 = 0{,}0396 \,\%$ lidí bude mít dva pozitivní testy a neužívají opium; pravděpodobnost, že člověk se dvěma pozitivními testy opium opravdu užívá potom bude $P = \frac{0{,}009025}{0{,}009025 + 0{,}000396} = 0{,}958 = 95{,}80 \,\%$.
+    \item podíl falešně pozitivních při dvou testech klesl (člověk musí být dvakrát pozitivní, aby nevypadl~--~konjunkce), podíl falešně negativních při dvou testech stoupl (člověk musí být alespoň jednou negativní, aby vypadl -- disjunkce)
+\end{enumerate}
+\end{document}

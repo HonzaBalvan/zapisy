@@ -1,0 +1,41 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+\usepackage{tikzit}
+\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 3}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\section*{Příklad 1. Zmrzlinová laboratoř}
+\begin{enumerate}[a)]
+    \item variace bez opakování: $N = {n \choose k}\cdot k! = n^{\underline{k}} = 11 \cdot 10 \cdot 9 = 990$
+    \item kombinace s opakováním: $N = {n+k-1\choose n-1} = {11+4-1\choose11-1} = 1001$
+    \item \begin{enumerate}[i.]
+        \item variace s opakováním: $N = n^k = 11^5 = 161051$
+        \item variace s opakováním, pravidlo součinu: $N = N_Z \cdot N_C \cdot N_P = n^k \cdot m^l \cdot {k + l \choose k} = 11^3 \cdot 5^2 \cdot {5 \choose 2} = 332750$ -- první činitel je počet možností jak vybrat zmrzlinu, druhý jak vybrat crumble a třetí určuje vzájemné pořadí zmrzliny a crumble
+    \end{enumerate}
+    nakonec pravidlo součtu: $N = N_i + N_{ii} = 161051 + 332750 = 493801$
+\end{enumerate}
+
+\section*{Příklad 2. Dokažte}
+    kombinatoricky: ${n \choose k}$ -- počet $k$-prvkových podmnožin $n$-prvkové množiny, ${m\choose r-k}$ -- počet $(r-k)$-prvkových podmnožin $m$-prvkové množiny, když je násobíme pro dané $k$ máme počet podmnožin množiny s $(m+n)$ prvky, které mají právě $k$ prvků z $n$-prvkové množiny a právě $(r-k)$ prvků z $m$ prvkové množiny, když tyto hodnoty sečteme přes $k$ uvažujeme všechny poměry vybrání prvků z původní $n$-prvkové a $m$-prvkové množiny, dostaneme tedy počet všech $(r-k+k)$- tedy $r$-prvkových podmnožin množiny s $m+n$ prvky, tedy přesně ${n+m\choose r}$ -- QED
+\end{document}

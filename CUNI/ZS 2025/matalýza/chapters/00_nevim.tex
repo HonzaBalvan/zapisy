@@ -1,0 +1,230 @@
+2025/09/29
+
+má webové stránky -- tam je i něco ke zkoušce
+
+1. Úvod, reálná čísla, funkce
+
+Značení: P, Q ... výroky, x, y, z ... čísla (prvky), A, B, M ... množiny
+         P & Q ... P zároveň s Q
+         P \lor Q ... P nebo Q
+         P \implies Q ... P implikuje Q
+         P \iff Q ... P je ekvivalentní s Q
+         \neg P ... negace P
+         \forall x ... pro všechna x
+         \exists x ... existuje x
+         \exists! x ... existuje právě 1 x
+         x \in A ... x je prvkem A
+         A \subset B ... A je podmnožina B
+         {a_1, a_2, ...} ... množina definována výčtem prvků a_1, a_2, ...
+         {x \in M, \varphi(x)} ... množina definována vlastností \varphi(x)
+         \emptyset, {} ... prázdná množina
+         A \cup B ... sjednocení množin A, B
+         A \cap B ... průnik množin A, B
+         A \setminus B ... rozdíl množin (prvky z A, které nejsou v B)
+Věta A1. (Algebraické vlastnosti \mathbb{R}) Existuje množina reálných čísel \mathbb{R}, která obsahuje prvky 0 a 1, a jsou na ní definovány operace "\cdot" a "+" tak, že \forall x, y, z \in \mathbb{R} platí:
+\item x+y = y+x, x \cdot y = y \cdot x
+\item x+(y+z) = (x+y)+z, x\cdot (y\cdot z) = (x \cdot y) \cdot z
+\item x \cdot (y+z) = x \cdot y + x \cdot z
+\item 0 + x = x, 1 \cdot x = x
+\item 
+
+Věta A2. (Uspořádání \mathbb{R}) Na množině \mathbb{R} je definována relace "<" tak, že \forall x, y, z \in \mathbb{R} platí:
+\item x = y, nebo x < y, nebo y < x
+\item x < y & y < z \implies x < z
+\item x < y \implies x + z < y + z
+\item 0 < x & 0 < y \implies 0 < x \cdot y
+
+Poznámka. x \leq y je zkratka za (x < y) \lor (x = y). Z věty A2 opět lze vyvodit další známé poučky, např. x^2 \geq 0 \forall x \in \mathbb R, apod.
+
+Poznámka. Význačné podmnožiny \mathbb R
+\item přirozená čísla \mathbb N = {1, 2, 3, ...}
+\item celá čísla \mathbb Z = \mathbb N \cup {0, -1, -2, ---}
+\item racionální čísla \mathbb Q = {\frac{p}{q}; p \in \mathbb Z, q \in \mathbb N}
+\item intervaly s krajními body (a, b) = {x \in \mathbb R; a < x < b}, resp. ..., resp. neomezené pozor hranaté závorky! a ne zobáčky
+
+Definice. (Absolutní hodnota) Nechť x \in \mathbb R. Potom x \def \begin{cases}{x, x \geq 0 \\ -x, x < 0}
+
+Lemma 1.1. Nechť a \geq 0, b \in \mathbb R lib. Potom:
+$$ |b| \leq a \iff -a \geq b \geq a.$$
+Dúkaz. (rozborem případů) 
+\item b \geq 0
+\item b < 0
+
+Věta 1.1. (Trojúhelníková nerovnost) \forall x, y \in \mathbb R
+\item |x \pm y| \leq |x| + |y|
+\item |x \pm y| \geq ||x|-|y||
+Důkaz.
+\item |x| \leq |x|, |\pm y| \leq |y| \implies (L.1.1.) -|x| \leq x \leq |x|, -|y| \leq \pm y \leq |y|, když sečtu -|x|-|y| \leq x \pm y \leq |x|+|y| \implies (L.1.1.) |x\pm y| \leq |x| + |y|
+\item TRIK \mp y = x - ( x \pm y) 
+
+Věta B. (Odmocnina v \mathbb R)
+\item Nechť  n \in \mathbb N je sudé. Pak \forall a \in [0, \infty) \exists! b \in [0, \infty) takové, že b^n = a
+\item Nechť n \in \mathbb N je liché. Pak \forall a \in \mathbb R \exists! b \in \mathbb R takové, že b^n = a (b = \root{n}{a})
+
+Poznámka. \item \sqrt{1} = 1, \root{3}{-1} = -1, \sqrt{-1} není definována
+\item \root{n}{x^n} = x \forall x \in \mathbb R, n liché
+\item \sqrt{x^2} = |x|
+
+Věta 1.2. Existují iraconální čísla
+
+Věta A3 (Axiomy \mathbb N) \item \forall x \in \mathbb R \exists n \in \mathbb N: n > x (Archimédova vlastnost)
+\item Nechť M \subset \mathbb N splňuje: \item 1 \in M \item \forall n \in \mathbb N: n \in M? n \in M \implies n+1 \in M \end{enumerate} potom M = \mathbb N. (princip indukce
+
+Poznámka. alternativní ekvivalentní formulace: \item \forall \varepsilon > 0 \exists n \in \mathbb N: n\varepsilon > 1
+\item Nechť \phi (n) je formule s proměnnou n \in \mathbb N, nechť n_0 \in \mathbb N. Nechť platí: \item \phi(n) \item \forall n \geq n_0: \phi (n) \implies \phi (n+1) \end{enumerate} potom platí \phi (n) \forall n \geq n_0.
+
+Poznámka. indukce ještě jinak: \forall M \subset \mathbb N, M \neq \emptyset: M má nejmenší prvek.
+
+
+01/10/2025
+
+TODO k větě 1.2. doplnit důkaz o iracionálnosti odmocniny ze 3
+
+Věta 1.3. Každý otevřený interval obsahuje nekonečně mnoho racionálních a iracionálních čísel.
+Důkaz. (pro iracionální) 
+BÚNO: I = (a,b), 0 \leq a < b 
+položme x_n = \frac{n\sqrt{3}}{m}, n \in \mathbb N, m \in \mathbb N velké tak, že m > \frac{2\sqrt{3}}{b-a}\iff \frac{2\sqrt{3}}{m} < b-a
+M = \{n \in \mathbb N:x_n \geq b\}, nechť n_0 je nejmenší prvek M (viz A3)
+tvrdíme: x_{n_0-1}, x_{n_0-2}\in (a,b), tj. a<x_{n_0-2}<x_{n_0-1}<b
+zřejmě x_n \nin \mathbb Q, \forall n \neq 0
+a<\frac{n_0-2}{m} \sqrt{3}=\frac{n_0}{m} \sqrt{3} - \frac{2\sqrt{3}}{m}, první zlomek \geq b, druhý < b-a \implies >a
+
+Definice. Nechť M \subset \mathbb R. Potom
+\begin{itemize}
+\item x \in M nazveme maximum (největší prvek) M, pokud \forall y \in M: y \leq x
+\item x \in M nazveme minimum (nejmenší prvek) M, pokud \forall y \in M: y \geq x
+\item K \in \mathbb R nazveme horní odhad M, jestliže \forall x \in M: x \leq K
+\item K \in \mathbb R nazveme dolní odhad M, jestliže \forall x \in M: x \geq K 
+\end{itemize} 
+Množina M se nazve
+\begin{itemize}
+\item shora omezená, má-li nějaký horní odhad
+\item zdola omezená, má-li nějaký dolní odhad
+\item omezená, má-li horní i dolní odhad.
+\end{itemize}
+
+Příklad. \item M = [0,1) \item \mathbb N = \{1, 2, 3, ...\}
+
+Definice. Nechť M \in \mathbb R, Číslo S \in \mathbb R nazveme supremum M, značíme S = sup M, jestliže:
+\begin{enumerate}[i.]
+\item \forall x \in M: x \leq S
+\item \forall S^\prime <S: \exists y \in M: y > S^\prime
+\end{enumerate}
+čili S je nejmenší horní odhad M.
+
+Poznámka. \begin{itemize} 
+\item Supremum užitečně zobecňuje pojem maximum.
+\item Existuje nejvýše jedno sup M.
+
+Věta A4. (Úplnost \mathbb R) Nechť M \subset \mathbb R je neprázdná a shora omezená. Pak \exists! S \in \mathbb R takové, že S = sup M.
+
+Definice. Nechť M \in \mathbb R, Číslo s \in \mathbb R nazveme infimum M, značíme s = inf M, jestliže:
+\begin{enumerate}[i.]
+\item \forall x \in M: x \geq s
+\item \forall s^\prime >s: \exists y \in M: y < s^\prime
+\end{enumerate}
+čili s je největší dolní odhad M.
+
+Věta A4^\prime. Nechť M \subset \mathbb R je neprázdná a zdola omezená. Pak \exists! s \in \mathbb R takové, že s = inf M.
+
+Definice. (Rozšířená reálná čísla) \mathbb R^* = \mathbb R + \{- \infty, + \infty\}. Uspořádání a aritmetika v \mathbb R^*:
+\begin{itemize}
+\item \forall x \in \mathbb R: -\infty < x < +\infty, -\infty < +\infty
+\item \forall x \in \mathbb R: x+\infty=+\infty, x-\infty=-\infty, +\infty+\infty=+\infty, -\infty-\infty=-\infty
+\item \forall x > 0 x \cdot (\pm \infty) = \pm \infty, \pm \infty \cdot (+\infty) = \pm \infty, \pm \infty \cdot (-\infty) = \mp \infty
+\item \forall x < 0 x \cdot (\pm \infty) = \mp \infty
+\item \forall x \in \mathbb R: \frac{x}{\pm \infty} = 0
+\end{itemize}
+Nedefinováno zůstává + \infty -\infty, -\infty+\infty, 0 \cdot( \pm \infty), \frac{x}{0}, \frac{\pm \infty}{\pm \infty}
+
+Definice. Nechť X, Y množiny. Funkce f: X \rightarrow Y je libovolný předpis, který každému x \in \mathbb X přiřadí jednozačně určený prvek z Y. Dále definujme
+\begin{itemize}
+\item obraz množiny M \subset X: f(M) = \{f(x); x \in M\}
+\item vzor množiny N \subset Y: f^{-1}(N) = \{x, f(x) \in N\} (tadyto -1 není inverzní funkce, toto můžu říct i pro nezinvertovatelnou funkci)
+\end{itemize}
+Funkce je
+\begin{itemize}
+\item prostá, pokud x \neq y \implies f(x) \neq f(y)
+\item "na", pokud f(X)=Y, tj. \forall y \in Y \exists x \in X: f(x)=y
+\item je vzájemně jednoznačná (1-1), je-li prostá i "na" (tady lze dej. inv. fci)
+
+TODO složené zobrazení def. obor?, inverzní a invertovatelná funkce
+
+\section{2. Reálné funkce -- limita a spojitost}
+
+Úmluva. reálné fce $f(x): \mathbb R \rightarrow \mathbb R$ (tj. nikoliv $\mathbb R^*$)
+        $\exists \delta > 0$ ... $\exists \delta \in (0, + \infty)$, tj. $\delta \neq \pm \infty$
+
+Příklad. $f(x) = \frac{1}{x}$ ... $D_f = \mathbb R \smallsetminus \{0\}$, nikoliv $\frac{1}{\pm \infty} = 0
+
+Terminologie. $f(x)$ se nazve na množině M:
+\begin{enumerate}[i.]
+\item rostoucí, pokud $\forall x, y \in M: x<y \implies f(x) < f(y)$
+\item klesající, pokud $\forall x, y \in M: x<y \implies f(x) > f(y)$
+\item neklesající, pokud $\forall x, y \in M: x<y \implies f(x) \leq f(y)$
+\item nerostoucí, pokud $\forall x, y \in M: x<y \implies f(x) \geq f(y)$
+\end{enumerate}
+Tyto funkce nazveme monotónní, dále fce z bodů i. a ii. nazveme ryze monotonní na množině M.
+
+Funkce jsou dále sudé, liché, periodické, ...
+
+Definice. f(x) se nazve na množině M
+\begin{enumerate}[i.]
+\item shora omezená, pokud $\exists K \in \mathbb R \forall x \in M: f(x) \leq K$
+\item zdola omezená, pokud $\exists L \in \mathbb R \forall x \in M: f(x) \geq L$
+\item omezená, je-li shora i zdola omezená, tj. $\exists K, L \in \mathbb R \forall x \in M: L \leq f(x) \leq K$. (tady je ekviv. tvrzení s abs. hodnotou a tohoto komicky dlouhý důkaz)
+\end{enumerate}
+
+Definice. (Okolí bodu) Nechť $\delta > 0, x \in \mathbb R$. Pak
+\begin{enumerate}[i.]
+\item $\mathscr U (x_0, \delta) = (x_0 - \delta, x_0 + \delta)$ nazveme kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr P (x_0, \delta) = (x_0 - \delta, x_0 + \delta) \smallsetminus \{x_0\}$ nazveme prstencové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_+ (x_0, \delta) = [x_0, x_0 + \delta)$ nazveme pravé kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_- (x_0, \delta) = (x_0 - \delta, x_0]$ nazveme levé kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_+ (x_0, \delta) = (x_0, x_0 + \delta)$ nazveme pravé prstencové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_- (x_0, \delta) = (x_0 - \delta, x_0)$ nazveme levé prstencové $\delta$-okolí bodu $x_0$
+\end{enumerate}
+Dále definujme
+\begin{enumerate}[i.]
+\item $\mathscr U (+\infty, \delta) = (\frac{1}{\delta}, +\infty]$
+\item $\mathscr P (+\infty, \delta) = (\frac{1}{\delta}, +\infty)$
+\item ... -\infty, levé pravé
+\end{enumerate}
+
+Poznámka. \begin{itemize}
+\item $\delta_1 < \delta_2 \implies \mathscr (x_0, \delta_1) \subset \mathscr U (x_0, \delta_2)$
+\item pro $x_0 \in \mathbb R$ platí: $\mathscr U (x_0, \delta) = \{x; |x-x_0| < \delta\}$ a $\mathscr P (x_0, \delta) = \{x; 0 < |x-x_0| < \delta\}$
+\item zkrácený zápis $\mathscr U(x_0), \mathscr P(x_0)$
+
+Věta 2.1. (Princip oddělení) Nechť $x_0, x_1 \in \mathbb R^*, x_0 \neq x_1$ t. ž. $\mathscr U (x_0, \delta) \cap \mathscr (x_1, \delta) = \emptyset
+Důkaz. BÚNO $x_0<x_1$, rozlišme případy:
+\begin{enumerate}
+\item $x_0, x_1 \in \mathbb R$: stačí, aby $x_0 + \delta < x_1 - \delta$, tedy $\delta < \frac{x_1 - x_0}{2}$
+\item $x_0 = \-infty, x_1 \in \mathbb R$: stačí, aby $\frac{-1}{\delta} < x_1 - \delta$, tedy ... (rozdělím na případy x)
+\item $x_0 \in \mathbb R, \x_1 = + \infty$: analogicky k ii.
+\item $x_0 = - \infty, x_1 = + \infty$: platí vždy
+\end{enumerate}
+
+Poznámka. Dokázali jsme navíc, že $\mathscr U(x_0, \delta)$ je vlevo od $\mathscr U (x_1, \delta)$, tj. $\forall x \in \mathscr U(x_0, \delta), \forall y \in \mathscr U (x_1, \delta): x<y$.
+
+Definice. Nechť $x_0 \in \mathbb R^*, f(x)$ je definována na jistém $\mathscr P(x_0). Číslo $A \in \mathbb R^*$ nazveme limitou $f(x)$ v bodě $x_0$, jestliže:
+$$\forall \epsilon >0 \exists \delta >0: x \in \mathscr P(x_0, \delta) \imlplies f(x) \in \mathscr U (A, \epsilon)$$
+Značíme $f(x) \rightarrow A, x \rightarrow x_0$ nebo $\lim_{x \rightarrow x_0}{f(x))}=A$. Pokud $A \in \mathbb R$ nazveme limitu vlastní, pokud $A = \pm infty$ nazveme limitu nevlastní.
+
+Poznámka. \begin{itemize}
+\item limita nezávisí na $f(x_0)$, nemusí být definováno
+\item alternativní zápisy \begin{itemize}
+\item $\forall \epsilon > 0 \exists \delta > 0: f(\mathscr P(x_0, \delta)) \subseteq \mathscr U (A, \epsilon)$
+\item $\forall \epsilon > 0 \exists \delta > 0: 0 < |x-x_0| < \delta \implies |f(x) - A| < \epsilon$ pokud $x_0, A \in \mathbb R$
+\end{itemize}
+\item pokud limita existuje, je právě jedna
+\end{itemize}
+Důkaz. TODO
+
+Příklad. Dirichletova funkce
+$$D(x) \def \begin{cases} 1, x \in \mathbb Q \\ 0, x \in \mathbb R \smallsetminus \mathbb Q \end{cases}$$
+tvrdíme: $\nexists lim_{x \rightarrow x_0}{D(x)}, x_0 \in \mathbb R^*$ lib. 
+Důkaz. $x_0, A \in \mathbb R^*$ ... $\neg (D(x) \rightarrow A, x \rightarrow x_0)
+       $\exists \epsilon > 0 \forall \delta > 0: f(\mathscr P(x_0, \delta)) \nsubseteq \mathscr U(A, \epsilon)
+       stačí zvolit $\epsilon$ tak, že $\mathscr U(A, \epsilon)$ neobsahuje buď 0, nebo 1, protože H(f) = \{0,1\} (lze viz věta 2.1.)
+

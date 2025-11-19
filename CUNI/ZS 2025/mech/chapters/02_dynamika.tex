@@ -1,0 +1,146 @@
+\section{Dynamika}
+newtonovy zákony, síly, hmotnost
+příčiny pohybu a zájemné působení těles
+pro síly platí tzv. princip superpozice -- jsou to prostě vektory, vektorově to sčítám, vektorově to rozkládám
+
+1. zákon setrvačnosti (Galileo): Nepůsobí-li na těleso vnější fyzikální vlivy (tj. žádné pravé síly, popř. výslednice pravých sil je nulová - tzv. volná částice), pak soustava souřadná, vůči níž je těleso v klidu nebo v rovnoměrném přímočarém pohybu, je soustava inerciální.
+2. zákon síly:  časová změna hybnosti tělesa je rovna výslednici vnějších sil,
+které na těleso působí
+$$\overrightarrow{F} = \frac{d\overrightarrow{p}}{dt}=\frac{d}{dt}(m\overrightarrow{v})$$
+3. zákon akce a reakce
+
+setrvačnost = odpor proti změně pohybového stavu, m = setrvačná hmota
+1. zákon určuje inerciální soustavy, vůči nimž je volný h. b. v klidu nebo se pohybuje rovnoměrně přímočaře, v těchto soustavách měříme zrychlení
+2. zákon umožňuje stanovit hmotnost těles, tímto je definována síla (jednotka síly) na levé straně pohybové rovnice
+hybnost: $\overrightarrow{p}=m\overrightarrow{v}$
+
+\subsection{Síly při různých druzích pohybu}
+$\overrightarrow{F} = m\overrightarrow{a}$
+$prp: \overrightarrow{F} = 0, przp: \overrightarrow{F} = konst. (\propto m)$
+Harmonický pohyb:
+TODO slide č. 9
+
+\subsection{Newtonovy pohybové rovnice -- inerciální vztažné soustavy}
+$$\overrightarrow{F} = m\frac{d^2\overrightarrow{r}}{dt^2}$$
+$$F_i = m\frac{d^2x_i}{dt^2}, i \in \{1, 2, 3\}$$
+lineární diferenciální rovnice 2. řádu, ale 3 lineární pohybové rovnice v jednotlivých dimenzích -- princip superpozice
+Musím ještě dodat počáteční podmínky: $F(t, x_1, x_2, x_3, \frac{dx_1}{dt}, \frac{dx_2}{dt}, \frac{dx_3}{dt})$
+Klasická mechanika je deterministická = pro stejné počáteční podmínky se h. b. bude chovat stejně.
+
+\begin{priklad} Vodorovný vrh
+$\overrightarrow{r} = (0, h, 0)$
+$\overrightarrow{v_0} = (v_{01}, 0, 0)$
+
+$$m\frac{dv_1}{dt} = 0$$
+$$m\frac{dv_2}{dt} = -mg$$
+$$m\frac{dv_3}{dt} = 0$$
+
+$$dv_1 = \int{dt}$$
+$$v_1 = C_1 = v_01$$
+$$v_2 = -gt + C_2 = -gt$$
+$$v_3 = C_3 = 0$$
+
+$$x_1 = \int{v_{01}dt}= v_{01}t + C_4 = v_{01}t$$
+$$x_2 = -\frac{1}{2}gt + C_5 = -\frac{1}{2}gt + h$$
+$$x_3 = C_6 = 0$$
+
+\end{priklad}
+
+\begin{priklad} Harmonický pohyb
+$$\overrightarrow{v} = (v_{01}, v_{02}, 0)$$
+$$\overrightarrow{r} = (r_0 \cos \alpha, r_0 \sin \alpha, O)$$
+
+$$\frac{d^2x}{dt^2} = -\frac{k}{m}x$$
+$$x = C \sin \omega t, [\omega]=s^{-1}$$
+$$-C\omega^2\sin \omega t = \frac{k}{m}(\sin \omega t)$$
+$$\omega ^2 = \frac{k}{m}$$
+$$\omega = \sqrt{\frac{k}{m}}$$
+
+$$x = C_1\sin \omega t+ C_2\cos \omega t$$
+$$x = A (sin \omega t + \varphi)$$
+
+trošku jinak (exp. fce rovnost siny cosy)
+$$x = Ce^{\lambda x}$$
+$$C\lambda^2e^{\lambda x} = -\frac{k}{m}e^{\lambda x} C$$
+$$\lambda^2 = -\frac{k}{m}$$
+$$\lambda = \pm i\sqrt{\frac{k}{m}}=\pm i \omega$$
+
+$$x = C_1e^{i \omega t}+C_2e^{-i \omega t}$$
+
+$\rightarrow$ kdykoliv když vidím dif. rci tvaru $x^{\dot \dot}+ \omega^2x = 0$ je to harm. pohyb a jdu na siny
+\end{priklad}
+
+\begin{priklad} Pohyb při odporu prostředí
+
+$$m\frac{d^2x}{dt^2}=-kv$$
+$$m\frac{dv}{dt}=-kv$$
+$$\int_{v_0}^{v}{\frac{dv}{v}}=\int_{0}^{t}{-\frac{k}{m}dt}$$
+$$\ln{v}-\ln{v_0}=-\frac{k}{m}t$$
+$$\frac{dx}{dt} = v = v_0e^{-\frac{k}{m}t}$$
+
+$$\int_{0}^{x}{dx} = \int_{0}^{t}{v_0e^{-\frac{k}{m}t}dt}$$
+$$x = -v_0\frac{m}{k}[e^{-\frac{k}{m}t}-1]=\frac{v_0m}{k}[1-e^{-\frac{k}{m}t}]$$
+\end{priklad}
+
+\begin{priklad} Kladka TODO Obrazek slide č. 12, TODO celý
+\begin{itemize}
+\item nehmotné kladky, nehmotné závěsy, tělesa hmotnosti $m_1$ a $m_2$, $m_1>m_2$
+\item pohyb v jednom směru $\rightarrow$ skalární značení
+\item těžší těleso klesá $\rightarrow$ kladný směr zrychlení $a$
+\item tahová síla vlákna F
+$$m_1g - F = m_1a$$
+$$m_2g - F = m_2a$$
+
+$$a = g \frac{m_1-m_2}{m_1+m_2}$$
+\end{itemize}
+\end{priklad}
+
+\subsubsection{Pohyb soustavy?}
+$$\overrightarrow{r} = \overrightarrow{r}^\prime + \overrightarrow{R}$$
+$$\overrightarrow{R}^\prime = \overrightarrow{u}t$$
+$$\overrightarrow{v}^\prime = \overrightarrow{v}-\overrightarrow{u}$$
+$$\overrightarrow{a}^\prime = \overrightarrow{a} + \overrightarrow{a_u}$$
+$$\overrightarrow{a_u} = \frac{d^2\overrightarrow{R}}{dt^2}=$$
+
+\subsection{Pohyb v neinerciální soustavě}
+
+pokud $\overrightarrow{a_u}\neq 0$:
+$$\overrightarrow{F}^\prime = m\overrightarrow{a}^\prime = m (\overrightarrow{a}-\overrightarrow{a_u})=\overrightarrow{F}-m\overrightarrow{a_u}=\overrightarrow{F}+\overrightarrow{F^*}$$
+kde $\overrightarrow{F^*}=-m\overrightarrow{a_u}$ je setrvačná síla
+
+a teďka experimenty
+
+sloupeček magnetů zespoda je odpinkávám pravítkem, jestli pomalu posune se celý sloupeček, pokud rychle odělávám jednotlivé magnety
+
+koule na laně, pod ní na laně držátko, když trhnu rychle utrhnu spodní nit, když pomalu horní i s koulí -- šíření síly
+
+setrvačnost korku v lahvi vody -- korek se při zrychlení pohne ve směru pohybu -- je vytlačen vodou s větší hustotou, ta se chová podle očekávání (lags behind)
+
+foucaultovo kyvadlo ukázka corriolise rotace země
+
+$\overrightarrow{F}$ není pravá síla
+\begin{priklad}
+    Pohyb v otáčivé neinerciální soustavě
+
+    mějme polární souřadnice, pak
+    $\overrightarrow{v}^\prime=\overrightarrow{v}-\overrightarrow{u}=\overrightarrow{v}-\overrightarrow{\omega} \times \overrightarrow{r}$, tedy $\frac{d^\prime\overrightarrow{r}^}{dt}=\frac{d\overrightarrow{r}}{dt}-\overrightarrow{\omega}\times \overrightarrow{r}$ tj. časové derivace téhož vektoru v různých s. s. se líší!
+    tyto vztahy platí pro lib. vektor tj. $\frac{d^\prime\overrightarrow{A}}{dt}=\frac{d\overrightarrow{A}}{dt}-\overrightarrow{\omega}\times \overrightarrow{A}$
+
+    $\vec a^\prime = \frac{d^\prime v^\prime}{dt}=\frac{dv^\prime}{dt}-\vec \omega \times \vec v^\prime = \frac{d \vec v}{dt}-\frac{d\vec \omega}{dt}\times \vec r - \vec \omega \times \frac{d \vec r}{dt}-\vec \omega \times \vec v^\prime$
+\end{priklad}
+
+TODO odstředivá, eulerova, coriolisova síla slide č. 20
+TODO cvika příklad 2.14.
+
+Newtonovy pohybové rce v základním tvaru platí jen v inerciálních soustavách, v neinerciálních je třeba do vztahů doplnit setrvačné síly
+
+\subsubsection{Další veličiny}
+hybnost: $\vec p = m \vec v$
+moment síly: $\vec M = \vec r \times \vec F = (\vec r_B - \vec r_A)\times \vec F$
+moment hybnosti: $\vec L = \vec r \times p = \vec r \times m \vec v = (\vec r_B \vec r_A)\times m \vec v$
+impuls síly (časový účinek síly): $\vec I = \vec F \delta t \rightarrow \sum_{i=1}^{n}{\vec F_i \delta t_i} \rightarrow \int_{t_1}^{t_2}{\vec F dt} = \int_{t_1}^{t_2}{\frac{d\vec p}{dt}dt} = \delta \vec p$
+změna hybnosti h. b. = impulsu síly vykonaného na h. b.
+TODO slide č. 25, 26
+3. NZ jako důsledek ZZH, ZZMH
+
+experimenty:

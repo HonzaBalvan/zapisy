@@ -1,0 +1,97 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 4}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(4.1)} Označme $A=\left(\begin{array}{c c c}
+    a & b & c \\
+    d & e & f
+\end{array}\right)$ a $\textbf{x}= \left(x, y, z\right)$. Dále si přepíšeme podmínky ze zadání pomocí násobení matic.
+\begin{equation}
+    \forall s,t\in\mathbb Z_7:\left(\begin{array}{c c c}
+    a & b & c \\
+    d & e & f
+\end{array}\right)\left(\begin{array}{c}
+    3s \\
+    4t \\
+    s+t
+\end{array}\right)=\left(\begin{array}{c}
+    0 \\
+    0
+\end{array}\right)
+\label{1}
+\end{equation}
+\begin{equation}
+    \forall \textbf{x}\in \mathbb Z_7^3:\left(\begin{array}{c c c}
+    a & b & c \\
+    d & e & f
+\end{array}\right)\left(\begin{array}{c}
+    x \\
+    y \\
+    z
+\end{array}\right)=\left(\begin{array}{c}
+    3t \\
+    4t
+\end{array}\right);\, t \in \mathbb Z_7
+\label{2}
+\end{equation}
+
+\noindent Roznásobením podmínky \ref{2} získáme soustavu dvou rovnic.
+\begin{gather*}
+    ax+by+cz=3t\\
+    dx+ey+fz = 4t\\
+    \\
+    4ax+4by+4cz = 3dx+3ey+3fz
+\end{gather*}
+
+\noindent Protože $x,y,z$ jsou nezávislé složky vektoru můžeme rovnici rozkouskovat na tři pro každou složku vektoru, címž dostaneme následující tvar pro matici $A$.
+\begin{gather*}
+    4ax = 3dx\implies a = 6d\\
+    4by = 3ey\implies b = 6e\\
+    4cz = 3fz \implies c = 6f
+\end{gather*}
+$$A = \left(\begin{array}{c c c}
+    6d & 6e & 6f \\
+    d & e & f
+\end{array}\right)$$
+\noindent Nyní tento tvar matice $A$ dosadíme do rovnice dané podmínkou \ref{1} a roznásobíme.
+\begin{gather*}
+    4ds+3et+6fs+6ft=0\\
+    3ds+4et+fs+ft=0
+\end{gather*}
+\noindent Vidíme, že rovnice druhá rovnice je šestinásobkem první, takže stačí počítat s jednou. Máme tedy jednu rovnici o třech neznámých, která ale musí platit pro každou dvojici hodnot parametrů $s,t$. Dosadíme tedy BÚNO $(s,t)=(0,1), (s,t)=(1,0)$ (všechna jiná dosazení už by byly lin. komb. těchto dvou a $(0,0)$ nám dá rci $0=0$).
+\begin{gather*}
+    3e+6f=0\\
+    4d+6f=0\\\\
+    3e=4d\\
+    e=6d\\
+    f=4d
+\end{gather*}
+\noindent Zbude nám tedy parametr $d$. Ještě vyloučíme nulovou matici, která by dosud byla přípustná, ale když ji dosadíme nesplní ani jednu podmínku (přepsaní podmínek ze zadání nebylo úplné -- vytáhli jsme si z něj nutné, ale ne dostačující podmínky), řešení tedy bude následujícího tvaru.
+$$P=\left\{\left(\begin{array}{c c c}
+    6d & d & 3d \\
+    d & 6d & 4d
+\end{array}\right);\, d \in \mathbb Z_7\smallsetminus\{0\}\right\}.$$
+\end{document}

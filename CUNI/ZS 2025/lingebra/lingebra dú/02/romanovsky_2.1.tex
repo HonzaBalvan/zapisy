@@ -1,0 +1,92 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 2}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(2.1)} Hledáme uspoř. trojice $\left(x,y,z\right)$. Převedeme matici na odstupňovaný tvar a dále řešíme zpětnou substitucí:
+$$\left(\begin{array}{c c c | c }
+    -i & a & 1+i & 0\\
+    1 & 3i & b & 0\\
+    i & -3 & 1 & 1
+\end{array}\right) \sim
+\left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    -i & a & 1+i & 0\\
+    i & -3 & 1 & 1
+\end{array}\right) \sim
+\left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    -i & a & 1+i & 0\\
+    0 & a-3 & 2+i & 1
+\end{array}\right) \sim
+\left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    1 & ia & i-1 & 0\\
+    0 & a-3 & 2+i & 1
+\end{array}\right) \sim$$
+$$\sim \left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    0 & ia-3i & i-1-b & 0\\
+    0 & a-3 & 2+i & 1
+\end{array}\right) \sim
+\left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    0 & a-3 & 1+i+ib & 0\\
+    0 & a-3 & 2+i & 1
+\end{array}\right) \sim
+\left(\begin{array}{c c c | c }
+    1 & 3i & b & 0\\
+    0 & a-3 & 1+i+ib & 0\\
+    0 & 0 & 1-ib & 1
+\end{array}\right)$$
+
+$$\left(1-ib\right)z=1$$
+\begin{enumerate}[i.]
+    \item $b = -i: 0z = 1$ -- nelze
+    \item $b \neq -i:$
+
+$$z = \frac{1}{1-ib}$$
+$$(a-3)y+\left(1+i+ib\right)z = 1$$
+\begin{enumerate}[a.]
+    \item $a=3$:
+    $$\left(1+i+ib\right)z = 1$$
+    $$\frac{\left(1+i+ib\right)}{\left(1-ib\right)}=1$$
+    $$1+i+ib = 1-ib$$
+    $$2ib = -i$$
+    $$b = \frac{-1}{2}$$
+    $$z = \frac{1}{1+\frac{i}{2}}= \frac{2}{2+i}=\frac{2-i}{5}$$
+    $$y = t$$
+    $$x =- 3iy +\frac{z}{2} = \frac{2-i-30it}{10}$$
+    \item $a\neq 3$:
+    $$y = \frac{-1-i-ib}{\left(1-ib\right)(a-3)}$$
+    $$x + 3iy + bz = 0$$
+    $$x = -3i\frac{-1-i-ib}{\left(1-ib\right)(a-3)}-b\frac{1}{1-ib}$$
+    $$x = \frac{3i-3-3b}{\left(1-ib\right)(a-3)}-\frac{b}{1-ib}$$
+    $$x = \frac{3i - 3- 3b-ab+3b}{(1-ib)\left(a-3\right)}$$
+    $$x = \frac{3i - 3 -ab}{(1-ib)\left(a-3\right)}$$
+\end{enumerate}
+\end{enumerate}
+Když dáme vše dohromady: $P = \left\{(\frac{3i - 3 -ab}{(1-ib)\left(a-3\right)}, \frac{-1-i-ib}{a-3}, \frac{1}{1-ib}); a \in \mathbb C \smallsetminus \{3\}, b \in \mathbb C \smallsetminus \{-i\}\right\}\cup\left\{(\frac{2-i-30it}{10},t,\frac{2-i}{5});t \in\mathbb C\right\}$
+\end{document}

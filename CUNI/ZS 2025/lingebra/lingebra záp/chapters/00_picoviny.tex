@@ -1,0 +1,287 @@
+2025/09/30
+
+streamy, nahrávky
+webovky, povinný úkoly a kvízy
+david stanovský /~stanovsk
+
+základ:
+lineární algebra -- rovinné (lineární) útvary + maticový počet
+matematická analýza -- hladké (spojité) útvary + diferenciální, integrální počet
+diskrétní matematika -- diskrétní objekty + kombinatorika
+programování -- algoritmizace + reálně programování
+
+"zásadní rozdíl od sš: budete hodně číst"
+
+todo každej týden (v pořadí):
+    pro každej týden si načíst kripta dopředu aspoň letmo
+    přednášky -- nečte se ze skript
+    znovu číst skipta (pořádně)
+další týden
+    vyplnit kvíz
+    cvičení
+další týden
+    DÚ
+a takhle asi víc cyklů paralelně
+
+hodně prostoru na dotazy
+midtermy
+"doučování" v pátek nebo čtvrtek před a po midtermech
+
+Motivační úloha: Fotbalista kope do míče a ten odletí. S největší pravděpodobností existuje právě jedna dvojice bodů, které před i po směřují stejným směrem -- každá rotace má osu. Proč? tohle asi nechápu
+
+zkoumají se rovinné útvary a lineární zobrazení + abstrakce -- už nemáš intuici
+
+1. Opakování
+
+1.1. Analytická geometrie
+
+bod ... "je prostě místo v prostoru" čili prvek? té množiny = toho prostoru
+vektor ... "směr v tom prostoru, včetně jeho délky" -- na počátku nezáleží
+operace -- vektory můžu sčítat, vektor můžu násobit číslem, můžu sčítat bod a vektor (dostanu bod) (bod a bod nemůžu sčítat jasně)
+volba souřadnic -- potřebuju počátek a bázové vektory (zpravidla KSS) -- tady body a vektory splývají
+
+vektory se píšou do sloupce
+
+Jak vypadá množina $\{(x,y)\in \mathbb R^2:2x+3y=10\}$? Je to přímka, ale proč to vím? Psát proč to vím (znalost ze SŠ).
+
+2025/10/02
+
+na webu kurzu odkaz na srever s přednáškami přes cas login, obraz tohoto na karlin serveru, web taky na strankach predmetu, na karline login: nmag211, 49sl94ka
+
+Jak vypadá množina M = \{(1,2)+t\cdot(1,-1): t \in \mathbb R\}? Tak třeba ze SŠ vím, že to je přímka, ale tak zkusím to řešit nějak "obecněji"? Začnu si vypisovat body pro různá t, všimnu si že můžu půlit ty interaly, ale co když jsem si prostě vybral náhodně body tak, aby mi vycházela přímka? Dobrá je představa bod + vektor (tohle bude trošku bolest ta argumentace u tohohle borce)
+
+Jak vypadá množina N = \{(3,0)+s\cdot(-2,2): s \in \mathbb R\}? Bude to ta stejná přímka jako předchozí, jak to ale ukážeme? No tak bod (3,0) leží na předchozí přímce a dva vektory těchto dvou přímek jsou svoje násobky. Čili formálně:
+Tvrzení. M=N
+Důkaz. 1. to co je napsáno výše, vychází z geom. představy přímky
+       2. převedeme aritmeticky každý bod z první přímky na bod z druhé přímky, čili dokazujeme rovnost množin, čili budeme dokazovat oboustranou podmnožinnost
+        i) M \subseteq N: Uvažujme prvek (1,2) + t \cdot (1,-1) \in M, pro nějaké t \in \mathbb R.
+                          Chci najít s\in \mathbb R t. ž. (1, 2) + t \cdot (1, -1) = (3, 0) + s \cdot (-2,2)
+                          Dosaďme s = 1-\frac{t}{2}, vidíme, že (3, 0) + (1-\frac{t}{2})\cdot(-2,2) = (3-2+t, 0+2-t) = (1,2) + t \cdot (1,-1)
+            toto s můžu zjistit jak chci, uhodnout ho, ... nikoho to nezajímá
+        ii) N \subseteq M: Uvažujme prvek (3,0)+s\cdot(-2,2) \in N, pro nějaké s \in \mathbb R.
+                          Chci najít t\in \mathbb R t. ž. (3, 0) + s \cdot (-2,2) = (1, 2) + t \cdot (1, -1)
+                          Dosaďme t = ..., vidíme, že ... je to analogické
+
+Jak vypadá množina K = \{(x, y) \in \mathbb R^2: x+y=3\}?
+Tvrzení. K = M
+Důkaz. 1. geometrická poučka -- třeba přímka je určena 2 body, pokud jsem si jistý, že oboje jsou přímky stačí najít 2 společné body
+       2. aritmeticky -- převedeme
+        i) K \subseteq M: Uvažujme (x, y) \in K, tj. x + y = 3
+                          Chci najít t \in \mathbb R| t. ž. (x,y) = (1,2) + t \cdot (1, -1)
+                          Zvol t t. ž. x = 1 + t. Ověřím, že y = 2-t.
+                          Vím, že y = 3- x = 3-(1+t) = 2-t, což jsme chtěli dokázat
+        ii) M \subseteq K: Uvažujme (1,2) + t \cdot (1,-1) \in M, tj. je to (x, y) = (1-t, 2+t)
+                           Stačí ověřit, že x + y = 3: 1-t+2+t = 3 = 3 -- ověřeno
+
+
+1.5. Zobrazení = funkce - pičo
+
+Zobrazení f z množiny X do množiny Y přiřazuje každému prvku množiny X právě jeden prvek množiny Y.
+"zobrazení je nějaká krabička do které lezou prvky množiny x a z ní vylízají nějaký prvky množiny y"
+
+Zobrazení f_1 : X_1 $\rightarrow$ Y_1, f_2 : X_2 $\rightarrow$ Y_2 považujeme za totožná pokud X_1 = X_2, Y_1 = Y_2 a \forall x \in X_1 = X_2: f_1(x) = f_2(x).
+
+Příklad. f: \mathbb R $\rightarrow$ \mathbb R       g: \mathbb R $\rightarrow$ \mathbb R
+         f(x) = |x|                                 g(x) = \sqrt{x^2}
+Pozorování: f = g
+         h: \mathbb R $\rightarrow$  [0;\infty)
+         h(x) = |x|
+Pozorování: h \neq f
+
+Obor hodnot Im(f) (jako image)
+
+Příklad. Nechť X = \{1, 2, 5,6\}, Y = \{a, b,c,d,e\}
+         Definujme zobrazení f: X $\rightarrow$ Y.
+            1) f(1) = c, f(2) = a, f(5) = d, f(6) = c
+            2) f: X $\rightarrow$ Y
+                  1 $|\rightarrow$ c
+                  2 $|\rightarrow$ a
+                  5 $|\rightarrow$ d
+                  6 $|\rightarrow$ c
+            3) tabulkou nevim TODO
+            4) bramborový diagram se šipkami (klasika)
+            5) graf
+
+Příklad. f: \mathbb R^2 $\rightarrow$ \mathbb R^2
+         (x,y) $|\rightarrow$ souřadnice bodu, který vznikne otočením bodu se souř. (x, y) kolem (0, 0) o 42 stupňů proti směru hod. ruč.
+         tak borec prosě dropnul vzorec s gon. fcema nakonec prostě ta matice rotace dává to smysl
+
+Příklad. id_x: X $\rightarrow$ X
+               x $|\rightarrow$ x
+
+Skládání zobrazení: no tak logicky děcka
+
+Úloha: Najděte nejmenší množinu a dvě zobrazení na ní t. ž. tyto dvě zobrazení nekomutují vůči skládání. 2 prvky
+Pozorování: skládání není komutativní, ale je asociativní
+
+Vlastnosti zobrazení:prosté, "na", vzájemně jednoznačné
+
+inverzní zobrazení
+
+TODO zleva a zprava inverzní zobrazení
+Tvrzení. Nechť $f: X \rightarrow Y$ zobrazení, $X \neq \emptyset$ (z toho vyplývá $Y \neq \emptyset$). Pak $f$ je prosté $\iff$ k $f$ existuje zleva inverzní zobrazení (např. $g$).
+Důkaz. \begin{enumerate}[i.]
+\item \uv{$\implies$}: g definujeme třeba pomocí bramborového grafu: každou šipku z f přetočíme, pokud by $f$ nebylo prosté, nemůžu z nějakého prvku Y jednoznačně přetočit šipku -- měl bych dvě šipky -- není zobrazení; a ještě pak prvky $Y$, které nejsou v oboru hodnot $f$ pošlu kam chci kam chci
+\item \uv{$\impliedby$}: obměnou: pokud $f$ není prosté, neexistuje zleva inv. zobr.: úplně stejně jako i. v bramborovém grafu
+\end{enumerate}
+
+Tvrzení. Nechť $f: X \rightarrow Y$ zobr., $X, Y \neq \emptyset$. Pak $f$ je \uv{na} $\iff \exists$ zprava inv. zobr. k $f$.
+Důkaz. analogicky, bramborové grafy
+
+Příklad. $f: \mathbb N \rightarrow \mathbb N; x |\rightarrow 2x $ -- je prosté, není \uv{na}
+levý inverz: $g: \mathbb N \rightarrow \mathbb N; y $sudé$ |\rightarrow y/2; y $liché$ |\rightarrow$ lib.
+
+\section{2. Soustavy lineárních rovnic} = SLR
+Definice. příkladem: (vložte SLR)
+Cíl. najít řešení, tj. popsat množinu uspořádaných n-tic, které splňují tuto soustavu (po jejichž dosazení dostaneme pravdivé výrazy)
+
+\subsection{2.1. SLR jsou všude}
+Případ 1. (v matematice) proložit kružnici třemi body (nevim)
+Případ 2. (ve fyzice) závažíčka na páce
+Případ 3. (v chemii) vyrovnávání chem. rovnic
+
+\subsection{2.2. Řešení SLR}
+Gaussova elimináační metoda -- úpravy uvnitř GEM jsou opravdu ekvivalentní
+vyjádřením a dosazením
+sčítáním a odčítáním rovnic
+
+Poznámka. Ekvivalentní úprava je úprava, které nezmění množinu řešení.
+
+H_f obor hodnot se též někdy zapisuje rng(f) -- range f
+
+Poznámka. Definice zobrzazení pomocí kartézského součinu a binární relace byla zmíněna.
+
+Příklad.
+\begin{pmatrix}
+1 & 4 & 3 & 11\\
+1 & 4 & 5 & 15\\
+2 & 8 & 3 & 16
+\end{pmatrix} $~$
+\begin{pmatrix}
+1 & 4 & 3 & 11\\
+0 & 0 & 2 & 4\\
+0 & 0 & -3 & -6
+\end{pmatrix} $~$
+\begin{pmatrix}
+1 & 4 & 3 & 11\\
+0 & 0 & 2 & 4\\
+0 & 0 & -3 & -6
+\end{pmatrix} $~$
+\begin{pmatrix}
+1 & 4 & 3 & 11\\
+0 & 0 & 1 & 2\\
+0 & 0 & 0 & 0
+\end{pmatrix}
+$\implies z = 2 \implies x + 4y + 6 = 11$ -- jeden stupeň volnosti = zavedu parametr $y = t$, pak $x = 5-4t$
+$$P=\{(5-4t, t, 2); t \in \mathbb R\} = \{(5, 0, 2) + t(-4,1,0); t \in \mathbb R\}$$
+V tomto případě $x, z$ bázové proměnné (jednozn. určené tím, co je napravo od nich) a $y$ je volná proměnná, koef. v matici u bázových proměnných jsou pivoty.
+
+Příklad.
+\begin{pmatrix}
+0 & 0 & 0 & 1 & 2 & 0 & 3 & 1\\
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 1\\
+0 & 1 & 2 & 4 & 6 & 5 & 9 & 2\\
+0 & 2 & 4 & 6 & 8 & 11 & 13 & 1
+\end{pmatrix} $~$
+\begin{pmatrix}
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 1\\
+0 & 0 & 0 & 1 & 2 & 0 & 3 & 1\\
+0 & 0 & 0 & 0 & 0 & 1 & 1 & -1\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+$\implies$ \begin{align*}
+x_7 &= t_7\\
+x_6 &= -1-t_7\\
+x_5 &= t_5 \\
+x_4 &= 1 - 3x_7 - 2x_5 = 1-3t_7 - 3t_5\\
+x_3 &= t_3\\
+x_2 &= 1-6t_7-5(-1-t_7)-4t_3-3(1-3t_7-2t_5)-2t_3 = 3-2t_3+2t_5+8t_7\\
+x_1 &= t_1
+\end{align*}
+a potom $P = \{(0,3,0,1,0,-1,0)+t_1(1,0,0,0,0,0,0)+t_3(0,-2,1,0,0,0,0)+t_5(0,2,0,-2,1,0,0)+t_7(0,8,0,-3,0,-1,1); t_1, t_3, t_5, t_7 \in \mathbb R\}$
+Pro parametrické řešení platí, že vektor bez param. řeší původní soustavu, vektory s param. řeší tzv. homogenní soustavu příslušnou soustavě, kde je pravá strana nulová. \section
+
+\begin{definice}
+\begin{enumerate}[i.]
+	\item Řekneme, že matice je v \textbf{odstupňovaném tvaru} pokud každý nenulový řádek kromě prvního má na začátku víc nul než řádek předchozí.
+	\item \textbf{Bázové sloupce} jsou ty sloupce, v kterých se nachází první nenulový prvek nějakého řádku.
+	\item \textbf{Hodnost matice  odstupňovaném tvaru} se definuje jako počet bázových sloupců. Všimneme si, že hodnost matice = počet nenulových řádku a že počet parametrů řešení soustavy rozšířené matice = počet sloupců A - hodnost matice A
+\end{enumerate}
+\end{definice}
+
+\begin{definice}
+    \textbf{Hodnost matice} A je rovna hodnosti matice v odstupňovaném tvaru, na který matici A převedeme Gaussovou eliminací. (musim si ale dávat pozor, jestli je jedno jak udělám Gaussovu eliminaci)
+\end{definice}
+
+\subsection{2. 5. Geometrický význam SLR}
+\begin{enumerate}
+\item řádkový pohled -- intuitivní\\ řádky $\leftrightarrow$ rovnice určující nadrovinu \\ víc řádku $\leftrightarrow$ průnik nadrovin
+\item sloupcový pohled -- pro nás důležitější, ukážeme na příkladu:
+\end{enumerate}
+
+\begin{priklad}
+\begin{pmatrix}
+	1 & 2 & 1\\
+	2 & 3 & 4
+\end{pmatrix}
+$$x+2y=1$$
+$$2x-3y=4$$
+
+$\implies x(1,2) + y(2,-3)= (1,4)$ -- lineární kombinace
+\end{priklad}
+
+\section{Tělesa}
+speciální číselný obor na které nás zajímají dané binární operace (prdelní nebo neprdelní definice?)
+
+nějakej motivační příklad
+
+\begin{definice} Tělesem nazveme množinu $T$, na které jsou definovány operace $+, \cdot$ splňující:
+\begin{enumerate}
+	\item $\forall a,b,c \in T: a+(b+c)=(a+b)+c$
+	\item $\forall a,b \in T:a+b = b+a$
+	\item $\exists 0 \in T \forall a \in T: a+0=a$
+	\item $\forall a \in T \exists (-a) \in T: a+(-a)=0$
+	\item $\forall a,b,c \in T: a\cdot(b\cdot c) = (a\cdot b)\cdot c $
+	\item $\forall a,b \in T:a\cdot b = b\cdot a$
+	\item $\exists 1 \in T \forall a \in T: a\cdot 1=a$
+	\item $\forall a \in T \smallsetminus \{0\} \exists a^{-1} \in T: a\cdot a^{-1}=1$
+	\item $\forall a,b,c \in T: a\cdot(b+c)=(a\cdot b)+(a \cdot c)$
+	\item $|T|>1$,
+\end{enumerate}
+přičemž $+: T \times T \to T, \cdot T \times T \to T$.
+\end{definice}
+
+\begin{tvrzeni}[Vlastnosti těles]
+    \begin{enumerate}
+        \item $0, 1, -a, a^{-1}$ jsou jednoznačně určené
+        \item $\forall a\in T:0\cdot a = 0$
+        \item $a\cdot b = 0 \implies a = 0 \lor b = 0$
+        \item $O \neq 1$
+    \end{enumerate}
+\end{tvrzeni}
+\begin{dukaz}TODO
+\end{dukaz}
+
+\begin{poznamka}Příklady těles
+\begin{itemize}
+\item $(\mathbb R, +, \cdot)$
+\item $(\mathbb C, +, \cdot)$
+\item $(\mathbb Q, +, \cdot)$
+\item $(\mathbb Z, +, \cdot)$ NE!, není inverze k násobení
+\item $(\mathbb N, +, \cdot)$ NE!, není inverze ani k násobení, ani ke sčítání
+\item $(\mathbb Z_p, \text{modulární } +, \text{modulární } \cdot)$ -- prvočíselné zbytkové třídy
+\end{itemize}
+\end{poznamka}
+
+\begin{tvrzeni}
+$\mathbb Z_p$ je těleso $\foral p$ prvočíselné.
+\end{tvrzeni}
+\begin{dukaz} Zřejmé kromě existence inverze:
+    Chceme dk., že $\forall p$ prvoč. $\forall a \in \{1, ..., p-1\} \exists! \{1, ..., p-1\}$ t. ž. $a\cdot b \mod{p}=1$
+    přímo: Uvažujme $a\in\{1, ..., p-1\}$, dále uvažujme zobr. $f_a: \{1, ..., p-1\} \to \{1, ..., p-1\}, x \mapsto a \cdot x \mod{p}$.
+    Nejprve dk., že je zobr. dobře definované, tj. že $a\cdot x \mod{p} \neq 0$.
+    Napišme $ax = qp + r$ (dělení se zbytkem), potom $r \neq 0 \iff p \nmid ax$, to ale zjevně ne, protože $p \nmid a, p \nmid x$ a nemůže dělit ani součin, viz prvoč. rozklad.
+    Teď dokážeme, že $f_a$ je prosté.
+    Uvažujme $x, y$ t. ž. $f_a(x)=f(a)y$, tj. $ax, ay$ dávají stejný zbytek po dělení $p$, čili $p \mid ax-ay = a(x-y)$, ale $p \nmid a$, takže $p \mid (x-y)$, jenže $|x-y| < p$, čili jediná možnost je $x-y=0$, tj. $x=y \implies$ zobrazení je prosté.
+   KKaždé prosté zobrazení na konečné množině je bijektivní, tedy i \uv{na}, tedy $\exists! b$ t. ž. $f_a(b)=1$, potom $b$ je to co hledáme.
+\end{dukaz}

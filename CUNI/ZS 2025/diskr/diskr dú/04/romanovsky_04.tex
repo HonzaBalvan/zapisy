@@ -1,0 +1,49 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 4}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\section*{Příklad 1. Kombinační zmrzlina}
+$|\Omega| = {11 \choose 3}$ -- kombinace s opakováním, osm kopečků, čtyři příchutě
+
+\noindent$|A| = 4 \cdot 1 \cdot 1 \cdot 1 \cdot {7 \choose 2}$ -- prvním činitelem vybírám, kterou příchuť nebudu mít, jedničky zajišťují, že máme \textit{právě} tři příchutě, dále kombinace s opakováním, pět kopečků, tři příchutě
+
+\noindent$P = \frac{|A|}{|\Omega|} = \frac{4\cdot {7 \choose 2}}{{11 \choose 3}} = \frac{28}{55}\doteq 50,9 \,\%$
+
+\section*{Příklad 2. Nezávislost -- karty a \uv{změna experimentu}}
+\begin{enumerate}[(a)]
+    \item $P(A) = \frac{1}{2}$ -- půlka karet je červená, půlka černá
+
+    $P(B) = \frac{12}{52}$ -- v každém znaku jsou obrázkové tři karty, celkem čtyři znaky
+
+    $P(A \cap B) = \frac{6}{52}$ -- v každém znaku jsou obrázkové tři karty, celkem dva červené znaky a vidíme, že $P(A \cap B) = P(A) \cdot P(B)$ -- což je definice nezávislých jevů.
+    \item $P(A) = \frac{1}{2}$ -- půlka karet je červená, půlka černá, zajímá nás první karta, pravděpodobnost není ničím ovlivněna
+
+    $P(B) = \frac{12}{52}\cdot\frac{11}{51}+\frac{40}{52}\cdot\frac{12}{51} = \frac{51}{221}$ -- první sčítanec uvažuje, že jako první byla vytažena obrázková karta, druhý, že nebyla
+
+    $P(A \cap B) = \frac{6}{52}\cdot\frac{11}{51}+\frac{20}{52}\cdot\frac{12}{51} = \frac{51}{442}$ -- první sčítanec uvažuje, že jako první byla vytažena červená obrázková karta, druhý, že byla jako první vytažena červená neobrázková karta a vidíme, že $P(A \cap B) = P(A) \cdot P(B)$ -- což je definice nezávislých jevů.
+
+\end{enumerate}
+\end{document}

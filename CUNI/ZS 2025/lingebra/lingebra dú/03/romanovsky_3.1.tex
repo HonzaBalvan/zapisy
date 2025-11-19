@@ -1,0 +1,69 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 3}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(3.1)} Hledáme uspořádané čtveřice $(x_1, x_2, x_3, x_4)$. Nalezneme prvně neutrální prvek vůči sčítání (ozn. $0$) a neutrální prvek vůči násobení (ozn. $1$) dle jejich definice.
+$$\forall x \in \textbf{T}: 0 + x = x$$
+$$\forall x \in \textbf{T} \smallsetminus \{0\}: 1\cdot x = x$$
+Z tabulek operací vidíme, že $0 = \gamma$ (sloupeček pod $\gamma$ v tabulce sčítání je nezměněn) a $1 = \beta$ (sloupeček pod $\beta$ v tabulce násobení je nezměněn). Dále najdeme opačné a inverzní prvky (z definice a tabulek).
+$$\alpha: \alpha + (-\alpha) = \gamma \implies \underline{-\alpha = \alpha};\, \alpha \cdot \alpha^{-1} = \beta \implies \underline{\alpha^{-1} = \delta}$$
+$$\beta: \beta + (-\beta) = \gamma \implies \underline{-\beta = \beta};\, \beta \cdot \beta^{-1} = \beta \implies \underline{\beta^{-1} = \beta}$$
+$$\gamma: \gamma + (-\gamma) = \gamma \implies \underline{-\gamma = \gamma};\, \text{ 0 nemá inverzi}$$
+$$\delta: \delta + (-\delta) = \gamma \implies \underline{-\delta = \delta};\, \delta \cdot \delta^{-1} = \beta \implies \underline{\delta^{-1} = \alpha}$$
+Nyní převedeme matici do odstupňovaného tvaru.
+$$\left(\begin{array}{c c c c | c}
+    \alpha & \alpha & \delta & \alpha &\delta\\
+    \beta & \delta & \beta & \delta & \delta\\
+    \gamma & \beta & \alpha & \beta & \delta
+\end{array}\right) \sim
+\left(\begin{array}{c c c c | c}
+    \alpha & \alpha & \delta & \alpha &\delta\\
+    1 & \delta & 1 & \delta & \delta\\
+    0 & 1 & \alpha & 1& \delta
+\end{array}\right) \sim
+\left(\begin{array}{c c c c | c}
+    \alpha & \alpha & \delta & \alpha &\delta\\
+    0 & \delta & 1 & \delta & \alpha\\
+    0 & 1 & \alpha & 1& \delta
+\end{array}\right) \sim
+\left(\begin{array}{c c c c | c}
+    \alpha & \alpha & \delta & \alpha &\delta\\
+    0 & \delta & 1 & \delta & \alpha\\
+    0 & 0 & 0 & 0& 0
+\end{array}\right)$$
+Dořešíme zpětným dosazením.
+\begin{align*}
+x_4 &= t_4\\
+x_3 &= t_3\\
+x_2 &= (x_3 + \delta x_4 + \alpha) \cdot \delta^{-1} = (t_3 + \delta t_4 + \alpha)\cdot \alpha = \alpha t_3 + t_4 + \delta \\
+x_1 &= (\alpha x_2 + \delta x_3 + \alpha x_4 + \delta)\cdot \alpha^{-1}= (\alpha(\alpha t_3 + t_4 + \delta)+\delta t_3 + \alpha t_4 + \delta)\cdot \delta =(\alpha t_3 + t_4 + \delta) + \alpha t_3 +\\
+&=t_4 + \alpha = 1
+\end{align*}
+
+$$P = \left\{\begin{pmatrix}\beta \\ \delta \\ \gamma \\ \gamma\end{pmatrix}+t_3\begin{pmatrix}\gamma \\ \alpha \\ \beta \\ \gamma\end{pmatrix}+t_4\begin{pmatrix}\gamma \\ \beta \\ \gamma \\ \beta\end{pmatrix};t_3, t_4 \in \textbf{T}\right\}.$$
+
+\noindent Máme dva parametry (pivotů je o dva méně než proměnných), které budou nabývat hodnot prvků tělesa, ty jsou čtyři. Celkem je tedy $4\cdot 4 = 16$ řešení.
+\end{document}

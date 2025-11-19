@@ -1,0 +1,168 @@
+\documentclass[11pt]{template/cauchy}
+\usepackage[czech]{babel}
+
+% IMPORTY
+\usepackage{enumerate}
+\usepackage{mlmodern}
+\usepackage{template/mathsphystools}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+\usepackage[scr]{rsfso}
+% \usepackage{thmstyles}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{appendix}
+\usepackage{tabularx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{wrapfig}
+\usepackage{centernot}
+\usepackage{pgfplots}
+\usepackage{caption}
+\graphicspath{{images/}}
+\pgfplotsset{width=10cm,compat=1.9}
+
+% \usepackage{tikzit}
+% \input{default.tikzstyles}
+% je potřeba přiložit soubor default.tikzstyles
+
+
+% STYLY
+% definice, příklad, cvičení, věta, lemma, řešení, poznámka, důsledek, axiom, motivace
+
+\declaretheoremstyle[
+  headfont=\color{red}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{def}
+
+\declaretheoremstyle[
+  headfont=\color{blue}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{pr}
+
+\declaretheoremstyle[
+  headfont=\color{teal}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont\itshape,
+]{cv}
+
+\declaretheoremstyle[
+  headfont=\color{green}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont\itshape,
+]{veta}
+
+\declaretheoremstyle[
+  headfont=\color{lime}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont\itshape,
+]{lemma}
+
+\declaretheoremstyle[
+  headfont=\color{black}\normalfont\itshape,
+  bodyfont=\color{black}\normalfont,
+  numbered=no
+]{res}
+
+\declaretheoremstyle[
+  headfont=\color{brown}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{pozn}
+
+\declaretheoremstyle[
+  headfont=\color{brown}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{dusl}
+
+\declaretheoremstyle[
+  headfont=\color{cyan}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{axiom}
+
+\declaretheoremstyle[
+  headfont=\color{black}\normalfont\bfseries,
+  bodyfont=\color{black}\normalfont,
+]{motivace}
+
+\declaretheorem[
+  style=def,
+  name=Definice,
+]{definice}
+
+\declaretheorem[
+  style=pr,
+  name=Příklad,
+]{priklad}
+
+\declaretheorem[
+  style=cv,
+  name=Cvičení,
+]{cviceni}
+
+\declaretheorem[
+  style=res,
+  name=Řešení,
+]{reseni}
+
+\declaretheorem[
+  style=veta,
+  name=Věta,
+]{veta}
+
+\declaretheorem[
+  style=lemma,
+  name=Lemma,
+]{lemma}
+
+\declaretheorem[
+  style=pozn,
+  name=Poznámka,
+]{poznamka}
+
+\declaretheorem[
+  style=dusl,
+  name=Důsledek,
+]{dusledek}
+
+\declaretheorem[
+  style=axiom,
+  name=Axiom,
+]{axiom}
+
+\declaretheorem[
+  style=motivace,
+  name=Motivace,
+]{motivace}
+
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\arccotg}{arccotg}
+
+\title{Úvod do sem patří název \\ {\large Zápisky z přednášky Jméno Příjmení učitele}}
+\author{Jméno Příjmení}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% ÚVODNÍ INFORMACE
+% dobré pro poznačení informačních věcí od učitele,
+% např. jeho email, jména skript apod.
+\input{additional/misc_info.tex}
+
+% ZNAČENÍ
+% pokud nepotřebujete, zakomentujte řádek níže
+% všechny změny provádějte v souboru additional/conventions.tex
+\input{additional/conventions.tex}
+
+% KAPITOLY
+% \input{chapters/01_nazev_kapitoly}
+% ...
+
+% \listoffigures
+
+\backmatter
+
+\end{document}

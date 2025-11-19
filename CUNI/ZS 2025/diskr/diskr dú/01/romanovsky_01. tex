@@ -1,0 +1,47 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{DÚ Diskrétní matematika -- Sada 1}
+\author{Jan Romanovský (matykub11)}
+
+\begin{document}
+\maketitle
+
+\section*{Příklad 1. Vlastnosti součtu}
+
+    Rozdělme na případy:
+    \begin{enumerate}
+        \item $n = 0 \mod{4}: n = 4k, k \in \mathbb{Z}: S_{n} = \frac{16k^2 + 4k}{2} = 0 \mod{4}$
+        \item $n = 1 \mod{4}: n = 4k + 1, k \in \mathbb{Z}: S_{n} =\frac{16k^2 + 8k + 1 + 4k + 1}{2} = 1 \mod{4}$
+        \item $n = 2 \mod{4}: n = 4k + 2, k \in \mathbb{Z}: S_{n} =\frac{16k^2 + 16k + 4 + 4k + 2}{2} = 1 \mod{4}$
+        \item $n = 3 \mod{4}: n = 4k + 3, k \in \mathbb{Z}:S_{n} =\frac{16k^2 + 24k + 9 + 4k + 3}{2}= 0 \mod{4}$.
+    \end{enumerate}
+    A vidíme, že $S_n = 1 \mod{4}$ v případech 2. a 3., tedy když $n = 1$ nebo $2 \mod{4}$ -- QED
+
+\section*{Příklad 2. Trojúhelníková nerovnost}
+Postupujme přímo:
+\begin{align*}
+    |a+b| &\leq |a|+|b| \\
+|a+b|^2 &\leq (|a|+|b|)^2 \text{ -- ekv. úprava, protože obě strany nezáporné} \\
+a^2+2ab+b^2 &\leq a^2 + 2|ab| + b^2 \\
+ab &\leq |ab|
+\end{align*} 
+\begin{enumerate}
+    \item $ab \geq 0: ab \leq ab$ -- platí -- pro tento případě vidíme hledanou rovnost
+    \item $ab < 0: -ab\leq ab$ -- platí -- QED
+\end{enumerate}
+\end{document}
+

@@ -1,0 +1,126 @@
+2025/09/29
+
+borec se představil -- nějakej Krkoušek neboco (mimo něj ještě Švarc)
+stejně jak derivace na jarošce, fyzika s tím pracuje ale v matice se to musí teprv udělat zdlouhavě a formálně
+taylorův rozvoj -- TODO
+
+popis bodu v prostoru, popis pohybu
+
+prostor bodů \mathbb{E}^3 (tedy horní index), body A, B, počátek P
+pracujeme s tzv. afinními prostory, tj. že každé dva body určují vektor
+vektory \overrightarrow{r} = A - P -- součet bodů nedává smysl, rozdíl ano, to je vektor
+ke každému bodu můžu přičíct vektor, tj. vektor nemusí vést jen z počátku -- to je ten vtip tady, jsou to prostě volné vektory, je to rovnoběžné, protipříklad třeba povrch koule
+do euklidovského prostoru nám chybí vzdálenost nebo úhel, my si dáme úhel pomocí skalárního součinu \(\overrightarrow{a}, \overrightarrow{b}\) = \overrightarrow{a} \cdot \overrightarrow{b}, který se definuje pomocí vlastností -- positivně definitní symetrická bilineární forma (nevim)
+vektorový prostor samozřejmě není jen rovina, ale obecně, zase def. pomocí vlastností
+a potom \cos \gamma |\overrightarrow{a}||\overrightarrow{b}|=\overrightarrow{a} \cdot \overrightarrow{b}, kde \gamma je úhel mezi vektory, pomocí tohoto velikost
+|\overrightarrow{a}|= \sqrt{\overrightarrow{a}\cdot\overrightarrow{a}}
+\cos \gamma = \frac{\overrightarrow{a}\cdot\overrightarrow{b}}{|\overrightarrow{a}||\overrightarrow{b}|}
+a vzdálenost d(A, B) = |B-A|
+teď chceme souřadnice, aby se s tím dalo nějak počítat
+nejběžnější jsou lineární souřadnice -- jejich souřadné osy jsou přímky
+zvolíme si bázi ve vektorovém prostoru \overrightarrow{e_1}, \overrightarrow{e_2}, \overrightarrow{e_3}, ..., \overrightarrow{e_j} a k tomu počátek P, pak už je každý jiný vektor lineární kombinace bázových vektorů A = P + \overrightarrow{r} = P + x^1\overrightarrow{e_1} + x^2\overrightarrow{e_2} + x^3\overrightarrow{e_3} = P + \Sigma_{j}{x^j\overrightarrow{e_j}} = P + x\overrightarrow{e_x}+y\overrightarrow{e_y}+z\overrightarrow{e_z} -- horní index správně, koeficienty (tady tzv. komponenty) nedává smysl mocnit a takhle se s tím počítá přehledněji (údajně)
+no a nyní si zaveďme kartézské souřadnice, tedy mějme ortonormální bázi \overrightarrow{e_j} \cdot \overrightarrow{e_i} = \begin{cases}{1, i=j \\ 0, i \neq j} toto je výhodné: \overrightarrow{a}\cdot \overrightarrow{b} = (a^1\overrightarrow{e_1}+a^2\overrightarrow{e_2}+a^3\overrightarrow{e_3})\cdot(b^1\overrightarrow{e_1}+b^2\overrightarrow{e_2}+b^3\overrightarrow{e_3}) = a^1b^1 + a^2b^2 + a^3b^3, a potom d(A, B) = |\Delta \overrightarrow{r}| = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}
+Parametrická křivka: A(\chi), tj. A: \mathbb{R} \rightarrow \mathbb{E}^3 OBRAZEKOBRAZEK, tj. funkce, která má jako hodnoty body na nějaké dané křivce
+parametry třeba obecný, čas, délka
+zmatematizuju to pomocí souřadnic (klasika): x(A(\chi)), y(A(\chi)), z(A(\chi)) (retardi píšou x(\chi), y(\chi), z(\chi)
+Př.: přímka -- A(\chi) = P + \chi \overrightarrow{a}; x(A(\chi)) = x_0 + \chi a^1, y(A(\chi)) = y_0 + \chi a^2, z(A(\chi)) = z_0 + \chi a^3, ... x^j(A(\chi)) = x_0^j + \chi a^j
+Př.: kružnice ve 2D -- A(\varphi); x(A(\varphi) = x_0 + r_0 \cos \varphi, y(A(\varphi) = y_0 + r_0 \cos \varphi
+Tečný vektor: vekotr který je tečný já nevim -- A(\chi), x^j(A(\chi)), teď jak na to: mno tak určitě můžu udělat sečnu A(\chi_0) + \Delta\overrightarrow{A} a s tou se přibližovat, tj. zmenšovat vzdálenost dvou bodů sečny
+\overrightarrow{t} = \lim_{\Delta \chi \rightarrow 0}{\frac{\Delta\overrightarrow{A}}{\Delta \chi}} = \lim_{\Delta \chi \rightarrow 0}{\frac{A(\chi)-A(\chi_0)}{\chi - \chi_0}} = \frac{\overrightarrow{dA}{d\chi}(\chi_0)
+čili jinak: A(\chi) = A(\chi_0) + \Delta \chi \overrightarrow{t} + ... -- ty tři tečky je něco co je v té limitě, což ale s menším \Delta \chi mizí
+A(\chi) = P + \overrightarrow{r}(\chi) = P + x(\chi)\overrightarrow{e_x} + y(\chi)\overrightarrow{e_y} + z(\chi)\overrightarrow{e_z}
+statická báze = P, \overrightarrow{e_j} konstantní
+\overrightarrow{t}= \frac{\overrightarrow{dA}}{d\chi} = \frac{d}{d\chi} (P+x(\chi)\overrightarrow{e_x}+y(\chi)\overrightarrow{e_y}+z(\chi)\overrightarrow{e_z}) = ...
+t^x = \frac{dx}{d\chi}, t^y = \frac{dy}{d\chi}, t^z = \frac{dz}{d\chi} -- \overrightarrow{t} = \frac{d\overrightarrow{r}}{d\chi}
+když je parametr čas: \chi \rightarrow t, \overrightarrow{t} \rightarrow \overrightarrow{v}
+\overrightarrow{v}=\frac{\overrightarrow{dA}}{dt}, v^j = \frac{dx^j}{dt}
+když dt tak notace \overdot{x}
+Př.: délka křivky -- s = \Sigma_{k=1}^{N}{\Delta s_k} \rightarrow \int_{\chi_Z}^{\chi_K}{ds} = \int_{\chi_Z}^{\chi_K}{|\overrightarrow{t}|d\chi}
+\Delta s = |\Delta \overrightarrow{A}| = \Delta \chi |\overrightarrow{t}|
+rychlost \Delta s =  \int_{t_Z}^{t_K}{|\overrightarrow{v}|dt}
+parametrizace pomocí vzdálenosti \Delta s = \int{ds} = \int{|\overrightarrow{t}|ds}, kde \overrightarrow{t} = 1 (t je vzdálenost a chci to rovnoměrně)
+Př.: \overrightarrow{t}
+t^x = \frac{dx}{d\varphi} = -r_0\sin \varphi
+t^y = \frac{dy}{d\varphi} = r_0\cos \varphi
+\overrightarrow{t} = -r_0\sin \varphi \overrightarrow{e_x} + r_0\cos \varphi \overrightarrow{e_y}
+|\overrightarrow{t}| = ... = r_0 -- zajímavé
+no a potom o = \int_0^{2\pi}{|\overrightarrow{t}|d\varphi} = r_0 \int_0^{2\pi}{d\varphi} = 2\pi r_0 -- zajímavé
+Křivočaré souřadnice -- souřadnicové osy nejsou přímky OBRAZEKOBRAZEK, takže mám \mathbb{E_3}, \chi^j(A) (ta parametrizace teda asi?); x = x(\chi^1, \chi^2, \chi^3) a teď je problém najít tečný vektor a zjištíme že tečný vektor ke stejnému vektoru se liší bod od bodu a ani úhel nemusí být pravý a taky se mění bod od bodu
+Cylindrické souřadnice 3D OBRAZEKOBRAZEK \chi^1, \chi^2 \rightarrow \rho, \varphi: x = \rho \cos \varphi, y = \rho \sin \varphi, z=z; polární souřadnice (2D) OBRAZEKOBRAZEK x = \rho \cos \varphi, y = \rho \sin \varphi
+a hledáme tečnu \overrightarrow{t}_\rho je tam zase nějaká derivace a skončím logicky tam kde čekám t_\rho^x = cos \varphi t_\rho^y = sin \varphi, povšimněme si ještě že když do toho budeš rýpat dost dlouho tak zjistíš že i polární i cylindrické souřadnice jsou ortogonální
+Sférické souřadnice OBRAZEKOBRAZEK x = r \cos \vartheta \cos \varphi, x = r \cos \vartheta \sin \varphi, z = r \sin \varphi
+\rho = r \cos \vartheta
+\overrightarrow{t_r} = \cos \vartheta \cos \varphi \overrightarrow{e_x} + \cos \vartheta \sin -\varphi \overrightarrow{e_y} + \sin \varphi \overrightarrow{e_z}
+\overrightarrow{t_\vartheta} = -r \cos \vartheta \cos \varphi \overrightarrow{e_x} -r \cos \vartheta \sin \varphi \overrightarrow{e_y}
+\overrightarrow{t_\varphi}
+
+2025/10/06
+Funkce více proměnných
+
+derivování složené funkce
+
+Derivace podél křivky
+
+Gradient a jeho vlastnosti
+
+\nable (f + g) = \nabla f + \nabla g
+\nagla(fg) = (\nabla f)g+f(\nabla g)
+\nabla(H(f)) = H^\prime(f) \nabla f
+\nabla (H(f_1, f_2, ...) = \frac{\parc H}{\parc f_1} \nabla f_1 + \frac{\parc H}{\parc f_2} \nabla f_2 + ...
+(\nabla f)^k = \nabla_k f = \frac{\parc f}{\parc x^k} -- kart. souřad.
+\nabla bez_x f = \frac{\parc f}{\parc x}, \nabla bez_y f = \frac{\parc f}{\parc y}
+v kart. souř \nabla x^k = \overrightarrow{e_k}
+křivočaré souř.
+\chi_1, \chi_2, \chi_3
+tečné t_1, t_2, t_3
+gradienty \nabla \chi^1, \nabla \chi^2, \nabla \chi^3
+t_k\cdot \nabla \chi^k = \frac{d\chi^l (A_l)}{d\chi^k}=\frac{d\chi^l}{d\chi^k} = \delta^l_k
+a z tohoto duální báze \overrightarrow{t_k} \cdot \nabla \chi^l (pak vidíme že pokud \overrightarrow{t_k} = \nabla \chi^k jsme v KSS, pokud \propto ortogonální soustavě)
+
+Cylindrické souřadnice
+
+x = \rho \cos \varphi; \rho = \sqrt{x^2 + y^2}
+y = \rho \sin \varphi; \varphi = arctan y/x
+z = z; z = z
+\overrightarrow{t_\rho} = \cos \varphi \overrightarrow{e_x} + \sin \varphi \overrightarrow{e_y} = \overrightarrow{e_\rho}
+\overrightarrow{t_\varphi} = - \rho \sin \varphi \overrightarrow{e_x} + \rho \cos \varphi \overrightarrow{e_y} = \rho \overrightarrow{e_\varphi}
+\overrightarrow{t_z} = e_z
+
+\overrightarrow{\nabla}_\rho = \frac{\parc \rho}{\parc x} \overrightarrow{e_x} + \frac{\parc \rho}{\parc y} \overrightarrow{e_y} = 1/\rho (x\overrightarrow{e_x} + y\overrightarrow{e_y}) = \cos \varphi \overrightarrow{e_x} + \sin \varphi \overrightarrow{e_y} = \overrightarrow{e_\rho}
+\overrightarrow{\nabla} \varphi = \frac{1}{1+(y/x)^2}(-y/x^2)\overrightarrow{e_x}+ \frac{1}{1+y^2/x^2}\cdot1/x\overrightarrow{e_y} = \frac{1}{\rho^2}(-y\overrightarrow{e_x}+x\overrightarrow{e_y})= \frac{1}{\rho^2}\overrightarrow{t_\varphi} = \frac{1}{\rho}\overrightarrow{e_\varphi}
+
+Sférické souřadnice
+x = r \sin \theta \cos \varphi; r = \sqrt{x^2 + y^2 + z^2}
+y = r \sin \theta \sin \varphi; \theta = \arctan\frac{\sqrt{x^2+y^2}}{z}
+z = r \cos \theta; \rho = \sin \theta; \varphi = \arctan \frac{y}{x}
+\overrightarrow{t_r} = \sin \theta \cos \varphi \overrightarrow{e_x} + \sin \theta \sin \varphi\overrightarrow{e_y} + \cos \theta \overrightarrow{e_z} = \overrightarrow{e_z}
+\overrightarrow{t_\theta} = r\cos \theta \cos \varphi \overrightarrow{e_x} + r\cos \theta\sin\varphi\overrightarrow{e_y} - r \sin \theta \overrightarrow{e_z} = r\overrightarrow{e_\theta}
+\overrightarrow{t_\varphi} = -r \sin \theta \sin \varphi \overrightarrow{e_x} + r \sin \theta \cos \varphi \overrightarrow{e_y} = \rho \overrightarrow{e_\varphi}
+
+\overrightarrow{\nabla}_r = \frac{1}{r}(x\overrightarrow{e_x}+y\overrightarrow{e_y} + z\overrightarrow{e_z}) = \frac{\overrightarrow{r}}{r} = \overrightarrow{t_r} = \overrightarrow{e_r}
+\overrightarrow{\nabla}_\theta = \frac{1}{r^2}(\frac{xz}{\rho}\overrightarrow{e_x}+\frac{yz}{\rho}\overrightarrow{e_y} - \rho \overrightarrow{e_z}) = \frac{1}{r^2}\overrightarrow{t_\theta}= \frac{1}{r}\overrightarrow{e_\theta}
+
+2025/10/13
+\section{Diferenciální rovnice}
+= obsahují derivace fce -- nehledám proměnnou, která splňuji rovnici, ale funkci (předpis rovnici funkce), která splňuje dif. rci
+\begin{itemize}
+\item parciální -- více proměnných, které na sobě můžou nějak záviset, musím na to dávat pozor ($\parc$)
+\item obyčejné -- jedné proměnné
+\end{itemize}
+a ne bo
+\begin{itemize}
+\item nelineární -- mají proměnnou (nebo proměnnou v derivaci) uvnitř nějaké fce
+\item lineární -- pouze proměnná a její derivace
+\end{itemize}
+a nakonec
+\begin{itemize}
+\item homogenní -- abs. člen = 0
+\end{itemize}
+řád rovnice = nejvyšší derivace
+\begin{itemize}
+\item separovatelná -- jdou separovat proměnné???
+\item neseparovatelná -- nejde separovat TODO, pak to třeba zintegruju a jde to???
+\end{itemize}
+záleží tedy na tzv. počátečních podmínkách, někdy třeba neexistuje jednoznačné řešení pro dané poč. podmínky
+budeme se zabývat především lineárními dif. rcemi, homogenními i nehomogenními, ale s konst. koeficienty:
+$$y^{(n)}+a_{n-1}y^{(n-1)}}+...+a_0y=f(x)$$

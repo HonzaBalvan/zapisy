@@ -1,0 +1,133 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 5}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(5.2)} Označme matici $A$. Prvně zjistíme její hodnost.
+$$ \left(\begin{array}{c c c c}
+    1 & a & 1 & 2a\\
+    0 & 1 & a & a\\
+    1 & 0 & 0 & a
+\end{array}\right)\sim 
+\left(\begin{array}{c c c c}
+    1 & a & 1 & 2a\\
+    0 & 1 & a & a\\
+    0 & -a & -1 & -a
+\end{array}\right)\sim
+\left(\begin{array}{c c c c}
+    1 & a & 1 & 2a\\
+    0 & 1 & a & a\\
+    0 & 0 & a^2-1 & a^2-a
+\end{array}\right)$$
+\begin{enumerate}[i.]
+    \item $i = 1$: $\text{rank } A = 2$, tj. se nerovná ani počtu řádků, ani počtu sloupců, tj. neexistuje ani zprava, ani zleva inverzní matice.
+    \item $i \neq 1$: $\text{rank } A = 3$, tj. stejný jako počet řádků. To znamená, že matice nebude invertovatelná zleva a bude invertovatelná zprava. Nyní spočteme matici inverzní zprava k matici $A$ pomocí řádkových elementárních úprav.
+$$ \left(\begin{array}{c c c c | c c c}
+    1 & a & 1 & 2a & 1 & 0 & 0\\
+    0 & 1 & a & a & 0 & 1 & 0\\
+    1 & 0 & 0 & a & 0 & 0 & 1
+\end{array}\right)\sim 
+\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 1-a^2 & 2a-a^2 & 1 & -a & 0\\
+    0 & 1 & a & a & 0 & 1 & 0\\
+    1 & 0 & 0 & a & 0 & 0 & 1
+\end{array}\right)\sim$$
+$$\sim\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 1-a^2 & 2a -a^2& 1 & -a & 0\\
+    0 & 1 & a & a & 0 & 1 & 0\\
+    0 & 0 & a^2-1 & a^2-a & -1 & a & 1
+\end{array}\right)\sim
+\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & a & 0 & 0 & 1\\
+    0 & 1 & a & a & 0 & 1 & 0\\
+    0 & 0 & a^2-1 & a^2-a & -1 & a & 1
+\end{array}\right)\sim$$
+$$\sim\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & a & 0 & 0 & 1\\[0.4 em]
+    0 & 1 & a & a & 0 & 1 & 0\\[0.4 em]
+    0 & 0 & a & \frac{a^2}{a+1} & \frac{-a}{a^2-1} & \frac{a^2}{a^2-1} & \frac{a}{a^2-1}
+\end{array}\right)\sim
+\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & a & 0 & 0 & 1\\[0.4 em]
+    0 & 1 & 0 & \frac{a}{a+1} & \frac{a}{a^2-1} & \frac{-1}{a^2-1} & \frac{-a}{a^2-1}\\[0.4 em]
+    0 & 0 & 1 & \frac{a}{a+1} & \frac{-1}{a^2-1} & \frac{a}{a^2-1} & \frac{1}{a^2-1}
+\end{array}\right)$$
+Po cestě jsme ale dělili $a^2-1$ a násobili $a$, musíme tedy vyloučit krajní případy těchto výrazů.
+\begin{enumerate}
+    \item $a = -1$:
+    $$ \left(\begin{array}{c c c c | c c c}
+    1 & -1 & 1 & -2 & 1 & 0 & 0\\
+    0 & 1 & -1 & -1 & 0 & 1 & 0\\
+    1 & 0 & 0 & -1 & 0 & 0 & 1
+    \end{array}\right)\sim 
+    \left(\begin{array}{c c c c | c c c}
+    1 & -1 & 1 & -2 & 1 & 0 & 0\\
+    0 & 1 & -1 & -1 & 0 & 1 & 0\\
+    0 & 1 & -1 & 1 & -1 & 0 & 1
+    \end{array}\right)\sim $$
+    $$\sim\left(\begin{array}{c c c c | c c c}
+    1 & -1 & 1 & -2 & 1 & 0 & 0\\
+    0 & 1 & -1 & -1 & 0 & 1 & 0\\
+    0 & 0 & 0 & 2 & -1 & -1 & 1
+    \end{array}\right)\sim
+    \left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & -3 & 1 & 1 & 0\\
+    0 & 1 & -1 & -1 & 0 & 1 & 0\\
+    0 & 0 & 0 & 2 & -1 & -1 & 1
+    \end{array}\right)\sim$$ $$\sim
+    \left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & 0 & \frac{-1}{2} & \frac{-1}{2} & \frac{3}{2}\\[0.4 em]
+    0 & 1 & -1 & 0 & \frac{-1}{2} & \frac{1}{2} & \frac{1}{2}\\[0.4 em]
+    0 & 0 & 0 & 1 & \frac{-1}{2} & \frac{-1}{2} & \frac{1}{2}
+    \end{array}\right) $$
+    $$A^{-1} = \left(\begin{array}{c c c}\frac{-1}{2} & \frac{-1}{2} & \frac{3}{2}\\[0.4 em]
+    \frac{-1}{2} & \frac{1}{2} & \frac{1}{2}\\[0.4 em]
+    0 & 0 & 0 \\[0.4 em]
+    \frac{-1}{2} & \frac{-1}{2} & \frac{1}{2}\end{array}\right)$$
+    \item $a = 0$: $$\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 1 & 0 & 1 & 0 & 0\\
+    0 & 1 & 0 & 0 & 0 & 1 & 0\\
+    1 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right)\sim 
+\left(\begin{array}{c c c c | c c c}
+    1 & 0 & 0 & 0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0 & 0 & 1 & 0\\
+    0 & 0 & 1 & 0 & 1 & 0 & -1
+\end{array}\right)$$
+$$A^{-1} = \left( \begin{array}{c c c}
+    0 & 0 & 1 \\
+    0 & 1 & 0\\
+    1 & 0 & -1\\
+    0 & 0 & 0
+\end{array}\right) $$
+    \item $a \neq 0, \pm 1$: $$A^{-1} = \left(\begin{array}{c c c}0 & 0 & 1\\[0.4 em]
+    \frac{a}{a^2-1} & \frac{-1}{a^2-1} & \frac{-a}{a^2-1}\\[0.4 em]
+    \frac{-1}{a^2-1} & \frac{a}{a^2-1} & \frac{1}{a^2-1}\\[0.4 em]
+    0 & 0 & 0\end{array}\right)$$
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass{article}
+
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 4}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(4.2)} Kolmá projekce vektoru $\textbf{u}$ na danou přímku $P$ je ten vektor $\mathbf{v} \in P$ , pro který je vektor $\textbf{u} - \textbf{v}$ kolmý na směrový vektor $\textbf{v}$ přímky $P$, tedy když zapíšeme $\textbf{u} = (a,b,c)^T, \textbf{v} = (t^*, 2t^*, t^*)^T$ ($t^*$ je konkrétní hodnota parametru $t$), potom $\textbf{u}-\textbf{v} = (a-t^*,b-2t^*, c-t^*)$ a použijeme poznatek o kolmosti ze zadání.
+$$(a-t^*)t^*+(b-2t^*)2t^*+(c-t^*)t^*=0$$
+$$at^*+2bt^*+ct^*-{t^*}^2-4{t^*}^2-{t^*}^2=0$$
+$$t^*(a+2b+c-6t^*)=0$$
+$$t^*=0 \lor (a+2b+c-6t^*) = 0$$
+
+\noindent První případ nás nezajímá, to je nulový vektor, pokračujeme s druhým.
+$$a+2b+c=6t^*$$
+Nyní zkusíme dosadit vektory kanonické báze.
+\begin{enumerate}[i.]
+    \item $\textbf{u} = (1,0,0)^T$:
+        $$1=6t^*$$
+        $$t^*=\frac{1}{6}$$
+        $$f_A((1,0,0))=(t^*, 2t^*, t^*) = \left(\frac{1}{6},\frac{2}{6}, \frac{1}{6}\right)$$
+    \item $\textbf{u} = (0,1,0)^T$:
+        $$2=6t^*$$
+        $$t^*=\frac{1}{3}$$
+        $$f_A((0,1,0))=(t^*, 2t^*, t^*) = \left(\frac{1}{3},\frac{2}{3}, \frac{1}{3}\right)$$
+    \item $\textbf{u} = (0,0,1)^T$:
+        $$1=6t^*$$
+        $$t^*=\frac{1}{6}$$
+        $$f_A((0,0,1))=(t^*, 2t^*, t^*) = \left(\frac{1}{6},\frac{2}{6}, \frac{1}{6}\right)$$
+\end{enumerate}
+Když použijeme sloupcový pohled, našli jsme takto přímo matici $A$, resp. její sloupce, protože lib. $\textbf{u}=(a,b,c)^T=a(1,0,0)^T+b(0,1,0)^T+c(0,0,1)^T)$ a potom $A=\left(\begin{array}{c|c|c}f_A(\textbf{e}_1) & f_A(\textbf{e}_2) & f_A(\textbf{e}_3)\end{array}\right)$.
+$$A = \left(\begin{array}{c c c}
+    \frac{1}{6} & \frac{1}{3} & \frac{1}{6} \\[0.4em]
+    \frac{1}{3} & \frac{2}{3} & \frac{1}{3} \\[0.4em]
+     \frac{1}{6} & \frac{1}{3}& \frac{1}{6}
+\end{array}\right).$$
+
+\end{document}
