@@ -1,0 +1,36 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 7}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(7.1)} Když budu vektory vybírat po jednom:
+\begin{itemize}
+    \item budu mít $(7^3-1)$ možností pro první -- beru všechny vektory $\mathbb Z_7^3$ mimo nulový vektor -- posloupnost s nulovým vektorem je vždy lin. záv., všechny jiné posloupnosti s jedním vektorem jsou lin. nezáv.,
+    \item pro druhý vektor mám $(7^3-7)$ možností -- všechny vektory $\mathbb Z_7^3$ mimo násobků prvního -- násobky prvního vektoru jsou zřejmě lin. komb. prvního, tedy lin. záv., to mi vyřadí i nulu jako nula-násobek,
+    \item a nakonec pro třetí vektor mám $(7^3-7^2)$ možností -- všechny vektory $\mathbb Z_7^3$ mimo násobky prvního nebo druhého -- tedy takových, které by šly zapsat jako lin. komb. prvních dvou, tedy by byly lin. záv., nulový vektor znovu vyřazen.
+\end{itemize}
+Tedy celkový počet je $(7^3-7)(7^3-1)(7^3-7^2)=33\,784\,128$.
+
+\end{document}

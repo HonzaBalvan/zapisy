@@ -1,0 +1,43 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 7}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(7.2)} Posloupnost $(4\textbf{u} + 3\textbf{v} + 2\textbf{w} + \textbf{z}, \textbf{u} - \textbf{v} - \textbf{w} + \textbf{z}, \textbf{u} + \textbf{v} + \textbf{w} + \textbf{z})$ je lineárně nezávislá, pokud žádný z vektorů z posloupnosti nejde vyjádřit jako lineární kombinace ostatních (pro každé z $\textbf{u}, \textbf{v}, \textbf{w}, \textbf{z}$ můžu řešit nezávisle na sobě, jelikož jejich posloupnost je lineárně nezávislá), když si tedy vektory přepíšeme do matice jako řádky (kde ve sloupcích potom najdu koeficienty původních vektorů $\textbf{u}, \textbf{v}, \textbf{w}, \textbf{z}$) je to ekvivalentní s tvrzením, že po převedení na odstupňovaný tvar nebude v matici žádný nulový řádek. Napíšeme si tedy popsanou matici.
+$$\begin{pmatrix}
+  4 & 3 & 2 & 1\\
+  1 & -1 & -1 & 1\\
+  1 & 1 & 1 & 1
+\end{pmatrix}\sim \begin{pmatrix}
+  1 & 1 & 1 & 1\\
+  0 & -2 & -2 & 0\\
+  0 & -1 & -2 & -3
+\end{pmatrix}\sim \begin{pmatrix}
+  1 & 1 & 1 & 1\\
+  0 & 1 & 2 & 3\\
+  0 & 0 & 2 & 6
+\end{pmatrix}$$
+Vidíme, že se žádný řádek nevynuloval, posloupnost $(4\textbf{u} + 3\textbf{v} + 2\textbf{w} + \textbf{z}, \textbf{u} - \textbf{v} - \textbf{w} + \textbf{z}, \textbf{u} + \textbf{v} + \textbf{w} + \textbf{z})$ je tedy lineárně nezávislá.
+\end{document}
