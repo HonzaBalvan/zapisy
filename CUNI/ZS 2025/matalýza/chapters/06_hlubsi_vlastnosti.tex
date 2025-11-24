@@ -1,26 +1,38 @@
 
-\section{Primitivní funkce????}
+\section{Hlubší vlastnosti derivace a spojitosti}
 
-\begin{veta}[LHospital]
-  Nechť $x_0 \in \mathbb R^*$, nechť $\exists$ vlastní $f^\prime (x), g^\prime (x)$, navíc $ $
+\begin{veta}[L'Hospital]
+  Nechť $x_0 \in \mathbb R^*$, nechť $\exists$ vlastní $f^\prime (x), g^\prime (x)$, navíc $g^\prime (x) \neq 0 \,\forall x_0 \in \mathscr P(x_0, \delta)$. Nechť platí buď
+\begin{enumerate}[a)]
+  \item $f(x) \to 0, g(x) \to 0, x \to x_0$, nebo
+  \item $|g(x)| \to +\infty, x \to x_0$.
+\end{enumerate}
+  Pak
+  $$\lim_{x \to x_0} \frac{f(x)}{g(x)} = \lim_{x \to x_0} \frac{f^\prime(x)}{g^\prime(x)},$$
+  má-li pravá strana smysl.
 \end{veta}
 \begin{proof}
   \begin{enumerate}[1.]
-    \item $x \to x_0^+, x_0 \in \mathbb R$, případ a); $\epsilon > 0$ dáno:
+    \item $x \to x_0^+, x_0 \in \mathbb R$, případ a); $\varepsilon > 0$ dáno:
+
           $\exists \delta > 0$ t. ž. $\forall c \in \mathscr P_+(x_0, \delta)$ platí:
-          $$\frac{f^\prime(x)}{g^\prime(x)} \in \mathscr U(L, \epsilon)$$
+          $$\frac{f^\prime(x)}{g^\prime(x)} \in \mathscr U(L, \varepsilon)$$
           TRIK do/předefiniceinujme $f(x_0)=g(x_0)= 0$ (nemá vliv na $\lim_{x\to x_0}$)
+
           $\implies f, g$ spojité v $[x_0, x_0 + \delta), \delta > 0$ malé
           \begin{itemize}
             \item v bodě $x_0$ zprava $(f(x), g(x)\to 0 = f(x_0)= g(x_0), x \to x_0)$
             \item v bodech $x \in (x_0, x_0 + \delta) \impliedby $ Věta 4. 1. ($\exists f^\prime, g^\prime$ vlastní)
           \end{itemize}
           Buď $x \in \mathscr P_+(x_0, \delta)$ pevné, libovolné
+
           Aplikuji větu 6. 8. (C. o stř. h.) na $[x_0, x]$
-          $\implies \exists x \in [x_0, x]\subset \mathscr P_+(x_0, \delta)$ t. ž. $\frac{f(x)}{g(x)}=\frac{f(x_0)-f(x)}{g(x_0)-g(x)} = \frac{f^\prime (x)}{g^\prime (x)} \in \mathscr U (L, \epsilon) $
+
+          $\implies \exists x \in [x_0, x]\subset \mathscr P_+(x_0, \delta)$ t. ž. $\frac{f(x)}{g(x)}=\frac{f(x_0)-f(x)}{g(x_0)-g(x)} = \frac{f^\prime (x)}{g^\prime (x)} \in \mathscr U (L, \varepsilon) $
     \item $x \to +\infty$, případ a);
           $$\lim_{x \to +\infty} \frac{f(x)}{g(x)} = \lim_{y \to 0^+} \frac{f(\frac{1}{y})}{g(\frac{1}{y})} = (LP 1.) = \lim_{y \to 0^+} \frac{f^\prime(\frac{1}{y})}{g^\prime(\frac{1}{y})} = \lim_{y \to 0^+}\frac{f^\prime(\frac{1}{y})\cdot\frac{-1}{y^2}}{g^\prime(\frac{1}{y})\cdot \frac{-1}{y^2}} = (L 2. 3.) = \lim_{x \to +\infty} \frac{f^\prime(x)}{g^\prime(x)}  $$
     \item $x \to x_0^+$, případ b), tj. $|g(x)|\to +\infty, x \to x_0$
+
           Užiji V. 6. 8. na $[x,y]$:
           $$\exists c \in (x, y)\text{ t. ž. } \frac{f(x)-f(y)}{g(x)-g(y)}=\frac{f^\prime(c)}{g^\prime(c)} \implies $$
           pujčím si $\frac{f(x)}{g(x)} = \frac{f(y)}{g(x)}+ \frac{f^\prime (c)}{g^\prime (c)}(1- \frac{g(y)}{g(x)}) = P_1 + P_3 \cdot P_2$, fixuji $y$ blízko $x_0\implies c$ blízko $x_0$, když $x\to x_0\implies P_3 \to L, P_1 \to 0, P_2 \to 1$, a tedy PS blízko $L$.
@@ -35,22 +47,26 @@
   Řekneme, že $f(x)$ má v $I$ Darbouxovu vlastnost, pokud $\forall a, b, \in I, \forall \gamma$ mezi $f(a), f(b) \exists c$ mezi $a, b$ t. ž. $f(c) = \gamma$. (Darbouxova věta: $f(x)$ spoj. v $I \implies$ má v $I$ Darboux. vlast.)
 \end{definice}
 
-\begin{veta}{*}
+\begin{veta}[*]
   Nechť $I$ je otevřený interval, $f(x)$ je spojitá v $I$, nechť $\exists f^\prime(x)$ vlastní $\forall x \in I$. Pak $f^\prime(x)$ má v $I$ Darbouxovu vlastnost.
 \end{veta}
 
-\begin{veta}{Monotonie a znaménko derivace}
+\begin{veta}[Monotonie a znaménko derivace]
   Nechť $I \subset \mathbb R$ lib. interval, $f(x)$ je spojité v $I$, nechť $\exists f^\prime >0$ (resp. $\geq 0$, $\leq 0$, $<0$) $\forall x$ vnitřní bod $I$. Potom $f(x)$ je rostoucí (resp. neklesající, nerostoucí, klesající) v $I$.
 \end{veta}
 \begin{proof}
-  Nechť $x_1 < x_2\in I \implies^? f(x_1)<f(x_2)$
-  užiji V. 6. 5. (Lagrange) na $[x_1, x_2]\subset I$ -- spojitost OK, a taky $\exists f^\prime (x) \forall x \in (x_1, x_2) \subset I$
-  $\implies \exists c \in (x_1, x_2)$ t. ž. $\frac{f(x_2)-f(x_2)}{x_2-x_1}={f^\prime(c)} \iff {f(x_1)-f(x_2)} = f^\prime(c)\cdot (x_1-x_2) > 0 $
+  Nechť $x_1 < x_2\in I \implies^? f(x_1)<f(x_2)$.
+
+  Užiji V. 6. 5. (Lagrange) na $[x_1, x_2]\subset I$ -- spojitost OK, a taky $\exists f^\prime (x) \forall x \in (x_1, x_2) \subset I$
+
+  $\implies \exists c \in (x_1, x_2)$ t. ž. $\frac{f(x_2)-f(x_2)}{x_2-x_1}={f^\prime(c)} \iff {f(x_1)-f(x_2)} = f^\prime(c)\cdot (x_1-x_2) > 0 $.
 \end{proof}
 
 \begin{priklad}
   $f(x) = x^n,I = [0, +\infty), n \in \mathbb N$
+
   $f^\prime(x)=nx^{n-1} > 0, x \in (0, +\infty)$ -- otevřený interval je právě vnitřek intervalu $I$
+
   $\implies (V 6. 10.) f(x)$ rostoucí v $I$.
 \end{priklad}
 
@@ -58,13 +74,15 @@
   Funkce $f(x)$ se nazve konvexní (resp. ryze konvexní, konkávní, ryze konkávní) v $I$, jestliže $\forall x_1 < x_2 < x_3 \in I: \frac{f(x_2)-f(x_1)}{x_2-x_1}\leq \text{ (resp. $<, \geq, >$) } \frac{f(x_3)-f(x_2)}{x_3-x_2}$.
 \end{definice}
 
-\begin{veta}{Konvexita a monotonie derivace}
+\begin{veta}[Konvexita a monotonie derivace]
   Nechť $I$ interval s krajními body $a < b$. Nechť $f(x)$ spojitá v $I$. Nechť $\exists f^\prime (x) \forall x \in (a,b)$ a je rostoucí (resp. neklesající, klesající, nerostoucí). Potom $f(x)$ je ryze konvexní (resp konvexní, ryze konkávní, konkávní) v $I$.
 \end{veta}
 
 \begin{proof}
   Nechť $x_1 < x_2 < x_3 \in I \implies^? \frac{f(x_2)-f(x_1)}{x_2-x_1} < \frac{f(x_3)-f(x_2)}{x_3-x_2}$.
+
   Užiji 2x V. 6. 5. (Lagrange) na $[x_1, x_2]$, pak na $[x_2, x_3]$: $\exists c \in (x_1, x_2)$ t. ž. $\frac{f(x_2)-f(x_1)}{x_2-x_1} = f^\prime(c)$ a $\exists d \in (x_2, x_3)$ t. ž. $\frac{f(x_3)-f(x_2)}{x_3-x_2}= f^\prime(d)$.
+
   Zřejmě $d>c \implies f^\prime (c) < f^\prime (d) \implies$ to co dk.
 \end{proof}
 
@@ -78,6 +96,10 @@
   V. 6. 11. $\implies f$ je ryze konvexní v $(-\infty, 0)$ a v $(0, +\infty)$ (ale ne už v $\mathbb R \smallsetminus \{0\}$)
 \end{priklad}
 
-\begin{poznamka}{Ekvivalentní definice konvexity}
+\begin{poznamka}[Ekvivalentní definice konvexity]
   $\forall a, b, \in I, \forall \lambda \in (0, 1): f(\lambda a + (1-\lambda) b) \leq \lambda f(a) + (1-\lambda)f(b)$.
 \end{poznamka}
+
+\begin{proof}
+  Důkaz jako cvičení pro čtenáře, napovíme $x_1 = a, x_3 = b, x_2 = $ nějakej zlomek s $\lambda$
+\end{proof}
