@@ -4,62 +4,62 @@ má webové stránky -- tam je i něco ke zkoušce
 
 1. Úvod, reálná čísla, funkce
 
-Značení: P, Q ... výroky, x, y, z ... čísla (prvky), A, B, M ... množiny
-         P & Q ... P zároveň s Q
-         P \lor Q ... P nebo Q
-         P \implies Q ... P implikuje Q
-         P \iff Q ... P je ekvivalentní s Q
-         \neg P ... negace P
-         \forall x ... pro všechna x
-         \exists x ... existuje x
-         \exists! x ... existuje právě 1 x
-         x \in A ... x je prvkem A
-         A \subset B ... A je podmnožina B
-         {a_1, a_2, ...} ... množina definována výčtem prvků a_1, a_2, ...
-         {x \in M, \varphi(x)} ... množina definována vlastností \varphi(x)
-         \emptyset, {} ... prázdná množina
-         A \cup B ... sjednocení množin A, B
-         A \cap B ... průnik množin A, B
-         A \setminus B ... rozdíl množin (prvky z A, které nejsou v B)
-Věta A1. (Algebraické vlastnosti \mathbb{R}) Existuje množina reálných čísel \mathbb{R}, která obsahuje prvky 0 a 1, a jsou na ní definovány operace "\cdot" a "+" tak, že \forall x, y, z \in \mathbb{R} platí:
-\item x+y = y+x, x \cdot y = y \cdot x
-\item x+(y+z) = (x+y)+z, x\cdot (y\cdot z) = (x \cdot y) \cdot z
-\item x \cdot (y+z) = x \cdot y + x \cdot z
-\item 0 + x = x, 1 \cdot x = x
-\item 
+Značení: $P, Q$ ... výroky, $x, y, z$ ... čísla (prvky), $A, B, M$ ... množiny
+         $P & Q$ ... $P$ zároveň s $Q$
+         $P \lor Q$ ... $P$ nebo $Q$
+         $P \implies Q$ ... $P$ implikuje $Q$
+         $P \iff Q$ ... $P$ je ekvivalentní s $Q$
+         $\neg P$ ... negace $P$
+         $\forall x$ ... pro všechna $x$
+         $\exists x$ ... existuje $x$
+         $\exists! x$ ... existuje právě 1 $x$
+         $x \in A$ ... $x$ je prvkem $A$
+         $A \subset B$ ... $A$ je podmnožina $B$
+         $\{a_1, a_2, ...\}$ ... množina definována výčtem prvků $a_1, a_2, ...$
+         ${x \in M, \varphi(x)}$ ... množina definována vlastností $\varphi(x)$
+         $\emptyset, \{\}$ ... prázdná množina
+         $A \cup B$ ... sjednocení množin $A, B$
+         $A \cap B$ ... průnik množin $A$, $B$
+         $A \setminus B$ ... rozdíl množin (prvky z $A$, které nejsou v $B$)
+Věta A1. (Algebraické vlastnosti $\mathbb{R}$) Existuje množina reálných čísel $\mathbb{R}$, která obsahuje prvky 0 a 1, a jsou na ní definovány operace "$\cdot$" a "$+$" tak, že $\forall x, y, z \in \mathbb{R}$ platí:
+\item $x+y = y+x, x \cdot y = y \cdot x$
+\item $x+(y+z) = (x+y)+z, x\cdot (y\cdot z) = (x \cdot y) \cdot z$
+\item $x \cdot (y+z) = x \cdot y + x \cdot z$
+\item $0 + x = x$, $1 \cdot x = x$
+\item
 
-Věta A2. (Uspořádání \mathbb{R}) Na množině \mathbb{R} je definována relace "<" tak, že \forall x, y, z \in \mathbb{R} platí:
-\item x = y, nebo x < y, nebo y < x
-\item x < y & y < z \implies x < z
-\item x < y \implies x + z < y + z
-\item 0 < x & 0 < y \implies 0 < x \cdot y
+Věta A2. (Uspořádání $\mathbb{R}$) Na množině $\mathbb{R}$ je definována relace "$<$" tak, že $\forall x, y, z \in \mathbb{R}$ platí:
+\item $x = y$, nebo $x < y$, nebo $y < x$
+\item $x < y & y < z \implies x < z$
+\item $x < y \implies x + z < y + z$
+\item $0 < x & 0 < y \implies 0 < x \cdot y$
 
-Poznámka. x \leq y je zkratka za (x < y) \lor (x = y). Z věty A2 opět lze vyvodit další známé poučky, např. x^2 \geq 0 \forall x \in \mathbb R, apod.
+Poznámka. $x \leq y$ je zkratka za $(x < y) \lor (x = y)$. Z věty A2 opět lze vyvodit další známé poučky, např. $x^2 \geq 0 \forall x \in \mathbb R$, apod.
 
-Poznámka. Význačné podmnožiny \mathbb R
-\item přirozená čísla \mathbb N = {1, 2, 3, ...}
-\item celá čísla \mathbb Z = \mathbb N \cup {0, -1, -2, ---}
-\item racionální čísla \mathbb Q = {\frac{p}{q}; p \in \mathbb Z, q \in \mathbb N}
-\item intervaly s krajními body (a, b) = {x \in \mathbb R; a < x < b}, resp. ..., resp. neomezené pozor hranaté závorky! a ne zobáčky
+Poznámka. Význačné podmnožiny $\mathbb R$
+\item přirozená čísla $\mathbb N = \{1, 2, 3, ...\}$
+\item celá čísla $\mathbb Z = \mathbb N \cup \{0, -1, -2, ---\}$
+\item racionální čísla $\mathbb Q = \{\frac{p}{q}; p \in \mathbb Z, q \in \mathbb N\}$
+\item intervaly s krajními body $(a, b)$ = $\{x \in \mathbb R; a < x < b\}$, resp. ..., resp. neomezené pozor hranaté závorky! a ne zobáčky -- uvidíme
 
-Definice. (Absolutní hodnota) Nechť x \in \mathbb R. Potom x \def \begin{cases}{x, x \geq 0 \\ -x, x < 0}
+Definice. (Absolutní hodnota) Nechť $x \in \mathbb R$. Potom $x \def \begin{cases}{x, x \geq 0 \\ -x, x < 0}\end{cases}$
 
-Lemma 1.1. Nechť a \geq 0, b \in \mathbb R lib. Potom:
+Lemma 1.1. Nechť $a \geq 0, b \in \mathbb R$ lib. Potom:
 $$ |b| \leq a \iff -a \geq b \geq a.$$
-Dúkaz. (rozborem případů) 
-\item b \geq 0
-\item b < 0
+Dúkaz. (rozborem případů)
+\item $b \geq 0$
+\item $b < 0$
 
-Věta 1.1. (Trojúhelníková nerovnost) \forall x, y \in \mathbb R
-\item |x \pm y| \leq |x| + |y|
-\item |x \pm y| \geq ||x|-|y||
+Věta 1.1. (Trojúhelníková nerovnost) $\forall x, y \in \mathbb R:$
+\item $|x \pm y| \leq |x| + |y|$
+\item $|x \pm y| \geq ||x|-|y||$
 Důkaz.
-\item |x| \leq |x|, |\pm y| \leq |y| \implies (L.1.1.) -|x| \leq x \leq |x|, -|y| \leq \pm y \leq |y|, když sečtu -|x|-|y| \leq x \pm y \leq |x|+|y| \implies (L.1.1.) |x\pm y| \leq |x| + |y|
-\item TRIK \mp y = x - ( x \pm y) 
+\item $|x| \leq |x|, |\pm y| \leq |y| \implies (L.1.1.) -|x| \leq x \leq |x|, -|y| \leq \pm y \leq |y|$, když sečtu $-|x|-|y| \leq x \pm y \leq |x|+|y| \implies (L.1.1.) |x\pm y| \leq |x| + |y|$
+\item TRIK $\mp y = x - ( x \pm y)$
 
-Věta B. (Odmocnina v \mathbb R)
-\item Nechť  n \in \mathbb N je sudé. Pak \forall a \in [0, \infty) \exists! b \in [0, \infty) takové, že b^n = a
-\item Nechť n \in \mathbb N je liché. Pak \forall a \in \mathbb R \exists! b \in \mathbb R takové, že b^n = a (b = \root{n}{a})
+Věta B. (Odmocnina v $\mathbb R$)
+\item Nechť  $n \in \mathbb N$ je sudé. Pak $\forall a \in [0, \infty) \exists! b \in [0, \infty)$ takové, že $b^n = a$
+\item Nechť $n \in \mathbb N$ je liché. Pak $\forall a \in \mathbb R \exists! b \in \mathbb R$ takové, že $b^n = a (b = \root{n}{a})$.
 
 Poznámka. \item \sqrt{1} = 1, \root{3}{-1} = -1, \sqrt{-1} není definována
 \item \root{n}{x^n} = x \forall x \in \mathbb R, n liché
@@ -81,8 +81,8 @@ Poznámka. indukce ještě jinak: \forall M \subset \mathbb N, M \neq \emptyset:
 TODO k větě 1.2. doplnit důkaz o iracionálnosti odmocniny ze 3
 
 Věta 1.3. Každý otevřený interval obsahuje nekonečně mnoho racionálních a iracionálních čísel.
-Důkaz. (pro iracionální) 
-BÚNO: I = (a,b), 0 \leq a < b 
+Důkaz. (pro iracionální)
+BÚNO: I = (a,b), 0 \leq a < b
 položme x_n = \frac{n\sqrt{3}}{m}, n \in \mathbb N, m \in \mathbb N velké tak, že m > \frac{2\sqrt{3}}{b-a}\iff \frac{2\sqrt{3}}{m} < b-a
 M = \{n \in \mathbb N:x_n \geq b\}, nechť n_0 je nejmenší prvek M (viz A3)
 tvrdíme: x_{n_0-1}, x_{n_0-2}\in (a,b), tj. a<x_{n_0-2}<x_{n_0-1}<b
@@ -94,8 +94,8 @@ Definice. Nechť M \subset \mathbb R. Potom
 \item x \in M nazveme maximum (největší prvek) M, pokud \forall y \in M: y \leq x
 \item x \in M nazveme minimum (nejmenší prvek) M, pokud \forall y \in M: y \geq x
 \item K \in \mathbb R nazveme horní odhad M, jestliže \forall x \in M: x \leq K
-\item K \in \mathbb R nazveme dolní odhad M, jestliže \forall x \in M: x \geq K 
-\end{itemize} 
+\item K \in \mathbb R nazveme dolní odhad M, jestliže \forall x \in M: x \geq K
+\end{itemize}
 Množina M se nazve
 \begin{itemize}
 \item shora omezená, má-li nějaký horní odhad
@@ -112,7 +112,7 @@ Definice. Nechť M \in \mathbb R, Číslo S \in \mathbb R nazveme supremum M, zn
 \end{enumerate}
 čili S je nejmenší horní odhad M.
 
-Poznámka. \begin{itemize} 
+Poznámka. \begin{itemize}
 \item Supremum užitečně zobecňuje pojem maximum.
 \item Existuje nejvýše jedno sup M.
 
@@ -223,8 +223,7 @@ Důkaz. TODO
 
 Příklad. Dirichletova funkce
 $$D(x) \def \begin{cases} 1, x \in \mathbb Q \\ 0, x \in \mathbb R \smallsetminus \mathbb Q \end{cases}$$
-tvrdíme: $\nexists lim_{x \rightarrow x_0}{D(x)}, x_0 \in \mathbb R^*$ lib. 
+tvrdíme: $\nexists lim_{x \rightarrow x_0}{D(x)}, x_0 \in \mathbb R^*$ lib.
 Důkaz. $x_0, A \in \mathbb R^*$ ... $\neg (D(x) \rightarrow A, x \rightarrow x_0)
        $\exists \epsilon > 0 \forall \delta > 0: f(\mathscr P(x_0, \delta)) \nsubseteq \mathscr U(A, \epsilon)
        stačí zvolit $\epsilon$ tak, že $\mathscr U(A, \epsilon)$ neobsahuje buď 0, nebo 1, protože H(f) = \{0,1\} (lze viz věta 2.1.)
-
