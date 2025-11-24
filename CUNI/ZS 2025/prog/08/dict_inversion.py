@@ -1,10 +1,21 @@
-#i = 0
-#input_list = []
+d = {}
+def dict_inversion(d):
+    input_nerozdeleny = str(input())
 
-#while str(input()) != "---":
-#    input_list.append(str(input()).split(":"))
+    if input_nerozdeleny == "---":
+        return d
 
-#print(input_list)
-#print(type(input_list))
-input_list = [str(x) for x in input().split()]
-print(input_list)
+    jmeno, atributy_nerozdelene = input_nerozdeleny.split(": ")
+    atributy = atributy_nerozdelene.split(", ")
+    for atributa in atributy:
+        d[atributa] = d.get(atributa, []) + [jmeno]
+
+    dict_inversion(d)
+
+dict_inversion(d)
+
+d = dict(sorted(d.items()))
+
+for atributa, jmena in d.items():
+    print(f"{atributa}: {', '.join(jmena)}")
+print("---")
