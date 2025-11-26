@@ -1,0 +1,77 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 8}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(8.1)} Zapíšeme si úplně obecně jak by mohly vypadat prvky $A$ vektorového prostoru \textbf{W}.
+$$A = \left( \begin{array}{c c c}
+  a & b & c\\
+  d & e & f\\
+  g & h & i
+\end{array} \right)$$
+Když nějaký vektor patří do jádra matice znamená to, že řeší homogenní soustavu zadanou maticí. To nás vede na soustavu tří rovnic o devíti neznámých.
+
+\begin{gather*}
+  a + 2b + 3c = 0\\
+  d + 2e + 3f = 0\\
+  g + 2h + 3i = 0\\
+  \,\\
+  \underline{b = k}, \underline{c = l} \implies \underline{a = -2k - 3l}\\
+  \underline{e = m}, \underline{f = n} \implies \undeline{d = -2m - 3n}\\
+  \underline{h = o}, \underline{i = p} \implies \underline{g = -2o - 3p}
+\end{gather*}
+
+\noindent Bázové matice nyní získáme vhodnou volbou parametrů, pokaždé za jeden zvolíme 1 a za ostatní 0, to nám dá 6 matic.
+$$\left\{\left( \begin{array}{c c c}
+  -2 & 1 & 0\\
+  0 & 0 & 0\\
+  0 & 0 & 0
+\end{array} \right)
+\left( \begin{array}{c c c}
+  -3 & 0 & 1\\
+  0 & 0 & 0\\
+  0 & 0 & 0
+\end{array} \right)
+\left( \begin{array}{c c c}
+  0 & 0 & 0\\
+  -2 & 1 & 0\\
+  0 & 0 & 0
+\end{array} \right)
+\left( \begin{array}{c c c}
+  0 & 0 & 0\\
+  -3 & 0 & 1\\
+  0 & 0 & 0
+\end{array} \right)
+\left( \begin{array}{c c c}
+  0 & 0 & 0\\
+  0 & 0 & 0\\
+  -2 & 1 & 0
+\end{array} \right)
+\left( \begin{array}{c c c}
+  0 & 0 & 0\\
+  0 & 0 & 0\\
+  -3 & 0 & 1
+\end{array} \right)\right\}$$
+\end{document}

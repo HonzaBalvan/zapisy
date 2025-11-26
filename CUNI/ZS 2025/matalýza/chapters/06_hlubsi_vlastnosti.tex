@@ -55,7 +55,7 @@
   Nechť $I \subset \mathbb R$ lib. interval, $f(x)$ je spojité v $I$, nechť $\exists f^\prime >0$ (resp. $\geq 0$, $\leq 0$, $<0$) $\forall x$ vnitřní bod $I$. Potom $f(x)$ je rostoucí (resp. neklesající, nerostoucí, klesající) v $I$.
 \end{veta}
 \begin{proof}
-  Nechť $x_1 < x_2\in I \implies^? f(x_1)<f(x_2)$.
+  Nechť $x_1 < x_2\in I \stackrel{?}{\implies} f(x_1)<f(x_2)$.
 
   Užiji V. 6. 5. (Lagrange) na $[x_1, x_2]\subset I$ -- spojitost OK, a taky $\exists f^\prime (x) \forall x \in (x_1, x_2) \subset I$
 
@@ -79,7 +79,7 @@
 \end{veta}
 
 \begin{proof}
-  Nechť $x_1 < x_2 < x_3 \in I \implies^? \frac{f(x_2)-f(x_1)}{x_2-x_1} < \frac{f(x_3)-f(x_2)}{x_3-x_2}$.
+  Nechť $x_1 < x_2 < x_3 \in I \stackrel{?}{\implies} \frac{f(x_2)-f(x_1)}{x_2-x_1} < \frac{f(x_3)-f(x_2)}{x_3-x_2}$.
 
   Užiji 2x V. 6. 5. (Lagrange) na $[x_1, x_2]$, pak na $[x_2, x_3]$: $\exists c \in (x_1, x_2)$ t. ž. $\frac{f(x_2)-f(x_1)}{x_2-x_1} = f^\prime(c)$ a $\exists d \in (x_2, x_3)$ t. ž. $\frac{f(x_3)-f(x_2)}{x_3-x_2}= f^\prime(d)$.
 
@@ -103,3 +103,25 @@
 \begin{proof}
   Důkaz jako cvičení pro čtenáře, napovíme $x_1 = a, x_3 = b, x_2 = $ nějakej zlomek s $\lambda$
 \end{proof}
+
+\begin{veta}[Konvexita a znaménko druhé derivace]
+  Nechť $f^\prime x$ je spojitá v $I$, nechť $\exists f^{\prime\prime}(x)$ vlastní uvnitř $I$. Nechť platí $f^{\prime\prime}(x)>0$ (resp. $\geq, < \leq$) $\forall x \in I$ vnitřní. Pak $f(x)$ je v $I$ ryze konvexní (resp. konvexní, ryze konkávní, konkávní).
+\end{veta}
+
+\begin{proof}
+  Označ $\tilde{I}$ vnitřek $I$.
+
+  $f^{\prime\prime}(x) = (f^\prime(x))^\prime >0$ v $\tilde{I}$, konečné
+
+  $\implies f^\prime(x)$ spojité (V. 5. 1.) a je rostoucí v $\tilde{I}$ (V. 6. 10.)
+
+  $\implies f(x)$ je ryze konvexní v $I$ (V. 6. 11.).
+\end{proof}
+
+\begin{definice}
+  Řekneme, že $x_0$ je inflexní bod $f(x)$, jestliže
+  \begin{enumerate}[i.]
+    \item $\exists f^\prime(x_0) \in \mathbb R^*$
+    \item $\exists \delta >0$ t. ž. na jednom z intervalů $(x_0-\delta, x_0), (x_0, x_0 + \delta)$ je $f(x)$ ryze konvexní a na druhé ryze konkávní.
+  \end{enumerate}
+\end{definice}

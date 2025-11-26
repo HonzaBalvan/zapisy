@@ -1,0 +1,104 @@
+\section{Posloupnosti}
+
+\begin{definice}
+  Posloupnost je funkce $a: \mathbb N \to \mathbb R, n \mapsto a_n$, značíme $\{a_n\}_{n\in\mathbb N}$ nebo $\{a_n\}_{n=n_0}^{\infty}$, krátce $\{a_n\}$.
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $a_n = \frac{1}{n}, b_n = (-1)^n$
+    \item rekurentně: $a_1 = 0, a_{n+1} = \sqrt{2+a_n}$
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+  Číslo $a\in\mathbb R^*$ se nazve limita posloupnost $\{a_n\}$, pokud
+  $$\forall \varepsilon > 0 \,\exists n_0 \in \mathbb N: n \geq n_0 \implies a_n \in \mathscr U(a, \varepsilon).$$
+  Značíme $a_n \to a$ nebo $\lim_{n \to+\infty} a_n = a$.
+\end{definice}
+
+\begin{poznamka}
+  $a \in \mathbb R \dots \{a_n\}$ konverguje
+
+  $a = \pm+\infty \dots \{a_n\}$ diverguje
+\end{poznamka}
+
+\begin{poznamka}[Ekvivalentní definice (pokud $a \in \mathbb R$)]
+  $$\forall \varepsilon > 0 \,\exists n_0 \in \mathbb N: n \geq n_0 \implies |a_n-a|<\varepsilon$$
+  Obecně: $a_n \to a \iff \forall \varepsilon > 0$ platí $a_n \in \mathscr U(a, \varepsilon)$ pro všechna $n$ až na konečně mnoho výjimek
+\end{poznamka}
+
+\begin{proof}
+  \begin{itemize}
+    \item[\uv{$\implies$}] výjimečně jen pro $n < n_0$ (těch je konečně)
+    \item[\uv{$\impliedby$}] $V = \left\{n; a_n \notin \mathscr U(a, \varepsilon)\right\} \subset \mathbb N$ konečné
+
+    volme $n_0 > \max V \in \mathbb N$
+  \end{itemize}
+\end{proof}
+
+\begin{poznamka}
+  Pro limity posloupností platí analogie vět pro limity funkcí s analogickými důkazy.
+  \begin{enumerate}[i.]
+    \item (VoAL, V. 2. 3., V. 2. 7.) $a_n \to a, b_n \to b \implies$ \begin{enumerate}[1.]
+      \item $a_n \pm b_n \to a \pm b$
+      \item $a_n \cdot b_n \to a \cdot b$
+     \item $\frac{a_n}{b_n} \to \frac{a}{b}$, má-li PS smysl
+    \end{enumerate}
+    \item (V. 2. 9.) je-li $\alpha \leq a_n \leq \beta$ od jistého $n_0, a_n \to a \implies \alpha \leq a \leq \beta$
+    \item (V. 2. 10.) je-li $b_n \leq a_n \leq c_n$ od jistého $n_0, b_n \to a, c_n \to a \implies a_n \to a$
+    \item nechť $a_n \to 0$, nechť $a_n > (\text{resp. } <)$ $ 0$ od jistého $n_0 \implies \frac{1}{a_n} \to +\infty$ (resp. $-\infty$)
+  \end{enumerate}
+\end{poznamka}
+
+\begin{proof}
+  cíl: $\forall \varepsilon > 0 \exists n_0: n \geq n_0 \implies \frac{1}{a_n} \in \mathscr U(+\infty, \varepsilon)$, tj. $\frac{1}{a_n} > \frac{1}{\varepsilon}$
+  \begin{align*}
+    \varepsilon >0\text{ dáno:}&\exists n_1 \in \mathbb N: n \geq n_1 \implies a_n \in \mathscr U(0, \varepsilon)\text{, tj. }|a_n|<\varepsilon \implies -\varepsilon < a_n < \varepsilon\\
+    &\exists n_2 \in \mathbb N: n \geq n_2 \implies a_n > 0 \implies 0 < a_n < \varepsilon
+  \end{align*}
+  polož $n_0 \coloneq \max \{n_1, n_2\}$; nechť $n\geq n_0 \implies$ cíl
+\end{proof}
+
+\begin{definice}
+  Posloupnost se nazve omezená (resp. shora omezená, zdola omezená), pokud $\exists K > 0$ (resp. $K \in \mathbb R$) t. ž. $|a_n| \leq K$ (resp. $a_n \leq K, a_n \geq K$) $\forall n \in \mathbb N$. Posloupnost se nazve rostoucí (resp. neklesající, klesající, nerostoucí) pokud $a_n < a_{n+1}$ (resp. $a_n \leq a_{n+1}, a_n > a_{n+1}, a_n \geq a_{n+1}$) $\forall n \in \mathbb N$. Všechny tyto posloupnosti zároveň nazveme monotónní.
+\end{definice}
+
+\begin{veta}
+  Nechť $\{a_n\}$ konverguje. Pak $\{a_n\}$ je omezené.
+\end{veta}
+
+\begin{proof}
+  víme: $\exists a \in \mathbb R$ t. ž. $a_n \to a \dots \varepsilon =1, \exists n_0 \,\forall n \geq n_0: |a_n-a|<1 \iff L = a-1 < a_n < a+1 = K$
+
+  polož $C \coloneq \max\{K, -L\} \implies |a_n|\leq C, \forall n \geq n_0$, to není $\forall n \in \mathbb N$
+
+  položme $\tilde{C} \coloneq \max \{|a_1|, |a_2|, \dots, |a_{n-1}|, C\}$
+
+  nyní zřejmě: $|a_n| \leq \tilde C \forall n \geq 1$ tj. $\forall n \in \mathbb N$.
+\end{proof}
+
+\begin{veta}
+  Nechť $\{a_n\}$ je monotónní. Pak $\exists a \in \mathbb R^*$ t. ž. $a_n \to a$. Je-li $\{a_n\}$ omezená, pak $a\in \mathbb R$, tj. $\{a_n\}$ konverguje.
+\end{veta}
+
+\begin{proof}
+  BÚNO $\{a_n\}$ je neklesající, tj. $a_n \leq a_{n+1} \,\forall n \in \mathbb N$, a tedy $a_n \leq a_m \,\forall n \leq m$
+
+  polož $M \coloneq \{a_m; m \in \mathbb R\} \subset \mathbb R$.
+  \begin{enumerate}[1.]
+    \item nechť $M$ je omezená ($\iff \{ a_n \}$ je omezená); $S \coloneq \sup M$ (A. 4., $M \neq \emptyset $ )
+          ukážeme, že $a_n \to S$
+
+          $\varepsilon >0$ dáno: $S^\prime \coloneq S - \varepsilon < S \dots \exists n_0: a_{n_0}>S-\varepsilon$
+
+          $\{a_n\}$ neklesající: $a_n > S - \varepsilon \forall n \geq n_0$, zároveň $a_n \leq S < S + \varepsilon$
+
+          $\implies a_n \in \mathscr U(S, \varepsilon), \forall n \geq n_0$.
+          \item nechť $M$ je neomezená ($\iff \{a_n\}$ je neomezená, nutně shora (protože je neklesající))
+
+          ukážeme: $a_n \to +\infty$
+
+          $\varepsilon >0$ dáno: $\exists n_0$ t. ž. $a_{n_0} > \frac{1}{\varepsilon}$ a tedy $a_n > \frac{1}{\varepsilon}, \forall n \geq n_0 \implies a_n \in \mathscr U(+\infty, \varepsilon)$
+  \end{enumerate}
+\end{proof}
