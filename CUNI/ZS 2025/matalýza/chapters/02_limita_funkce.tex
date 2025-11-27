@@ -1,0 +1,77 @@
+\section{Reálné funkce -- limita a spojitost}
+
+Úmluva. reálné fce $f(x): \mathbb R \rightarrow \mathbb R$ (tj. nikoliv $\mathbb R^*$)
+        $\exists \delta > 0$ ... $\exists \delta \in (0, + \infty)$, tj. $\delta \neq \pm \infty$
+
+Příklad. $f(x) = \frac{1}{x}$ ... $D_f = \mathbb R \smallsetminus \{0\}$, nikoliv $\frac{1}{\pm \infty} = 0
+
+Terminologie. $f(x)$ se nazve na množině M:
+\begin{enumerate}[i.]
+\item rostoucí, pokud $\forall x, y \in M: x<y \implies f(x) < f(y)$
+\item klesající, pokud $\forall x, y \in M: x<y \implies f(x) > f(y)$
+\item neklesající, pokud $\forall x, y \in M: x<y \implies f(x) \leq f(y)$
+\item nerostoucí, pokud $\forall x, y \in M: x<y \implies f(x) \geq f(y)$
+\end{enumerate}
+Tyto funkce nazveme monotónní, dále fce z bodů i. a ii. nazveme ryze monotonní na množině M.
+
+Funkce jsou dále sudé, liché, periodické, ...
+
+Definice. f(x) se nazve na množině M
+\begin{enumerate}[i.]
+\item shora omezená, pokud $\exists K \in \mathbb R \forall x \in M: f(x) \leq K$
+\item zdola omezená, pokud $\exists L \in \mathbb R \forall x \in M: f(x) \geq L$
+\item omezená, je-li shora i zdola omezená, tj. $\exists K, L \in \mathbb R \forall x \in M: L \leq f(x) \leq K$. (tady je ekviv. tvrzení s abs. hodnotou a tohoto komicky dlouhý důkaz)
+\end{enumerate}
+
+Definice. (Okolí bodu) Nechť $\delta > 0, x \in \mathbb R$. Pak
+\begin{enumerate}[i.]
+\item $\mathscr U (x_0, \delta) = (x_0 - \delta, x_0 + \delta)$ nazveme kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr P (x_0, \delta) = (x_0 - \delta, x_0 + \delta) \smallsetminus \{x_0\}$ nazveme prstencové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_+ (x_0, \delta) = [x_0, x_0 + \delta)$ nazveme pravé kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_- (x_0, \delta) = (x_0 - \delta, x_0]$ nazveme levé kruhové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_+ (x_0, \delta) = (x_0, x_0 + \delta)$ nazveme pravé prstencové $\delta$-okolí bodu $x_0$
+\item $\mathscr U_- (x_0, \delta) = (x_0 - \delta, x_0)$ nazveme levé prstencové $\delta$-okolí bodu $x_0$
+\end{enumerate}
+Dále definujme
+\begin{enumerate}[i.]
+\item $\mathscr U (+\infty, \delta) = (\frac{1}{\delta}, +\infty]$
+\item $\mathscr P (+\infty, \delta) = (\frac{1}{\delta}, +\infty)$
+\item ... -\infty, levé pravé
+\end{enumerate}
+
+Poznámka. \begin{itemize}
+\item $\delta_1 < \delta_2 \implies \mathscr (x_0, \delta_1) \subset \mathscr U (x_0, \delta_2)$
+\item pro $x_0 \in \mathbb R$ platí: $\mathscr U (x_0, \delta) = \{x; |x-x_0| < \delta\}$ a $\mathscr P (x_0, \delta) = \{x; 0 < |x-x_0| < \delta\}$
+\item zkrácený zápis $\mathscr U(x_0), \mathscr P(x_0)$
+
+Věta 2.1. (Princip oddělení) Nechť $x_0, x_1 \in \mathbb R^*, x_0 \neq x_1$ t. ž. $\mathscr U (x_0, \delta) \cap \mathscr (x_1, \delta) = \emptyset
+Důkaz. BÚNO $x_0<x_1$, rozlišme případy:
+\begin{enumerate}
+\item $x_0, x_1 \in \mathbb R$: stačí, aby $x_0 + \delta < x_1 - \delta$, tedy $\delta < \frac{x_1 - x_0}{2}$
+\item $x_0 = \-infty, x_1 \in \mathbb R$: stačí, aby $\frac{-1}{\delta} < x_1 - \delta$, tedy ... (rozdělím na případy x)
+\item $x_0 \in \mathbb R, \x_1 = + \infty$: analogicky k ii.
+\item $x_0 = - \infty, x_1 = + \infty$: platí vždy
+\end{enumerate}
+
+Poznámka. Dokázali jsme navíc, že $\mathscr U(x_0, \delta)$ je vlevo od $\mathscr U (x_1, \delta)$, tj. $\forall x \in \mathscr U(x_0, \delta), \forall y \in \mathscr U (x_1, \delta): x<y$.
+
+Definice. Nechť $x_0 \in \mathbb R^*, f(x)$ je definována na jistém $\mathscr P(x_0). Číslo $A \in \mathbb R^*$ nazveme limitou $f(x)$ v bodě $x_0$, jestliže:
+$$\forall \epsilon >0 \exists \delta >0: x \in \mathscr P(x_0, \delta) \imlplies f(x) \in \mathscr U (A, \epsilon)$$
+Značíme $f(x) \rightarrow A, x \rightarrow x_0$ nebo $\lim_{x \rightarrow x_0}{f(x))}=A$. Pokud $A \in \mathbb R$ nazveme limitu vlastní, pokud $A = \pm infty$ nazveme limitu nevlastní.
+
+Poznámka. \begin{itemize}
+\item limita nezávisí na $f(x_0)$, nemusí být definováno
+\item alternativní zápisy \begin{itemize}
+\item $\forall \epsilon > 0 \exists \delta > 0: f(\mathscr P(x_0, \delta)) \subseteq \mathscr U (A, \epsilon)$
+\item $\forall \epsilon > 0 \exists \delta > 0: 0 < |x-x_0| < \delta \implies |f(x) - A| < \epsilon$ pokud $x_0, A \in \mathbb R$
+\end{itemize}
+\item pokud limita existuje, je právě jedna
+\end{itemize}
+Důkaz. TODO
+
+Příklad. Dirichletova funkce
+$$D(x) \def \begin{cases} 1, x \in \mathbb Q \\ 0, x \in \mathbb R \smallsetminus \mathbb Q \end{cases}$$
+tvrdíme: $\nexists lim_{x \rightarrow x_0}{D(x)}, x_0 \in \mathbb R^*$ lib.
+Důkaz. $x_0, A \in \mathbb R^*$ ... $\neg (D(x) \rightarrow A, x \rightarrow x_0)
+       $\exists \epsilon > 0 \forall \delta > 0: f(\mathscr P(x_0, \delta)) \nsubseteq \mathscr U(A, \epsilon)
+       stačí zvolit $\epsilon$ tak, že $\mathscr U(A, \epsilon)$ neobsahuje buď 0, nebo 1, protože H(f) = \{0,1\} (lze viz věta 2.1.)
