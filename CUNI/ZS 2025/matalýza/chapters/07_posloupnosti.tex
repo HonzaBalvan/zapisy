@@ -102,3 +102,92 @@
           $\varepsilon >0$ dáno: $\exists n_0$ t. ž. $a_{n_0} > \frac{1}{\varepsilon}$ a tedy $a_n > \frac{1}{\varepsilon}, \forall n \geq n_0 \implies a_n \in \mathscr U(+\infty, \varepsilon)$
   \end{enumerate}
 \end{proof}
+
+TODO
+\begin{veta}
+  Následující je ekvivalentní
+  \begin{enumerate}
+    \item $\{a_n\}$ konverguje
+    \item $\{a_n\}$ je cauchyovské
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}[]
+  \begin{itemize}
+    \item[(1) $\implies$ (2)] \dots víme $\exists a \in \mathbb R$ t. ž. $a_n \to a$; cíl (B. C.)
+
+    $\varepsilon > 0$ dáno: $\exists n_0 \,\forall n \geq n_0: a_n \in \mathscr U(a, \frac{\varepsilon}{2})$, tj. $|a-a_n|<\frac{\varepsilon}{2}$
+
+     $\implies \forall m, n \geq n_0$ lze psát: $a_m-a_n = (a_m-a)+(a-a_n)$, takže $|a_m-a_n|\leq |a_m-a|+|a_n-a|<\varepsilon$
+     \item[(2) $\implies$ (1)] \begin{enumerate}[i.]
+       \item $\{a_n\}$ je omezená: užiji (B. C.) pro $\varepsilon=1$: $\exists n_0 \,\forall n, m \geq n_0: |a_m-a_n| < 1$, speciálně $|a_n-a_{n_0}|< 1 \,\forall n \geq n_0$
+
+       $\implies a_{n_0} -1 < a_n < a_{n_0} + 1 \implies \{a_n\}$ omezené
+       \item plyne z V. 7. 4.
+       \item $\varepsilon >0$ dáno: užiji (B. C.) pro $\frac{\varepsilon}{2} \dots \exists n_0 \,\forall m, n \geq n_0: |a_m-a_n| < \frac{\varepsilon}{2}$
+
+       dále $a_m \in \mathscr U(a, \frac{\varepsilon}{2})$ pro nekonečně $m \implies \exists m \geq n_0$ t. ž. $|a_m-a| < \frac{\varepsilon}{2}$
+
+   \end{enumerate}
+  \end{itemize}
+  CELKEM $n \geq n_0:|a_n-a_m|+|a_m+a|<\varepsilon$
+\end{proof}
+
+\begin{veta}[Heineho věta pro limitu funkce]
+  Nechť $f(x)$ je definována na $\mathscr P(x_0), x_0 \in \mathbb R^*$, nechť $A\in \mathbb R^*$. Potom je ekvivalentní
+  \begin{enumerate}[1.]
+    \item $f(x) \to A, x \to x_0$
+    \item $\forall$ posloupnost $\{x_n\}$, která \begin{enumerate}[i.]
+      \item $x_n \to x_0$
+      \item $x_n \neq x_0 \,\forall n$
+    \end{enumerate}  platí $f(x_n) \to A.$
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{itemize}
+    \item[(1) $\implies$ (2)] nechť $\{x_n\}$ splňuje kladené podmínky, cíl: $f(x_n) \to A$
+
+    nechť $\forall \varepsilon > 0 \,\exists n_0: n \geq n_0 \implies f(x_n) \in \mathscr U(A, \varepsilon)$
+
+    $\varepsilon > 0$ dáno: dle (1) $\exists \delta >0$ t. ž. $x\in \mathscr P(x_0, \delta) \implies f(x) \in \mathscr U(A, \varepsilon)$
+
+    dle (i): $\exists n_0$ t. ž. $n \geq n_0 \implies x_n \in \mathscr U(x_0, \delta)$, navíc díky (ii) dokonce $x_n \in \mathscr P (x_0, \delta)$
+
+    CELKEM: $\forall n \geq n_0: f(x_n) \in \mathscr U (A, \varepsilon)$
+    \item[(2) $\implies$ (1)] nepřímo: $\neg (1) \implies \neg (2)$
+
+    nechť $\neg(f(x) \to A, x \to x_0)$, tedy $\exists \varepsilon > 0 \, \forall \delta >0 \, \exists x \in \mathscr P(x_0, \delta)$ t. ž. $f(x) \notin \mathscr U(A, \varepsilon)$
+
+    fixuji takové $\varepsilon > 0$ a uživám zbytek formule pro $\delta = \frac{1}{n}, n = 1, 2, \dots \implies \exists x_n \in \mathscr P(x_0, \frac{1}{n})$ t. ž. $f(x_n) \notin \mathscr U(A, \varepsilon)$, z těchto $x_n$ získám posloupnost $\{x_n\}$
+
+    vidíme: $|x_n-x_0| <\frac{1}{n}$, avšak $x_n \neq x_0 \, \forall n\implies x_n \to x_0$; nicméně $f(x) \notto A$, tj. $\neg (2)$
+  \end{itemize}
+\end{proof}
+
+\begin{poznamka}[Užití axiomu výběru (AC)]
+  Byl použit při formulaci $\exists x_n \in \mathscr P(x_0, \frac{1}{n})$, tohle bych měl udělat nekonečně mnoho krát, udělám jen pro nějaké jedno ??
+\end{poznamka}
+
+\begin{poznamka}[Heineho věta pro limitu zprava]
+  Následující tvrzení jsou ekvivalentní
+  \begin{enumerate}[1.]
+    \item $f(x) \to A, x \to x_0^+$
+    \item $\forall$ posloupnosti $\{x_n\}$ t. ž. \begin{enumerate}[i.]
+      \item $x_n \to x_0$
+      \item $x_n > x_0$
+    \end{enumerate}
+  \end{enumerate}
+\end{poznamka}
+
+\begin{veta}[7.7. Heineho věta pro spojitost funkce v intervalu]
+  Nechť $f(x): I \to \mathbb R$. Potom je ekvivalentní
+  \begin{enumerate}[1.]
+    \item $f(x)$ je spojitá v $I$
+    \item $\forall$ posloupnost $\{x_n\}, \forall x_0$ splňující \begin{enumerate}[i.]
+      \item $x_n \to x_0$
+      \item $x_0 \in I, x_n \in I \,\forall n$
+    \end{enumerate}
+    platí $f(x_n) \to f(x_0)$.
+  \end{enumerate}
+\end{veta}
