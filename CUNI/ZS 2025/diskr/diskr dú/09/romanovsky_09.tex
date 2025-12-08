@@ -1,0 +1,35 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 9}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Příklad 1. Automorfismy stromu.}\\
+
+\noindent Když každý automorfismus stromu zachovává vzdálenosti vrcholů, mužeme si vzít všechny vrcholy, které mají od všech ostatních tu nejmenší maximální vzdálenost a o nich víme, že se zobrazí na takové vrcholy, které mají od všech ostatních zase tu nejmenší maximální vzdálenost -- tzv. střed grafu. Střed stromu má vždy jeden, nebo dva vrcholy, což vyplývá z algoritmu pro hledání středu stromu -- osekáme v jednom kroku všechny listy, tím nám vznikne nový strom zase s nějakými listy, takto osekáváme dokud máme co osekávat a buď nám zůstane jeden vrchol -- jednoprvkový střed, nebo žádný vrchol -- dvouprvkový střed kde středem jsou dva poslední osekané vrcholy, které budou spojené hranou. Když bude mít střed jeden vrchol, zobrazí se sám na sebe -- bude fixovaným vrcholem. Když bude mít dva, každý se může zobrazit sám na sebe -- 2 fixované vrcholy, nebo se můžou zobrazit na sebe navzájem -- fixovaná hrana. $\qed$
+
+\noindent\textbf{Příklad 2. Podstromy.}\\
+
+\noindent Postupujme sporem. Mějme tři podstromy $A, B, C$ takové, že každé dva mají neprázdný průnik, ale průnik všech třech je prázdný. Pokud podstromy $A$ a $B$ mají průnik v bodě $X$, průnik podstromů $B$ a $C$ nesmí být v bodě $X$, jinak by byl průnik všech třech neprázdný, nechť mají průnik v bodě $Y$. Potom průnik $C$ a $A$ musí být zase v bodě jiném od $X, Y$, nebo průnik všech tří není prázdný. Takto nám ale vznikne cyklus obsahující body $X, Y, Z$ a procházející přes podstromy $A, B, C$ což je spor s tím, že máme podstromy stromu. $\qed$
+\end{document}
