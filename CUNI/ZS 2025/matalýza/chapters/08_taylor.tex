@@ -43,16 +43,19 @@
 \end{definice}
 
 \begin{definice}
-  Pro $x_0 \in \mathbb R, k \geq 0$ celé označme $Q_{k, x_0}(x) = \frac{1}{k!}(x-x_0)^k$, speciálně $Q_{0, x_0}(x) \def_tri_cary 1$, $Q_{1, x_0}(x) = \frac{1}{2}(x-x_0)^2$, atd.
+  Pro $x_0 \in \mathbb R, k \geq 0$ celé označme $Q_{k, x_0}(x) = \frac{1}{k!}(x-x_0)^k$, speciálně $Q_{0, x_0}(x) \equiv 1$, $Q_{1, x_0}(x) = \frac{1}{2}(x-x_0)^2$, atd.
 \end{definice}
 
 \begin{lemma}[8.1. Vlastnosti funkcí $Q_{k, x_0}$]
   Platí \begin{enumerate}[i.]
     \item $Q_{k, x_0}$ je polynom stupně $k$
-    \item $Q^\prime_{0, x_0} \def_tri_cary 0, Q^\prime_{k, x_0}=Q_{k-1, x_0}\,\forall k \geq 1$
-    \item $Q^{(l)}_{k, x_0} = $\begin{cases}
-      $1, l = k \\ 0, l \neq k$
-  \end{cases} $\forall k, l \geq 0$ celé
+    \item $Q^\prime_{0, x_0} \equiv 0, Q^\prime_{k, x_0}=Q_{k-1, x_0}\,\forall k \geq 1$
+    \item $Q^{(l)}_{k, x_0} =
+      \begin{cases}
+        1, l = k \\
+        0, l \neq k
+      \end{cases}
+      \forall k, l \geq 0$ celé
   \end{enumerate}
 \end{lemma}
 
@@ -60,7 +63,7 @@
   \begin{enumerate}[i.]
     \item $(x-x_0)^k =^{\text{(binom. v.)}} x^k + \dots$
     \item $1^prime = 0$; $(Q_{k, x_0})^\prime = \frac{1}{k!} ((x-x_0)^k)^\prime = \frac{1}{k!} k (x-X-0)^{k-1} = \frac{1}{(k-1)!}(x-x_0)^{k-1} = Q_{k-1, x_0}$
-    \item $l = k: Q_^{(k)}{k, x_0}(x_0) = Q_{0, x_0}(x_0) = 1; l > k: Q^{(l)}_{k, x_0} \def_tri_cary 0; l < k$ tj. $k = l+s, s \geq 1: Q^{(l)}_{k, x_0}=Q_{s, x_0} = \frac{1}{s!}(x-x_0)^s, x = x_0 \implies Q_{s, x_0}(x_0)=0$
+    \item $l = k: Q^{(k)}_{k, x_0}(x_0) = Q_{0, x_0}(x_0) = 1; l > k: Q^{(l)}_{k, x_0} \equiv 0; l < k$ tj. $k = l+s, s \geq 1: Q^{(l)}_{k, x_0}=Q_{s, x_0} = \frac{1}{s!}(x-x_0)^s, x = x_0 \implies Q_{s, x_0}(x_0)=0$
   \end{enumerate}
 \end{proof}
 
@@ -96,18 +99,19 @@
     \item aprox. vlast.: cíl: $\frac{f(x)-p(x)}{(x)^n}\to 0, x \to 0$ -- metoda L´Hospital $\frac{0}{0}$ $n$-krát
 
     po $n$-tém kroku: $\frac{f^{(n)}(x)-p^{(n)}(x)}{n!}$, když dosadím $x = 0 \implies \frac{0}{n!} = 0$
-    \item jedonznačnost: nechť $\exists g(x)$ \dots polynom st $\leq n$ t. ž. $\frac{f(x)-g(x)}{(x)^n}\to 0, x \to 0$ \dots cíl: $g(x) \def_tri_cary p(x) = T^f_{0, n}(x)$
+    \item jedonznačnost: nechť $\exists g(x) \dots$ polynom st. $\leq n$ t. ž. $\frac{f(x)-g(x)}{(x)^n}\to 0, x \to 0$ \dots cíl: $g(x) \equiv p(x) = T^f_{0, n}(x)$
 
     pomocná úvaha: $\frac{p(x)-g(x)}{x^n} = \frac{f(x)-g(x)}{x^n}-\frac{f(x)-p(x)}{x^n}\to 0-0 = 0, x \to 0$
 
-    pišme $p(x) = \sum_{k=0}^n a_k x^k, g(x) = \sum_{k=0}^n b_k x^k$
+    pišme $p(x) = \sum_{k=0}^n {a_k x^k}, g(x) = \sum_{k=0}^n {b_k x^k}$
 
     sporem: když se $p(x), g(x)$ nerovnají $\exists s \in \{0, \dots, n\}$ t. ž. $a_s \neq b_s$, BÚNO $s$ nejmenší takové $\implies p(x)-g(x) = \sum_{k = s}^n (a_k -b_k)x^k, a_k - b_k \eqcolon c_k \implies p(x) - g(x) = c_s x^s + \sum_{k=s+1}^n c_k x^k$
 
-    potom $\frac{p(x)-g(x)}{x^s}=$ \begin{cases}
-      $c_s + \sum_{k = s+1}^n c_k x^{k-s}$, když $x \to 0$, výraz $\to c_s \neq 0$ \\
-      $\frac{p(x)-g(x)}{x^n}\cdot x^{n-s}$ (viz pom. úvaha) $\to 0$ -- SPOR
-  \end{cases}
+    potom $\frac{p(x)-g(x)}{x^s}=
+    \begin{cases}
+      c_s + \sum_{k = s+1}^n c_k x^{k-s}$, když $x \to 0$, výraz $\to c_s \neq 0 \\
+      \frac{p(x)-g(x)}{x^n}\cdot x^{n-s}$ (viz pomocná úvaha) $\to 0$ -- SPOR$
+    \end{cases}$
   \end{enumerate}
 \end{proof}
 
@@ -155,9 +159,9 @@
 
 \begin{proof}
   \begin{itemize}
-    \item[1.] víme: $\frac{f(x)}{x^n}, \frac{g(x)}{x^m} \to 0, x \to 0$ \dots cíl $\frac{af(x)+bg(x)}{x^n} \to 0, x \to 0
+    \item[1.] víme: $\frac{f(x)}{x^n}, \frac{g(x)}{x^m} \to 0, x \to 0$ \dots cíl $\frac{af(x)+bg(x)}{x^n} \to 0, x \to 0$
 
-    a \frac{f(x)}{x^n} + b \frac{g(x)}{x^m}\cdot x^{m-n} \to (VoAL) 0, x \to 0$
+    $a \frac{f(x)}{x^n} + b \frac{g(x)}{x^m}\cdot x^{m-n} \to (VoAL) 0, x \to 0$
     \item[4.] víme: $\frac{f(y)}{y^n} \to 0, y \to 0; \frac{g(x)}{x^m} \to c, x \to 0$, kde $c \in \mathbb R \smallsetminus \{0\}$
 
     cíl: $\frac{f(g(x))}{x^{m+n}}\to 0 x \to 0$

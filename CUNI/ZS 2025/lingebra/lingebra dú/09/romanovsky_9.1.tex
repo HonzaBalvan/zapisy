@@ -1,0 +1,57 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+\usepackage{enumerate}
+\usepackage{tabularx}
+
+\DeclareMathOperator{\Ker}{Ker}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 9}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(9.1)} Provedeme Gaussovu eliminaci na matici $A_{a, b}$.
+$$\begin{pmatrix}
+  a + 2 & b & 1 & 2\\
+  2a + 1 & 2b & a + 3 & 1\\
+  3a + b + 3 & 3b & a + 4 & b + 3
+\end{pmatrix}\sim
+\begin{pmatrix}
+  a + 2 & b & 1 & 2\\
+  -3 & 0 & a + 1 & -3\\
+  b - 3 & 0 & a + 1 & b - 3
+\end{pmatrix}\sim
+\begin{pmatrix}
+  a + 2 & b & 1 & 2\\
+  -3 & 0 & a + 1 & -3\\
+  b & 0 & 0 & b
+\end{pmatrix}$$
+Vidíme, že můžeme vynulovat pouze třetí řádek, a to volbou parametru $b = 0$. V tom případě bude $\dim \operatorname{Im}A_{a, b}= 2$, jindy vždy $\dim \operatorname{Im}A_{a, b}=3$. Z tvrzení o dimenzi jádra a sloupcového prostoru můžeme rovnou určit dimenze ostatní prostorů.
+
+\begin{center}
+\begin{tabular}{ c | c | c | c | c }
+  \, & $\dim \operatorname{Im}A_{a, b}$ & $\dim \operatorname{Im}A_{a, b}^T$ & $\dim \Ker A_{a, b}$ & $\dim \Ker A_{a, b}^T$ \\
+  \hline
+  $b = 0$ & 2 & 2 & 2 & 2\\
+  $b \neq 0$ & 3 & 3 & 1 & 1\\
+\end{tabular}
+\end{center}
+\end{document}
