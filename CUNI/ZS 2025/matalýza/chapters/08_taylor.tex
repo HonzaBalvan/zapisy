@@ -110,3 +110,89 @@
   \end{cases}
   \end{enumerate}
 \end{proof}
+
+\begin{poznamka}
+  Polynomická funkce je přesně rovna svému Taylorovu polynomu pro lib. $x_0 \in D(f)$.
+\end{poznamka}
+
+\begin{veta}[8.2. Integrál a derivace Taylorova polynomu]
+  Nechť $F(x) \in C^{n+1}(\mathscr U(x_0))$, nechť $F^\prime (x) = f(x)$, tj. $F(x) = \int f(x) dx$ v $\mathscr U(x_0)$. Potom
+  \begin{enumerate}[1.]
+    \item $(T^F_{x_0, n+1}(x))^\prime = T^f_{x_0, n}(x)\,\forall x \in \mathscr U (x_0)$,
+    \item $\int T^f_{x_0, n}(x) dx = T^F_{x_0, n+1}(x) + c \, \forall x \in \mathscr U(x_0)$ a vhodně zvolené $c$.
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[1.]
+    \item $T^F_{x_0, n+1}(x) = \sum_{k=0}^{n+1} F^{(k)}(x_0)\cdot Q_{k, x_0}(x)$ -- zderivujeme
+
+    $\sum_{k=1}^{n+1}F^{(k)}(x_0)\cdot Q_{k+1, x_0}(x) = \sum_{l=0}^{n}F^{(l+1)}(x_0)\cdot Q_{l, x_0}(x) = T^f_{x_0, n}(x)$
+    \item $\int T^f_{x_0, n}(x) dx = \int \sum_{k=0}^{n}f^{(k)}(x_0)\cdot Q_{k, x_0}(x) dx = \sum_{l=1}^{n+1}F^{(l)}(x_0)\cdot Q_{l+1, x_0}(x) + c = T^F_{x_0, n+1}(x)$ pro vhodně zvolené $c = F(x_0)\cdot Q_{NECO}(x) = F(x_0)$
+  \end{enumerate}
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $\cos x = (\sin x)^\prime $ TODO
+    \item $\ln 1+x = \int \frac{dx}{1+x}$ TODO
+  \end{enumerate}
+\end{priklad}
+
+\begin{priklad}
+  $$\lim_{x \to 0} \frac{x-\sin x}{x^3} = \lim_{x \to 0} \frac{x-(x- \frac{x^3}{6}+o(x^3))}{x^3} = \lim_{x \to 0} \frac{1}{6} - \frac{o(x^3)}{x^3} = \frac{1}{6}$$
+\end{priklad}
+
+\begin{veta}[8.3. Početní pravidla pro malé ó]
+  Nechť $m, n \in \mathbb Z$. Potom
+  \begin{enumerate}[1.]
+    \item $f(x) = o(x^n), g(x) = o(x^m), x \to 0,$ kde $m \geq n; a, b \in \mathbb R \implies af(x) + bg(x) = o(x^n), x \to 0,$
+    \item $f(x) = o(x^n), x \to 0, a \in \mathbb R \implies ax^m f(x) = o(x^{m+n}), x \to 0,$
+    \item $f(x) = o(x^n), g(x) = o(x^m), x \to 0 \implies f(x)g(x) = o(x^{m+n}), x \to 0,$
+    \item $f(x) = o(x^n), g(x) \sim x^m, x \to 0$, kde $m \geq 1 \implies f(g(x)) = o(x^n+m), x \to 0.$
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{itemize}
+    \item[1.] víme: $\frac{f(x)}{x^n}, \frac{g(x)}{x^m} \to 0, x \to 0$ \dots cíl $\frac{af(x)+bg(x)}{x^n} \to 0, x \to 0
+
+    a \frac{f(x)}{x^n} + b \frac{g(x)}{x^m}\cdot x^{m-n} \to (VoAL) 0, x \to 0$
+    \item[4.] víme: $\frac{f(y)}{y^n} \to 0, y \to 0; \frac{g(x)}{x^m} \to c, x \to 0$, kde $c \in \mathbb R \smallsetminus \{0\}$
+
+    cíl: $\frac{f(g(x))}{x^{m+n}}\to 0 x \to 0$
+
+    TRIK $\frac{f(g(x))}{(g(x))^n}\cdot (\frac{g(x)}{x^m})^n = P_1 \cdot P_2$
+
+    $P_1 \to 0$, ale VoLSF (b) \dots $g(x) \to 0, x \to 0; g(x) \neq 0$ na $\mathscr P(x_0, \delta), \delta > 0$ malé
+
+    $g(x) = \frac{g(x)}{x^n} x^m \to c \cdot 0 = 0$,
+
+    $\frac{g(x)}{x^m} \to c \neq 0 \implies \frac{g(x)}{x^m} \neq 0$ na $\mathscr P(0, \delta) \implies g(x) \neq 0$ na $ \mathscr P(, \delta)$
+  \end{itemize}
+\end{proof}
+
+\begin{poznamka}[Doplněk]
+  \begin{itemize}
+    \item[$2^\prime$] $f(x) = o(x^n), x \to 0, (m \leq n) \implies \frac{f(x)}{x^m} = o(x^{n-m})$
+  \end{itemize}
+\end{poznamka}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $x \to 0, \frac{x^3}{\sin x \ln (1+x^2)} = \frac{x^3}{(x+o(x))(x^2+o(x^2))}=\frac{x^3}{x^3+x\cdot o(x^2)+x^2 \cdot o(x) + o(x)o(x^2)} = \frac{x^3}{x^3 + o(x^3) + o(x^3) + o(x^3)} = \frac{x^3}{x^3 + o(x^3)} = 1 + \frac{x^3}{o(x^3)} \to 1$
+    \item $T^{tg}_0, 5(x) = Ax + Bx^3 + Cx^5+ o(x^5); \tg (x) = \frac{\sin x}{\cos x}$
+
+    $\tg x \cdot \cos x = \sin x$
+    $(Ax + Bx^3 + Cx^5+ o(x^5))(1- \frac{x^2}{2} + \frac{x^4}{24}+o(x^4))=x- \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)$ a dále M. P. K.
+    $T = x - \frac{x^3}{3} + \frac{2x^5}{15}$
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  Čím větší řád taylorova polynomu, tím přesnější odhad = lepší řád aproximace, bude ale chyba v nekonečnu nulová?
+\end{poznamka}
+
+\begin{definice}
+  Zbytek po Taylorově polynomu nazveme $R^f{x_0, n+1}(x) = f(x) - T^f_{x_0, n}(x)$.
+\end{definice}
