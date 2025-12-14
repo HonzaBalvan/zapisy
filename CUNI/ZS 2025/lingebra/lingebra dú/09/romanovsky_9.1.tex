@@ -28,7 +28,7 @@
 \begin{document}
 \maketitle
 
-\textbf{(9.1)} Provedeme Gaussovu eliminaci na matici $A_{a, b}$.
+\textbf{(9.1)} Provedeme na matici $A_{a, b}$ vhodné řádkové a sloupcové úpravy, které nemění dimenzi řádkového či sloupcového prostoru.
 $$\begin{pmatrix}
   a + 2 & b & 1 & 2\\
   2a + 1 & 2b & a + 3 & 1\\
@@ -36,22 +36,36 @@ $$\begin{pmatrix}
 \end{pmatrix}\sim
 \begin{pmatrix}
   a + 2 & b & 1 & 2\\
-  -3 & 0 & a + 1 & -3\\
-  b - 3 & 0 & a + 1 & b - 3
+  2 & 0 & a + 1 & 2\\
+  b +2 & 0 & a + 1 & b +2
 \end{pmatrix}\sim
 \begin{pmatrix}
   a + 2 & b & 1 & 2\\
-  -3 & 0 & a + 1 & -3\\
+  2 & 0 & a + 1 & 2\\
   b & 0 & 0 & b
+\end{pmatrix}\sim
+\begin{pmatrix}
+  a & b & 4a & 0\\
+  2 & 0 & a + 1 & 2\\
+  b & 0 & 0 & b
+\end{pmatrix}\sim$$
+$$\sim\begin{pmatrix}
+  a & b & 4a & 4a\\
+  2 & 0 & a + 1 & 0\\
+  b & 0 & 0 & 0
 \end{pmatrix}$$
-Vidíme, že můžeme vynulovat pouze třetí řádek, a to volbou parametru $b = 0$. V tom případě bude $\dim \operatorname{Im}A_{a, b}= 2$, jindy vždy $\dim \operatorname{Im}A_{a, b}=3$. Z tvrzení o dimenzi jádra a sloupcového prostoru můžeme rovnou určit dimenze ostatní prostorů.
+Nyní budeme hledat, zda je posloupnost řádků lineárně nezávislá
+Vidíme, že můžeme vynulovat první a třetí řádek, a to volbou parametru $a = b = 0$ resp. $a \neq 0, b = 0$. V tom případě bude posloupnost řádků $\dim \operatorname{Im}A_{a, b}= 1$, resp. $\dim \operatorname{Im}A^T_{a, b}= 2$ jindy vždy $\dim \operatorname{Im}^TA_{a, b}=3$. Z tvrzení o dimenzi jádra a sloupcového prostoru můžeme rovnou určit dimenze ostatní prostorů.
 
 \begin{center}
 \begin{tabular}{ c | c | c | c | c }
-  \, & $\dim \operatorname{Im}A_{a, b}$ & $\dim \operatorname{Im}A_{a, b}^T$ & $\dim \Ker A_{a, b}$ & $\dim \Ker A_{a, b}^T$ \\
+  $[a, b]$ & $\dim \operatorname{Im}A_{a, b}$ & $\dim \operatorname{Im}A_{a, b}^T$ & $\dim \Ker A_{a, b}$ & $\dim \Ker A_{a, b}^T$ \\
   \hline
-  $b = 0$ & 2 & 2 & 2 & 2\\
-  $b \neq 0$ & 3 & 3 & 1 & 1\\
+  $[0, 0]$ & 1 & 1 & 3 & 3\\
+  $[\neq 0, 0]$ & 2 & 2 & 2 & 2 \\
+  $[\text{lib.},\neq 0]$ & 3 & 3 & 1 & 1\\
 \end{tabular}
 \end{center}
+
+TODO [4,2]
 \end{document}

@@ -1,0 +1,35 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Diskrétní matematika -- Sada 10}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Příklad 1. Ekvivalence.}\\
+
+\noindent Vyberme si lib. prvek, nazvěme ho $a$. Protože každý prvek je v relaci alespoň s jedním prvkem musí k němu existovat nějaký, nazvěme ho $b$, t. ž. $aRb$. Protože je $R$ transitivní, platí i $bRa$ a z obou předchozích transitivitou i $aRa$, tedy relace je pro všechny prvky reflexivní, ze zadání je i symetrická a transitivní, je to tedy ekvivalence. $\qed$\\
+
+\noindent\textbf{Příklad 2. Eulerovský line graf.}\\
+
+\noindent Eulerovský graf je graf, který je souvislý a všechny jeho vrcholy mají sudý stupeň. Line graf jakéhokoliv souvislého grafu je zřejmě souvislý. Z grafu, kde má každý vrchol sudý stupeň vznikne line graf se všemi stupni vrcholů znovu sudými, neboť stupeň vrcholu line grafu (= hrana původního grafu), nazvěme $ab$, je roven počtu hran v původním grafu, které mají s vrcholem line grafu společný vrchol. Pro každý z vrcholů hrany původního grafu $a, b$ je to jejich stupeň minus 1 (to je ten vrchol line grafu pro který počítáme, hrana $ab$), tedy součet stupňů vrcholů z původního grafu minus dva (deg $ab$ = deg $a$ + deg $b -2$), což je sudé číslo. Line graf je tedy také eulerovský. Obrácená implikace nebude obecně platit, jelikož lib. eulerovský graf $G$ a graf $G^\prime$, který vznikne z $G$ přidáním izolovaného vrcholu bude mít stejný eulerovský line graf, přičemž $G^\prime$ zjevně není eulerovský (není spojitý).
+\end{document}
