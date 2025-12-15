@@ -1,6 +1,6 @@
 \section{Taylorův polynom}
 
-\begin{priklad}[Motivační]
+\begin{motivace}
   Chci aproximaci $f(x) = e^{-2x}$ v bodě $x=0$, hledáme aproximaci $p(x) = a + bc + cx^2$
 
   Nikoho nepřekvapí, že lineární aproximace bude tečna, tedy $p(x) = f(0) + f^\prime (0) x = 1- 2x$
@@ -12,7 +12,7 @@
   $p^{\prime\prime}(0) = 2c, f^{\prime\prime}(0)= 4 \implies c = 2 \implies p(x) = 1 - 2x + 2x^2$
 
   Jak toto dělat obecně? Jak určit další vyšší členy? Když aproximaci useknu, jak velká je chyba?
-\end{priklad}
+\end{motivace}
 
 \begin{definice}
   Nechť $f(x), g(x)$ jsou definovány na $\mathscr P(x_0)$. Řekneme, že
@@ -200,3 +200,42 @@
 \begin{definice}
   Zbytek po Taylorově polynomu nazveme $R^f{x_0, n+1}(x) = f(x) - T^f_{x_0, n}(x)$.
 \end{definice}
+
+\begin{veta}[8. 4. Odhad zbytku Taylorova polynomu]
+  Nechť $f(x) \in C^{n+1}(I)$, kde $I$ je otevřený interval, nechť $x, x_0 \in I, x \neq x_0$. Potom:
+  \begin{enumerate}[1.]
+    \item $\exists \theta$ mezi $x, x_0$ t. ž. $R^f{x_0, n+1}(x) = \frac{f^{(n+1)}(\theta)}{(n+1)!}(x-x_0)^{n+1}$ (L)
+    \item $\exists \theta$ mezi $x, x_0$ t. ž. $R^f{x_0, n+1}(x) = \frac{f^{(n+1)}(\theta)}{n!}(x-\theta)(\theta-x_0)^n$ (C)
+  \end{enumerate}
+  Výraz napravo se nazývá Lagrangeův, resp. Cauchyho tvar zbytku.
+\end{veta}
+
+\begin{proof}
+  TRIK pomocná fce $\varphi(t), t \in [x_0, x], x_0, x \dots$ pevné, kde $$\varphi(t) \coloneq f(x) - T^{f}_{t, n}(x) = f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(t)}{k!}(x-t)^k$$
+  vidíme: $\varphi(x_0) = R^{f}_{x_0, n+1}(x)$, $\varphi(x) = f(x) - T^{f}_{x, n}(x) = f(x) - f(x) - \frac{f^\prime (x)}{1!}(x-x) - \frac{f^{\prime\prime}(x)}{2!}(x-x) - \dots = f(x)- f(x) + 0 = 0$
+
+  pomocný výpočet: $$\varphi^\prime (t) = \frac{d}{dt}\varphi(t) = -\left[f(t)+\sum_{k = 1}^{n}f^{(k)}(t)\frac{(x-t)^k}{k!}\right] = -f^\prime (t) - \sum_{k=1}^{n} f^{(k+1)}(t)\frac{(x-t)^k}{k!}+\sum_{k=1}^{n} f^{(k)}(t)\frac{(x-t)^{k-1}}{(k-1)!}=$$ $$= -\sum_{l=1}^{n-1} f^{(l)}(t) \frac{(x-t)^{l-1}}{(l-1)!} + \sum_{l=1}^{n} f^{(l)} \frac{(x-t)^{l-1}}{(l-1)!} = \frac{-f^{(n+1)}(t)}{n!}(x-t)^n$$
+  použiji V. 6. 8. (C. o stř. h.): $\frac{\varphi(x)-\varphi(x_0)}{\psi(x)-\psi(x_0)} = \frac{\varphi^\prime(\theta)}{\psi^\prime(\theta)}$
+
+  volíme $\psi(t) = (x-t)^{n+1} \implies$ (L), resp. $\psi (t) = t \implies$ (C)
+
+  podrobně ad (L): LS$ = \frac{-R^{f}_{x_0, n+1}(x)}{-(x-x_0)^{n+1}} = \frac{\frac{-f^{(n+1)(\theta)}}{n!}(x-\theta)^n}{-(n+1)(x-\theta)^n} = $PS
+\end{proof}
+
+\begin{dusledek}
+  $f(x) \in C^{n+1}(\mathscr U(x_0)) \implies R^{f}_{x_0, n+1}(x) = O((x-x_0)^{n+1}), x \to x_0$
+\end{dusledek}
+\begin{proof}
+  $|R^{f}_{x_0, n+1}(x)| \leq |\frac{f^{(n+1)(\theta)}}{(n+1)!}(x-x_0)^n+1|\leq C|x-x_0|^{n+1}$, protože když je $f(x_0)$ spojitá dle L. 6. 1. je omezená na nějakém $\mathscr U(x_0)$
+\end{proof}
+
+\begin{priklad}
+$f(x) = e^x, x_0 = 0 \dots R^{\exp}_{0, n+1}(x) \to 0, n \to +\infty, x \in [-M, M]$ pevné,
+
+neboť $|f^{n+1}(\theta)| = |e^\theta| \leq e^M$, neboť $\theta \in [-M, M]$
+
+$|R^{\exp}_{0, n+1(x)}|\leq e^M \frac{M^{n+1}}{(n+1)!}\to 0, n \to + \infty$
+
+$\implies e^x = T^{\exp}_{0, n}(x) + R^{\exp}_{0, n+1}(x) \implies e^x = \lim_{n \to +\infty} \sum_{k=0}^{n} \frac{x^k}{k!} = \sum_{k=0}^{+\infty} \frac{x^k}{k!}$
+
+\end{priklad}

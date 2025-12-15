@@ -1,0 +1,54 @@
+\section{Určitý integrál}
+
+\begin{motivace}
+  $$\int_a^b f(x)dx = P_1-P_2$$
+  \begin{figure}
+    \includegraphics{int}
+  \end{figure}
+
+  \begin{enumerate}[1.]
+    \item $\int_0^1 x^2 dx = [\frac{x^3}{3}]_{0}^{1} = \frac{1}{3}- \frac{0}{3}= \frac{1}{3}$
+    \item $\int_0^1 D(x) dx = ???$
+  \end{enumerate}
+  VIdím, že ne každý integrál zvládne všechno zintegrovat. Postulujme si tedy nějaké obecné požadavky.
+\end{motivace}
+
+\begin{poznamka}
+  Požadavky na integrál:
+  \begin{enumerate}[1.]
+    \item (int. konstanty) $\int_a^b c dx = c(b-a)$
+    \item (linearita) $\int_a^b (\alpha f(x) + \beta g(x)) dx = \alpha \int_a^b f(x) dx + \beta \int_a^b g(x) dx$
+    \item (aditivita intervalů) $\int_a^b f(x) dx + \int_b^c f(x) dx = \int_a^c f(x) dx$
+    \item (monotonie) $f(x) \geq g(x) \,\forall x \in (a, b) \implies \int_a^b f(x) dx \geq \int_a^b g(x) dx$
+  \end{enumerate}
+\end{poznamka}
+
+\begin{poznamka}
+  Opakování: $F(x)$ se nazývá primitivní funkce k $f(x)$ v $(a, b)$, jestliže $F^\prime (x) = f(x) \,\forall x \in (a, b)$
+\end{poznamka}
+
+\begin{definice}
+  Nechť $F(x): (a, b) \to \mathbb R$ je dáno. Výraz (má-li smysl) $$F(b^-) - F(a^+) = \lim_{x \to b^-} F(x) - \lim_{x \to a^+} F(x)$$ se nazývá zobecněný přířůstek $F(x)$ od $a$ do $b$. Značíme $[F(x)]^{x=b}_{x=a}$
+\end{definice}
+
+\begin{poznamka}
+  \begin{itemize}
+    \item $F(x)$ je spojité v $[a, b] \implies [F(x)]_a^b = F(b)-F(a)$
+    \item kdy $[F(x)_a^b]$ nemá smysl: buď neexistuje některá z limit, nebo rozdíl nemá smysl v $\mathbb R^*$
+  \end{itemize}
+\end{poznamka}
+
+\begin{definice}
+  Nechť $f(x): (a,b)\to \mathbb R$ je dáno. Potom Newtonův integrál funkce $f(x)$ od $a$ do $b$ definujeme jako $(\mathscr N)\int_a^b f(x) dx \coloneq [F(x)]_a^b$, kde $F(x)$ je libovolná primitvní funkce k $f(x)$ v $(a, b)$.
+\end{definice}
+
+\begin{definice}
+  Dělení intervalu $[a,b]\dots$ $D: x_0 <x_1<\dots<x_n$, kde $x_0 = a, x_n = b$
+
+  $f(x): [a,b] \to \mathbb R \dots$ omezené funkce
+
+  $m_1 = \inf\{f(x), x \in [x_{i-1}, x_i]\}, M_1 = \sup\{f(x), x \in [x_{i-1}, x_i]\}, i = 1, 2, \dots, n$.
+
+  $s(D, f) = \sum_{i=1}^{n} m_i (x_i - x_{i-1}), S(D, f) = \sum_{i=1}^{n} M_i (x_i - x_{i-1})$ dolní, resp. horní Riemannův součet $f(x)$ příslučný dělení $D$. Dále definujme tzv. dolní, resp. horní Riemannův integrál $f(x)$ of $a$ do $b$.
+  $$(\mathscr R)\int_a^b f(x) dx = \sup TODO$$
+\end{definice}
