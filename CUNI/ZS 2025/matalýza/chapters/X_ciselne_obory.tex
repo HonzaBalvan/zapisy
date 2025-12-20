@@ -1,0 +1,67 @@
+\section{Spočetné množiny, číselné obory}
+
+\begin{definice}
+  Množina $A$ se nazve spočetná (countable), pokud existuje bijekce $\varphi: \mathbb N \to A$. ($A$ a $\mathbb N$ jsou isomorfní). Názorně prvky $A$ lze srovnat do prosté posloupnosti.
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}
+    \item $\mathbb N$
+    \item $\mathbb Z = \{0, 1, -1, 2, -2, \dots\}$
+    \item $\mathbb Q = \{0, 1, -1, \dots, \frac{1}{2}, \frac{-1}{2}, \frac{3}{2}, \frac{-3}{2}, \dots \frac{1}{k}, \frac{-1}{k}, \frac{2}{k}, \frac{-2}{k}, \dots, \frac{k-1}{k}, \frac{-k+1}{k}, \frac{k+1}{k}, \frac{-k-1}{k}\}$ ??? je to správně TODO
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}[Značení]
+  $A \cross B = \{(a, b); a \in A, b \in B\}$ -- kartézský součin, uspořádaná dvojice
+
+  $\mathbf P(A)$ -- potenční množina, množina všech podmnožin
+
+  $B^A$ -- množina všech funkcí (zobrazení??? TODO) z A do B
+\end{poznamka}
+
+\begin{veta}[X.1.]
+  \begin{enumerate}[1.]
+    \item $A, B$ spočetné $\implies A \cross B$ spočetné
+    \item $A_j$ spočetné $\forall j \in \mathbb N \implies$ $\bigcup_{j\in \mathbb N}A_j$ spočetné
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  2. zapíšu do tabulky a vidím, že z toho půjde udělat posloupnost, 2. $\implies$ 1 TODO
+\end{proof}
+
+\begin{veta}[X.2.]
+  \begin{enumerate}[1.]
+    \item $\mathbb R$ je nespočetná
+    \item $\{0,1\}^{\mathbb N}$ je nespočetná
+    \item $A$ spočetné $\implies \mathbf P(A)$ je nespočetná
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[1.]
+    \item sporem: nechť $\exists \{a_n\}_{n=1}^{+\infty}$ -- posloupnost všech reálných čísel
+
+    definuj podposloupnosti $\{b_n\} < \{r_n\}$ následovně:
+
+    $a_1 = r_1$
+
+    $b_1 = $ nějak jsou omezený a budou mít limitu to je ale ve sporu TODO
+    \item plyne z 3., neboť $P(A) \approx \{0,1\}^{\mathbb N}$ -- charakteristická funkce množiny
+    \end{itemize}
+    \item plyne z následujícího lemmatu
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}[X.2 Cantor]
+  Žádná množina $X$ není isomorfní s $\mathbf P(X)$.
+\end{lemma}
+
+\begin{proof}
+  sporem: nechť $\exists \varphi: X \to \mathbf P(X)$, definujme $M \subseteq X$ takto: $M \coloneq \{x; x \neq \varphi(x)\}$
+
+  $\exists a \in X$ t. ž. $\varphi(a) = M$ (bijekce), ale $a \in M \implies a \notin M$ a $a \notin M \implies a \in M$ -- spor
+\end{proof}
+
+TODO číselné obory opsat prezentaci

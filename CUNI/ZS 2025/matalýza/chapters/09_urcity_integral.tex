@@ -52,3 +52,32 @@
   $s(D, f) = \sum_{i=1}^{n} m_i (x_i - x_{i-1}), S(D, f) = \sum_{i=1}^{n} M_i (x_i - x_{i-1})$ dolní, resp. horní Riemannův součet $f(x)$ příslučný dělení $D$. Dále definujme tzv. dolní, resp. horní Riemannův integrál $f(x)$ of $a$ do $b$.
   $$(\mathscr R)\int_a^b f(x) dx = \sup TODO$$
 \end{definice}
+
+\begin{poznamka}
+  Nezáleží jakou primitvní funkci si vybereme, protože aditivní konstanty se odečtou. Pokud existuje vlastní Newtonovský integrál, řekneme, že integrál konverguje.
+\end{poznamka}
+
+\begin{lemma}
+  Nechť $F_a(x), F_b(x), I \to \mathbb R$, kde $I = (a,b)$. Nechť $\forall x \in I: \exists F_a^\prime(x), F_b^\prime(x)$ vlastní a rovnají se. Potom $\exists c \in \mathbb R$ t. ž. $\forall x \in I: F_b(x) = F_a(x) + c$.
+\end{lemma}
+
+\begin{proof}
+  polož $F(x) \coloneq F_b(x)-F_a(x), x \in I,$ zřejmě platí
+
+  $F^\prime(x) = F^\prime_b(x)-F^\prime_a(x) = 0 \, \forall x \in I$
+
+  $F(x)$ spojité v $I$ (V. 4. 1.)
+
+  polož $c = F(x_0), x_0 \in I$ lib., pevné $\implies F(x) = c \,\forall x \in I$ (Lagrange)
+\end{proof}
+
+\begin{dusledek}
+  \begin{enumerate}
+    \item něco nepřečtu TODO
+    \item korektnost definice Newtonova integrálu
+  \end{enumerate}
+\end{dusledek}
+
+\begin{proof}
+  TODO screenshot 17/12 na pc
+\end{proof}
