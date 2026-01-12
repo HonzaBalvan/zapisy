@@ -81,3 +81,52 @@
 \begin{proof}
   TODO screenshot 17/12 na pc
 \end{proof}
+ nevim co tady chybi definice riemannova integralu horni dolni soucty deleni
+
+ \begin{poznamka}
+   Když se na to člověk dívá geometricky, ten Riemannův integrál dává prostě smysl nevim.
+ \end{poznamka}
+
+\begin{definice}
+  Dělení $D^\tilde$ nazveme zjemněním dělení $D$, značíme $D \subseteq D^\tilde$, jestliže $D^\tilde$ obsahuje všechny body $D$.
+\end{definice}
+
+\begin{lemma}[9.1.]
+  Nechť $f(x):[a,b] \to \mathbb R$ je omezená funkce, nechť $D, D^\tilde, D_1, D_2$ jsou dělení $[a,b]$.
+  \begin{enumerate}[1.]
+    \item Je-li $D \subseteq D^\tilde$ (nicméně pozor, jsou to posloupnosti ne množiny), pak $s(D, f) \leq s(D^\tilde, f)$ a $S(D, f) \geq S(D^\tilde, f)$.
+    \item Označíme-li $m = \inf \{f(x), x  \in [a, b]\}, M = \sup \{f(x), x \in [a,b]\}$, pak $m(b-a) \leq s(D_1, f) \leq S(D_2, f) \leq M(b-a)?? (b-a nebo b=a)$
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}[1.]
+    \item BÚNO ukážu: $S(D^\tilde, f) \leq S(D, f)$, kde $D^\tilde = D \cup \{x_i^\tilde\}, x_i^\tilde \in (x_i-1, x_i)$ -- graficky vidím, že tam nemám ten obdélník, TODO
+    \item uvažme triviální dělení $D_0: x_0 = a <b = x_1$, uvažme společné zjemnění $D^\tilde = D_1 \cup D_2$
+
+    pozoruji : $s(D_0, f) = m(b-a), S(D_0, f) = M(b-a)$, všimnu si, že $D_0 \subseteq D_1, D_2 \subseteq D^\tilde$
+
+    dle 1. $m(b-a) = s(D_0, f) \leq s(D_1, f) \leq s(D^\tilde, f) \leq S(D^\tilde, f) \leq S(D_2, f) \leq S(D_0, f) = M(b-a)$
+  \end{enumerate}
+\end{proof}
+
+\begin{dusledek}
+  $c_1 \leq f(x) \leq c_2, \forall x \in [a,b] \implies c_1(b-a) \leq (R)\int_{\underline a}^b f \leq (R)\int_{a}^{\underline b} f \leq c_2(b-a)$, speciálně pro $f(x)=c \int = c(b-a$)
+\end{dusledek}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}[9.2]
+  Nechť omezená fce. Potom je Riem. integrovatelná $\iff \forall \eta > 0 \exists$ dělení $D$ t. ž. $S(D, f) - s(D, f) < \eta$ (P. R.)
+\end{lemma}
+
+\begin{proof}
+  TODO 05/01
+\end{proof}
+
+veta 9.1., dukaz
+stejnomerna spojitost
+lemma 9.3., dukaz
+veta 9.2., dukaz
