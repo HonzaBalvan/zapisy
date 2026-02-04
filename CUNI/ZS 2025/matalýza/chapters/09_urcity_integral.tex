@@ -10,7 +10,7 @@
     \item $\int_0^1 x^2 dx = [\frac{x^3}{3}]_{0}^{1} = \frac{1}{3}- \frac{0}{3}= \frac{1}{3}$
     \item $\int_0^1 D(x) dx = ???$
   \end{enumerate}
-  VIdím, že ne každý integrál zvládne všechno zintegrovat. Postulujme si tedy nějaké obecné požadavky.
+  Vidím, že ne každý integrál zvládne všechno zintegrovat. Postulujme si tedy nějaké obecné požadavky.
 \end{motivace}
 
 \begin{poznamka}
@@ -88,25 +88,25 @@
  \end{poznamka}
 
 \begin{definice}
-  Dělení $D^\tilde$ nazveme zjemněním dělení $D$, značíme $D \subseteq D^\tilde$, jestliže $D^\tilde$ obsahuje všechny body $D$.
+  Dělení $\tilde{D}$ nazveme zjemněním dělení $D$, značíme $D \subseteq \tilde{D}$, jestliže $\tilde{D}$ obsahuje všechny body $D$.
 \end{definice}
 
 \begin{lemma}[9.1.]
-  Nechť $f(x):[a,b] \to \mathbb R$ je omezená funkce, nechť $D, D^\tilde, D_1, D_2$ jsou dělení $[a,b]$.
+  Nechť $f(x):[a,b] \to \mathbb R$ je omezená funkce, nechť $D, \tilde{D}, D_1, D_2$ jsou dělení $[a,b]$.
   \begin{enumerate}[1.]
-    \item Je-li $D \subseteq D^\tilde$ (nicméně pozor, jsou to posloupnosti ne množiny), pak $s(D, f) \leq s(D^\tilde, f)$ a $S(D, f) \geq S(D^\tilde, f)$.
+    \item Je-li $D \subseteq \tilde{D}$ (nicméně pozor, jsou to posloupnosti ne množiny), pak $s(D, f) \leq s(\tilde{D}, f)$ a $S(D, f) \geq S(\tilde{D}, f)$.
     \item Označíme-li $m = \inf \{f(x), x  \in [a, b]\}, M = \sup \{f(x), x \in [a,b]\}$, pak $m(b-a) \leq s(D_1, f) \leq S(D_2, f) \leq M(b-a)?? (b-a nebo b=a)$
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}
   \begin{enumerate}[1.]
-    \item BÚNO ukážu: $S(D^\tilde, f) \leq S(D, f)$, kde $D^\tilde = D \cup \{x_i^\tilde\}, x_i^\tilde \in (x_i-1, x_i)$ -- graficky vidím, že tam nemám ten obdélník, TODO
-    \item uvažme triviální dělení $D_0: x_0 = a <b = x_1$, uvažme společné zjemnění $D^\tilde = D_1 \cup D_2$
+    \item BÚNO ukážu: $S(\tilde{D}, f) \leq S(D, f)$, kde $\tilde{D} = D \cup \{\tilde{x_i}\}, \tilde{x_i} \in (x_i-1, x_i)$ -- graficky vidím, že tam nemám ten obdélník, TODO
+    \item uvažme triviální dělení $D_0: x_0 = a <b = x_1$, uvažme společné zjemnění $\tilde{D} = D_1 \cup D_2$
 
-    pozoruji : $s(D_0, f) = m(b-a), S(D_0, f) = M(b-a)$, všimnu si, že $D_0 \subseteq D_1, D_2 \subseteq D^\tilde$
+    pozoruji : $s(D_0, f) = m(b-a), S(D_0, f) = M(b-a)$, všimnu si, že $D_0 \subseteq D_1, D_2 \subseteq \tilde{D}$
 
-    dle 1. $m(b-a) = s(D_0, f) \leq s(D_1, f) \leq s(D^\tilde, f) \leq S(D^\tilde, f) \leq S(D_2, f) \leq S(D_0, f) = M(b-a)$
+    dle 1. $m(b-a) = s(D_0, f) \leq s(D_1, f) \leq s(\tilde{D}, f) \leq S(\tilde{D}, f) \leq S(D_2, f) \leq S(D_0, f) = M(b-a)$
   \end{enumerate}
 \end{proof}
 
