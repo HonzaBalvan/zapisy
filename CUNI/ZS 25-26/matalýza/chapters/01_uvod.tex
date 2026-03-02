@@ -3,7 +3,7 @@
 \begin{poznamka} Značení:
   \begin{itemize}
     \item $P, Q$ \dots výroky, $x, y, z$ \dots čísla (prvky), $A, B, M$ \dots množiny
-    \item $P \& Q$ \dots $P$ zároveň s $Q$
+    \item $P \land Q$ \dots $P$ zároveň s $Q$
     \item $P \lor Q$ \dots $P$ nebo $Q$
     \item $P \implies Q$ \dots $P$ implikuje $Q$
     \item $P \iff Q$ \dots $P$ je ekvivalentní s $Q$
@@ -18,46 +18,47 @@
     \item $\emptyset, \{\}$ \dots prázdná množina
     \item $A \cup B$ \dots sjednocení množin $A, B$
     \item $A \cap B$ \dots průnik množin $A$, $B$
-    \item $A \setminus B$ \dots rozdíl množin (prvky z $A$, které nejsou v $B$)
+    \item $A \smallsetminus B$ \dots rozdíl množin (prvky z $A$, které nejsou v $B$)
   \end{itemize}
 \end{poznamka}
 
 \begin{axiom}[Algebraické vlastnosti $\mathbb{R}$]
-  Existuje množina reálných čísel $\mathbb{R}$, která obsahuje prvky 0 a 1, a jsou na ní definovány operace "$\cdot$" a "$+$" tak, že $\forall x, y, z \in \mathbb{R}$ platí:
+  Existuje množina reálných čísel $\mathbb{R}$, která obsahuje prvky 0 a 1, a jsou na ní definovány operace \uv{$\cdot$} a \uv{$+$} tak, že $\forall x, y, z \in \mathbb{R}$ platí:
   \begin{enumerate}[i.]
     \item $x+y = y+x, x \cdot y = y \cdot x$
     \item $x+(y+z) = (x+y)+z, x\cdot (y\cdot z) = (x \cdot y) \cdot z$
     \item $x \cdot (y+z) = x \cdot y + x \cdot z$
     \item $0 + x = x$, $1 \cdot x = x$
-    \item $0 \cdot x = 0$ a naopak $x \cdot y = 0 \implies x = 0 \lor y = 0$
+    \item $0 \cdot x = 0$ a naopak $x \cdot y = 0 \iff x = 0 \lor y = 0$
   \end{enumerate}
 \end{axiom}
 
 \begin{axiom}[Uspořádání $\mathbb{R}$]
-  Na množině $\mathbb{R}$ je definována relace "$<$" tak, že $\forall x, y, z \in \mathbb{R}$ platí:
+  Na množině $\mathbb{R}$ je definována relace \uv{$<$} tak, že $\forall x, y, z \in \mathbb{R}$ platí:
   \begin{enumerate}[i.]
     \item $x = y$, nebo $x < y$, nebo $y < x$
-    \item $x < y \& y < z \implies x < z$
+    \item $x < y \land y < z \implies x < z$
     \item $x < y \implies x + z < y + z$
-    \item $0 < x \& 0 < y \implies 0 < x \cdot y$
+    \item $0 < x \land 0 < y \implies 0 < x \cdot y$
   \end{enumerate}
 \end{axiom}
 
 \begin{poznamka}
-  $x \leq y$ je zkratka za $(x < y) \lor (x = y)$. Z věty A2 opět lze vyvodit další známé poučky, např. $x^2 \geq 0 \forall x \in \mathbb R$, apod.
+  $x \leq y$ je zkratka za $(x < y) \lor (x = y)$. Z věty A2 opět lze vyvodit další známé poučky, např. $x^2 \geq 0, \forall x \in \mathbb R$, apod.
 \end{poznamka}
 
 \begin{poznamka}[Význačné podmnožiny $\mathbb R$]
+  \newline
   \begin{itemize}
     \item přirozená čísla $\mathbb N = \{1, 2, 3, \dots\}$
-    \item celá čísla $\mathbb Z = \mathbb N \cup \{0, -1, -2, ---\}$
+    \item celá čísla $\mathbb Z = \mathbb N \cup \{0, -1, -2, \dots\}$
     \item racionální čísla $\mathbb Q = \{\frac{p}{q}; p \in \mathbb Z, q \in \mathbb N\}$
     \item intervaly s krajními body $(a, b)$ = $\{x \in \mathbb R; a < x < b\}$, resp. \dots, resp. neomezené pozor hranaté závorky! a ne zobáčky -- uvidíme
   \end{itemize}
 \end{poznamka}
 
-\begin{definice}[Absolutní hodnota]
-  Nechť $x \in \mathbb R$. Potom $x \coloneq \begin{cases}x, x \geq 0 \\ -x, x < 0\end{cases}$
+\begin{definice}
+  Nechť $x \in \mathbb R$. Potom absolutní hodnota z x, značíme $|x| \coloneq \begin{cases}x, x \geq 0 \\ -x, x < 0\end{cases}$
 \end{definice}
 
 \begin{lemma}

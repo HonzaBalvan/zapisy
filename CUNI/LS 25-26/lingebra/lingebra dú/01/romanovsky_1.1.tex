@@ -1,0 +1,35 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 1}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(1.1)} Pravou stranu výrazu pomocí vlastností skalárního součinu a komplexního sdružení upravíme:
+
+$$\frac{1}{4}(||\vec{u}+\vec{v}||^2-||\vec{u}-\vec v||^2) = \frac{1}{4}(\langle\vec{u}+\vec{v}, \vec{u}+\vec{v}\rangle-\langle \vec{u}-\vec{v}, \vec{u}-\vec{v}\rangle)= \frac{1}{4}(\langle \vec{u}, \vec{u} \rangle+\langle \vec{u}, \vec{v} \rangle+ \langle \vec{v}, \vec{u} \rangle+\langle \vec{v}, \vec{v} \rangle - \langle \vec{u}, \vec{u} \rangle -$$
+$$ \langle \vec{u}, -\vec{v} \rangle-\langle -\vec{v}, \vec{u} \rangle-\langle -\vec{v}, -\vec{v} \rangle)= \frac{1}{4}(2\langle \vec{u}, \vec{v}\rangle+2\langle \vec{v}, \vec{u} \rangle ) = \frac{1}{4}(2\langle \vec{u}, \vec{v} \rangle+\overline{\langle \vec{u}, \vec{v} \rangle})=\frac{1}{4}(2\Re \langle \vec{u}, \vec{v} \rangle+2 \Im \langle \vec{u}, \vec{v} \rangle+$$
+$$+2 \Re \langle \vec{u}, \vec{v} \rangle -2\Im \langle \vec{u}, \vec{v} \rangle)= \Re \langle \vec{u}, \vec{v} \rangle$$
+
+A dostali jsme přesně výraz na levé straně.
+\end{document}

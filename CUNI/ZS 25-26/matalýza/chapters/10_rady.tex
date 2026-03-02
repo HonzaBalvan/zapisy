@@ -2,14 +2,262 @@
 
 \begin{priklad}[motivační]
   řada (suma) = nekonečný součet
-  \begin{enum}[1)]
+  \begin{enumerate}[1)]
     \item $1+\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\dots=2$
     \item $1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}+\frac{1}{8}\dots=\infty$
     \item $1-1+\frac{1}{2}-\frac{1}{2}+\frac{1}{3}-\frac{1}{3}+\dots= 0$ ne?, ale
-    \item $ $
-  \end{enum}
+
+          $1+\frac{1}{2}+\frac{1}{3}+\dots+\frac{1}{n_1}-1+\frac{1}{n_1+1}+\dots+\frac{1}{n_2}-\frac{1}{2}+\dots = \infty$ ??
+  \end{enumerate}
 \end{priklad}
 
 \begin{definice}
-  Nechť $a_k \in \mathbb R$ pro $k \in \mathbb N$.
+  Nechť $a_k \in \mathbb R$ pro $k \in \mathbb N \,(\mathbb N_0)$. Symbol $\sum_{k=1}^{\infty} a_k$ se nazve řada. Posloupnost $\{s_n\}_{n=1}^{\infty}$, kde $s_n \coloneq \sum_{k=1}^{n} a_k$ nazveme posloupnost částečných součtů řady. Číslo $s \coloneq \lim_{n \to \infty} s_n \in \mathbb R^*$ se nazve součet řady. Pokud $s \in \mathbb R$ řekneme, že řada konverguje, v opačném případě diverguje. Pokud $s = \pm \infty$ řada diverguje do $\pm \infty$ (určitě diverguje), pokud $\nexists \lim_{n\to \infty} s_n$ řada osciluje (diverguje).
 \end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum_{k = 1}^{\infty} \frac{1}{k(k+1)} = 1$, neboť \textsc{trik} $a_k = \frac{1}{k}-\frac{1}{k+1}$, takže $s_n = (1- \frac{1}{2})+(\frac{1}{2}-\frac{1}{3})+\dots = 1 - \frac{1}{n} \to 1, n \to \infty$
+    \item $\sum_{k=0}^{\infty} q^k = \frac{1}{1-q}, \forall q \in (-1,1)$
+
+\begin{proof}
+  $s_n = 1+q+q^2+\dots+q^n = \frac{1-q^{n-1}}{1-q} \to \frac{1}{1-q}, n \to \infty$
+\end{proof}
+
+    \item $\sum_{k=1}^{\infty} \frac{1}{k} = \infty$, viz výše
+    \item $\sum_{k=1}^{\infty} (-1)^{k}$ osciluje (má dva hromadné body $\implies$ nemá limitu)
+  \end{enumerate}
+\end{priklad}
+
+\begin{veta}[10.1. Nutná podmínka konvergence řady]
+  Nechť $\sum_{k=1}^{\infty} a_k$ konverguje. Pak $a_k \to 0, k \to \infty$.
+\end{veta}
+
+\begin{proof}
+  posuzuji: $a_n = s_n  s_{n-1}, \forall n \geq 2$
+
+  víme: $s_n \to s \in \mathbb R$, a tedy také $s_{n-1} \to s \implies a_n \to s-s = 0$ (VoAL kon.)
+\end{proof}
+
+\begin{lemma}[L.10.1]
+  Nechť $a_k = b_k, \forall k \in \mathbb N$ až na konečně mnoho výjimek. Pak $\sum_{k=1}^{\infty} a_k$ konverguje $\iff \sum_{k=1}^{\infty} b_k$ konverguje.
+\end{lemma}
+
+\begin{proof}
+  $\exists n_0 \in \mathbb N$ t. ž. $a_k = b_k, \forall k \geq n_0$. $s_n = \sum_{k=1}^{n} a_k = a_1+a_2+\dots+a_{n_0}+a_{n_0+1}+\dots+a_n, t_n = \sum_{k=1}^{n} b_k = b_1+b_2+\dots+b_{n_0}+b_{n_0+1}+\dots+b_n$ -- od členů $a_{n_0}, b_{n_0}$ se sčítance rovnají $\implies \exists c \in \mathbb R$ t. ž. $s_n-t_n=c, \forall n \geq n_0$, a tedy $s_n \to s \in \mathbb R \iff t_n \to t \in \mathbb R, t = s-c$
+\end{proof}
+
+\begin{poznamka}
+  Často píšeme $\sum a_k$ místo $\sum_k a_k$ nebo $\sum_{k=1}^{\infty} a_k$.
+\end{poznamka}
+
+\begin{lemma}[L. 10. 2.]
+  Nechť $a_k \geq 0$. Potom řada $\sum_{k=1}^{\infty} a_k$ konverguje $\iff$ má omezené částečné součty.
+\end{lemma}
+
+\begin{proof}
+  $s_n \coloneq \sum_{k=1}^{n} a_k$
+
+  $s_{n+1} = s_n + a_{k+1}$, přičemž $a_{k+1} \geq 0$, tedy $s_{n+1} \geq s_n$
+
+  Tedy $\{s_n\}_{n=1}^{\infty}$ je neklesající, potom tedy dle V. 7. 2. konverguje $\iff$ je omezená.
+\end{proof}
+
+\begin{veta}[V. 10. 3. Srovnávací kritérium -- nelimitní verze]
+  Jsou dány řady $\sum_{k=1}^{\infty} a_k$ a $\sum_{k=1}^{\infty} b_k$, kde $a_k, b_k \geq 0$. Nechť existuje $c>0$ a $n_0$ t. ž. $a_k \leq c\cdot b_k, \forall k \geq n_0$. Pak
+
+  \begin{enumerate}[i)]
+    \item pokud řada $\sum_{k=1}^\infty b_k$ konverguje $\implies$ řada $\sum_{k=1}^\infty a_k$ konverguje,
+    \item pokud řada $\sum_{k=1}^\infty a_k$ diverguje $\implies$ řada $\sum_{k=1}^\infty b_k$ diverguje.
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  Z L. 10. 1. můžeme předpokládat, že $\forall k \in \mathbb N: a_k \leq c \cdot b_k$ (můžu opomenout konečně mnoho členů).
+
+  $s_n \coloneq \sum_{k=1}^{\infty} a_k, t_n \coloneq \sum_{k=1}^{\infty} b_k$
+
+  $s_n = \sum a_k \leq \sum c \cdot b_k = c \cdot t_n$
+
+  Užijme L.10.2.:
+
+  \begin{enumerate}[i)]
+    \item $\sum b_k$ konverguje $\implies \{t_n\}_{n=1}^{\infty}$ je omezená $\implies \{c \cdot t_n\}_{n=1}^{\infty}$ je omezená $\implies \{s_n\}_{n=1}^{\infty}$ je omezená $\implies \sum a_k$ konverguje
+    \item obdobně
+  \end{enumerate}
+\end{proof}
+
+\begin{veta}[V. 10. 4. Podílové kritérium]
+  Je dána řada $\sum_{k=1}^{\infty} a_k$. Nechť $a_k >0$ a $\frac{a_k+1}{a_k} \to q, k \to \infty$. Pak
+
+  \begin{enumerate}[i)]
+    \item je-li $q<1 \implies \sum a_k$ konverguje,
+    \item je-li $q>1 \implies \sum a_k$ diverguje.
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[i)]
+    \item \underline{$q<1$}: $\exists \varepsilon > 0$ t. ž. $\theta = q+\varepsilon<1$
+
+    $\lim_{k\to\infty} \frac{a_{k+1}}{a_k} = q \implies q \in \mathscr U(q, \varepsilon) \implies \exists n_0 \in \mathbb N: \forall k \geq n_0: \frac{a_{k+1}}{a_k}<\theta$.
+
+    Tedy $a_{k+1} \leq \theta \cdot a_k$.
+
+    Dle L. 10. 1. BÚNO $\forall k \in \mathbb N:a_{k+1} \leq \theta \cdot a_k$
+
+    $\implies a_{k+1} \leq \theta\cdot a_k \leq \theta^2 a_{k-1} \leq \dots \theta^k a_1 \implies a_k \leq \theta^{k-1} \cdot a_1$
+
+    $c \coloneq \frac{a_1}{\theta} \implies a_k \leq c \cdot \theta^k$ -- užijeme V. 10. 3. i)
+
+    $\{\theta_k\}$ geometrická řada s kvocientem s velikostí menší než 1 $\implies \sum \theta_k$ konverguje $\implies \sum a_k$ konverguje
+    \item \underline{$q>1$}: $\exists n_0 \in \mathbb N: \forall k \geq n_0: \frac{a_{k+1}}{a_k} > 1$.
+
+    Pak $a_{k+1} >a_k >0, \forall k \geq n_0 \implies \sum a_k \geq \sum a_{n_0} = \infty \implies \sum a_k$ diverguje.
+  \end{enumerate}
+\end{proof}
+
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum \frac{1}{k!}$
+
+    $a_k >0, \forall k \in \mathbb N, \lim_{k\to \infty} \frac{a_{k+1}}{a_k} = \lim_{k\to \infty} \frac{k!}{(k+1)!} = \lim_{k\to\infty} \frac{1}{k} = 0 = q$
+
+    $\implies \sum \frac{1}{k!}$ konverguje
+    \item $\sum \frac{k^2}{2^k}$
+
+    $a_k >0, \forall k \in \mathbb N, \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \lim_{k\to \infty} \frac{k^2+2k+1}{2k^2} = \frac{1}{2} \implies$ konverguje
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  Pokud $\frac{a_{k+1}}{a_k} \to 1, k \to \infty$ nelze obecně rozhodnout. Např. $\sum \frac{1}{k}$ diverguje, ale $\sum \frac{1}{k^2}$ konverguje.
+\end{poznamka}
+
+\begin{veta}[V. 10. 5. Odmocninové kritérium*]
+  Nechť $\sum a_k$ řada, $a_k >0$ a $\lim_{k\to \infty} \sqrt[k]{a_k}=q$. Pak
+
+\begin{enumerate}[i)]
+  \item je-li $q<1$ řada konverguje,
+  \item je-li $q>1$ řada diverguje.
+\end{enumerate}
+\end{veta}
+
+\begin{veta}[V. 10. 6. Integrálové kritérium]
+  Nechť $\sum a_k$ řada, $a_k > 0$. Nechť existuje spojitá nezáporná nerostoucí funkce $f: [1, \infty] \to \mathbb R$ t. ž. $a_k = f(k)$. Pak $\sum a_k$ konverguje $\iff (\mathscr N) \int_1^\infty f(x)dx <\infty$.
+\end{veta}
+OBRAZEKOBRAZEk
+
+\begin{proof}
+  $s_n \coloneq \sum^n a_k$. Víme, že $\sum a_k$ konverguje $\iff \{s_n\}$ je omezená (shora). Dle V. 9. 6. má $f$ primitivní funkci, nazvěme $F$, pak $(\mathscr N)\int f(x)dx = [F(x)]_1^\infty = \lim_{x \to \infty} F(x) - \lim_{x \to 1^+} F(x)$, tedy $(\mathscr N)\int f(x) dx < \infty \iff \lim_{x \to \infty} F(x) \neq \infty$.
+
+  Je-li $k \in \mathbb N$ pevné, $x \in [k, k+1]$, pak $f(k) \geq f(x) \geq f(k+1)$.
+
+  $a_k \geq f(x) \geq a_{k+1}$
+
+  $\int_k^{k+1} a_k dx \geq \int_k^{k+1} f(x) dx \geq \int_k^{k+1} a_{k+1}$
+
+  $a_k \geq \int_k^{k+1} f(x) dx \geq a_{k+1}$
+
+  $\sum_{k=1}^n a_k \geq \sum_{k=1}^n \int_k^{k+1} f(x) dx \geq \sum_{k=1}^n a_{k+1}$
+
+  $s_n \geq \int_1^{n+1} f(x) dx \geq s_{n+1} -a_1$
+
+  pro $ n \to \infty: \lim_{n \to \infty} s_n \geq \int_1^\infty f(x) dx \geq \lim_{n \to \infty} s_{n+1}-a_1$ -- každá strana ekvivalence vyplývá z jedné nerovnice
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum_k \frac{1}{k^\alpha}$ konverguje $\iff \alpha >1$
+
+    $f(x) = \frac{1}{x^\alpha}$ -- funkce nezáporná nerostoucí spojitá na $[1, \infty)$ pro $\alpha >1$
+
+    Podle integrálového kritéria $\sum_k \frac{1}{k^\alpha}$ konverguje $\iff \int_1^\infty \frac{1}{x^\alpha} dx <\infty$
+
+    $\int_1^\infty \frac{1}{x^\alpha} dx = [\frac{x^{-\alpha+1}}{-a+1}]_1^\infty = \lim_{x\to \infty} \frac{1}{1-\alpha} (x^{1-\alpha}-1)=$
+
+    $=\begin{cases}
+      \alpha >1 & \lim = \frac{1}{1-\alpha}<\infty \implies \sum a_k\text{ konverguje}\\
+      \alpha = 1  & \int f(x)dx = [\ln x]_1^\infty = \infty \implies \sum a_k \text{ diverguje}\\
+      \alpha <1 & \lim = \infty \implies \sum a_k \text{ diverguje}
+    \end{cases}$
+    \item $\sum_{k=1}^\infty e^{-\sqrt[3]{k}}$
+
+    nutná podmínka (V. 10. 1.): $a_k \to 0$ -- splňuje
+
+    podílové krit. (V. 10. 4.): $\frac{a_{k+1}}{a_k} = \exp(\sqrt[3]{k}-\sqrt[3]{k+1}) \to 1$ -- žádný závěr
+
+    itengrálové krit. (V. 10. 6.): $f(x) = e^{\sqrt[3]{x}}$ -- splňuje podmínky na funkci z věty, $\int_1^\infty e^{-\sqrt[3]{x}} = 6 <\infty \implies \sum a_k$ konverguje
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+  Řekneme, že $a_k$ je řádově rovno $b_k$ pro $k \to \infty$, jestliže $\exists \lim_{k\to \infty} \frac{a_k}{b_k} \to c \in \mathbb R \smallsetminus \{0\}$. Značíme $a_k \sim b_k, k \to \infty$.
+\end{definice}
+
+\begin{veta}[V. 10. 7. Srpvnávací kritérium -- limitní verze]
+  Nechť $a_k, b_k >0$, nechť $a_k \sim b_k, k \to \infty$. Pak $\sum a_k$ konverguje $\iff \sum b_k$ konverguje.
+\end{veta}
+
+\begin{proof}
+  Víme, že $\frac{a_k}{b_k} \to c \neq 0$, nutně $c >0$.
+  Volme $\varepsilon >0$ t. ž. $0 \in \mathscr U(c, \varepsilon)$.
+  $\implies \exists n_0 \in \mathbb N: \frac{a_k}{b_k} \in \mathscr U(c, \varepsilon), \forall k \geq n_0$
+  $\implies c- \varepsilon < \frac{a_k}{b_k} < c + \varepsilon$
+  $c_1 \coloneq c - \varepsilon, c_2 \coloneq c+\varepsilon$
+  $0 < c_1 \cdot b_k < a_k < c_2 \cdot b_k, \forall k \geq n_0$ (dle L. 10. 1. BÚNO $\forall k \in \mathbb N$) -- mám 2x V. 10. 3.
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum \frac{\sqrt{k}}{k+1}$
+
+    $a_k \stackrel{?}{\sim} \frac{1}{\sqrt{k}} \implies \sum a_k$ div.
+
+    oveření: $\frac{a_k}{\frac{1}{\sqrt{k}}} = \frac{k}{k+1} \to 1, k \to \infty$ -- ověřeno
+
+    \item $\sum \arctg \left(\frac{1}{k^2+k+1}\right)$
+
+    $a_k \stackrel{?}{\sim} \frac{1}{k^2+k+1} \sim \frac{1}{k^2} \implies \sum a_k$ konv.
+
+    ověření: $\frac{a_k}{\frac{1}{k^2}} = \frac{\arctg(\frac{1}{k^2+k+1})}{\frac{1}{k^2+k+1}}\cdot \frac{k^2}{k^2+k+1} \to 1, k \to \infty$ (Heine, $\frac{1}{k^2+k+1} \to 0, \neq 0$) -- ověřeno
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  $a_k, b_k >0$ ve V. 10. 7. je podstatný předpoklad. Obecněji by šlo, že $a_k, b_k$ od určitého indexu nemění zneménka.
+\end{poznamka}
+
+\begin{veta}[V. 10. 8. Raabeho kritérium] Nechť $a_k >0$, nechť $k(\frac{a_k}{a_{k+1}}-1) \to p, k \to \infty$. Pak
+  \begin{enumerate}[i)]
+    \item $p>1\implies \sum a_k$ konverguje,
+    \item $p<1\implies \sum a_k$ diverguje.
+  \end{enumerate}
+\end{veta}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum \frac{1}{k^2}$
+
+    $k(\frac{\frac{1}{k^2}}{\frac{1}{(k+1)^2}}-1) = \frac{2k^2+k}{k^2} \to 2 \implies \sum a_k$ konverguje
+
+    \item $\sum e^{-\sqrt[3]{k}}$ Raabem lze
+  \end{enumerate}
+\end{priklad}
+
+\begin{proof}
+  \begin{enumerate}[i)]
+    \item Nechť $f(\frac{a_k}{a_{k+1}}-1) \to p >1 \implies \exists \varepsilon>0$ t. ž. $\eta = p - \varepsilon \neq 1$
+
+    $\implies \exists n_0 \in \mathbb N: k(\frac{a_k}{a_{k+1}}-1) > \eta, \forall k \geq n_0$ (L. 10. 1. $\forall k \in \mathbb N$)
+
+    $k(a_k - a_{k+1}) > \eta \cdot a_{k+1}$
+
+    $ka_k - (k+1)a_{k+1} > (\eta -1)a_{k+1}$
+
+    LS: $(1a_1-2a_2)+(2a_2-3a_3)+\dots+((n-1)a_{n-1}-na_n)=a_1 -na_n \leq a_1$
+
+    PS: $(\eta -1) $
+  \end{enumerate}
+\end{proof}
