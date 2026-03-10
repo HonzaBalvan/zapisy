@@ -25,7 +25,7 @@
 \begin{document}
 \maketitle
 
-\textbf{(1.2)} Aby matice $A$ v takovémto předpisu určovala skalární součin, musí být symetrická a pozitivně definitní (Protože potom nám v reálných číslech vznikne předpisem symetrická pozitivně definitní bilineární forma -- skalární součin). O matici už víme, že je symetrická, stačí ukázat, že bude pozitivně definitní. Mějme tedy obecnou symetrickou matici:
+\textbf{(1.2)} Aby symetrická matice $A$ v takovémto předpisu určovala skalární součin, musí být pozitivně definitní (Protože potom nám v reálných číslech vznikne předpisem symetrická pozitivně definitní bilineární forma -- skalární součin). Mějme tedy obecnou symetrickou matici:
 
 $$A = \begin{pmatrix}
   a & b \\ b & c
@@ -45,5 +45,9 @@ $$\forall x, y: \begin{pmatrix}
   x \\ y
 \end{pmatrix}= ax^2+2bxy + cy^2 \geq 0$$
 
-Víme, že $a > 0$ a že $\det A = ac - b^2 > 0$. Zřejmě $b^2 \geq 0$, takže $c \geq 0$.
+Víme že $\det A = ac - b^2 > 0$, pokud i zároveň $a > 0$, pak $c > \frac{b^2}{a}$.
+
+$$ax^2+2bxy + cy^2 > ax^2+2bxy+\frac{b^2}{a}y^2 = \frac{1}{a}(ax^2+2abxy+b^2y^2) = \frac{(ax+bx)^2}{a} \geq 0$$
+
+Podmínku tedy splní.
 \end{document}

@@ -1,0 +1,72 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 2}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(2.2)} $\begin{pmatrix}
+  1 \\ 0
+\end{pmatrix} -> \begin{pmatrix}
+  \cos \varphi \\ \sin \varphi
+\end{pmatrix}, \begin{pmatrix}
+  0 \\ 1
+\end{pmatrix} -> \begin{pmatrix}
+  \sin \varphi \\ -\cos \varphi
+\end{pmatrix}$
+
+$\begin{pmatrix}
+  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
+\end{pmatrix}\begin{pmatrix}
+  1 & 0 \\ 0 & 1
+\end{pmatrix}\begin{pmatrix}
+  \cos \varphi & -\sin \varphi \\ \sin \varphi & \cos \varphi
+\end{pmatrix} = \begin{pmatrix}
+  1 & 0 \\ 0 & 1
+\end{pmatrix} = \begin{pmatrix}
+  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
+\end{pmatrix}\begin{pmatrix}
+  a & b \\ b & c
+\end{pmatrix}\begin{pmatrix}
+  \cos \varphi & -\sin \varphi \\ \sin \varphi & \cos \varphi
+\end{pmatrix}$
+
+$=\begin{pmatrix}
+  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
+\end{pmatrix}\begin{pmatrix}
+  a\cos \varphi + b \sin \varphi & -a \sin \varphi + b \cos \varphi \\
+  b\cos \varphi + c\sin \varphi & -b \sin \varphi + c \cos \varphi
+\end{pmatrix}$
+
+$=\begin{pmatrix}
+  a\cos^2 \varphi + 2b\sin \varphi \cos \varphi + c \sin^2 \varphi & -a\sin \varphi \cos \varphi + b\cos^2 \varphi - b \sin^2 \varphi + c \sin \varphi \cos \varphi \\
+  -a \sin\varphi \cos\varphi -b \sin^2\varphi + b \cos^2 \varphi+ c \sin \varphi\cos \varphi & a \sin^2 \varphi -2b \sin \varphi \cos \varphi + c \cos^2 \varphi
+\end{pmatrix}$
+
+$b= 0 \lor \varphi = 2k\pi \lor \varphi = \pi + 2k \pi$
+
+\begin{enumerate}
+  \item $b=0: a = c$ -- násobek standardního
+  \item $$
+\end{enumerate}
+\end{document}

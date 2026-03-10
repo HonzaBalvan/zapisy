@@ -258,6 +258,38 @@ OBRAZEKOBRAZEk
 
     LS: $(1a_1-2a_2)+(2a_2-3a_3)+\dots+((n-1)a_{n-1}-na_n)=a_1 -na_n \leq a_1$
 
-    PS: $(\eta -1) $
+    PS: $(\eta -1) \sum_{l=2}^{n} a_l = (\eta -1)(s_n - a_1)$
+
+    $a_1 - na_n > (\eta -1)(s_n - a_1)$
+
+    $a_1 > (\eta -1)s_n$
+
+    $0<\frac{\eta}{\eta -1}a_1>s_n, \forall n \in \mathbb N \implies \{s_n\}$ shora omezená
+
+    tedy dle L. 10. 2. $\sum a_k$ konv.
+    \item nechť $k(\frac{a_k}{a_{k+1}}-1) \to p < 1, \varepsilon \coloneq 1 - p$
+
+    $\implies k(\frac{a_k}{a_{k+1}}-1)<p + \varepsilon, \forall k \in \mathbb N$ (L. 10. 1.)
+
+    \begin{align*}
+      ka_k - ka_{k+1}<a_{k+1} &  /-a_k\\
+
+      ka_k-(k+1)a_{k+1}<0 & /\sum_{k=1}^{n-1}
+    \end{align*}
+
+    $a_1 - na_n < 0$
+
+    $a_n > \frac{a_1}{n}$ -- harmonická řada $\implies \sum \frac{a_1}{n}$ div., dle V. 10. 3. $\implies \sum a_n$ diverguje
   \end{enumerate}
 \end{proof}
+
+\begin{poznamka}
+  Pro $z \in \mathbb C: z = a + bi, a = \Re z \in \mathbb R, b = \Im z \in \mathbb R, |z| = \sqrt{a^2+b^2}$. Platí \begin{enumerate}[i)]
+    \item $|\Re z|, |\Im z| \leq |z| \leq |\Re z| + |\Im z|$
+    \item $|z \pm w| \leq |z| + |w|; z, w \in \mathbb C$
+  \end{enumerate}
+\end{poznamka}
+
+\begin{definice}[Limita, konvergence v $\mathbb C$]
+  Nechť $z_n, z \in \mathbb C$, pak $z_n \to z, n \to \infty$ definujeme jako $(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n \geq n_0 \implies z_n \in \mathscr U(z, \varepsilon)(|z_n-z|<\varepsilon)]$
+\end{definice}
