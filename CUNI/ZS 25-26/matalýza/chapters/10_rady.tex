@@ -291,5 +291,76 @@ OBRAZEKOBRAZEk
 \end{poznamka}
 
 \begin{definice}[Limita, konvergence v $\mathbb C$]
-  Nechť $z_n, z \in \mathbb C$, pak $z_n \to z, n \to \infty$ definujeme jako $(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n \geq n_0 \implies z_n \in \mathscr U(z, \varepsilon)(|z_n-z|<\varepsilon)]$
+  Nechť $z_n, z \in \mathbb C$, pak $z_n \to z, n \to \infty$ definujeme jako $(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n \geq n_0 \implies z_n \in \mathscr U(z, \varepsilon)(|z_n-z|<\varepsilon)]$.
+
+  OBRAZEKOBRAZEk
+
+  Ekvivalentně: $\Re z_n \to \Re z, \Im z_n \to \Im z, n \to \infty$.
 \end{definice}
+
+\begin{definice}
+  Nechť $a_k \in \mathbb C$. Řekneme, že $\sum a_k$ konverguje v $\mathbb C$, jestliže $\exists \lim_{n \to \infty} s_n \in \mathbb C$, kde $s_n \coloneq \sum_{k=1}^{n} a_k$. Ekvivalentně $\sum \Re a_k, \sum \Im a_k$ konvergují v $\mathbb R$.
+\end{definice}
+
+\begin{poznamka}
+  Posloupnost $\{b_n\}_{n=1}^{\infty} \subset \mathbb R$ splňuje Bolzano-Cauchyho podmínku (B. C.), jestliže $(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall n, m \geq n_0)[|b_m-b_n|<\varepsilon]$. Dále V. 7. 5. -- $\{b_n\}$ konv. $\iff \{b_n\}$ je cauchyovská -- platí i v $\mathbb C$ (Dk. viz kap. 13).
+\end{poznamka}
+
+\begin{definice}
+  Nechť $a_k \in \mathbb C$. Řekneme že $\sum a_k$ splňuje B. C. podmínku pro řady, jestliže $(\forall \varepsilon>0)(\exists n_0 \in \mathbb N)(\forall n \geq n_0)(\forall p \in \mathbb N)[|\sum_{k=n+1}^{n+p}a_k|<\varepsilon]$. (B. C. r)
+\end{definice}
+
+\begin{poznamka}
+  $\sum a_k$ splní (B. C. r) $\iff \{s_n\}$ splní (B. C.).
+\end{poznamka}
+
+\begin{proof}
+  $s_m - s_n$ TODO viz foto, dodělat i v sšt
+\end{proof}
+
+\begin{veta}[V. 10. 9.]
+  Nechť $a_k \in \mathbb C$. Potom $\sum a_k$ konverguje $\iff$ splňuje (B. C. r).
+\end{veta}
+
+\begin{proof}
+  $\sum a_k$ konverguje $\stackrel{def.}{\iff}$ posloupnost $\{s_n\}$ konverguje $\stackrel{K. 7. - \mathbb R, K. 13. - \mathbb C}{\iff} \{s_n\}$ splňuje (B. C.) $\stackrel{předch. pozn.}{\iff} \sum a_k$ splňuje (B. C. r).
+\end{proof}
+
+\begin{veta}[V. 10. 10. O absolutní konvergenci]
+  Nechť $a_k \in \mathbb C$, nechť $\sum |a_k|$ konverguje. Pak řada $\sum a_k$ konverguje.
+\end{veta}
+
+\begin{proof}
+  také pomocí (B. C. r), viz zápisky přednášejícího, zde elementární důkaz
+
+  Značení: kladná, resp. nezáporná část: $a_k^+\coloneq \max\{0, a_k\}$
+
+  1. krok: $a_k \in \mathbb R, \forall k \in \mathbb N$
+  $\sum a_k$ konverguje $\stackrel{V. 10. 3.}{\iff} \sum a_k^+, \sum a_k^-$ konvergují, neboť $0 \leq a_k^+, a_k^- \leq |a_k|$
+
+  $\implies \sum a_k = \sum a_k^+ - \sum a_k^-$ knverguje dle V. 10. 2. (VoAŘ)
+
+  2. krok: $a_k \in \mathbb C$, tj. $a_k = \Re a_k + i\cdot\Im a_k$
+
+  $|\Re a_k|, |\Im a_k| \leq |a_k|\stackrel{V. 10. 3.}{\implies}\sum \Re a_k, \sum \Im a_k$ konvergují, neboť $\sum |\Re a_k|, \sum |\Im a_k|$ konvergují absolutně (dle ekvivalentní definice) $\stackrel{1. krok}{\implies} \sum \Re a_k, \sum \Im a_k$ konvergují $\stackrel{ekv. def.}{\iff} \sum a_k$ konverguje
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item
+    \item
+    \item TODO
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+  Nechť $a_k\in \mathbb C$, nechť $\sum |a_k|$ konverguje. Pak řadu $\sum a_k$ (která konverguje dle V. 10. 10.) nazveme absolutně konvergentní. Jestliže $\sum a_k$ konverguje a $\sum |a_k|$ diverguje, nazveme $\sum a_k$ neabsolutně konvergentní.
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum_k \sin \left(\frac{x}{2^k}\right), x \in \mathbb R$ pevné
+
+    víme $|\sin y| \leq y, \forall y \in \mathbb R
+  \end{enumerate}
+\end{priklad}
