@@ -18,6 +18,8 @@
 
 %\usepackage{tikzit}
 %\input{default.tikzstyles}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
 
 \title{DÚ Lineární algebra -- Sada 2}
 \author{Jan Romanovský}
@@ -25,48 +27,40 @@
 \begin{document}
 \maketitle
 
-\textbf{(2.2)} $\begin{pmatrix}
-  1 \\ 0
-\end{pmatrix} -> \begin{pmatrix}
+\textbf{(2.2)} Rotace kanonické báze je jednoznačně daná úhlem $\varphi$, kanonická báze je potom:
+
+$$K = \left\{\begin{pmatrix}
   \cos \varphi \\ \sin \varphi
 \end{pmatrix}, \begin{pmatrix}
-  0 \\ 1
-\end{pmatrix} -> \begin{pmatrix}
-  \sin \varphi \\ -\cos \varphi
-\end{pmatrix}$
+  -\sin \varphi \\ \cos \varphi
+\end{pmatrix}\right\}$$
 
-$\begin{pmatrix}
-  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
-\end{pmatrix}\begin{pmatrix}
-  1 & 0 \\ 0 & 1
-\end{pmatrix}\begin{pmatrix}
-  \cos \varphi & -\sin \varphi \\ \sin \varphi & \cos \varphi
-\end{pmatrix} = \begin{pmatrix}
-  1 & 0 \\ 0 & 1
-\end{pmatrix} = \begin{pmatrix}
-  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
+Tato rotace bude zřejmě vždy ortogonální vůči standardnímu součinu, teď tedy budeme hledat vyjadření $\varphi$ (a jestli tedy vůbec existuje) pro obecný skalární součin, nutně daný symetrickou maticí $A$: $$A=\begin{pmatrix}
+  a & b \\ b & c
+\end{pmatrix}$$
+
+Aby báze byla ortogonální vůči obecnému skalárnímu součinu, musí být skalární součin dvou různých vektorů nulový:
+$$\begin{pmatrix}
+  \cos \varphi & \sin \varphi
 \end{pmatrix}\begin{pmatrix}
   a & b \\ b & c
 \end{pmatrix}\begin{pmatrix}
-  \cos \varphi & -\sin \varphi \\ \sin \varphi & \cos \varphi
-\end{pmatrix}$
+  -\sin \varphi \\ \cos \varphi
+\end{pmatrix} = 0$$
 
-$=\begin{pmatrix}
-  \cos \varphi & \sin \varphi \\ -\sin \varphi & \cos \varphi
-\end{pmatrix}\begin{pmatrix}
-  a\cos \varphi + b \sin \varphi & -a \sin \varphi + b \cos \varphi \\
-  b\cos \varphi + c\sin \varphi & -b \sin \varphi + c \cos \varphi
-\end{pmatrix}$
+$$-a\sin \varphi\cos \varphi + b\cos^2 \varphi - b \sin^2 \varphi+c\sin \varphi\cos \varphi = 0$$
 
-$=\begin{pmatrix}
-  a\cos^2 \varphi + 2b\sin \varphi \cos \varphi + c \sin^2 \varphi & -a\sin \varphi \cos \varphi + b\cos^2 \varphi - b \sin^2 \varphi + c \sin \varphi \cos \varphi \\
-  -a \sin\varphi \cos\varphi -b \sin^2\varphi + b \cos^2 \varphi+ c \sin \varphi\cos \varphi & a \sin^2 \varphi -2b \sin \varphi \cos \varphi + c \cos^2 \varphi
-\end{pmatrix}$
+Nyní využijeme součtové vzorce:
 
-$b= 0 \lor \varphi = 2k\pi \lor \varphi = \pi + 2k \pi$
+$$b \cos 2\varphi + \frac{(c-a)}{2}\sin 2\varphi = 0$$
 
-\begin{enumerate}
-  \item $b=0: a = c$ -- násobek standardního
-  \item $b \neq 0$
-\end{enumerate}
+$$\frac{\sin 2\varphi}{\cos 2\varphi}=\frac{2b}{a-c}$$
+
+$$\tg 2\varphi = \frac{2b}{a-c}$$
+
+$$2\varphi = \arctg \frac{2b}{a-c} + k\pi, k \in \mathbb Z$$
+
+$$\varphi = \frac{1}{2} \arctg \frac{2b}{a-c} + \frac{k\pi}{2}$$
+
+Protože $D(\arctg) = \mathbb R$, bude pro libovolné hodnoty $a, b, c$ existovat nějaké $\varphi$ pro které báze $K$ bude ortogonální pro standardní i daný obecný skalární součin.
 \end{document}
