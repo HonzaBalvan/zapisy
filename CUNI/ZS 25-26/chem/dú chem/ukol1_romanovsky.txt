@@ -1,0 +1,9 @@
+[PtX_6]: b. grupa O_h - operace E, 8 C_3, 6 C_2, 6 C_4, 3 C_2, i, 6 S_4, 8 S_6, 3 σ_h, 6 σ_d
+[PtX_5Y]: b. grupa C_4v - operace E, 2 C_4, C_2, 2 σ_v, 2 σ_d
+trans-[PtX_4Y_2]: b. grupa D_4h - operace E, 2 C_4, C_2, 2 C_2', 2 C_2", i, 2 S_4, σ_h, 2 σ_v, 2 σ_d
+cis-[PtX_4Y_2]: b. grupa C_2v - operace E, C_2, σ_v, σ_v'
+mer-[PtX_3Y_3]: b. grupa C_2v - operace E, C_2, σ_v, σ_v'
+fac-[PtX_3Y_3]: b. grupa C_3v - operace E, 2 C_3, 3 σ_v
+trans-[PtX_2Y_4]: stejně jak trans-[PtX_4Y_2]
+cis-[PtX_2Y_4]: stejně jak cis-[PtX_4Y_2]
+[PtXY_5]: stejně jak [PtX_5Y]
