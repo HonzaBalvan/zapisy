@@ -1,0 +1,59 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 6}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(6.2)} 
+    Vektory $(2, 1, 0, 1)^T$ a $(1,0,1,2)$ jsou přímo báze (ozn. $B$) prostoru $\textbf{V}$, vyjádřeme si obrazy vektorů v této bázi:
+    $$\left(\begin{tabularx}{\textwidth}{ c c | c c }
+        2 & 1 & 4 & 2\\
+        1 & 0 & 1 & 2\\
+        0 & 1 & 2 & -2\\
+        1 & 2 & 5 & -2
+    \end{tabularx}\right)\sim
+    \left(\begin{tabularx}{\textwidth}{ c c | c c }
+        1 & 0 & 2 & 2\\
+        0 & 1 & 1 & -2\\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+    \end{tabularx}\right)$$
+    Matice operátoru v bázi $B$ je tedy:
+    $$\begin{pmatrix}
+        2 & 2 \\
+        1 & -2
+    \end{pmatrix}$$
+    Když ji zdiagonalizujeme (PROČ LZE?):
+    $$\begin{pmatrix}
+        2 & 2 \\
+        1 & -2
+    \end{pmatrix}=\begin{pmatrix}
+   
+    \end{pmatrix}\begin{pmatrix}
+   
+    \end{pmatrix}\begin{pmatrix}
+   
+    \end{pmatrix}^{-1}=$$
+\end{document}

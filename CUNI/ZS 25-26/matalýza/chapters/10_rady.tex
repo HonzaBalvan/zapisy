@@ -388,5 +388,45 @@ OBRAZEKOBRAZEk
 \end{proof}
 
 \begin{priklad}
-  
+    $\sum (-1)^k \cdot \fraction{1}{k^\alpha}, \alpha$ pevné $\in \mathbb R$
+    \begin{enumerate}
+        \item $|a_k| = \fraction{1}{k^\alpha}$, a tedy $\alpha >1 \implies \sum a_k$ konverguje aboslutně
+        \item $\alpha \leq 0 \implies |a_k| = k^{-\alpha} \geq 1, \forall k \in \mathbb N \cancel{\to} 0 \stackrel{V. 10. 1.}{\implies}$ diverguje
+        \item $0 < \alpha \leq 1 \implies \sum a_k \underbrace{\text{konverguje}}_{\text{dle V. 10. 11.}}\, \underbrace{\text{neabsolutně}}_{\text{dle i)}}$
+    \end{enumerate}
 \end{priklad}
+
+\begin{lemma}[L. 10. 3. Abelova parciální sumace]
+    Nechť $a_k, b_k \in \mathbb C, k \in \mathbb N$. Položme $\tilde{s_m} \coloneq \sum_{k=n+1}^{m} a_k, \forall m > n, n \in \mathbb N$ pevné. Pak $\sum_{k = n+1}^{m} a_k b_k = \tilde{s_m} b_{m+1} + \sum_{k = n+1}^{m} \tilde{s_k} (b_k - b_{k+1}), \forall m > n$.
+\end{lemma}
+
+\begin{poznamka}
+    Předchozí lemma je analogie per-partes pro sumy: $\int ab = \tilde{s}b+\int\tilde{s}(-b)^\prime$, kde $\tilde{s} = \int a$
+\end{poznamka}
+
+\begin{proof}
+    $\tilde{s_m} = s_m - s_n$, kde $s_n = \sum_{k=1}^{n} a_k$
+
+    $\implies \tilde{s_n} = 0, \tilde{s_k} = \tilde{s_{k-1}}+a_k, \forall k \geq n$
+
+    LS$ = \sum_{k=n+1}^{m} (\tilde{s_k}-\tilde{s_{k-1}})b_k = \sum_{k=n+1}^{m} \tilde{s_k}b_k - \sum_{k=n+1}^{m} \tilde{s_{k-1}} b_k = \sum_{k=n+1}^{m} \tilde{s}_k  b_k - \sum_{k=n}^{m-1} \tilde{s}_k b_{k+1} = \sum_{k=n+1}^{m} \tilde{s}_k b_k - \sum_{k=n+1}^{m} \tilde{s}_k b_{k+1} + \tilde{s_m b_{m+1}} + \tilde{s}_n b_{n+1} = \sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})+ \tilde{s}_m b_{m+1} =$ PS
+\end{proof}
+
+\begin{definice}
+    Řekneme, že řada $\sum a_k$ má omezené částečné součty, jestliže $\exists K > 0$ t. ž. $|\sum_{k=1}^{n}a_k| \leq K, \forall n \in \mathbb N$.
+\end{definice}
+
+\begin{priklad}
+    \begin{enumerate}
+        \item $\sum (-1)^k$
+        \item $\sum \sin kx, \sum \cos kx$ pro $x \neq 2k\pi, k \in \mathbb Z$
+    \end{enumerate}
+\end{priklad}
+
+\begin{veta}[V. 10. 12. Dirichletovo kritérium]
+    Nechť $\sum a_k \in \mathbb C$ má omezené částečné součty, nechť $b_k \in \mathbb R, b_k \to 0, k \to \infty$, navíc $\{b_k\}$ je monotónní (pro $k \geq n_0$). Pak $\sum a_k b_k$ konverguje.
+\end{veta}
+
+\begin{proof}
+    díky V. 10. 9. stačí ověřit (B. C. r), tj. $(\foarll \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall n \geq n_0)(\forall p >1)[|\sum_{k=n+1}^{n+p}a_k b_k|<\varepsilon]$. Nechť $\varepsilon>0$ dáno $\implies \exists K > 0$ t. ž. $|s_n|<K, \forall n \in \mathbb N$, kde $s_n$ jsou částečné součty posloupnosti $\{a_k\}$.
+\end{proof}

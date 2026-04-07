@@ -1,0 +1,36 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 6}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(6.1)} Postupně po bodech:
+\begin{enumerate}[a)]
+  \item platí; pro determinanty platí $\det A^2 = (\det A)^2 = \det A \iff \det A = 0$ nebo $\det A = 1$, v prvním případě je vlastním číslem $\lambda = 0$ dle pozorování 9.13. a žádné jiné (viz c), v druhém případě máme regulární matici, násobíme inverzem $A^{-1}A^2 = A^{-1}A \implies A = I$ a identická matice má vlastní číslo $1$ a žádné jiné.
+  \item neplatí, např. pro identickou matici
+  \item platí, pokud $\lambda$ vlastní číslo, pak $\exists \textbf{v}$ t. ž. $A^n \textbf{v} = \lambda^n \textbf{v}$, ale $A^n = 0_{k\times  k}$, takže $\lambda^n = 0$, takže $\lambda = 0$.
+  \item platí dle c), popř. dle pozorování 9.13.
+\end{enumerate}
+\end{document}
+

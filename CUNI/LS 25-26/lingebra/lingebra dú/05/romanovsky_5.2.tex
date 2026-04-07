@@ -1,0 +1,43 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 5}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(5.2)} Podprostor příslušný vlastnímu číslu 2 je geometricky rovina, tedy prostor dimenze 2, vyberu si z ní tedy dva LN vektory, např. $\left(1, 1, 0\right)^T$, $\left(0, 1, 1\right)^T$. Ty pak spolu s vektorem $\left(1, 1, 1\right)^T$ tvoří LN bázi a matice operátoru v této bázi bude:
+$$A_B = \begin{pmatrix}
+   2 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3
+\end{pmatrix}$$
+Matice přechodu vidíme přímo:
+$$[\text{id}]_K^B = \begin{pmatrix}
+    1 & 0 & 1 \\ 1 & 1 & 1 \\ 0 & 1 & 1
+\end{pmatrix},\, [\text{id}]_B^K = ([\text{id}]_K^B)^{-1} = \begin{pmatrix}
+   0 & 1 & -1 \\ -1 & 1 & 0 \\ 1 & -1 & 1
+\end{pmatrix}$$
+Matice operátoru v kanonické bázi je pak:
+$$A = [\text{id}]_K^BA_B[\text{id}]_B^K = \begin{pmatrix}
+    3 & -1 & 1 \\ 1 & 1 & 1 \\ 1 & -1 & 3
+\end{pmatrix}$$
+\end{document}
+
