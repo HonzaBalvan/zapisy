@@ -26,7 +26,7 @@
 \begin{document}
 \maketitle
 
-\textbf{(6.2)} 
+\textbf{(6.2)}
     Vektory $(2, 1, 0, 1)^T$ a $(1,0,1,2)$ jsou přímo báze (ozn. $B$) prostoru $\textbf{V}$, vyjádřeme si obrazy vektorů v této bázi:
     $$\left(\begin{tabular}{ c c | c c }
         2 & 1 & 4 & 2\\
@@ -47,7 +47,7 @@
     \end{pmatrix}$$
     Když spočítame vlastní čísla a vlastní vektory:
     $$p_b(\lambda) = (1-\lambda)(-2-\lambda)-4, \lambda_1 = -3, \lambda_2 = 2, \textbf{v}_{\lambda_1} \in \text{span}\left\{\begin{tabular}{c}1 \\ -2  \end{tabular}\right\}, \textbf{v}_{\lambda_2} \in \text{span}\left\{\begin{tabular}{c} 2 \\ 1 \end{tabular}\right\}$$
-        To nám dává novou bázi (ozn. $C$) z vlastních vektorů v níž je matice operátoru diagonální, vyberme $(1, -2)^T, (2, 1)^T$, jejich matici přechodu k bázi $B$ vidíme zřejmě; když tedy dáme vše dohromady (ozn. matici operátoru $f$ v kanonické bázi jako $A$):
+        To nám dává novou bázi (ozn. $C$) z vlastních vektorů v níž je matice operátoru diagonální, vyberme $(1, -2)^T, (2, 1)^T$, jejich matici přechodu k bázi $B$ vidíme zřejmě; když tedy dáme vše dohromady (ozn. matici operátoru $f$ v kanonické bázi jako $A$)(první a poslední matice nejsou přesně matice přechodu, protože $B$ a $K$ mají jinou dimenzi, ale je to analogické, poslední matice je lib. levý inverz první matice):
        \begin{align*}
            A &= [\text{id}]_K^B[\text{id}]_B^C\begin{pmatrix}
    -3 & 0 \\ 0 & 2
@@ -59,9 +59,9 @@
     1 & 2 \\ -2 & 1
         \end{pmatrix}\begin{pmatrix}
    -3 & 0 \\ 0 & 2
-        \end{pmatrix}\begin{pmatrix}
-   \frac{1}{5} & -\frac{2}{5} \\ \frac{2}{5} & \frac{1}{5}
-        \end{pmatrix}\begin{pmatrix}
+ \end{pmatrix}\left(\begin{array}{c c}
+   \frac{1}{5} & -\frac{2}{5} \vspace{0.25em}\\ \frac{2}{5} & \frac{1}{5}
+ \end{array}\right)\begin{pmatrix}
             0 & 1 & 0 & 0 \\ 1 & -2 & 0 & 0
         \end{pmatrix}
        \end{align*}
@@ -73,9 +73,9 @@
     1 & 2 \\ -2 & 1
         \end{pmatrix}\begin{pmatrix}
    -3 & 0 \\ 0 & 2
-        \end{pmatrix}^n\begin{pmatrix}
-   \frac{1}{5} & -\frac{2}{5} \\ \frac{2}{5} & \frac{1}{5}
-        \end{pmatrix}\begin{pmatrix}
+ \end{pmatrix}^n\left(\begin{array}{c c}
+   \frac{1}{5} & -\frac{2}{5} \vspace{0.25em} \\ \frac{2}{5} & \frac{1}{5}
+        \end{array}\right)\begin{pmatrix}
             0 & 1 & 0 & 0 \\ 1 & -2 & 0 & 0
         \end{pmatrix}\begin{pmatrix}
             5 \\ 1 \\ 3 \\ 7
@@ -86,13 +86,24 @@
     1 & 2 \\ -2 & 1
         \end{pmatrix}\begin{pmatrix}
             -3^n & 0 \\ 0 & 2^n
-        \end{pmatrix}\begin{pmatrix}
-   \frac{1}{5} & -\frac{2}{5} \\ \frac{2}{5} & \frac{1}{5}
-        \end{pmatrix}\begin{pmatrix}
+        \end{pmatrix}\left(\begin{array}{c c}
+   \frac{1}{5} & -\frac{2}{5} \vspace{0.25em}\\ \frac{2}{5} & \frac{1}{5}
+        \end{array}\right)\begin{pmatrix}
             0 & 1 & 0 & 0 \\ 1 & -2 & 0 & 0
         \end{pmatrix}
             \\ &= \begin{pmatrix}
-            
+2^n & 0 & 0 & 0 \\
+\frac{1}{5} (-2) (-3)^n+\frac{2^{n+1}}{5} & -2 \left(\frac{1}{5} (-2) (-3)^n+\frac{2^{n+1}}{5}\right)+\frac{(-3)^n}{5}+\frac{2^{n+2}}{5} & 0 & 0 \\
+\frac{4 (-3)^n}{5}+\frac{2^n}{5} & -2 \left(\frac{4 (-3)^n}{5}+\frac{2^n}{5}\right)+\frac{1}{5} (-2) (-3)^n+\frac{2^{n+1}}{5} & 0 & 0 \\
+\frac{1}{5} (-2) (-3)^{n+1}+\frac{2^{n+2}}{5} & -2 \left(\frac{1}{5} (-2) (-3)^{n+1}+\frac{2^{n+2}}{5}\right)+\frac{1}{5} (-3)^{n+1}+\frac{2^{n+3}}{5} & 0 & 0
+          \end{pmatrix}\begin{pmatrix}
+            5 \\ 1 \\ 3 \\ 7
+        \end{pmatrix}
+            \\ &= \begin{pmatrix}
+ 5\cdot 2^n \\
+ 3 \left(\frac{1}{5} (-2) (-3)^n+\frac{2^{n+1}}{5}\right)+\frac{(-3)^n}{5}+\frac{2^{n+2}}{5} \\
+ 3 \left(\frac{4 (-3)^n}{5}+\frac{2^n}{5}\right)+\frac{1}{5} (-2) (-3)^n+\frac{2^{n+1}}{5} \\
+ 3 \left(\frac{1}{5} (-2) (-3)^{n+1}+\frac{2^{n+2}}{5}\right)+\frac{1}{5} (-3)^{n+1}+\frac{2^{n+3}}{5}
         \end{pmatrix}
         \end{align*}
 \end{document}
