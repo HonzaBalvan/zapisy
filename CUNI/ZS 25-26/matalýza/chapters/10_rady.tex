@@ -429,4 +429,48 @@ OBRAZEKOBRAZEk
 
 \begin{proof}
     díky V. 10. 9. stačí ověřit (B. C. r), tj. $(\foarll \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall n \geq n_0)(\forall p >1)[|\sum_{k=n+1}^{n+p}a_k b_k|<\varepsilon]$. Nechť $\varepsilon>0$ dáno $\implies \exists K > 0$ t. ž. $|s_n|<K, \forall n \in \mathbb N$, kde $s_n$ jsou částečné součty posloupnosti $\{a_k\}$.
+    $\exists n_0$ t. ž. $|b_k|<\frac{\varepsilon}{2K}, \forall k \geq n_0$
+    BÚNO $b_1\geq b_2 \geq \dots \geq 0, \forall k \in \mathbb N$
+    Nechť $n\geq n_0, p \geq 1$ lib., $\tilde{s}_m \coloneq s_m -s_n, m = n+p$, nyní dle L. 10. 3.
+    (ještě pozorování: $|\tilde{s}_k|< 2K, \forall k \geq n_0$, neboť $|\tilde{s}_k| = |s_k-s_n| \stackrel{\triangle \text{nerovnost}}{\leq}|s_k|+|s_n|\leq 2K$)
+    $\implies\sum_{k=n+1}^{m}a_kb_k = \tilde{s}_mb_{m+1}+\sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})$
+    $|\sum a_kb_k| \leq \underbrace{|\tilde{s}_mb_{m+1}|}_{\underbrace{|\tilde{s}_m|}_{\leq 2K}\cdot b_{m+1}}+\sum|\tilde{s}_k|\cdot|b_k-b_{k+1}|\leq 2Kb_{m+1}+\sum2K(b_k-b_{k+1})=2K\cdotb_{n+1}<2K \frac{\varepsilon}{2K} = \varepsilon$
 \end{proof}
+
+\begin{lemma}[L. 10. 4.]
+    Nechť $x \neq 2l \pi, l \in \mathbb Z$. Pak: $$\sum_{k=0}^{n} \sin(kx) = \frac{\sin\left(\frac{n+1}{2}x\right)\cdot\sin\left(\frac{n}{2}x\right)}{\sin\left(\frac{x}{2}\right)},\sum_{k=0}^{n} \cos(kx) = \frac{\sin\left(\frac{n+1}{2}x\right)\cdot\cos\left(\frac{n}{2}x\right)}{\sin\left(\frac{x}{2}\right)}.$$
+\end{lemma}
+
+\begin{proof}
+    Indukcí dle $n$ (+ součtové vzorce) nebo pomocí komplexní exponenciály a jejich součtů.
+\end{proof}
+
+\begin{dusledek}
+    $x \neq 2l\pi, l \in \mathbb Z, x \in \mathbb R\implies\sum \sin x, \sum \cos x$ mají omezené částečné součty.
+\end{dusledek}
+
+\begin{proof}
+    $|PS| \leq \frac{1}{|\sin \frac{x}{2}|}$, a to nezávisle na $n$.
+\end{proof}
+
+\begin{veta}[V. 10. 13. Abelovo kritérium]
+    Nechť $\sum a_k \in \mathbb C$ konverguje. Nechť $\{b_k\}$ je omezená, monotónní ($b_k \in \mathbb R$). Pak $\sum a_kb_k$ konverguje.
+\end{veta}
+
+\begin{proof}
+    V. 7. 2. $\implies \exists b \in \mathbb R$ t. ž. $b_k \to b, k \to \infty$
+    pišme: $a_kb_k=a_k(b_k-b)+a_kb$
+    VoAŘ: $\sum a_kb_k$ konverguje $\impliedby \sum a_k, \sum b_k$ konverguje
+    $\sum a_kb = b \cdot \sum a_k$ -- konverguje
+    $\sum \underbrace{a_k}_{\text{om. č. souč.} \impliedby \{s_n\} \text{ konverguje}\impliedby \sum a_k \text{ konverguje}}\underbrace{(b_k-b)}_{\to 0 \text{ monotónně}}$ konverguje dle V. 10. 12. 
+\end{proof}
+
+\begin{priklad}
+    \begin{enumerate}[1)]
+        \item $\sum \frac{\sin l \cdot \arctg k}{k}$ konverguje, neboť 
+            $\sum \frac{\sin k}{k}$ konverguje dle V. 10. 12.: $\frac{1}{k}\to 0$, klesající, $\sin k$ má omezené částečné součty (dle L. 10. 4., $x=1$)
+            $\sum \arctg k$ omezená, rostoucí
+            $\stackrel{V. 10. 13.}{\implies} \sum$ konverguje
+        \item $\sum\frac{(-1)^k}{\sqrt{k+1}+(-1)^k}$
+    \end{enumerate}
+\end{priklad}

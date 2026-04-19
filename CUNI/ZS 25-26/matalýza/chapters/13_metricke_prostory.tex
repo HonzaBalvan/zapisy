@@ -1,0 +1,76 @@
+\section{Metrické prostory}
+
+\begin{definice}
+ Metrický prostor je dvojice $(X, \rho)$, kde $X$ je množina a $\rho$ je funkce $\rho: X \times X \to \mathbb R_0^+$, kterou nazveme metrikou, pro niž platí $\forall x, y, z \in X$:
+ \begin{enumerate}[i)]
+  \item $\rho(x, y) \geq 0; \rho(x,y) = 0 \iff x= y$,
+  \item $\rho(x, y) = \rho (y,x)$,
+  \item $\rho(x, z)\leq \rho(x, y) + \rho (y, z)$.
+ \end{enumerate}
+\end{definice}
+
+\begin{priklad} Příklady metrických prostorů:
+  \begin{enumerate}[1)]
+  \item $\mathbb R$ s metrikou $\rho(x,y)=|x-y|$
+  \item diskrétní metrický prostor: $(P, \rho)$, P lib., $\rho(x, y)\begin{cases}0, x = y \\ 1, x \neq y\end{cases}$
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+ Normovaný vektorový prostor je dvojice $(X, ||\cdot||)$, kde $X$ je vektorový prostor na $\mathbb R(\mathbb C)$ a norma $||\cdot||:\textbf{x} \mapsto ||\textbf{x}||$, která splňuje $\forall \textbf{x} \textbf{y} \in X, \forall a \in \mathbb R(\mathbb C)$:
+ \begin{enumerate}[i)]
+  \item $||\textbf{x}||\geq 0, ||\textbf{x}||=0 \iff \textbf{x} = \textbf{o}$
+  \item $||a\textbf{x}||=|a|\cdot ||\textbf{x}||$
+  \item $||\textbf{x+y}||\leq ||\textbf{x}|| + ||\textbf{y}||$
+ \end{enumerate}
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[3)]
+  \item Normovaný vektorový prostor je metrický prostor: $\rho(\textbf{x}, \textbf{y}) = ||\textbf{x}-\textbf{y}||, \forall \textbf{x}, \textbf{y} \in X$
+  \end{enumerate}
+\end{priklad}
+
+\begin{priklad} Příklady normovaných vektorových prostorů:
+  \begin{enumerate}[1)]
+  \item \begin{align*}\mathbb R^n \text{ s normou } &||\textbf{x}||_1\coloneq\sum_{j=1}^{n}|x_j| \\ &||\textbf{x}||_\infty \coloneq \max \{|x_1|, \dots, |x_n|\}\\ &||\textbf{x}||_2 \coloneq \sqrt{\sum_{j=1}^{n}x_j^2} \text{ -- eukleidovská norma}\end{align*}
+      \item \begin{align*} C([a, b])$ s normou $&||f||_1 \coloneq \int_{a}^{b}|f(x)|\d x \\ &||f||_\infty \coloneq \max\{|f(x)|; x \in [a, b]\}\end{align*}
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+    Tyto pojmy zavádíme pro lepší a obecnější uchopení pojmů okolí, limity a spojitosti; nejprv obecně a později v $\mathbb R^n$.
+\end{poznamka}
+
+\begin{definice}
+    Nechť $(x, \rho)$ je metrický prostor, $x \in X, \delta >0$. Pak kruhovým okolím nazveme $\mathscr U(x, \\delta)\coloneq \{y \in X; \rho (x, y) < \delta\}$, prstencovým okolím nazveme $\mathscr P(x, \delta)\coloneq\{y \in X; 0 <\rho (x, y)< \delta\} = \mathscr U(x, \delta)\smallsetminus \{x\}$.
+\end{definice}
+
+\begin{definice}
+    Množina $A \subseteq X$ se nazve otevřená, jestliže $(\forall x \in A)(\exists \delta>0)\left[\mathscr U(x, \delta)\subseteq A\right]$. Množina $B \subseteq X$ se nazve uzavřená, jestliže její komplement $B^C\coloneq X \smallsetminus B$ je otevřená množina.
+\end{definice}
+
+\begin{priklad}
+  \begin{itemize}
+      \item $(a, b)$ je otevřená (v $\mathbb R$ s obvyklou metrikou),
+      \item $[a, b]$ je uzavřená,
+      \item $[a, b)$ není ani otevřená, ani uzavřená (tyto dvě vlastnosti nejsou exkluzivní!),
+      \item $\emptyset$ je otevřená i uzavřená
+  \end{itemize}
+\end{priklad}
+
+\begin{veta}[V. 13. 1. Vlastnosti otevřených množin]
+    Buď $(X, \rho)$ metrický prostor. Pak:
+    \begin{enumerate}[i)]
+  \item $\emptyset, X$ jsou otevřené
+  \item $G_\alpha$ otevřené $\forall \alpha \in \mathcal A \implies \bigcup_{\alpha \in \mathcal A} G_\alpha$ otevřená (může jich být nekončeně mnoho),
+  \item $G_1, \dots, G_N$ otevřené $\implies \bigcap_{n=1}^N G_n$ otevřená (konečně mnoho).
+    \end{enumerate}
+\end{veta}
+
+\begin{proof}
+    \begin{enumerate}[i)]
+        \item $\underbrace{\forall x \in \emptyset}_{\text{platí vždy cokoliv}} \exists \delta>0: \mathscr U(x, \delta)\subseteq \emptyset$
+            $\forall x \in X \exists \delta>0: \underbrace{\mathscr U(x, \delta) \subseteq x}_{\text{platí vždy}}$
+    \end{enumerate}
+\end{proof}

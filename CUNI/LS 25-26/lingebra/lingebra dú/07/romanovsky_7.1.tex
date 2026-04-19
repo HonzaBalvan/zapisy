@@ -1,0 +1,59 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{nicefrac}
+\newcommand\bsfrac[2]{%
+\scalebox{-1}[1]{\nicefrac{\scalebox{-1}[1]{$#1$}}{\scalebox{-1}[1]{$#2$}}}%
+}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 7}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(7.1)} Báze $B$ je poskládána z Jordanových řetízků délky 5, 3 a 2. Přeznačme si tedy vektory báze $B$ po řadě jako ve skriptech $\textbf{v}^1_1, \dots, \textbf{v}^1_5, \textbf{v}^2_1, \dots, \textbf{v}^2_3, \textbf{v}^3_1, \textbf{v}^3_2$.
+
+\begin{align*}
+ \textbf{v}^1_5 \stackrel{f}{\longmapsto} \textbf{v}^1_4 \stackrel{f}{\longmapsto} \textbf{v}^1_3 \stackrel{f}{\longmapsto} \textbf{v}^1_2 \stackrel{f}{\longmapsto} \textbf{v}^1_1 \stackrel{f}{\longmapsto} &\,\textbf{o}\\
+\textbf{v}^2_3 \stackrel{f}{\longmapsto} \textbf{v}^2_2 \stackrel{f}{\longmapsto} \textbf{v}^2_1 \stackrel{f}{\longmapsto} &\,\textbf{o}\\
+\textbf{v}^3_2 \stackrel{f}{\longmapsto} \textbf{v}^3_1 \stackrel{f}{\longmapsto} &\,\textbf{o}
+\end{align*}
+
+Hledání dimenze a báze průniků jader a obrazů pak vyplývá ze způsobu hledání vektorů Jordanových řetízků; z toho také vidíme, že dimenze a báze pro $i,j \geq 5$ budou 0, resp. $\emptyset$:
+$$\text{Dimenze }\left(\text{Ker }f^i\right)\cap\left(\text{Im }f^j\right):\begin{tabular}{c | c c c c c }
+    \bsfrac{i}{j} & 1 & 2 & 3 & 4 & 5\\
+    \hline
+   1 & 3& 2& 1& 1& 0\\
+   2 & 2& 1& 1& 0& 0\\
+   3 & 1& 1& 0& 0& 0\\
+   4 & 1& 0& 0& 0& 0\\
+   5 & 0& 0& 0& 0& 0\\
+\end{tabular}$$
+$$\text{Báze}\left(\text{Ker }f^i\right)\cap\left(\text{Im }f^j\right):\begin{tabular}{c | c c c c c }
+   \bsfrac{i}{j} & 1 & 2 & 3 & 4 & 5\\
+    \hline
+   1 &\left\{\textbf{v}_1^1, \textbf{v}_1^2, \textbf{v}_1^3\right\} & \left\{\textbf{v}_2^1, \textbf{v}_2^2\right\}& \left\{\textbf{v}_3^1\right\}& \left\{\textbf{v}_4^1\right\}& \emptyset\\
+   2 & \left\{\textbf{v}_1^1, \textbf{v}_1^2\right\}& \left\{\textbf{v}_2^1\right\}& \left\{\textbf{v}_3^1\right\}& \emptyset& \emptyset\\
+   3 & \left\{\textbf{v}_1^1\right\}& \left\{\textbf{v}_2^1\right\}& \emptyset& \emptyset& \emptyset\\
+   4 & \left\{\textbf{v}_1^1\right\}& \emptyset& \emptyset& \emptyset& \emptyset\\
+   5 &\emptyset &\emptyset &\emptyset &\emptyset &\emptyset \\
+\end{tabular}$$
+\end{document}

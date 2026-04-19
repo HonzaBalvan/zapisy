@@ -1,0 +1,27 @@
+\section{Mocninné řady}
+
+\begin{definice}
+    Mocninnou řadou rozumíme $\sum_{k=0}^{\infty}c_k\cdot(z-z_0)^k$, kde $c_k \in \mathbb C$ jsou koeficienty řady, $z_0 \in \mathbb C$ je střed řady a $z \in \mathbb C$ je \uv{proměnná}.
+\end{definice}
+
+\begin{poznamka}
+    Co to je? \begin{cases}řada s parametrem $z$ \\ speciální typ funkce \\ zobecnění polynomu \end{cases}
+\end{poznamka}
+
+\begin{veta}[V. 11. 1. Poloměr konvergence] Je dána mocninná řada. Pak $\exists R \in [0, \infty]$ t. ž. $\forall z \in \mathbb C$ platí
+\begin{enumerate}[i)]
+  \item $|z-z_0|<R \implies$ řada konverguje absolutně,
+  \item $|z-z_0|>R \implies$ řada diverguje.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+    pomocná množina $\mathscr K \coloneq \left\{\rho \geq 0; \text{ posloupnost } \{|c_k|\cdot \rho^k\}\text{ je omezená}\right\}$
+    zřejmě $\mathscr K \neq \emptyset (0 \in \mathscr K)$, položme $R\coloneq \sup \mathscr K$
+    \begin{enumerate}[ad i)]
+        \item nechť $z \in \mathbb C, |z-z_0|<R\implies\exists \rho: \rho >|z-z_0|, \rho \in \mathscr K$
+        tj. $\exists C>0$ t. ž. $|c_k|\rho^k\leq C, \forall k$
+        lze odhadnout: $|c_k(z-z_0)^k|=|c_k||z-z_0|^k = \underbrace{|c_k|\cdot\rho^k}_{\leq C}\cdot\underbrace{(\frac{|z-z_0|}{\rho})^k}_{\eqcolon \theta^k, \theta <1}\leq C \cdot \rho^k \stackrel{V. 10. 3.}{\implies}$ řada konverguje absolutně
+        \itemnechť $z \in \mathbb C$
+    \end{enumerate}
+\end{proof}
