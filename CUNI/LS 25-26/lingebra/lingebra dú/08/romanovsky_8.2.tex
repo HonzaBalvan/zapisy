@@ -1,0 +1,39 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 8}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(8.2)} Víme, že každá reálná matice řádu 3 má nad $\mathbb C$ 3 vlastní čísla včetně násobností, protože její charakteristický polynom bude stupně 3 s reálnými koeficienty a bude mít nad $\mathbb C$ rozklad na lineární polynomy, tj. přesně 3 kořeny včetně násobnosti. Bude tedy existovat nějaký nenulový vlastní vektor. Upravíme maticovou rovnici
+$$(A^5+2A^3+A)\textbf{v} = 0_{3x3}\textbf{v} $$
+$$(\lambda^5+2\lambda^3+\lambda)\mathbf{v}=\mathbf{o}$$
+$$\lambda^5+2\lambda^3+\lambda=0$$
+$$\lambda(\lambda^2+1)=0$$
+$$\lambda \in \{0, i , -i\}.$$
+
+Pokud má reálná matice vlastní číslo $\lambda$, má i vlastní číslo $\overline{\lambda}$ se stejnou násobností. Jediné dva přípustné způsoby jak vybrat vlastní čísla tak jsou
+$$\lambda_1 = 0, \lambda_2 = i, \lambda_3 = -i\text{, nebo } \lambda_{1,2,3} = 0.$$
+
+V prvním případě je matice diagonalizovatelná, protože má 3 různá vlastní čísla. V druhém případě ještě musíme dávat pozor na geometrickou násobnost, pro případy geometrické násobnosti rovné 1 a 2 matice nesplňuje rovnici ze zadání a pro geometrickou násobnost rovnu 3 je matice nulová, která je diagonalizovatelná.
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 8}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(8.1)} Invariantní prostory budeme hledat jako lineární obal spojení Jordanových řetízků. Spočítáme vlastní čísla a vlastní vektory matice A
+$$\lambda_{1,2} = 2, \lambda_3 = -1;\, M_{2} = \text{span}\left\{\left(\begin{array}{c}
+  -2 \\ 3 \\ 5
+\end{array}\right)\right\}, M_{-1} = \text{span}\left\{\left(\begin{array}{c}
+  -1 \\ 0 \\ 1
+\end{array}\right)\right\}.$$
+Vidíme, že matice má Jordanův tvar, doplníme tedy řetízky, ozn. $J_2, J_{-1}$, pro což nám stačí najít třetí a poslední vektor, který bude prvkem $J_2$, jako řešení SLR
+$$\left(\begin{array}{c c c | c}
+  -3 &-2& 0& -2\\ -1& 1& -1& 3\\ 2& 3& -1& 5
+\end{array}\right);\, J_{2} = \left\{\left(\begin{matrix}
+  -2 \\ 3 \\ 5
+\end{matrix}\right), \left(
+\begin{array}{c}
+ -\frac{4}{5} \\
+ \frac{11}{5} \\
+ 0 \\
+\end{array}
+\right)\right\}, J_{-1}\left\{ \left(\begin{matrix}
+  -1 \\ 0 \\ 1
+\end{matrix}\right)\right\}.$$
+
+Jediné spojení Jordanových řetízků, které má dva vektory (tedy takové, aby vzniklý podprostor --- lineární obal byl dimenze 2), je samotný řetízek $J_2$, matice zúženého operátor $f_A$ na lineární obal tohoto řetízku bude pak Jordanova buňka příslušná tomuto řetízku
+
+$$[f_A|_{\text{span } J_2}]^{J_2}_{J_2} = \begin{pmatrix}
+  2 & 1 \\ 0 & 2
+\end{pmatrix}.$$
+\end{document}
