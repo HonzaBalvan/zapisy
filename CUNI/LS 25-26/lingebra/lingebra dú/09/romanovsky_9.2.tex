@@ -1,0 +1,70 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 9}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(9.2)} Převedeme zadání do SLR
+
+$$\begin{pmatrix}
+  x^\prime(t) \\ y^\prime(t)
+\end{pmatrix}=\begin{pmatrix}
+  a-2 & -1 \\ 1 & -2
+\end{pmatrix}\begin{pmatrix}
+  x(t) \\ y(t)
+\end{pmatrix}.$$
+
+Potom je charakteristický polynom matice
+
+$$p(\lambda)=\lambda^2+(4-a)+(5-2a)=0.$$
+
+Aby se pro nějakou počáteční polohu částice od ústí dlouhodobě vzdalovala, musí být alespoň jedno kladné vlastní číslo (v opačném případě se obě souřadnice neustále zmenšují a částice jde k ústí). Využijeme Viètovy vzorce a rozebereme všechny případy
+
+\begin{equation}\label{dva}
+  \lambda_1+\lambda_2=a-4,
+\end{equation}
+\begin{equation}\label{dva}
+  \lambda_1\cdot\lambda_2=5-2a.
+\end{equation}
+
+\begin{enumerate}
+  \item \underline{$5-2a<0$} $\implies a> \frac{5}{2}$:
+
+  BÚNO $\lambda_1 <0, \lambda_2>0 \implies$ může se stát, že se částice dlouhodobě vzdaluje
+  \item \underline{$5-2a>0$} $\implies a < \frac{5}{2}$:
+  \begin{enumerate}
+    \item \underline{$\lambda_1, \lambda_2>0$}:
+
+    $\lambda_1+\lambda_2 = a - 4 >0\implies a > 4$ -- spor
+    \item \underline{$\lambda_1, \lambda_2<0$}:
+
+    nemůže se stát, že se částice dlouhodobě vzdaluje
+  \end{enumerate}
+  \item \underline{$5-2a=0$} $\implies a =\frac{5}{2}$:
+
+  BÚNO $\lambda_1 = 0 \implies \lambda_2=-\frac{3}{2}\implies$ nemůže se stát, že se částice dlouhodobě vzdaluje
+\end{enumerate}
+
+Částice se tedy může od ústí dlouhodobě vzdalovat pro $a > \frac{5}{2}$.
+\end{document}

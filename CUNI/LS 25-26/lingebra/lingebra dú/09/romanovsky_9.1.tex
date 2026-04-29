@@ -1,0 +1,97 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[czech]{babel}
+\usepackage{amsthm,thmtools,xcolor,amsmath,amssymb, mathtools}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\graphicspath{images/}
+
+%\usepackage{tikzit}
+%\input{default.tikzstyles}
+
+\title{DÚ Lineární algebra -- Sada 9}
+\author{Jan Romanovský}
+
+\begin{document}
+\maketitle
+
+\textbf{(9.1)} Převedeme zadání do SLR
+
+$$z_{n+1} = 0,7\cdot z_n + 0,1 \cdot k_n,$$
+$$k_{n+1} = - 0,5\cdot z_n + 1,3\cdot k_n,$$
+
+$$\begin{pmatrix}
+  z_{n+1} \\ k_{n+1}
+\end{pmatrix}=\left(
+\begin{array}{cc}
+ 0,7 & 0,1 \\
+ -0,5 & 1,3 \\
+\end{array}
+\right)\begin{pmatrix}
+  z_n \\ k_n
+\end{pmatrix},$$
+
+$$\begin{pmatrix}
+  z_{n} \\ k_{n}
+\end{pmatrix}=\left(
+\begin{array}{cc}
+ 0,7 & 0,1 \\
+ -0,5 & 1,3 \\
+\end{array}
+\right)^n\begin{pmatrix}
+  z_0 \\ k_0
+\end{pmatrix}.$$
+
+Potom jsou vlastní čísla a vlastní vektory operátoru systému
+
+$$\lambda_1 = 1,2, \, \lambda_2 = 0,8,$$
+$$M_{1} = \text{span}\left\{\left(\begin{matrix}
+  1 \\ 5
+\end{matrix}\right)\right\}, \, M_{2} = \text{span}\left\{\left(\begin{matrix}
+  1 \\ 1
+\end{matrix}\right)\right\}.$$
+
+Stav systému v čase $n$ je tedy
+$$\begin{pmatrix}
+  z_n \\ k_n
+\end{pmatrix} = \begin{pmatrix}
+  1 & 1 \\ 5 & 1
+\end{pmatrix}\begin{pmatrix}
+  1,2 & 0 \\ 0 & 0,8
+\end{pmatrix}^n\begin{pmatrix}
+  1 & 1 \\ 5 & 1
+\end{pmatrix}^{-1}\begin{pmatrix}
+  z_0 \\ k_0
+\end{pmatrix}.$$
+
+To se dá také napsat následujícím způsobem
+
+$$\begin{pmatrix} z_n \\ k_n \end{pmatrix} = c_1 \cdot 1,2^n \begin{pmatrix} 1 \\ 5 \end{pmatrix} + c_2 \cdot 0,8^n \begin{pmatrix} 1 \\ 1 \end{pmatrix},$$
+
+kde konstanty vyjádříme pomocí $z_0, k_0$ jako
+
+$$c_1 = \frac{k_0 - z_0}{4}, \quad c_2 = \frac{5z_0 - k_0}{4}.$$
+
+Pro $n\to\infty$ půjde první člen k $c_1 \cdot \infty$ a druhý k nule. Aby populace tedy šla do nekonečna, musí být $c_1$ kladné
+
+$$c_1 > 0 \implies \frac{k_0 - z_0}{4} > 0 \implies k_0 > z_0$$
+
+Počet žab i komárů poroste do nekonečna pro $k_0 > z_0$ a komáři (a po nich i žáby) vymřou pro $k_0 \leq z_0$ (dělící linie těchto dvou případů je $k_0 = z_0$ odpovídá přímce $M_2$).
+
+Limitní poměr komárů ku žabám spočítáme z předchozích vyjádření následující limitou
+
+$$\lim_{n\to\infty} \frac{k_n}{z_n} = \frac{5 \cdot c_1 \cdot 1,2^n}{1\cdot c_1 \cdot 1,2^n} = 5.$$
+
+Pokud počet žab i komárů poroste do nekonečna, poměr komárů ku žabám půjde k $5:1$ (to odpovídá přímce $M_1$).
+
+\end{document}
