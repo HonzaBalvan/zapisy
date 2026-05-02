@@ -1,0 +1,4 @@
+čtou se jen řádky začínající "@, "
+formát: @, jméno, datum, množství, kategorie
+====
+
