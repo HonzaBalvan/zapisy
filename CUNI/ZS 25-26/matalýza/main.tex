@@ -24,6 +24,13 @@
 \usepackage{caption}
 \usepackage{cancel}
 \usepackage{marvosym}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\l@section}{\hfil}{%
+  \leaders\hbox{$\m@th
+    \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+  mu$}\hfill}{}{}
+\makeatother
 \graphicspath{{images/}}
 \pgfplotsset{width=10cm,compat=1.9}
 
@@ -89,51 +96,61 @@
 \declaretheorem[
   style=def,
   name=Definice,
+  unnumbered,
 ]{definice}
 
 \declaretheorem[
   style=pr,
   name=Příklad,
+  unnumbered,
 ]{priklad}
 
 \declaretheorem[
   style=cv,
   name=Cvičení,
+  unnumbered,
 ]{cviceni}
 
 \declaretheorem[
   style=res,
   name=Řešení,
+  unnumbered,
 ]{reseni}
 
 \declaretheorem[
   style=veta,
   name=Věta,
+  numberwithin=section,
 ]{veta}
 
 \declaretheorem[
   style=lemma,
   name=Lemma,
+  numberwithin=section
 ]{lemma}
 
 \declaretheorem[
   style=pozn,
   name=Poznámka,
+  unnumbered,
 ]{poznamka}
 
 \declaretheorem[
   style=dusl,
   name=Důsledek,
+  unnumbered,
 ]{dusledek}
 
 \declaretheorem[
   style=axiom,
   name=Axiom,
+  numberwithin=section,
 ]{axiom}
 
 \declaretheorem[
   style=motivace,
   name=Motivace,
+  unnumbered,
 ]{motivace}
 
 \DeclareMathOperator{\tg}{tg}
@@ -149,6 +166,12 @@
 \begin{document}
 
 \maketitle
+\frontmatter
+\newpage
+\tableofcontents
+% \listoffigures
+% \listoftables
+\clearpage
 
 % ÚVODNÍ INFORMACE
 % dobré pro poznačení informačních věcí od učitele,
@@ -159,6 +182,9 @@
 % pokud nepotřebujete, zakomentujte řádek níže
 % všechny změny provádějte v souboru additional/conventions.tex
 \input{additional/conventions.tex}
+\clearpage
+
+\mainmatter
 
 % KAPITOLY
 % \input{chapters/01_nazev_kapitoly}

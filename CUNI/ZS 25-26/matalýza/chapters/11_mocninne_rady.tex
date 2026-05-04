@@ -1,4 +1,4 @@
-dusledek\section{Mocninné řady}
+\section{Mocninné řady}
 
 \begin{definice}
     Mocninnou řadou rozumíme $\sum_{k=0}^{\infty}c_k\cdot(z-z_0)^k$, kde $c_k \in \mathbb C$ jsou koeficienty řady, $z_0 \in \mathbb C$ je střed řady a $z \in \mathbb C$ je \uv{proměnná}.
@@ -8,7 +8,7 @@ dusledek\section{Mocninné řady}
     Co to je? $\begin{cases}\text{řada s parametrem } z \\ \text{speciální typ funkce} \\ \text{zobecnění polynomu} \end{cases}$
 \end{poznamka}
 
-\begin{veta}[V. 11. 1. Poloměr konvergence] Je dána mocninná řada. Pak $\exists R \in [0, \infty]$ t. ž. $\forall z \in \mathbb C$ platí
+\begin{veta}[Poloměr konvergence] Je dána mocninná řada. Pak $\exists R \in [0, \infty]$ t. ž. $\forall z \in \mathbb C$ platí
 \begin{enumerate}[i)]
   \item $|z-z_0|<R \implies$ řada konverguje absolutně,
   \item $|z-z_0|>R \implies$ řada diverguje.
@@ -47,7 +47,7 @@ dusledek\section{Mocninné řady}
     pro $\tilde{z}$ řada konverguje i diverguje zároveň -- \textsc{spor} \Lightning
 \end{proof}
 
-\begin{veta}[V. 11. 2.]
+\begin{veta}
     Je dána mocninná řada. Nechť $c_k \neq 0$, nechť $|\frac{c_{k+1}}{c_k}|\to r, k \to \infty$. Pak $R \coloneq \frac{1}{r}$ (zde rozumíme $\frac{1}{\infty}=0, \frac{1}{0}= \infty$) je poloměr konvergence řady.
 \end{veta}
 
@@ -64,7 +64,7 @@ dusledek\section{Mocninné řady}
     TODO
 \end{proof}
 
-\begin{veta}[V. 11. 3.]
+\begin{veta}
     Je dána mocninná řada. Nechť $c_k \neq 0$, nechť $\sqrt[k]{c_k}\to r, k \to \infty$. Pak $R \coloneq \frac{1}{r}$ (zde rozumíme $\frac{1}{\infty}=0, \frac{1}{0}= \infty$) je poloměr konvergence řady.
 \end{veta}
 
@@ -85,7 +85,7 @@ Formálně jde o \uv{derivování řady člen po členu}, neboli o záměnu $\su
 \sum_{k=0}^{\infty} \tilde{c}_k (z - z_0)^k, \quad \tilde{c}_k = (k+1) c_{k+1}.
 \]
 
-\begin{lemma}[L. 11. 1.]
+\begin{lemma}
 Řady $(M_1)\sum_{k=0}^{\infty}c_k(z - z_0)^k$ a $(M_2)\sum_{k=1}^{\infty}kc_k(z - z_0)^{k-1}$ mají stejný poloměr konvergence.
 \end{lemma}
 
@@ -97,7 +97,7 @@ Taky řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\f
   TODO
 \end{proof}
 
-\begin{veta}[V. 11. 4.]
+\begin{veta}
 Nechť řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$ má poloměr konvergence $R > 0$. Označme
 \[
 F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k, \quad f(z) = \sum_{k=1}^{\infty} k c_k (z - z_0)^{k-1}.
@@ -140,7 +140,7 @@ podobně definujeme
 \]
 \end{poznamka}
 
-\begin{lemma}[L. 11. 2.]
+\begin{lemma}
   Pro $\forall x, y \in \C$ platí
 \[
 \begin{aligned}
@@ -155,7 +155,7 @@ podobně definujeme
   TODO
 \end{proof}
 
-\begin{veta}[V. 11. 5.]
+\begin{veta}
   Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $F^{(k)}(z_0) = k! c_k$ pro $\forall l = 0, 1, \ldots$.
 \end{veta}
 
@@ -167,7 +167,7 @@ podobně definujeme
   Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $n$-tý Taylorův polynom funkce $F(z)$ o středu $z_0$ je roven $n$-tému částečnému součtu řady příslušné mocninné řady.
 \end{poznamka}
 
-\begin{veta}[V. 11. 6.]
+\begin{veta}
   Nechť řady $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ a $\tilde{F}(z) = \sum_{k=0}^{\infty} \tilde{c}_k (z - z_0)^k$ mají kladný poloměr konvergence. Nechť $F(z) = \tilde{F}(z)$ na jistém $U(z_0)$. Potom $c_k = \tilde{c}_k$ pro $\forall k = 0, 1, \ldots$.
 \end{veta}
 
@@ -185,13 +185,13 @@ podobně definujeme
   $C^\infty$ funkce, která není součtem mocninné řady
 
   $$\phi (x)\coloneq \begin{cases}
-    0, x \leq 0 \\ e^{-\frac{1}{x}}, x>0
+    0, &x \leq 0 \\ e^{-\frac{1}{x}}, &x>0
   \end{cases} OBRAZEKOBRAZEK$$
 
   \begin{itemize}
     \item spojitá v $\mathbb R$ -- slepení dvou spojitých funkcí, v bodě lepení limity sedí
     \item $\phi^\prime (x) = \begin{cases}
-      0, x<0 \\ \frac{1}{x^2}\cdot e^{-\frac{1}{x}}\end{cases}$\\
+      0, &x<0 \\ \frac{1}{x^2}\cdot e^{-\frac{1}{x}}, &x\geq 0\end{cases}$\\
       $\phi^\prime_-(0)=0$\\
       $\phi^\prime_+=0$
     \item obecně $\forall k \geq 0:\phi^{(k)}(0)=0$ -- spojité\\

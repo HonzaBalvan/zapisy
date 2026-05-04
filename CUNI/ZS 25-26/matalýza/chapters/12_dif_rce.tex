@@ -1,1 +1,425 @@
 \section{Diferenciální rovnice}
+
+\begin{poznamka}
+  V celé kapitole jsou $I, J$ otevřené intervaly.
+\end{poznamka}
+
+\begin{definice}
+Nechť $F(x, y, z_1, \ldots, z_n)$ je reálná funkce $(n + 2)$ proměnných, která není konstantní vůči $z_n$. Potom výraz
+\[
+F(x, y, y', \dots, y^{(n)}) = 0 \tag{1}
+\]
+nazveme \textbf{obyčejnou diferenciální rovnicí řádu $n$} pro neznámou funkci $y$ proměnné $x$.
+
+Řešením rovnice (1) rozumíme funkci $y(x): I \to \R$, která má vlastní derivace až do řádu $n$ všude v $I$, a
+\[
+F(x, y(x), y'(x), \dots, y^{(n)}(x)) = 0
+\]
+pro každé $x \in I$.
+\end{definice}
+
+\begin{definice}
+Nechť $y: I \to \R$, $\tilde{y}: \tilde{I} \to \R$ jsou dvě řešení, přičemž interval $\tilde{I}$ je striktně větší než $I$, a $y(x) = \tilde{y}(x)$ pro $\forall x \in I$.
+
+Potom $\tilde{y}$ se nazve \textbf{prodloužením} $y$, a naopak $y$ se nazve \textbf{restrikcí} $\tilde{y}$.
+\end{definice}
+
+\begin{priklad}
+Funkce $y_1(x) = 0$, $x \in (-\infty, 0)$, $y_2(x) = 0$, $x \in \R$ a
+\[
+y_3(x) = \begin{cases}
+0, & x < 0 \\
+x^2, & x \geq 0
+\end{cases}
+\]
+jsou všechny řešení rovnice $y' = 2\sqrt{y}$. Vidíme, že $y_2$, $y_3$ jsou dvě různá prodloužení řešení $y_1$. V bodě $x = 0$ nastává větvení (nejednoznačnost).
+\end{priklad}
+
+\begin{definice}
+Obyčejnou diferenciální rovnici 1. řádu rozumíme výraz
+\[
+F(x, y, y') = 0, \tag{2}
+\]
+kde $F = F(x, y, z)$ je nekonstantní vůči $z$. Řešením rovnice (2) je funkce $y(x): I \to \R$, přičemž $y'(x)$ existuje vlastní všude v $I$ a $F(x, y(x), y'(x)) = 0$ pro $\forall x \in I$.
+\end{definice}
+
+\begin{definice}
+\textbf{Lineární ODR 1. řádu} rozumíme
+\[
+y' + a(x)y = b(x). \tag{3}
+\]
+\end{definice}
+
+\begin{veta}[Řešení lineární ODR 1. řádu]
+Je dána rovnice (3). Nechť $a(x)$, $b(x)$ jsou spojité v $I$, nechť $A(x) = \int a(x) \d x$, $B(x) = \int b(x) \exp A(x) \d x$ v $I$. Nechť $c \in \R$ je libovolné. Potom
+\[
+y(x) = \exp(-A(x))[B(x) + c]
+\]
+je řešení rovnice (3) v $I$. Naopak: všechna řešení rovnice (3) mají tento tvar.
+\end{veta}
+
+\begin{poznamka}
+Výraz $\exp A(x)$ se nazývá \textbf{integrační faktor}.
+\end{poznamka}
+
+\begin{priklad}
+rovnice: $y' + y \cos x = \exp(-\sin x)$, i.f.: $\exp \sin x$, obecné řešení: $y(x) = [x + c] \exp(-\sin x)$, $x \in \R$.
+\end{priklad}
+
+\begin{definice}
+Rovnice
+\[
+y' = g(y)f(x) \tag{4}
+\]
+se nazývá \textbf{rovnice se separovanými proměnnými}.
+\end{definice}
+
+\begin{veta}[Řešení rce se sep. prom.]
+Je dána rovnice (4). Nechť $f(x)$ je spojitá v $I$, nechť $g(y)$ je spojitá a nenulová v $J$. Nechť $F(x)$ resp. $G(y)$ jsou p.f. k $f(x)$ resp. $1/g(y)$ v $I$ resp. v $J$.
+
+Označ $G_{-1}(z)$ funkci inverzní ke $G(y)$. Nechť konstanta $c \in \R$ a interval $I_c \subset I$ jsou zvoleny tak, že $F(x) + c$ leží v definičním oboru $G_{-1}(z)$ (tj. v $G(J)$) pro $\forall x \in I_c$.
+
+Potom funkce
+\[
+y(x) = G_{-1}(F(x) + c), \quad x \in I_c
+\]
+je řešení rovnice (4).
+\end{veta}
+
+\begin{poznamka}
+Předpoklad „$F(x)+c$ leží oboru hodnot $G$“ je potřeba hlídat – bezhlavý výpočet totiž může snadno vést k řešení, které řešením není.
+\end{poznamka}
+
+\begin{priklad}
+Rovnice $y' = 2\sqrt{|y|}$. Aplikací předchozí věty nacházíme dva typy řešení:
+
+\begin{enumerate}[label=\textup{1. typ:}]
+    \item $I = \R$, $J = (-\infty, 0)$, $G(y) = -\sqrt{-y}$, $F(x) = x$. Tedy $G(J) = (-\infty, 0)$, $\tilde{I} = (-\infty, -c)$. Nalezené řešení $y(x) = -(x + c)^2$, $x \in (-\infty, -c)$.
+
+    Pozor: pro $x > -c$ daná funkce NENÍ řešení rovnice.
+
+    \item $J = (0, \infty)$, $G(y) = \sqrt{y}$, $G(J) = (0, \infty)$. Nalezené řešení $y(x) = (x + c)^2$, $x \in (-c, \infty)$. (Opět není řešení pro $x < -c$).
+
+    \item zjevně $y(x) = 0$, $x \in \R$ je řešení.
+\end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+V dalším se zaměříme na rovnici tvaru
+\[
+y' = f(x, y), \tag{5}
+\]
+- tzv. \textbf{rovnice vyřešená vzhledem k derivaci} – která je z hlediska teorie „šikovnější“ než obecný tvar (2).
+\end{poznamka}
+
+\begin{lemma}[O napojování]
+Nechť $y_1(x): (a, x_0) \to \R$, $y_2(x): (x_0, b) \to \R$ jsou řešení rovnice (5). Nechť $\lim_{x \to x_0^-} y_1(x) = y_0 = \lim_{x \to x_0^+} y_2(x)$. Nechť $f(x, y)$ je spojitá v bodě $(x_0, y_0) \in \R^2$. Potom funkce
+\[
+y(x) = \begin{cases}
+y_1(x), & x \in (a, x_0) \\
+y_2(x), & x \in (x_0, b) \\
+y_0, & x = x_0
+\end{cases}
+\]
+je řešením rovnice (5) v celém $(a, b)$.
+\end{lemma}
+
+\begin{priklad}
+Funkce
+\[
+y(x) = \begin{cases}
+-(x + c)^2, & x < -c \\
+0, & x \geq -c
+\end{cases}
+\]
+(tj. napojení řešení typu 1 a 3) je řešení rovnice $y' = 2\sqrt{|y|} \vee \R$.
+\end{priklad}
+
+\begin{poznamka}
+\textbf{Lemma 12.1} řeší vlastně jedinou věc: že rovnice je splněna v bodě napojení (jinde je to jasné) a říká, že to je zaručeno, slepím-li řešení spojitě. Srovnej s Lemmatem 6.2 (o lepení primitivní funkce) v minulém semestru.
+\end{poznamka}
+
+\begin{poznamka}
+Obecný postup řešení rovnice se separovanými proměnnými (4):
+\begin{itemize}
+    \item pokud $y_0 \in \R$ je takové, že $g(y_0) = 0$, pak $y(x) = y_0$ je tzv. \textbf{singulární} (stacionární) řešení (na každém intervalu, na němž je definována $f(x)$).
+    \item pomocí Věty 12.2 hledám řešení $y(x): I \to J$, kde $f(x)$ je spojitá $I$, $g(y)$ je spojitá, nenulová v $J$.
+    \item pomocí Lemmatu 12.1 nalezená řešení napojuji.
+\end{itemize}
+\end{poznamka}
+
+\begin{definice}
+Řekneme, že řešení $y(x): I \to \R$ rovnice (5) \textbf{prochází bodem} $(x_0, y_0) \in \R^2$, jestliže (i) $x_0 \in I$ a (ii) $y(x_0) = y_0$.
+
+Řekneme, že v bodě $(x_0, y_0)$ nastává \textbf{větvení}, jestliže existují dvě řešení $y_1(x)$, $y_2(x)$, která tímto bodem procházejí, avšak která se neshodují na žádném okolí $x_0$. Tj. $\forall \delta > 0 \ \exists \tilde{x} \in U(x_0, \delta)$ tak, že $y_1(\tilde{x}) \neq y_2(\tilde{x})$.
+\end{definice}
+
+\begin{priklad}
+Pro rovnici $y' = 2\sqrt{|y|}$ nastává v bodě $(0,0)$ větvení: $y_1(x) = 0$ pro $x \in \R$ a $y_2(x) = x^2$ pro $x > 0$ a $y_0 = 0$ pro $x \leq 0$.
+\end{priklad}
+
+\begin{poznamka}
+Jestliže $y(x)$ řešení rovnice (5) prochází bodem $(x_0, y_0)$, pak nutně $y'(x_0) = f(x_0, y(x_0)) = f(x_0, y_0)$. Geometricky: pokud stejným bodem prochází více řešení, mají zde stejnou tečnu – jejich grafy se „dotýkají“, nemohou se „křížit“.
+\end{poznamka}
+
+\begin{veta}[Peano]
+Nechť $f(x, y)$ je spojitá na okolí bodu $(x_0, y_0)$. Potom bodem $(x_0, y_0)$ prochází alespoň jedno řešení rovnice (5). Podrobněji: existuje $\delta > 0$ a funkce $y(x): (x_0 - \delta, x_0 + \delta) \to \R$, která řeší (5) a splňuje $y(x_0) = y_0$.
+\end{veta}
+
+\begin{veta}[Picard]
+Nechť funkce $f(x, y)$, $\frac{\partial}{\partial y} f(x, y)$ jsou spojité na okolí bodu $(x_0, y_0)$. Potom bodem $(x_0, y_0)$ prochází právě jedno řešení rovnice (5).
+
+Podrobněji: existuje $y(x)$ řešení (5) procházející $(x_0, y_0)$, a je-li $\tilde{y}(x)$ jiné řešení, procházející $(x_0, y_0)$, tak existuje $\delta > 0$ tak, že $y(x) = \tilde{y}(x)$ pro $\forall x \in U(x_0, \delta)$.
+
+Speciálně: v bodě $(x_0, y_0)$ nenastává větvení.
+\end{veta}
+
+\begin{priklad}
+Pro rovnici $y' = 2\sqrt{|y|}$ zaručují výše uvedené věty, že (i) každým bodem $(x_0, y_0) \in \R^2$ prochází alespoň jedno řešení a (ii) větvení může nastat jen v bodech $(x_0, 0)$.
+\end{priklad}
+
+\begin{definice}
+Řešení $y(x): I \to \R$ dané ODR se nazve \textbf{maximální}, jestliže ho nelze prodloužit, tj. neexistuje $\tilde{y}(x): \tilde{I} \to \R$ takové řešení, že $I \subsetneq \tilde{I}$ a $y(x) = \tilde{y}(x)$ pro $\forall x \in I$.
+\end{definice}
+
+\begin{poznamka}
+Náš cíl při řešení dané rovnice: najít všechna maximální řešení.
+
+Řešení $y(x): (a, b) \to \R$ rovnice (5) určitě nejde prodloužit za bod $x = b$, jestliže (i) $b = +\infty$ nebo (ii) $y(x) \to \infty$ pro $x \to b-$ a nebo (iii) $y(x) \to y_0$ pro $x \to b-$, avšak bod $(b, y_0)$ neleží v definičním oboru funkce $f(x, y)$.
+
+Jak poznám, že mám všechna řešení? Nechť $\Omega \subset \R^2$ je otevřená a funkce $f(x, y)$, $\frac{\partial}{\partial y} f(x, y)$ jsou spojité v $\Omega$. Jestliže najdu nějakou třídu $\{y_c(x)\}_{c \in \R}$ řešení rovnice (5) takových, že jejich grafy vyplní celou $\Omega$, pak díky Větě 12.4 jsou to zároveň všechna řešení, která se v $\Omega$ mohou vyskytnout.
+\end{poznamka}
+
+\begin{definice}
+Rovnice $y' = f(x, y)$ se nazve \textbf{homogenní}, pokud $f(x, y)$ splňuje $f(\lambda x, \lambda y) = f(x, y)$ pro $\forall \lambda \neq 0$.
+
+Postup řešení: položíme $y(x) = xz(x)$ – přejde na rovnici se separovanými proměnnými (pro novou neznámou funkci $z(x)$). Pozor na bod $x = 0$.
+\end{definice}
+
+\begin{priklad}
+$x^{2}y' + xy = 2y^{2}$
+\end{priklad}
+
+\begin{definice}
+Rovnice $y' + a(x)y = b(x)y^\alpha$, kde $\alpha \neq 0, 1$, se nazývá \textbf{Bernoulliho rovnice}.
+
+Postup řešení: substituci $z(x) = [y(x)]^{1 - \alpha}$ převedeme na lineární rovnici (pro novou neznámou funkci $z = z(x)$).
+
+Pozor na práci s odmocninou (znaménko $y(x)$ resp. $z(x)$).
+\end{definice}
+
+\begin{priklad}
+$xy' - 4y = x^2\sqrt{y}$, tj. $\alpha = 1/2$, $z = \sqrt{y}$ vede na $z' - 2z/x = x/2$, kterou lze řešit pomocí i.f. $1/x^2$.
+\end{priklad}
+
+\begin{definice}
+Systémem $n$ obyčejných diferenciálních rovnic prvního řádu rozumíme
+\[
+\boldsymbol{y}' = \boldsymbol{F} (x, \boldsymbol{y}), \tag{6}
+\]
+tj. rovnice $y_{i}'(x) = F_{i}(x,y_{1}(x),\ldots ,y_{n}(x))$, $i = 1,\dots ,n$, kde $\boldsymbol{y} = (y_{1},\ldots ,y_{n}):I\to \R^{n}$ jsou neznámé funkce, a $\boldsymbol{F} = (F_{1},\dots,F_{n}):I\times \R^{n}\rightarrow \R^{n}$ jsou dány.
+
+Přirozená počáteční podmínka je
+\[
+\boldsymbol{y}(x_0) = \boldsymbol{\eta}, \tag{7}
+\]
+neboli $y_{i}(x_{0}) = \eta_{i}$, $i = 1,\ldots ,n$, kde $x_0\in I$ a $\pmb{\eta}\in \R^n$.
+\end{definice}
+
+\begin{poznamka}
+Platí věty analogické Větě 12.3 a 12.4: $\pmb{F}$ spojité zaručuje lokální existenci, $\pmb{F}$ třídy $C^1$ navíc i jednoznačnost řešení (splňujícího danou počáteční podmínku).
+\end{poznamka}
+
+\begin{definice}
+Rovnicí n-tého řádu, vyřešenou vůči nejvyšší derivaci, rozumíme
+\[
+y^{(n)} = f \left(x, y, y', \dots, y^{(n - 1)}\right). \tag{8}
+\]
+\end{definice}
+
+\begin{poznamka}[d'Alembertova transformace] Funkce $y(x): I \to \R$ je řešením rovnice (8), právě když vektorová funkce $z(x): I \to \R^n$, kde
+\[
+\begin{array}{l}
+z_1(x) = y(x) \\
+z_2(x) = y'(x) \\
+\vdots \\
+z_n(x) = y^{(n-1)}(x)
+\end{array}
+\]
+řeší systém
+\[
+\begin{array}{l}
+z_1' = z_2 \\
+z_2' = z_3 \\
+\vdots \\
+z_{n-1}' = z_n \\
+z_n' = f(x, z_1, \dots, z_n).
+\end{array}
+\]
+
+Počáteční podmínka $\pmb{z}(x_0) = \pmb{\eta}$ odpovídá počáteční podmínce pro $y$ tvaru $y(x_0) = \eta_1$, $y'(x_0) = \eta_2$, $\ldots$ $y^{(n-1)}(x_0) = \eta_n$.
+\end{poznamka}
+
+\begin{poznamka}
+Přirozená počáteční podmínka (tj. taková, pro níž existuje právě jedno řešení) pro rovnici 1. řádu je určená hodnotou řešení v nějakém bodě.
+
+Pro rovnici $n$-tého řádu je přirozené určit $n$ počátečních podmínek, nejčastěji hodnotu a první až $(n-1)$-tou derivaci v nějakém bodě.
+\end{poznamka}
+
+\begin{definice}
+Lineární diferenciální rovnici řádu $n$ rozumíme
+\[
+a_0(x) y^{(n)} + a_1(x) y^{(n-1)} + \dots + a_n(x) y = f(x). \tag{9}
+\]
+\end{definice}
+
+\textbf{Terminologie:} $a_i(x)$ ... koeficienty rovnice, $f(x)$ ... pravá strana.
+
+\textbf{Značení} $C(I)$ ... funkce $y(x): I \to \R(\C)$, které jsou spojité; $C^k(I)$ ... funkce $y(x)$, které jsou spojité a jejichž derivace až do řádu $k$ včetně jsou také spojité na $I$.
+
+Řešením rovnice (9) rozumíme funkci $y(x) \in C^n(I)$, která splňuje (9) pro $\forall x \in I$.
+
+\textbf{Klíčový předpoklad (P).} O rovnici (9) budeme předpokládat, že $a_i(x)$, $i = 1, \ldots, n$ a $f(x)$ jsou spojité v $I$ (otevřený interval), navíc $a_0(x) \neq 0$ pro $\forall x \in I$.
+
+\begin{veta}
+Je dána rovnice (9) a platí předpoklad (P). Nechť $x_0 \in I$ a $\eta \in \R^n$ jsou libovolné. Potom existuje jediná funkce $y(x) \in C^n(I)$, která řeší (9) na celém $I$, a splňuje počáteční podmínky
+\[
+\begin{aligned}
+y(x_0) &= \eta_1 \\
+y'(x_0) &= \eta_2 \\
+&\vdots \\
+y^{(n-1)}(x_0) &= \eta_n
+\end{aligned}
+\]
+\end{veta}
+
+\begin{poznamka}
+Existence řešení je zaručena na celém $I$ (obor spojitosti $a_i$, $f$) - to je typické pro lineární rovnice. U nelineárních rovnic obecně nelze čekat více než lokální existenci řešení.
+\end{poznamka}
+
+\textbf{Značení.} Při značení $\mathcal L [y] = \sum_{k=0}^n a_k(x) y^{(n-k)}$ můžeme rovnici (9) přepsat jako $\mathcal L [y] = f$. Speciální případ $f = 0$ je tzv. homogenní úloha
+\[
+\mathcal L [y] = 0. \tag{10}
+\]
+
+\begin{veta}[Struktura řešení lineární rovnice řádu $n$]
+Nechť platí předpoklad (P). Potom:
+\begin{enumerate}
+    \item Množina $\mathcal {H}$ všech řešení homogenní úlohy (10) tvoří lineární podprostor dimenze $n$ v prostoru $C^n(I)$.
+    \item Množina $\mathcal {N}_f$ všech řešení úlohy (9) má tvar $\{y_p + y; y \in \mathcal {H}\}$, kde $y_p$ je libovolné, pevně zvolené řešení této úlohy.
+    \item Nechť $\{y_1, \ldots, y_n\}$ je libovolná báze $\mathcal {H}$. Definujme $U_{ij}(x) = y_j^{(i-1)}(x)$, $i,j = 1, \dots, n$. Potom pro každé $x \in I$ je $U(x)$ regulární matice v $\R^{n \times n}$.
+\end{enumerate}
+\end{veta}
+
+\textbf{Terminologie.} Bází prostoru $\mathcal {H}$ nazýváme \textbf{fundamentálním systémem} (F.S.) rovnice (9). Pevně zvolené řešení $y_p$ nazýváme \textbf{partikulární řešení}.
+
+Matici z bodu 3. výše nazýváme \textbf{Wronského maticí} a její determinant se zove \textbf{wronskian}.
+
+\begin{priklad}
+Funkce $\left\{\frac{\cos x}{x}, \frac{\sin x}{x}\right\}$ tvoří F.S. pro úlohu $y'' - \frac{2}{x} y' + y = 0$.
+\end{priklad}
+
+\begin{poznamka}
+Obecný návod, jak nalézt fundamentální systém nebo partikulární řešení, neexistuje. Následující věta ale ukazuje, že pouhou integrací můžeme nalézt partikulární řešení, pokud už máme fundamentální systém.
+\end{poznamka}
+
+\begin{veta}[Variace konstant]
+Je dána rovnice (9) $\mathcal L [y] = f$ a platí (P). Nechť $\{y_1, \ldots, y_n\}$ je fundamentální systém. Nechť $c_1'(x), \ldots, c_n'(x)$ splňují pro $\forall x \in I$ soustavu
+\[
+\begin{aligned}
+c_1'(x) y_1(x) + c_2'(x) y_2(x) + \ldots + c_n'(x) y_n(x) &= 0 \\
+c_1'(x) y_1'(x) + c_2'(x) y_2'(x) + \ldots + c_n'(x) y_n'(x) &= 0 \\
+&\vdots \\
+c_1'(x) y_1^{(n-2)}(x) + c_2'(x) y_2^{(n-2)}(x) + \ldots + c_n'(x) y_n^{(n-2)}(x) &= 0 \\
+c_1'(x) y_1^{(n-1)}(x) + c_2'(x) y_2^{(n-1)}(x) + \ldots + c_n'(x) y_n^{(n-1)}(x) &= \frac{f(x)}{a_0(x)}.
+\end{aligned}
+\]
+Potom funkce $y(x) = \sum_{j=1}^n c_j(x) y_j(x)$ je řešením úlohy (9).
+\end{veta}
+
+\begin{poznamka}
+Soustava ve Větě 12.7 má tvar $U(x)C'(x) = B(x)$, kde $U(x)$ je regulární matice (viz Větu 12.6), $C'(x) = (c_1'(x), \ldots, c_n'(x))$ je neznámý vektor a $B(x) = (0, \ldots, 0, \frac{f(x)}{a_0(x)})$. Můžeme tedy vyjádřit $c_j'(x)$ a integrací získat $c_j(x)$.
+\end{poznamka}
+
+\begin{definice}
+Rovnice
+\[
+b_0 y^{(n)} + b_1 y^{(n-1)} + \cdots + b_n y = f(x), \tag{11}
+\]
+kde $b_j \in \C$ jsou konstanty ($b_0 \neq 0$), se nazývá \textbf{lineární ODR řádu $n$ s konstantními koeficienty}. Značíme $\mathcal K [y] = \sum_{k=0}^n b_k y^{(n-k)}$. Rovnice
+\[
+\mathcal K [y] = 0 \tag{12}
+\]
+je odpovídající homogenní úloha.
+\end{definice}
+
+\begin{poznamka}
+Hlavní myšlenka teorie rovnic s konstantními koeficienty: hledejme řešení tvaru $y(x) = \exp(\lambda x)$. Pozoruji, že $\mathcal K [\exp(\lambda x)] = p(\lambda) \exp(\lambda x)$, kde
+\[
+p(\lambda) = \sum_{k=0}^n b_k \lambda^{n-k}. \tag{13}
+\]
+Tedy: je-li $\lambda_0$ kořenem polynomu $p(\lambda)$, tak funkce $\exp(\lambda_0 x)$ je řešením homogenní úlohy.
+\end{poznamka}
+
+\begin{definice}
+Polynom (13) se nazývá \textbf{charakteristický polynom} rovnice (11).
+\end{definice}
+
+\begin{poznamka}
+Každý polynom $p = p(\lambda)$ lze napsat jako
+\[
+p(\lambda) = a (\lambda - \lambda_1)^{n_1} \cdots (\lambda - \lambda_s)^{n_s}
+\]
+kde $\lambda_1, \ldots, \lambda_s \in \C$ jsou navzájem různé kořeny, a $n_1, \ldots, n_s$ jsou jejich násobnosti.
+
+Platí: $n_1 + \cdots + n_s$ rovná se stupeň polynomu.
+
+Dále: $\lambda_0$ je kořen polynomu $p(\lambda)$ násobnosti $k$, právě když $0 = p(\lambda_0) = p'(\lambda_0) = \cdots = p^{(k-1)}(\lambda_0)$, avšak $p^{(k)}(\lambda_0) \neq 0$.
+
+Ke stupni polynomu: $a\lambda + b$, kde $a \neq 0$, je polynom stupně 1. Nenulová konstanta je polynom stupně 0. Identicky nulová funkce se považuje za polynom záporného stupně.
+\end{poznamka}
+
+\begin{lemma}
+Je dán operátor $\mathcal K [y]$ a $p(\lambda)$ je jeho charakteristický polynom. Potom pro $\forall l \geq 0$ celé
+\[
+\mathcal K [x^l \exp(\lambda x)] = \exp(\lambda x) \sum_{j=0}^l \binom{l}{j} p^{(j)}(\lambda) x^{l-j}.
+\]
+\end{lemma}
+
+\begin{dusledek}
+Je-li $\lambda_0$ kořen char. polynomu násobnosti $k$, pak funkce $\exp(\lambda_0 x)$, $x \exp(\lambda_0 x)$, $\ldots$, $x^{k-1} \exp(\lambda_0 x)$ řeší homogenní úlohu (12).
+\end{dusledek}
+
+\begin{poznamka}
+Připomeňme tvrzení (které plyne např. jako speciální případ Věty 11.6): je-li $q(x)$ polynom a $q(x) \equiv 0$, tak nutně $q(x)$ je triviální (tj. má všechny koeficienty nulové). Totéž řečeno jinak: funkce 1, $x$, $x^2$, $\ldots x^k$, $\ldots$ jsou lineárně nezávislé.
+
+Následující lemma můžeme chápat jako zobecnění tohoto faktu.
+\end{poznamka}
+
+\begin{lemma}
+Nechť $\lambda_j \in \C$ jsou vzájemně různá čísla, nechť $q_j(x)$ jsou polynomy. Jestliže $\sum_{j=1}^m q_j(x) \exp(\lambda_j x) \equiv 0$, pak nutně $q_j(x) \equiv 0, \forall j$.
+\end{lemma}
+
+\begin{veta}[F.S. pro $\mathcal K {[y]} = 0$ ]
+Je dán operátor $\mathcal K [y]]$ a $p(\lambda)$ je jeho charakteristický polynom. Nechť $\lambda_j$, $j = 1, \ldots, s$, jsou jeho kořeny, a $n_j$, $j = 1, \ldots, s$, jsou odpovídající násobnosti. Potom funkce
+\[
+x^l \exp(\lambda_j x) \qquad j = 1, \ldots, s, \; l = 0, \ldots, n_j - 1
+\]
+tvoří fundamentální systém homogenní úlohy (12).
+\end{veta}
+
+\begin{priklad}
+$y^{(5)} - y^{(4)} - 5y^{(3)} + y'' + 8y' + 4y = 0$, charakteristický polynom:
+\[
+p(\lambda) = \lambda^5 - \lambda^4 - 5\lambda^3 + \lambda^2 + 8\lambda + 4 = (\lambda + 1)^3 (\lambda - 2)^2
+\]
+-1 je 3-násobný, 2 je 2-násobný kořen, $\Longrightarrow$ fundamentální systém:
+\[
+\left\{ \exp(-x), x \exp(-x), x^2 \exp(-x), \exp(2x), x \exp(2x) \right\}
+\]
+obecné řešení:
+\[
+K_1 \exp(-x) + K_2 x \exp(-x) + K_3 x^2 \exp(-x) + K_4 \exp(2x) + K_5 x \exp(2x)
+\]
+kde $K_i \in \R$ jsou konstanty.
+\end{priklad}

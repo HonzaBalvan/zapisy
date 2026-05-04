@@ -17,24 +17,24 @@
 \end{priklad}
 
 \begin{definice}
- Normovaný vektorový prostor je dvojice $(X, ||\cdot||)$, kde $X$ je vektorový prostor na $\mathbb R(\mathbb C)$ a norma $||\cdot||:\textbf{x} \mapsto ||\textbf{x}||$, která splňuje $\forall \textbf{x} \textbf{y} \in X, \forall a \in \mathbb R(\mathbb C)$:
+ Normovaný vektorový prostor je dvojice $(X, \|\cdot\|)$, kde $X$ je vektorový prostor na $\mathbb R(\mathbb C)$ a norma $\|\cdot\|:\textbf{x} \mapsto \|\textbf{x}\|$, která splňuje $\forall \textbf{x} \textbf{y} \in X, \forall a \in \mathbb R(\mathbb C)$:
  \begin{enumerate}[i)]
-  \item $||\textbf{x}||\geq 0, ||\textbf{x}||=0 \iff \textbf{x} = \textbf{o}$
-  \item $||a\textbf{x}||=|a|\cdot ||\textbf{x}||$
-  \item $||\textbf{x+y}||\leq ||\textbf{x}|| + ||\textbf{y}||$
+  \item $\|\textbf{x}\|\geq 0, \|\textbf{x}\|=0 \iff \textbf{x} = \textbf{o}$
+  \item $\|a\textbf{x}\|=|a|\cdot \|\textbf{x}\|$
+  \item $\|\textbf{x+y}\|\leq \|\textbf{x}\| + \|\textbf{y}\|$
  \end{enumerate}
 \end{definice}
 
 \begin{priklad}
   \begin{enumerate}[3)]
-  \item Normovaný vektorový prostor je metrický prostor: $\rho(\textbf{x}, \textbf{y}) = ||\textbf{x}-\textbf{y}||, \forall \textbf{x}, \textbf{y} \in X$
+  \item Normovaný vektorový prostor je metrický prostor: $\rho(\textbf{x}, \textbf{y}) = \|\textbf{x}-\textbf{y}\|, \forall \textbf{x}, \textbf{y} \in X$
   \end{enumerate}
 \end{priklad}
 
 \begin{priklad} Příklady normovaných vektorových prostorů:
   \begin{enumerate}[1)]
-  \item \begin{align*}\mathbb R^n \text{ s normou } &||\textbf{x}||_1\coloneq\sum_{j=1}^{n}|x_j| \\ &||\textbf{x}||_\infty \coloneq \max \{|x_1|, \dots, |x_n|\}\\ &||\textbf{x}||_2 \coloneq \sqrt{\sum_{j=1}^{n}x_j^2} \text{ -- eukleidovská norma}\end{align*}
-      \item \begin{align*} C([a, b])\text{ s normou } & ||f||_1 \coloneq \int_{a}^{b}|f(x)| \d x \\ & ||f||_\infty \coloneq \max\{|f(x)|; x \in [a, b]\} \end{align*}
+  \item \begin{align*}\mathbb R^n \text{ s normou } &\|\textbf{x}\|_1\coloneq\sum_{j=1}^{n}|x_j| \\ &\|\textbf{x}\|_\infty \coloneq \max \{|x_1|, \dots, |x_n|\}\\ &\|\textbf{x}\|_2 \coloneq \sqrt{\sum_{j=1}^{n}x_j^2} \text{ -- eukleidovská norma}\end{align*}
+      \item \begin{align*} C([a, b])\text{ s normou } & \|f\|_1 \coloneq \int_{a}^{b}|f(x)| \d x \\ & \|f\|_\infty \coloneq \max\{|f(x)|; x \in [a, b]\} \end{align*}
   \end{enumerate}
 \end{priklad}
 
@@ -59,7 +59,7 @@
   \end{itemize}
 \end{priklad}
 
-\begin{veta}[V. 13. 1. Vlastnosti otevřených množin]
+\begin{veta}[Vlastnosti otevřených množin]
     Buď $(X, \rho)$ metrický prostor. Pak:
     \begin{enumerate}[i)]
   \item $\emptyset, X$ jsou otevřené

@@ -29,7 +29,7 @@
   \end{enumerate}
 \end{priklad}
 
-\begin{veta}[V. 10.1. Nutná podmínka konvergence řady]
+\begin{veta}[Nutná podmínka konvergence řady]
   Nechť $\sum_{k=1}^{\infty} a_k$ konverguje. Pak $a_k \to 0, k \to \infty$.
 \end{veta}
 
@@ -39,7 +39,7 @@
   víme: $s_n \to s \in \mathbb R$, a tedy také $s_{n-1} \to s \implies a_n \to s-s = 0$ (VoAL kon.)
 \end{proof}
 
-\begin{veta}[V. 10. 2 Věta o aritmetice řad]
+\begin{veta}[Věta o aritmetice řad]
   Nechť $\sum a_k, \sum b_k$ řady, $\alpha, \beta$ čísla. Pak $\sum_{k=1}^{\infty} (\alpha a_k + \beta b_k) = \alpha \sum_{k=1}^{\infty} a_k + \beta \sum_{k=1}^{\infty} b_k$, má-li PS smysl. Speciálně $\sum a_k, \sum b_k$ konvergentní $\implies \sum \alpha a_k \beta b_k$ konverguje. Platí i v $\mathbb C$ .
 \end{veta}
 
@@ -47,7 +47,7 @@
   vychází z VoAL pro $\mathbb R$ i pro $\mathbb C$, pro $\mathbb C$ navíc důkaz \uv{po složkách} $\Re, \Im$
 \end{proof}
 
-\begin{lemma}[L.10.1]
+\begin{lemma}
   Nechť $a_k = b_k, \forall k \in \mathbb N$ až na konečně mnoho výjimek. Pak $\sum_{k=1}^{\infty} a_k$ konverguje $\iff \sum_{k=1}^{\infty} b_k$ konverguje.
 \end{lemma}
 
@@ -59,7 +59,7 @@
   Často píšeme $\sum a_k$ místo $\sum_k a_k$ nebo $\sum_{k=1}^{\infty} a_k$.
 \end{poznamka}
 
-\begin{lemma}[L. 10. 2.]
+\begin{lemma}
   Nechť $a_k \geq 0$. Potom řada $\sum_{k=1}^{\infty} a_k$ konverguje $\iff$ má omezené částečné součty.
 \end{lemma}
 
@@ -71,7 +71,7 @@
   Tedy $\{s_n\}_{n=1}^{\infty}$ je neklesající, potom tedy dle V. 7. 2. konverguje $\iff$ je omezená.
 \end{proof}
 
-\begin{veta}[V. 10. 3. Srovnávací kritérium -- nelimitní verze]
+\begin{veta}[Srovnávací kritérium -- nelimitní verze]
   Jsou dány řady $\sum_{k=1}^{\infty} a_k$ a $\sum_{k=1}^{\infty} b_k$, kde $a_k, b_k \geq 0$. Nechť existuje $c>0$ a $n_0$ t. ž. $a_k \leq c\cdot b_k, \forall k \geq n_0$. Pak
 
   \begin{enumerate}[i)]
@@ -95,7 +95,7 @@
   \end{enumerate}
 \end{proof}
 
-\begin{veta}[V. 10. 4. Podílové kritérium]
+\begin{veta}[Podílové kritérium]
   Je dána řada $\sum_{k=1}^{\infty} a_k$. Nechť $a_k >0$ a $\frac{a_k+1}{a_k} \to q, k \to \infty$. Pak
 
   \begin{enumerate}[i)]
@@ -143,7 +143,7 @@
   Pokud $\frac{a_{k+1}}{a_k} \to 1, k \to \infty$ nelze obecně rozhodnout. Např. $\sum \frac{1}{k}$ diverguje, ale $\sum \frac{1}{k^2}$ konverguje.
 \end{poznamka}
 
-\begin{veta}[V. 10. 5. Odmocninové kritérium*]
+\begin{veta}[Odmocninové kritérium*]
   Nechť $\sum a_k$ řada, $a_k >0$ a $\lim_{k\to \infty} \sqrt[k]{a_k}=q$. Pak
 
 \begin{enumerate}[i)]
@@ -152,7 +152,7 @@
 \end{enumerate}
 \end{veta}
 
-\begin{veta}[V. 10. 6. Integrálové kritérium]
+\begin{veta}[Integrálové kritérium]
   Nechť $\sum a_k$ řada, $a_k > 0$. Nechť existuje spojitá nezáporná nerostoucí funkce $f: [1, \infty] \to \mathbb R$ t. ž. $a_k = f(k)$. Pak $\sum a_k$ konverguje $\iff (\mathscr N) \int_1^\infty f(x)dx <\infty$.
 \end{veta}
 OBRAZEKOBRAZEk
@@ -204,7 +204,7 @@ OBRAZEKOBRAZEk
   Řekneme, že $a_k$ je řádově rovno $b_k$ pro $k \to \infty$, jestliže $\exists \lim_{k\to \infty} \frac{a_k}{b_k} \to c \in \mathbb R \smallsetminus \{0\}$. Značíme $a_k \sim b_k, k \to \infty$.
 \end{definice}
 
-\begin{veta}[V. 10. 7. Srpvnávací kritérium -- limitní verze]
+\begin{veta}[Srovnávací kritérium -- limitní verze]
   Nechť $a_k, b_k >0$, nechť $a_k \sim b_k, k \to \infty$. Pak $\sum a_k$ konverguje $\iff \sum b_k$ konverguje.
 \end{veta}
 
@@ -237,7 +237,7 @@ OBRAZEKOBRAZEk
   $a_k, b_k >0$ ve V. 10. 7. je podstatný předpoklad. Obecněji by šlo, že $a_k, b_k$ od určitého indexu nemění zneménka.
 \end{poznamka}
 
-\begin{veta}[V. 10. 8. Raabeho kritérium] Nechť $a_k >0$, nechť $k(\frac{a_k}{a_{k+1}}-1) \to p, k \to \infty$. Pak
+\begin{veta}[Raabeho kritérium] Nechť $a_k >0$, nechť $k(\frac{a_k}{a_{k+1}}-1) \to p, k \to \infty$. Pak
   \begin{enumerate}[i)]
     \item $p>1\implies \sum a_k$ konverguje,
     \item $p<1\implies \sum a_k$ diverguje.
@@ -326,7 +326,7 @@ OBRAZEKOBRAZEk
   $s_m - s_n$ TODO viz foto, dodělat i v sšt
 \end{proof}
 
-\begin{veta}[V. 10. 9.]
+\begin{veta}
   Nechť $a_k \in \mathbb C$. Potom $\sum a_k$ konverguje $\iff$ splňuje (B. C. r).
 \end{veta}
 
@@ -334,7 +334,7 @@ OBRAZEKOBRAZEk
   $\sum a_k$ konverguje $\stackrel{def.}{\iff}$ posloupnost $\{s_n\}$ konverguje $\stackrel{K. 7. - \mathbb R, K. 13. - \mathbb C}{\iff} \{s_n\}$ splňuje (B. C.) $\stackrel{předch. pozn.}{\iff} \sum a_k$ splňuje (B. C. r).
 \end{proof}
 
-\begin{veta}[V. 10. 10. O absolutní konvergenci]
+\begin{veta}[O absolutní konvergenci]
   Nechť $a_k \in \mathbb C$, nechť $\sum |a_k|$ konverguje. Pak řada $\sum a_k$ konverguje.
 \end{veta}
 
@@ -377,7 +377,7 @@ OBRAZEKOBRAZEk
   \end{enumerate}
 \end{priklad}
 
-\begin{veta}[*V. 10. 11 Leibnizovo kritérium]
+\begin{veta}[Leibnizovo kritérium*]
   Nechť $b_k \to 0, k \to \infty$, nechť $\{b_k\}$ je monotónní (od jistého $k \geq n_0$). Pak $\sum (-1)^k \cdot b_k$ konverguje. (Nutně $b_k \in \mathbb R$.)
 \end{veta}
 
@@ -396,7 +396,7 @@ OBRAZEKOBRAZEk
     \end{enumerate}
 \end{priklad}
 
-\begin{lemma}[L. 10. 3. Abelova parciální sumace]
+\begin{lemma}[Abelova parciální sumace]
     Nechť $a_k, b_k \in \mathbb C, k \in \mathbb N$. Položme $\tilde{s_m} \coloneq \sum_{k=n+1}^{m} a_k, \forall m > n, n \in \mathbb N$ pevné. Pak $\sum_{k = n+1}^{m} a_k b_k = \tilde{s_m} b_{m+1} + \sum_{k = n+1}^{m} \tilde{s_k} (b_k - b_{k+1}), \forall m > n$.
 \end{lemma}
 
@@ -423,7 +423,7 @@ OBRAZEKOBRAZEk
     \end{enumerate}
 \end{priklad}
 
-\begin{veta}[V. 10. 12. Dirichletovo kritérium]
+\begin{veta}[Dirichletovo kritérium]
     Nechť $\sum a_k \in \mathbb C$ má omezené částečné součty, nechť $b_k \in \mathbb R, b_k \to 0, k \to \infty$, navíc $\{b_k\}$ je monotónní (pro $k \geq n_0$). Pak $\sum a_k b_k$ konverguje.
 \end{veta}
 
@@ -437,7 +437,7 @@ OBRAZEKOBRAZEk
     $|\sum a_kb_k| \leq \underbrace{|\tilde{s}_mb_{m+1}|}_{\underbrace{|\tilde{s}_m|}_{\leq 2K}\cdot b_{m+1}}+\sum|\tilde{s}_k|\cdot|b_k-b_{k+1}|\leq 2Kb_{m+1}+\sum 2K(b_k-b_{k+1})=2K\cdot b_{n+1}<2K \frac{\varepsilon}{2K} = \varepsilon$
 \end{proof}
 
-\begin{lemma}[L. 10. 4.]
+\begin{lemma}
     Nechť $x \neq 2l \pi, l \in \mathbb Z$. Pak: $$\sum_{k=0}^{n} \sin(kx) = \frac{\sin\left(\frac{n+1}{2}x\right)\cdot\sin\left(\frac{n}{2}x\right)}{\sin\left(\frac{x}{2}\right)},\sum_{k=0}^{n} \cos(kx) = \frac{\sin\left(\frac{n+1}{2}x\right)\cdot\cos\left(\frac{n}{2}x\right)}{\sin\left(\frac{x}{2}\right)}.$$
 \end{lemma}
 
@@ -453,7 +453,7 @@ OBRAZEKOBRAZEk
     $|PS| \leq \frac{1}{|\sin \frac{x}{2}|}$, a to nezávisle na $n$.
 \end{proof}
 
-\begin{veta}[V. 10. 13. Abelovo kritérium]
+\begin{veta}[Abelovo kritérium]
     Nechť $\sum a_k \in \mathbb C$ konverguje. Nechť $\{b_k\}$ je omezená, monotónní ($b_k \in \mathbb R$). Pak $\sum a_kb_k$ konverguje.
 \end{veta}
 
@@ -475,13 +475,11 @@ OBRAZEKOBRAZEk
     \end{enumerate}
 \end{priklad}
 
----- experiment
-
 \begin{definice}
   Nechť $a_k$, $b_k \in \C$. Nechť existuje $\varphi : \N \to \N$ vzájemně jednoznačné zobrazení takové, že $a_k = b_{\varphi(k)}$ pro každé $k \in \N$. Potom řada $\sum_{k=1}^{\infty} b_k$ se nazývá přerovnání řady $\sum_{k=1}^{\infty} a_k$.
 \end{definice}
 
-\begin{veta}[V. 10. 14. O přerovnání řady]
+\begin{veta}[O přerovnání řady]
   Nechť $\sum_{k=1}^{\infty} b_k$ je libovolné přerovnání řady $\sum_{k=1}^{\infty} a_k$. Nechť buď (i) $a_k \geq 0$, nebo (ii) $\sum_{k=1}^{\infty} a_k$ konverguje absolutně (kde $a_k \in \C$). Potom $\sum_{k=1}^{\infty} a_k = \sum_{k=1}^{\infty} b_k$.
 \end{veta}
 
@@ -489,7 +487,7 @@ OBRAZEKOBRAZEk
   TODO
 \end{proof}
 
-\begin{veta}[V. 10. 15.]
+\begin{veta}
   Nechť $a_k \in \R$, nechť $\sum_{k=1}^{\infty} a_k$ konverguje neabsolutně, nechť $s \in \R^*$ je libovolné. Potom existuje přerovnání, jehož součet je $s$.
 \end{veta}
 
