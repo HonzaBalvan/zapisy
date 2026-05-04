@@ -5,7 +5,7 @@
 \end{definice}
 
 \begin{poznamka}
-    Co to je? \begin{cases}řada s parametrem $z$ \\ speciální typ funkce \\ zobecnění polynomu \end{cases}
+    Co to je? $\begin{cases}\text{řada s parametrem } z \\ \text{speciální typ funkce} \\ \text{zobecnění polynomu} \end{cases}$
 \end{poznamka}
 
 \begin{veta}[V. 11. 1. Poloměr konvergence] Je dána mocninná řada. Pak $\exists R \in [0, \infty]$ t. ž. $\forall z \in \mathbb C$ platí
@@ -23,14 +23,14 @@
         \item nechť $z \in \mathbb C, |z-z_0|<R\implies\exists \rho: \rho >|z-z_0|, \rho \in \mathscr K$
 
             tj. $\exists C>0$ t. ž. $|c_k|\rho^k\leq C, \forall k$
-     
+
             lze odhadnout: $|c_k(z-z_0)^k|=|c_k||z-z_0|^k = \underbrace{|c_k|\cdot\rho^k}_{\leq C}\cdot\underbrace{(\frac{|z-z_0|}{\rho})^k}_{\eqcolon \theta^k, \theta <1}\leq C \cdot \rho^k \stackrel{V. 10. 3.}{\implies}$ řada konverguje absolutně
         \item nechť $z \in \mathbb C, |z-z_0|>R\implies\underbrace{|z-z_0|}_{\eqcolon \rho}\notin \mathscr K$
-          
+
             tj. $\{|c_k||z-z_0|^k\}_{k=0}^\infty$ není omezená
-            
+
             ?? kdyby řada konvergovala, pak (dle V. 10. 1.) $|c_k(z-z_0)|\to 0, k \to \infty$
-            
+
             $|c_k(z-z_0)^k|=|c_k||z-z_0|^k$ což není omezené $\implies$ \textsc{spor} \Lightning (V. 7. 2. ?))
     \end{enumerate}
 \end{proof}
@@ -41,9 +41,9 @@
 
 \begin{proof}
     ?? $\exists R_1 \neq R_2$ splňující vlastnosti i), ii) z V. 11. 1.
-    
+
     BÚNO $R_1<R_2$ -- zvol $\tilde{z} \in \mathbb C$ t. ž. $R_1<|\tilde{z}-z_0|<R_2$
-    
+
     pro $\tilde{z}$ řada konverguje i diverguje zároveň -- \textsc{spor} \Lightning
 \end{proof}
 
@@ -53,14 +53,14 @@
 
 \begin{proof}
     \textsc{trik}: užijeme V. 10. 4. (podíl krit.) na řadu $\sum b_k$, kde $_k = |c_k||z-z_0|^k$ (BÚNO $z\neq z_0$)
-    
+
     $\frac{b_{k+1}}{b_k}=\frac{|c_{k+1}|}{|c_k|}\cdot \frac{|z-z_0|^{k+1}}{|z-z_0|^k}= \frac{|c_{k+1}|}{|c_k|}\cdot |z-z_0| \to r \cdot |z-z_0|$
-    
-    \begin{tabular}{c c}
-        diskuze & \begin{enumerate}[1.]
-  \item
-    \end{enumerate}
-    \end{tabular}
+
+    %\begin{tabular}
+    %    diskuze & \begin{enumerate}[1.]
+  %\item
+    %\end{enumerate}
+    %\end{tabular}
 \end{proof}
 
 \begin{veta}[V. 11. 3.]

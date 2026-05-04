@@ -279,11 +279,11 @@ OBRAZEKOBRAZEk
 
     $\implies k(\frac{a_k}{a_{k+1}}-1)<p + \varepsilon, \forall k \in \mathbb N$ (L. 10. 1.)
 
-    \begin{align*}
-      ka_k - ka_{k+1}<a_{k+1} &  /-a_k\\
+    %\begin{align*}
+    %  ka_k - ka_{k+1}<a_{k+1} &  /-a_k \\
 
-      ka_k-(k+1)a_{k+1}<0 & /\sum_{k=1}^{n-1}
-    \end{align*}
+    %  ka_k-(k+1)a_{k+1}<0 & /\sum_{k=1}^{n-1}
+    %\end{align*}
 
     $a_1 - na_n < 0$
 
@@ -388,9 +388,9 @@ OBRAZEKOBRAZEk
 \end{proof}
 
 \begin{priklad}
-    $\sum (-1)^k \cdot \fraction{1}{k^\alpha}, \alpha$ pevné $\in \mathbb R$
+    $\sum (-1)^k \cdot \frac{1}{k^\alpha}, \alpha$ pevné $\in \mathbb R$
     \begin{enumerate}
-        \item $|a_k| = \fraction{1}{k^\alpha}$, a tedy $\alpha >1 \implies \sum a_k$ konverguje aboslutně
+        \item $|a_k| = \frac{1}{k^\alpha}$, a tedy $\alpha >1 \implies \sum a_k$ konverguje aboslutně
         \item $\alpha \leq 0 \implies |a_k| = k^{-\alpha} \geq 1, \forall k \in \mathbb N \cancel{\to} 0 \stackrel{V. 10. 1.}{\implies}$ diverguje
         \item $0 < \alpha \leq 1 \implies \sum a_k \underbrace{\text{konverguje}}_{\text{dle V. 10. 11.}}\, \underbrace{\text{neabsolutně}}_{\text{dle i)}}$
     \end{enumerate}
@@ -428,13 +428,13 @@ OBRAZEKOBRAZEk
 \end{veta}
 
 \begin{proof}
-    díky V. 10. 9. stačí ověřit (B. C. r), tj. $(\foarll \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall n \geq n_0)(\forall p >1)[|\sum_{k=n+1}^{n+p}a_k b_k|<\varepsilon]$. Nechť $\varepsilon>0$ dáno $\implies \exists K > 0$ t. ž. $|s_n|<K, \forall n \in \mathbb N$, kde $s_n$ jsou částečné součty posloupnosti $\{a_k\}$.
+    díky V. 10. 9. stačí ověřit (B. C. r), tj. $(\forall \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall n \geq n_0)(\forall p >1)[|\sum_{k=n+1}^{n+p}a_k b_k|<\varepsilon]$. Nechť $\varepsilon>0$ dáno $\implies \exists K > 0$ t. ž. $|s_n|<K, \forall n \in \mathbb N$, kde $s_n$ jsou částečné součty posloupnosti $\{a_k\}$.
     $\exists n_0$ t. ž. $|b_k|<\frac{\varepsilon}{2K}, \forall k \geq n_0$
     BÚNO $b_1\geq b_2 \geq \dots \geq 0, \forall k \in \mathbb N$
     Nechť $n\geq n_0, p \geq 1$ lib., $\tilde{s}_m \coloneq s_m -s_n, m = n+p$, nyní dle L. 10. 3.
     (ještě pozorování: $|\tilde{s}_k|< 2K, \forall k \geq n_0$, neboť $|\tilde{s}_k| = |s_k-s_n| \stackrel{\triangle \text{nerovnost}}{\leq}|s_k|+|s_n|\leq 2K$)
     $\implies\sum_{k=n+1}^{m}a_kb_k = \tilde{s}_mb_{m+1}+\sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})$
-    $|\sum a_kb_k| \leq \underbrace{|\tilde{s}_mb_{m+1}|}_{\underbrace{|\tilde{s}_m|}_{\leq 2K}\cdot b_{m+1}}+\sum|\tilde{s}_k|\cdot|b_k-b_{k+1}|\leq 2Kb_{m+1}+\sum2K(b_k-b_{k+1})=2K\cdotb_{n+1}<2K \frac{\varepsilon}{2K} = \varepsilon$
+    $|\sum a_kb_k| \leq \underbrace{|\tilde{s}_mb_{m+1}|}_{\underbrace{|\tilde{s}_m|}_{\leq 2K}\cdot b_{m+1}}+\sum|\tilde{s}_k|\cdot|b_k-b_{k+1}|\leq 2Kb_{m+1}+\sum 2K(b_k-b_{k+1})=2K\cdot b_{n+1}<2K \frac{\varepsilon}{2K} = \varepsilon$
 \end{proof}
 
 \begin{lemma}[L. 10. 4.]
@@ -462,15 +462,53 @@ OBRAZEKOBRAZEk
     pišme: $a_kb_k=a_k(b_k-b)+a_kb$
     VoAŘ: $\sum a_kb_k$ konverguje $\impliedby \sum a_k, \sum b_k$ konverguje
     $\sum a_kb = b \cdot \sum a_k$ -- konverguje
-    $\sum \underbrace{a_k}_{\text{om. č. souč.} \impliedby \{s_n\} \text{ konverguje}\impliedby \sum a_k \text{ konverguje}}\underbrace{(b_k-b)}_{\to 0 \text{ monotónně}}$ konverguje dle V. 10. 12. 
+    $\sum \underbrace{a_k}_{\text{om. č. souč.} \impliedby \{s_n\} \text{ konverguje}\impliedby \sum a_k \text{ konverguje}}\underbrace{(b_k-b)}_{\to 0 \text{ monotónně}}$ konverguje dle V. 10. 12.
 \end{proof}
 
 \begin{priklad}
     \begin{enumerate}[1)]
-        \item $\sum \frac{\sin l \cdot \arctg k}{k}$ konverguje, neboť 
+        \item $\sum \frac{\sin l \cdot \arctg k}{k}$ konverguje, neboť
             $\sum \frac{\sin k}{k}$ konverguje dle V. 10. 12.: $\frac{1}{k}\to 0$, klesající, $\sin k$ má omezené částečné součty (dle L. 10. 4., $x=1$)
             $\sum \arctg k$ omezená, rostoucí
             $\stackrel{V. 10. 13.}{\implies} \sum$ konverguje
-        \item $\sum\frac{(-1)^k}{\sqrt{k+1}+(-1)^k}$
+        \item $\sum\frac{(-1)^k}{\sqrt{k+1}+(-1)^k}$ TODO
     \end{enumerate}
+\end{priklad}
+
+---- experiment
+
+\begin{definice}
+  Nechť $a_k$, $b_k \in \C$. Nechť existuje $\varphi : \N \to \N$ vzájemně jednoznačné zobrazení takové, že $a_k = b_{\varphi(k)}$ pro každé $k \in \N$. Potom řada $\sum_{k=1}^{\infty} b_k$ se nazývá přerovnání řady $\sum_{k=1}^{\infty} a_k$.
+\end{definice}
+
+\begin{veta}[V. 10. 14. O přerovnání řady]
+  Nechť $\sum_{k=1}^{\infty} b_k$ je libovolné přerovnání řady $\sum_{k=1}^{\infty} a_k$. Nechť buď (i) $a_k \geq 0$, nebo (ii) $\sum_{k=1}^{\infty} a_k$ konverguje absolutně (kde $a_k \in \C$). Potom $\sum_{k=1}^{\infty} a_k = \sum_{k=1}^{\infty} b_k$.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[V. 10. 15.]
+  Nechť $a_k \in \R$, nechť $\sum_{k=1}^{\infty} a_k$ konverguje neabsolutně, nechť $s \in \R^*$ je libovolné. Potom existuje přerovnání, jehož součet je $s$.
+\end{veta}
+
+\begin{proof}
+  TODO, OBRAZEKOBRAZEk
+\end{proof}
+
+\begin{veta}[Cauchyův součin řad]
+Nechť řady $\sum_{i=0}^{\infty} a_i$, $\sum_{j=0}^{\infty} b_j$ konvergují absolutně. Pro $k = 0, 1, \ldots$ označme $c_k = \sum_{i=0}^{k} a_i b_{k-i}$. Potom
+\[
+\sum_{k=0}^{\infty} c_k = \left(\sum_{k=0}^{\infty} a_k\right) \cdot \left(\sum_{k=0}^{\infty} b_k\right)
+\]
+a řada vlevo konverguje absolutně.
+\end{veta}
+
+\begin{proof}
+   TODO
+\end{proof}
+
+\begin{priklad}
+  Označ $E(x) = \sum_{k=0}^{\infty} \frac{x^k}{k!}$. Tato řada konverguje absolutně pro každé $x \in \C$ a platí $E(x) \cdot E(w) = E(x + w)$ pro $\forall x, w \in \C$ dle V. 10. 16.
 \end{priklad}
