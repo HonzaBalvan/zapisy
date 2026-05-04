@@ -1,4 +1,4 @@
-\section{Mocninné řady}
+dusledek\section{Mocninné řady}
 
 \begin{definice}
     Mocninnou řadou rozumíme $\sum_{k=0}^{\infty}c_k\cdot(z-z_0)^k$, kde $c_k \in \mathbb C$ jsou koeficienty řady, $z_0 \in \mathbb C$ je střed řady a $z \in \mathbb C$ je \uv{proměnná}.
@@ -61,8 +61,141 @@
   %\item
     %\end{enumerate}
     %\end{tabular}
+    TODO
 \end{proof}
 
 \begin{veta}[V. 11. 3.]
     Je dána mocninná řada. Nechť $c_k \neq 0$, nechť $\sqrt[k]{c_k}\to r, k \to \infty$. Pak $R \coloneq \frac{1}{r}$ (zde rozumíme $\frac{1}{\infty}=0, \frac{1}{0}= \infty$) je poloměr konvergence řady.
 \end{veta}
+
+\begin{proof}
+  \textsc{trik}: užijeme V. 10. 5. (odmoc. krit.), dále obdobně jak dk. 11. 2.
+\end{proof}
+
+\begin{poznamka}
+Jedním z hlavních cílů kapitoly je dokázat rovnost
+\[
+\left\{ \sum_{k=0}^{\infty} c_k (z - z_0)^k \right\}' = \sum_{k=1}^{\infty} k c_k (z - z_0)^{k-1}.
+\]
+Formálně jde o \uv{derivování řady člen po členu}, neboli o záměnu $\sum$ a $\frac{d}{dz}$.
+\end{poznamka}
+
+Řada vpravo je také mocninná řada - můžeme ji přepsat jako
+\[
+\sum_{k=0}^{\infty} \tilde{c}_k (z - z_0)^k, \quad \tilde{c}_k = (k+1) c_{k+1}.
+\]
+
+\begin{lemma}[L. 11. 1.]
+Řady $(M_1)\sum_{k=0}^{\infty}c_k(z - z_0)^k$ a $(M_2)\sum_{k=1}^{\infty}kc_k(z - z_0)^{k-1}$ mají stejný poloměr konvergence.
+\end{lemma}
+
+\begin{dusledek}
+Taky řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\frac{c_k}{k+1}(z - z_0)^{k+1}$ mají stejný poloměr konvergence jako řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$.
+\end{dusledek}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[V. 11. 4.]
+Nechť řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$ má poloměr konvergence $R > 0$. Označme
+\[
+F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k, \quad f(z) = \sum_{k=1}^{\infty} k c_k (z - z_0)^{k-1}.
+\]
+Potom $F'(z) = f(z)$ pro $\forall z \in U(z_0, R)$, kde $U(z_0, R) = \{z \in \C; |z - z_0| < R\}$.
+\end{veta}
+
+\begin{poznamka}
+\begin{itemize}
+    \item funkce $F(z)$, $f(z)$ jsou pro $z \in U(z_0, R)$ korektně definovány, neboť dané řady konvergují absolutně (Lemma 11.1.)
+    \item tvrzení platí ve smyslu derivace podle komplexní proměnné, tj.
+    \[
+    (\forall \varepsilon > 0)(\exists \delta > 0)\left[0 < |h| < \delta, h \in \C \Longrightarrow \left| \frac{F(z+h) - F(z)}{h} - f(z) \right| < \varepsilon \right],
+    \]
+    kde $z \in U(z_0, R)$ je libovolné.
+    \item speciální případ je i derivace podle reálné proměnné, tj. $F'(x) = f(x)$, pro každé $x$ z intervalu $(-R, R)$
+\end{itemize}
+\end{poznamka}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{dusledek}
+  Na množině $U(z_0, R)$ platí:
+\begin{itemize}
+    \item funkce $F(z)$ je nekonečně diferencovatelná a $F''(z) = \sum_{k=2}^{\infty} k(k-1)c_k(z - z_0)^{k-2}$, $F^{(3)}(z) = \sum_{k=3}^{\infty} k(k-1)(k-2)c_k(z - z_0)^{k-3}$ atd.
+    \item funkce $\Phi(z) = \sum_{k=0}^{\infty} \frac{c_k}{k+1}(z - z_0)^{k+1}$ je primitivní funkce k $F(z)$, tj. $\Phi'(z) = F(z)$
+\end{itemize}
+\end{dusledek}
+
+\begin{poznamka}
+  Formální definice funkce $e^x$ pomocí mocninných řad (taktéž funkcí $\sin x, \cos x$), položme
+  \[
+\exp x = \sum_{k=0}^{\infty} \frac{x^k}{k!};
+\]
+podobně definujeme
+\[
+\sin x = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k+1}}{(2k+1)!}, \qquad \cos x = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!},
+\]
+\end{poznamka}
+
+\begin{lemma}[L. 11. 2.]
+  Pro $\forall x, y \in \C$ platí
+\[
+\begin{aligned}
+\exp(x + iy) &= \exp(x) \left[ \cos y + i \sin y \right], \\
+\sin x &= \frac{1}{2i} \left[ \exp(ix) - \exp(-ix) \right] = \frac{1}{i} \sinh(ix), \\
+\cos x &= \frac{1}{2} \left[ \exp(ix) + \exp(-ix) \right] = \cosh(ix).
+\end{aligned}
+\]
+\end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[V. 11. 5.]
+  Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $F^{(k)}(z_0) = k! c_k$ pro $\forall l = 0, 1, \ldots$.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+  Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $n$-tý Taylorův polynom funkce $F(z)$ o středu $z_0$ je roven $n$-tému částečnému součtu řady příslušné mocninné řady.
+\end{poznamka}
+
+\begin{veta}[V. 11. 6.]
+  Nechť řady $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ a $\tilde{F}(z) = \sum_{k=0}^{\infty} \tilde{c}_k (z - z_0)^k$ mají kladný poloměr konvergence. Nechť $F(z) = \tilde{F}(z)$ na jistém $U(z_0)$. Potom $c_k = \tilde{c}_k$ pro $\forall k = 0, 1, \ldots$.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+  Elementární funkce lze vesměs (lokálně) zapsat mocninnou řadou, kupř.
+
+  $$\ln(1+x) = \sum_{k=0}^\infty (-1)^k \frac{x^{k+1}}{k+1},\, \arctg(x) = \sum_{l=0}^\infty (-1)^l \frac{x^{2l+1}}{2l+1}; x \in (-1, 1).$$
+\end{poznamka}
+
+\begin{priklad}
+  $C^\infty$ funkce, která není součtem mocninné řady
+
+  $$\phi (x)\coloneq \begin{cases}
+    0, x \leq 0 \\ e^{-\frac{1}{x}}, x>0
+  \end{cases} OBRAZEKOBRAZEK$$
+
+  \begin{itemize}
+    \item spojitá v $\mathbb R$ -- slepení dvou spojitých funkcí, v bodě lepení limity sedí
+    \item $\phi^\prime (x) = \begin{cases}
+      0, x<0 \\ \frac{1}{x^2}\cdot e^{-\frac{1}{x}}\end{cases}$\\
+      $\phi^\prime_-(0)=0$\\
+      $\phi^\prime_+=0$
+    \item obecně $\forall k \geq 0:\phi^{(k)}(0)=0$ -- spojité\\
+    ?? $\phi(x)=\sum_{k=0}^\infty c_kx^k, x\in (-R,R), R>0$ poloměr konvergence\\
+    $\stackrel{\text{V. 11. 5.}}{\implies} c_k = 0, \forall k \geq 0 \implies \phi(x)\equiv 0$ v $(-R, R),$ což evidentně nemůže být pravda -- \textsc{spor} \Lightning
+  \end{itemize}
+\end{priklad}
