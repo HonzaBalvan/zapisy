@@ -17,11 +17,52 @@
 
 \begin{proof}
     pomocná množina $\mathscr K \coloneq \left\{\rho \geq 0; \text{ posloupnost } \{|c_k|\cdot \rho^k\}\text{ je omezená}\right\}$
+
     zřejmě $\mathscr K \neq \emptyset (0 \in \mathscr K)$, položme $R\coloneq \sup \mathscr K$
     \begin{enumerate}[ad i)]
         \item nechť $z \in \mathbb C, |z-z_0|<R\implies\exists \rho: \rho >|z-z_0|, \rho \in \mathscr K$
-        tj. $\exists C>0$ t. ž. $|c_k|\rho^k\leq C, \forall k$
-        lze odhadnout: $|c_k(z-z_0)^k|=|c_k||z-z_0|^k = \underbrace{|c_k|\cdot\rho^k}_{\leq C}\cdot\underbrace{(\frac{|z-z_0|}{\rho})^k}_{\eqcolon \theta^k, \theta <1}\leq C \cdot \rho^k \stackrel{V. 10. 3.}{\implies}$ řada konverguje absolutně
-        \itemnechť $z \in \mathbb C$
+
+            tj. $\exists C>0$ t. ž. $|c_k|\rho^k\leq C, \forall k$
+     
+            lze odhadnout: $|c_k(z-z_0)^k|=|c_k||z-z_0|^k = \underbrace{|c_k|\cdot\rho^k}_{\leq C}\cdot\underbrace{(\frac{|z-z_0|}{\rho})^k}_{\eqcolon \theta^k, \theta <1}\leq C \cdot \rho^k \stackrel{V. 10. 3.}{\implies}$ řada konverguje absolutně
+        \item nechť $z \in \mathbb C, |z-z_0|>R\implies\underbrace{|z-z_0|}_{\eqcolon \rho}\notin \mathscr K$
+          
+            tj. $\{|c_k||z-z_0|^k\}_{k=0}^\infty$ není omezená
+            
+            ?? kdyby řada konvergovala, pak (dle V. 10. 1.) $|c_k(z-z_0)|\to 0, k \to \infty$
+            
+            $|c_k(z-z_0)^k|=|c_k||z-z_0|^k$ což není omezené $\implies$ \textsc{spor} \Lightning (V. 7. 2. ?))
     \end{enumerate}
 \end{proof}
+
+\begin{poznamka}
+    číslo R z předchozí věty se nazývá poloměr konvergence řady. Je určeno jednoznačně.
+\end{poznamka}
+
+\begin{proof}
+    ?? $\exists R_1 \neq R_2$ splňující vlastnosti i), ii) z V. 11. 1.
+    
+    BÚNO $R_1<R_2$ -- zvol $\tilde{z} \in \mathbb C$ t. ž. $R_1<|\tilde{z}-z_0|<R_2$
+    
+    pro $\tilde{z}$ řada konverguje i diverguje zároveň -- \textsc{spor} \Lightning
+\end{proof}
+
+\begin{veta}[V. 11. 2.]
+    Je dána mocninná řada. Nechť $c_k \neq 0$, nechť $|\frac{c_{k+1}}{c_k}|\to r, k \to \infty$. Pak $R \coloneq \frac{1}{r}$ (zde rozumíme $\frac{1}{\infty}=0, \frac{1}{0}= \infty$) je poloměr konvergence řady.
+\end{veta}
+
+\begin{proof}
+    \textsc{trik}: užijeme V. 10. 4. (podíl krit.) na řadu $\sum b_k$, kde $_k = |c_k||z-z_0|^k$ (BÚNO $z\neq z_0$)
+    
+    $\frac{b_{k+1}}{b_k}=\frac{|c_{k+1}|}{|c_k|}\cdot \frac{|z-z_0|^{k+1}}{|z-z_0|^k}= \frac{|c_{k+1}|}{|c_k|}\cdot |z-z_0| \to r \cdot |z-z_0|$
+    
+    \begin{tabular}{c c}
+        diskuze & \begin{enumerate}[1.]
+  \item
+    \end{enumerate}
+    \end{tabular}
+\end{proof}
+
+\begin{veta}[V. 11. 3.]
+    Je dána mocninná řada. Nechť $c_k \neq 0$, nechť $\sqrt[k]{c_k}\to r, k \to \infty$. Pak $R \coloneq \frac{1}{r}$ (zde rozumíme $\frac{1}{\infty}=0, \frac{1}{0}= \infty$) je poloměr konvergence řady.
+\end{veta}
