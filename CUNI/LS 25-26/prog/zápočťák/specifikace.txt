@@ -1,0 +1,27 @@
+# Specifikace projektu: Evidence trvanlivosti
+
+## 1. Popis a zaměření programu
+Program určený k evidenci zásob potravin v domácnosti (lednice, mrazák, spíž) a jejich data minimální trvanlivosti. Cílem programu je snížit plýtvání potravinami a díky tomu něco uspořit při nakupování. Program automaticky hlídá data minimální trvanlivosti (popř. manuálně nastavenou lhůtu pro věci typu ovoce, zelenina, ...) a upozorňuje uživatele, když má nějaká potravina projít.
+**Cílová skupina:** Domácnosti, které chtějí míň plýtvat jídlem, možná i něco ušetřit a mít rychlý přehled o aktuálních zásobách jídla.
+
+## 2. Popis funkcionality
+
+### 2.1. Inventář
+Program má databázi potravin v domě. Uživatel může přidávat a odebírat položky. Každá položka obsahuje název (např. Primátor, mleté vepřové, mrkev, ...), datum minimální trvanlivosti (popř. manuální lhůtu), množství a kategorii (plátkový sýr, maso, zelenina, ...) .
+
+### 2.2. Systém upozornění
+Program se periodicky spustí a zkontroluje lhůty. Při blížící se lhůtě program vygeneruje upozornění (pošle e-mail).
+
+## 3. Uživatelské rozhraní, vstupy a výstupy
+Interakce probíhá skrze grafické rozhraní. Vstupem jsou data o potravinách. Výstupem je přehled v tabulce, e-mailové notifikace, popř. samotný soubor databáze.
+
+### 3.1. Obrazovky
+
+#### 3.1.1. Hlavní okno
+Tabulka zobrazující všechny potraviny v evidenci, t.ž. v řádku je jedna položka, která má ve sloupcích vypsáné všechny své hodnoty (název, lhůta, množství, kategorie). V horní části tlačítko "Přidat", u každého řádku tabulky tlačítko "Odebrat".
+
+#### 3.1.2. Okno pro přidání potraviny
+Okno s políčky pro název, lhůtu, množství a kategorii a tlačítkem pro potvrzení přidání potraviny do evidence.
+
+## 4. Použité technologie
+Grafická knihovna Tkinter, časové moduly time a datetime, e-mailové knihovny smtplib a email.
