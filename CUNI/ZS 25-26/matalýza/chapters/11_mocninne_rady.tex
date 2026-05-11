@@ -19,7 +19,7 @@
     pomocná množina $\mathscr K \coloneq \left\{\rho \geq 0; \text{ posloupnost } \{|c_k|\cdot \rho^k\}\text{ je omezená}\right\}$
 
     zřejmě $\mathscr K \neq \emptyset (0 \in \mathscr K)$, položme $R\coloneq \sup \mathscr K$
-    \begin{enumerate}[ad i)]
+    \begin{enumerate}[{ad} i)]
         \item nechť $z \in \mathbb C, |z-z_0|<R\implies\exists \rho: \rho >|z-z_0|, \rho \in \mathscr K$
 
             tj. $\exists C>0$ t. ž. $|c_k|\rho^k\leq C, \forall k$
@@ -56,12 +56,15 @@
 
     $\frac{b_{k+1}}{b_k}=\frac{|c_{k+1}|}{|c_k|}\cdot \frac{|z-z_0|^{k+1}}{|z-z_0|^k}= \frac{|c_{k+1}|}{|c_k|}\cdot |z-z_0| \to r \cdot |z-z_0|$
 
-    %\begin{tabular}
-    %    diskuze & \begin{enumerate}[1.]
-  %\item
-    %\end{enumerate}
-    %\end{tabular}
-    TODO
+      diskuze: \begin{enumerate}[1.]
+     \item $\underline{r \in (0, \infty)}: \stackrel{V. 10. 4.}{\implies} \sum b_k$ konverguje, pokud $r\cdot|z-z_0|<1 \implies |z-z_0| < \frac{1}{r}$; $\sum b_k$ diverguje, pokud $r\cdot|z-z_0|>1 \implies |z-z_0| > \frac{1}{r}$
+
+     $\implies$ mocninná řada $\begin{cases}
+       \text{konverguje absolutně pro } |z-z_0| <\frac{1}{r},& \\\text{určitě diverguje pro } |z-z_0| >\frac{1}{r},&
+       \end{cases}$
+     \item $\underline{r=0}: \stackrel{V. 10. 4.}{\implies} \sum b_k$ konverguje $\forall z \in \mathbb C\implies R = \infty$,
+     \item $\underline{r= \infty}: b_k \cancel{\to} 0, \forall z \in \mathbb C, z \neq z_0 \implies R = 0.$
+   \end{enumerate}
 \end{proof}
 
 \begin{veta}
@@ -90,11 +93,18 @@ Formálně jde o \uv{derivování řady člen po členu}, neboli o záměnu $\su
 \end{lemma}
 
 \begin{dusledek}
-Taky řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\frac{c_k}{k+1}(z - z_0)^{k+1}$ mají stejný poloměr konvergence jako řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$.
+Také řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\frac{c_k}{k+1}(z - z_0)^{k+1}$ mají stejný poloměr konvergence jako řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$.
 \end{dusledek}
 
 \begin{proof}
-  TODO
+  označme $R_1, R_2$ poloměry konvergence řad $(M_1), (M_2)$
+  $\stackrel{V. 11. 1.}{\implies} R_1 = \sup \mathscr K_1 \coloneq \left\{\rho \geq 0; \{|\tilde{c}_k|\rho^k\} \text{ je omezená}\right\}, R_2 = \sup \mathscr K_2 \coloneq \left\{\rho \geq 0; \{|\tilde{c}_k|\rho^k\} \text{ je omezená}\right\}$
+  \begin{enumerate}[{ad} ]
+    \item $\underline{R_2 \leq R_1}: |c_{k+1}|\rho^{k+1} \leq (k+1)|c_{k+1}|\rho^{k+1}$
+
+    $|c_{k+1}|\rho^{k+1} \leq |\tilde{c}_k|\rho^k \cdot \rho,$ tedy pokud $\{\tilde{b}_n\}$ omezená $\implies \{b_k\}$ omezená $\implies \mathscr K_2 \subseteq \mathscr K_1 \implies R_2 \leq R_1$
+    \item $\underline{R_2 \geq R_1}:$ TODO
+  \end{enumerate}
 \end{proof}
 
 \begin{veta}

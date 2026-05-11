@@ -1,3 +1,4 @@
+\renewcommand{\thesection}{\arabic{section}}
 \section{Řady}
 
 \begin{priklad}[motivační]
@@ -323,7 +324,7 @@ OBRAZEKOBRAZEk
 \end{poznamka}
 
 \begin{proof}
-  $s_m - s_n$ TODO viz foto, dodělat i v sšt
+  $s_m - s_n \stackrel{BÚNO m>n}{=} \sum_{k=1}^{m} a_k - \sum_{k=1}^n a_k = \sum_{k=n+1}^m a_k \stackrel{m=n+p, p\geq 1}{=} \sum_{k=n+1}^{n+p} a_k$
 \end{proof}
 
 \begin{veta}
@@ -343,14 +344,14 @@ OBRAZEKOBRAZEk
 
   Značení: kladná, resp. nezáporná část: $a_k^+\coloneq \max\{0, a_k\}$
 
-  1. krok: $a_k \in \mathbb R, \forall k \in \mathbb N$
+  1. \textsc{krok}: $a_k \in \mathbb R, \forall k \in \mathbb N$
   $\sum a_k$ konverguje $\stackrel{V. 10. 3.}{\iff} \sum a_k^+, \sum a_k^-$ konvergují, neboť $0 \leq a_k^+, a_k^- \leq |a_k|$
 
   $\implies \sum a_k = \sum a_k^+ - \sum a_k^-$ knverguje dle V. 10. 2. (VoAŘ)
 
-  2. krok: $a_k \in \mathbb C$, tj. $a_k = \Re a_k + i\cdot\Im a_k$
+  2. \textsc{krok}: $a_k \in \mathbb C$, tj. $a_k = \Re a_k + i\cdot\Im a_k$
 
-  $|\Re a_k|, |\Im a_k| \leq |a_k|\stackrel{V. 10. 3.}{\implies}\sum \Re a_k, \sum \Im a_k$ konvergují, neboť $\sum |\Re a_k|, \sum |\Im a_k|$ konvergují absolutně (dle ekvivalentní definice) $\stackrel{1. krok}{\implies} \sum \Re a_k, \sum \Im a_k$ konvergují $\stackrel{ekv. def.}{\iff} \sum a_k$ konverguje
+  $|\Re a_k|, |\Im a_k| \leq |a_k|\stackrel{V. 10. 3.}{\implies}\sum \Re a_k, \sum \Im a_k$ konvergují, neboť $\sum |\Re a_k|, \sum |\Im a_k|$ konvergují absolutně (dle ekvivalentní definice) $\stackrel{1. \textsc{krok}}{\implies} \sum \Re a_k, \sum \Im a_k$ konvergují $\stackrel{ekv. def.}{\iff} \sum a_k$ konverguje
 \end{proof}
 
 \begin{priklad}
@@ -397,7 +398,7 @@ OBRAZEKOBRAZEk
 \end{priklad}
 
 \begin{lemma}[Abelova parciální sumace]
-    Nechť $a_k, b_k \in \mathbb C, k \in \mathbb N$. Položme $\tilde{s_m} \coloneq \sum_{k=n+1}^{m} a_k, \forall m > n, n \in \mathbb N$ pevné. Pak $\sum_{k = n+1}^{m} a_k b_k = \tilde{s_m} b_{m+1} + \sum_{k = n+1}^{m} \tilde{s_k} (b_k - b_{k+1}), \forall m > n$.
+    Nechť $a_k, b_k \in \mathbb C, k \in \mathbb N$. Položme $\tilde{s}_m \coloneq \sum_{k=n+1}^{m} a_k, \forall m > n, n \in \mathbb N$ pevné. Pak $\sum_{k = n+1}^{m} a_k b_k = \tilde{s}_m b_{m+1} + \sum_{k = n+1}^{m} \tilde{s}_k (b_k - b_{k+1}), \forall m > n$.
 \end{lemma}
 
 \begin{poznamka}
@@ -405,11 +406,11 @@ OBRAZEKOBRAZEk
 \end{poznamka}
 
 \begin{proof}
-    $\tilde{s_m} = s_m - s_n$, kde $s_n = \sum_{k=1}^{n} a_k$
+    $\tilde{s}_m = s_m - s_n$, kde $s_n = \sum_{k=1}^{n} a_k$
 
-    $\implies \tilde{s_n} = 0, \tilde{s_k} = \tilde{s_{k-1}}+a_k, \forall k \geq n$
+    $\implies \tilde{s}_n = 0, \tilde{s}_k = \tilde{s}_{k-1}+a_k, \forall k \geq n$
 
-    LS$ = \sum_{k=n+1}^{m} (\tilde{s_k}-\tilde{s_{k-1}})b_k = \sum_{k=n+1}^{m} \tilde{s_k}b_k - \sum_{k=n+1}^{m} \tilde{s_{k-1}} b_k = \sum_{k=n+1}^{m} \tilde{s}_k  b_k - \sum_{k=n}^{m-1} \tilde{s}_k b_{k+1} = \sum_{k=n+1}^{m} \tilde{s}_k b_k - \sum_{k=n+1}^{m} \tilde{s}_k b_{k+1} + \tilde{s_m b_{m+1}} + \tilde{s}_n b_{n+1} = \sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})+ \tilde{s}_m b_{m+1} =$ PS
+    LS$ = \sum_{k=n+1}^{m} (\tilde{s}_k-\tilde{s}_{k-1})b_k = \sum_{k=n+1}^{m} \tilde{s}_kb_k - \sum_{k=n+1}^{m} \tilde{s}_{k-1} b_k = \sum_{k=n+1}^{m} \tilde{s}_k  b_k - \sum_{k=n}^{m-1} \tilde{s}_k b_{k+1} = \sum_{k=n+1}^{m} \tilde{s}_k b_k - \sum_{k=n+1}^{m} \tilde{s}_k b_{k+1} + \tilde{s}_m b_{m+1} + \tilde{s}_n b_{n+1} = \sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})+ \tilde{s}_m b_{m+1} =$ PS
 \end{proof}
 
 \begin{definice}
