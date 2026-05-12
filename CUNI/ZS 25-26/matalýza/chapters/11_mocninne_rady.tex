@@ -103,7 +103,9 @@ Také řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\
     \item $\underline{R_2 \leq R_1}: |c_{k+1}|\rho^{k+1} \leq (k+1)|c_{k+1}|\rho^{k+1}$
 
     $|c_{k+1}|\rho^{k+1} \leq |\tilde{c}_k|\rho^k \cdot \rho,$ tedy pokud $\{\tilde{b}_n\}$ omezená $\implies \{b_k\}$ omezená $\implies \mathscr K_2 \subseteq \mathscr K_1 \implies R_2 \leq R_1$
-    \item $\underline{R_2 \geq R_1}:$ TODO
+    \item $\underline{R_2 \geq R_1}:$ ?? $R_2 < R_1$ \dots najděme $\rho_1, \rho_2$ t. ž. $R_2 < \rho_2<\rho_1<R_1$ a $ \rho_2 \notin \mathscr K_2, \rho_1 \in \mathscr K_1$
+
+    $\underbrace{(k+1)|c_{k+1}|\rho_2^k}_{\text{neomezené, neboť } \rho_2 \in \mathscr K_2}=\underbrace{(k+1)\left(\frac{\rho_2}{\rho_1}^k\cdot \frac{1}{\rho_1}\right)}_{\to 0, k \to \infty}\underbrace{|c_{k+1}|\rho_1^{k+1}}_{\leq K\text{, neboť } \rho_1 \in \mathscr K_1}$ -- \textsc{spor} \Lightning
   \end{enumerate}
 \end{proof}
 
@@ -114,6 +116,26 @@ F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k, \quad f(z) = \sum_{k=1}^{\infty} k c
 \]
 Potom $F'(z) = f(z)$ pro $\forall z \in U(z_0, R)$, kde $U(z_0, R) = \{z \in \C; |z - z_0| < R\}$.
 \end{veta}
+
+\begin{proof}
+  BÚNO $z_0 = 0, z \in \mathbb C, |z|<R$ pevné
+
+  cíl: $\varphi(h)\to 0, h \to 0$, kde $\varphi(h)= \frac{F(z+h)-F(z)}{h}-f(z)$
+
+  navíc: $0<|h|<\delta; \delta>0$ pevné t. ž. $|z+\delta|<R$
+
+  $F(z+h)=\cancel{c_0}+\cancel{c_1(z+h)}+ \sum_{k=2}^{\infty} c_k (z+h)^k$
+
+  $F(z) = \cancel{c_0} + \cancel{c_1(z)}+\sum_{k=2}^\infty c_k z^k$
+
+  $f(z) = 0 + \cancel{c_1} + \sum_{k=2}^\infty k\cdot c_k \cdot z_{k-1}$
+
+  $\varphi(h) = \sum_{k=2}^\infty c_k \cdot\frac{1}{h}\cdot [\underbrace{(z+h)^k}_{\mathclap{\textstyle =\cancel{z^k}+\cancel{kz^{k-1}h}+\sum_{j=2}^k {k\choose j}z^{k-j}h^j}}-z^k]-kz^{k-1} \stackrel{\text{binom. v.}}{=} \sum_{k=2}^\infty h\cdot c_k\cdot \underbrace{\sum_{j=2}^\infty {k\choose j} z^{h-j}\cdot h^{j-2}}_{\eqcolon S_k}$
+
+  ukážeme, že $\sum_{k=2}\infty |c_k||S_k|<K$ nezávisle na $|h|<\delta$, pak $|\varphi(h)|\leq|h|\cdot K \to 0$
+
+  odhady $S_k: S_k = \sum_{l=0}^{k-2} \underbrace{{k \choose l+2}}_{= \frac{k!}{(l+2)!(k-l-2)!}= \frac{k(k-1)(k-2)!}{\underbrace{(l+2)(l+1)}_{\geq 1}l! (k-l-2)!}}$
+\end{proof}
 
 \begin{poznamka}
 \begin{itemize}
@@ -126,10 +148,6 @@ Potom $F'(z) = f(z)$ pro $\forall z \in U(z_0, R)$, kde $U(z_0, R) = \{z \in \C;
     \item speciální případ je i derivace podle reálné proměnné, tj. $F'(x) = f(x)$, pro každé $x$ z intervalu $(-R, R)$
 \end{itemize}
 \end{poznamka}
-
-\begin{proof}
-  TODO
-\end{proof}
 
 \begin{dusledek}
   Na množině $U(z_0, R)$ platí:
