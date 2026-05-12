@@ -35,17 +35,17 @@
 \end{veta}
 
 \begin{proof}
-  posuzuji: $a_n = s_n  s_{n-1}, \forall n \geq 2$
+  posuzuji: $a_n = s_n - s_{n-1}, \forall n \geq 2$
 
   víme: $s_n \to s \in \mathbb R$, a tedy také $s_{n-1} \to s \implies a_n \to s-s = 0$ (VoAL kon.)
 \end{proof}
 
 \begin{veta}[Věta o aritmetice řad]
-  Nechť $\sum a_k, \sum b_k$ řady, $\alpha, \beta$ čísla. Pak $\sum_{k=1}^{\infty} (\alpha a_k + \beta b_k) = \alpha \sum_{k=1}^{\infty} a_k + \beta \sum_{k=1}^{\infty} b_k$, má-li PS smysl. Speciálně $\sum a_k, \sum b_k$ konvergentní $\implies \sum \alpha a_k \beta b_k$ konverguje. Platí i v $\mathbb C$ .
+  Nechť $\sum a_k, \sum b_k$ řady, $\alpha, \beta$ čísla. Pak $\sum_{k=1}^{\infty} (\alpha a_k + \beta b_k) = \alpha \sum_{k=1}^{\infty} a_k + \beta \sum_{k=1}^{\infty} b_k$, má-li PS smysl. Speciálně $\sum a_k, \sum b_k$ konvergentní $\implies \sum \alpha a_k \beta b_k$ konverguje. Platí i v $\mathbb C$.
 \end{veta}
 
 \begin{proof}
-  vychází z VoAL pro $\mathbb R$ i pro $\mathbb C$, pro $\mathbb C$ navíc důkaz \uv{po složkách} $\Re, \Im$
+  vychází z VoAL pro $\mathbb R$ i pro $\mathbb C$, pro $\mathbb C$ navíc důkaz \uv{po složkách} $\Re \,, \Im \,$
 \end{proof}
 
 \begin{lemma}
@@ -245,16 +245,6 @@ OBRAZEKOBRAZEk
   \end{enumerate}
 \end{veta}
 
-\begin{priklad}
-  \begin{enumerate}[1)]
-    \item $\sum \frac{1}{k^2}$
-
-    $k(\frac{\frac{1}{k^2}}{\frac{1}{(k+1)^2}}-1) = \frac{2k^2+k}{k^2} \to 2 \implies \sum a_k$ konverguje
-
-    \item $\sum e^{-\sqrt[3]{k}}$ Raabem lze
-  \end{enumerate}
-\end{priklad}
-
 \begin{proof}
   \begin{enumerate}[i)]
     \item Nechť $f(\frac{a_k}{a_{k+1}}-1) \to p >1 \implies \exists \varepsilon>0$ t. ž. $\eta = p - \varepsilon \neq 1$
@@ -280,11 +270,10 @@ OBRAZEKOBRAZEk
 
     $\implies k(\frac{a_k}{a_{k+1}}-1)<p + \varepsilon, \forall k \in \mathbb N$ (L. 10. 1.)
 
-    %\begin{align*}
-    %  ka_k - ka_{k+1}<a_{k+1} &  /-a_k \\
-
-    %  ka_k-(k+1)a_{k+1}<0 & /\sum_{k=1}^{n-1}
-    %\end{align*}
+    $\begin{aligned}
+      &ka_k - ka_{k+1}<a_{k+1} &&  /-a_k \\
+      &ka_k-(k+1)a_{k+1}<0 && /\sum_{k=1}^{n-1}
+    \end{aligned}$
 
     $a_1 - na_n < 0$
 
@@ -292,9 +281,19 @@ OBRAZEKOBRAZEk
   \end{enumerate}
 \end{proof}
 
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $\sum \frac{1}{k^2}$
+
+    $k(\frac{\frac{1}{k^2}}{\frac{1}{(k+1)^2}}-1) = \frac{2k^2+k}{k^2} \to 2 \implies \sum a_k$ konverguje
+
+    \item $\sum e^{-\sqrt[3]{k}}$ Raabem lze
+  \end{enumerate}
+\end{priklad}
+
 \begin{poznamka}
-  Pro $z \in \mathbb C: z = a + bi, a = \Re z \in \mathbb R, b = \Im z \in \mathbb R, |z| = \sqrt{a^2+b^2}$. Platí \begin{enumerate}[i)]
-    \item $|\Re z|, |\Im z| \leq |z| \leq |\Re z| + |\Im z|$
+  Pro $z \in \mathbb C: z = a + bi, a = \Re \, z \in \mathbb R, b = \Im \, z \in \mathbb R, |z| = \sqrt{a^2+b^2}$. Platí \begin{enumerate}[i)]
+    \item $|\Re \, z|, |\Im \, z| \leq |z| \leq |\Re \, z| + |\Im \, z|$
     \item $|z \pm w| \leq |z| + |w|; z, w \in \mathbb C$
   \end{enumerate}
 \end{poznamka}
@@ -304,11 +303,11 @@ OBRAZEKOBRAZEk
 
   OBRAZEKOBRAZEk
 
-  Ekvivalentně: $\Re z_n \to \Re z, \Im z_n \to \Im z, n \to \infty$.
+  Ekvivalentně: $\Re \, z_n \to \Re \, z, \Im \, z_n \to \Im \, z, n \to \infty$.
 \end{definice}
 
 \begin{definice}
-  Nechť $a_k \in \mathbb C$. Řekneme, že $\sum a_k$ konverguje v $\mathbb C$, jestliže $\exists \lim_{n \to \infty} s_n \in \mathbb C$, kde $s_n \coloneq \sum_{k=1}^{n} a_k$. Ekvivalentně $\sum \Re a_k, \sum \Im a_k$ konvergují v $\mathbb R$.
+  Nechť $a_k \in \mathbb C$. Řekneme, že $\sum a_k$ konverguje v $\mathbb C$, jestliže $\exists \lim_{n \to \infty} s_n \in \mathbb C$, kde $s_n \coloneq \sum_{k=1}^{n} a_k$. Ekvivalentně $\sum \Re \, a_k, \sum \Im \, a_k$ konvergují v $\mathbb R$.
 \end{definice}
 
 \begin{poznamka}
@@ -324,7 +323,7 @@ OBRAZEKOBRAZEk
 \end{poznamka}
 
 \begin{proof}
-  $s_m - s_n \stackrel{BÚNO m>n}{=} \sum_{k=1}^{m} a_k - \sum_{k=1}^n a_k = \sum_{k=n+1}^m a_k \stackrel{m=n+p, p\geq 1}{=} \sum_{k=n+1}^{n+p} a_k$
+  $s_m - s_n \stackrel{\text{BÚNO }m>n}{=} \sum_{k=1}^{m} a_k - \sum_{k=1}^n a_k = \sum_{k=n+1}^m a_k \stackrel{m=n+p, p\geq 1}{=} \sum_{k=n+1}^{n+p} a_k$
 \end{proof}
 
 \begin{veta}
@@ -349,9 +348,9 @@ OBRAZEKOBRAZEk
 
   $\implies \sum a_k = \sum a_k^+ - \sum a_k^-$ knverguje dle V. 10. 2. (VoAŘ)
 
-  2. \textsc{krok}: $a_k \in \mathbb C$, tj. $a_k = \Re a_k + i\cdot\Im a_k$
+  2. \textsc{krok}: $a_k \in \mathbb C$, tj. $a_k = \Re \, a_k + i\cdot\Im \, a_k$
 
-  $|\Re a_k|, |\Im a_k| \leq |a_k|\stackrel{V. 10. 3.}{\implies}\sum \Re a_k, \sum \Im a_k$ konvergují, neboť $\sum |\Re a_k|, \sum |\Im a_k|$ konvergují absolutně (dle ekvivalentní definice) $\stackrel{1. \textsc{krok}}{\implies} \sum \Re a_k, \sum \Im a_k$ konvergují $\stackrel{ekv. def.}{\iff} \sum a_k$ konverguje
+  $|\Re \, a_k|, |\Im \, a_k| \leq |a_k|\stackrel{V. 10. 3.}{\implies}\sum \Re \, a_k, \sum \Im \, a_k$ konvergují, neboť $\sum |\Re \, a_k|, \sum |\Im \, a_k|$ konvergují absolutně (dle ekvivalentní definice) $\stackrel{1. \textsc{krok}}{\implies} \sum \Re \, a_k, \sum \Im \, a_k$ konvergují $\stackrel{ekv. def.}{\iff} \sum a_k$ konverguje
 \end{proof}
 
 \begin{priklad}
@@ -401,10 +400,6 @@ OBRAZEKOBRAZEk
     Nechť $a_k, b_k \in \mathbb C, k \in \mathbb N$. Položme $\tilde{s}_m \coloneq \sum_{k=n+1}^{m} a_k, \forall m > n, n \in \mathbb N$ pevné. Pak $\sum_{k = n+1}^{m} a_k b_k = \tilde{s}_m b_{m+1} + \sum_{k = n+1}^{m} \tilde{s}_k (b_k - b_{k+1}), \forall m > n$.
 \end{lemma}
 
-\begin{poznamka}
-    Předchozí lemma je analogie per-partes pro sumy: $\int ab = \tilde{s}b+\int\tilde{s}(-b)^\prime$, kde $\tilde{s} = \int a$
-\end{poznamka}
-
 \begin{proof}
     $\tilde{s}_m = s_m - s_n$, kde $s_n = \sum_{k=1}^{n} a_k$
 
@@ -412,6 +407,10 @@ OBRAZEKOBRAZEk
 
     LS$ = \sum_{k=n+1}^{m} (\tilde{s}_k-\tilde{s}_{k-1})b_k = \sum_{k=n+1}^{m} \tilde{s}_kb_k - \sum_{k=n+1}^{m} \tilde{s}_{k-1} b_k = \sum_{k=n+1}^{m} \tilde{s}_k  b_k - \sum_{k=n}^{m-1} \tilde{s}_k b_{k+1} = \sum_{k=n+1}^{m} \tilde{s}_k b_k - \sum_{k=n+1}^{m} \tilde{s}_k b_{k+1} + \tilde{s}_m b_{m+1} + \tilde{s}_n b_{n+1} = \sum_{k=n+1}^{m} \tilde{s}_k(b_k-b_{k+1})+ \tilde{s}_m b_{m+1} =$ PS
 \end{proof}
+
+\begin{poznamka}
+    Předchozí lemma je analogie per-partes pro sumy: $\int ab = \tilde{s}b+\int\tilde{s}(-b)^\prime$, kde $\tilde{s} = \int a$
+\end{poznamka}
 
 \begin{definice}
     Řekneme, že řada $\sum a_k$ má omezené částečné součty, jestliže $\exists K > 0$ t. ž. $|\sum_{k=1}^{n}a_k| \leq K, \forall n \in \mathbb N$.
@@ -477,7 +476,7 @@ OBRAZEKOBRAZEk
 \end{priklad}
 
 \begin{definice}
-  Nechť $a_k$, $b_k \in \C$. Nechť existuje $\varphi : \N \to \N$ vzájemně jednoznačné zobrazení takové, že $a_k = b_{\varphi(k)}$ pro každé $k \in \N$. Potom řada $\sum_{k=1}^{\infty} b_k$ se nazývá přerovnání řady $\sum_{k=1}^{\infty} a_k$.
+  Nechť $a_k$, $b_k \in \C$. Nechť existuje $\varphi: \N \to \N$ vzájemně jednoznačné zobrazení takové, že $a_k = b_{\varphi(k)}$ pro každé $k \in \N$. Potom řada $\sum_{k=1}^{\infty} b_k$ se nazývá přerovnání řady $\sum_{k=1}^{\infty} a_k$.
 \end{definice}
 
 \begin{veta}[O přerovnání řady]
@@ -485,7 +484,41 @@ OBRAZEKOBRAZEk
 \end{veta}
 
 \begin{proof}
-  TODO
+  \begin{enumerate}[1. \textsc{krok}]
+    \item nechť $a_k \geq 0, \forall k \in \mathbb N$. Označme $s_n \coloneq \sum_{k=1}^n a_k, t_n \coloneq \sum_{k=1}^n b_k$
+
+    \begin{itemize}
+      \item[$\stackrel{\text{L. 10. 2}}{\implies}$] $s\coloneq \sum_{k=1}^\infty a_k = \lim_{n\to \infty} s_n = \sup \{s_n,n\in \mathbb N\}$
+
+      $t\coloneq \sum_{k=1}^\infty b_k = \lim_{n\to \infty} t_n = \sup \{t_n,n\in \mathbb N\}$
+    \end{itemize}
+
+    zatím $s.t \in [0, \infty]$
+
+    idea: pro $n \in \mathbb N$ definuj $N(n) = \max\{\varphi(k); k = 1, \dots, n\}$
+
+    $s_n = a_1 + a_2 + \dots + a_n \stackrel{\varphi}{=} b_1 + b_2 + \dots + b_{N(n)}$ -- ten, který se dostane nejdál
+
+    zřejmě $s_n\leq t_{N(n)}$ (využívám nezápornost)
+
+    $\implies s = \sup \{s_n; n \in \mathbb N\} \leq \sup \{t_{N(n)}; n\in \mathbb N\} \leq \sup \{t_m; m \in \mathbb N\} = t$
+
+    tedy $s\leq t$, opačná nerovnost analogicky $\implies s=t$
+    \item $a_k \in \mathbb R, \sum |a_k| <\infty$ pišme (viz V. 10. 10)
+
+    $a_k = a_k^+-a_k^-$, kde $a_k^+\coloneq \max\{0, a_k\}, a_k^-\coloneq \max\{0, -a_k\}$
+
+    $\implies \sum a_k^+, \sum a_k^-$ konverguje
+
+    $\sum_{k=1}^\infty a_k \stackrel{\text{VoAŘ}}{=} \sum_{k=1}^\infty a_k^+ - \sum_{k=1}^\infty a_k^-\stackrel{1. \textsc{krok}}{=}\sum_{k=1}^\infty b_k^+-\sum_{k=1}^\infty b_k^-\stackrel{\text{VoAŘ}}{=}\sum_{k=1}^\infty b_k$
+    \item $a_k \in \mathbb C$ pišme $a_k = \Re \, a_k +i\cdot \Im \, a_k$
+
+    $0\leq|\Re \, a_k|, |\Im \, a_k| \leq |a_k|$
+
+    $\implies \sum |\Re \, a_k|, \sum |\Im \, a_k|$ konvergují
+
+    $\stackrel{\text{VoAŘ, 2. }\textsc{krok}}{\implies}\sum_{k=1}^\infty a_k \stackrel{\text{VoAŘ}}{=} \sum_{k=1}^\infty \Re \, a_k + i\cdot\sum_{k=1}^\infty \Im \, a_k\stackrel{2. \textsc{krok}}{=}\sum_{k=1}^\infty \Re \, b_k+i\cdot\sum_{k=1}^\infty \Im \, b_k\stackrel{\text{VoAŘ}}{=}\sum_{k=1}^\infty b_k$
+  \end{enumerate}
 \end{proof}
 
 \begin{veta}
@@ -493,7 +526,24 @@ OBRAZEKOBRAZEk
 \end{veta}
 
 \begin{proof}
-  TODO, OBRAZEKOBRAZEk
+  \begin{enumerate}[1.]
+    \item tvrdíme, že $\sum a_k^+=\sum a_k^-=\infty$
+
+    \begin{itemize}
+      \item[??]\begin{enumerate}[i.]
+        \item $\sum a_k^+, \sum a_k^-<\infty \stackrel{\text{VoAŘ}}{\implies} |a_k|<\infty$
+        \item $\sum a_k^+ < \infty, \sum a_k^- = \infty\implies\sum a_k = -\infty$
+        \item $\sum a_k^+ = \infty, \sum a_k^- < \infty\implies\sum a_k = \infty$ -- \textsc{spor} \Lightning \end{enumerate}
+    \end{itemize}
+    \item algoritmus přerovnání
+    \begin{itemize}
+      \item beru kladné členy, dokud nejsem nad $s$
+      \item beru záporné, dokud nejsem pod $s$
+      OBRAZEKOBRAZEk
+    \end{itemize}
+    \item $s_n \to s, n \to \infty \stackrel{V. 10. 1}{\implies} a_k \to 0$
+    \item lze dosáhnout $s_n \to \infty$, nebo $\lim_{n\to \infty} s_n$ neexistuje
+  \end{enumerate}
 \end{proof}
 
 \begin{veta}[Cauchyův součin řad]
@@ -505,7 +555,9 @@ a řada vlevo konverguje absolutně.
 \end{veta}
 
 \begin{proof}
-   TODO
+   \begin{enumerate}[1.]
+     \item formálně:
+   \end{enumerate}
 \end{proof}
 
 \begin{priklad}
