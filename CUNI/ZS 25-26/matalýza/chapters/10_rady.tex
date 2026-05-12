@@ -556,7 +556,20 @@ a řada vlevo konverguje absolutně.
 
 \begin{proof}
    \begin{enumerate}[1.]
-     \item formálně:
+     \item formálně: $(a_0 + a_1 + a_2 + \dots)\cdot(b_0+b_1+b_2+\dots) = \underbrace{a_0b_0}_{c_0}+\underbrace{a_0b_1+a_1b_0}_{c_1}+\underbrace{a_0b_2+a_1b_1+a_2b_0}_{c_2}+\dots$
+
+     schéma: OBRAZEKOBRAZEK
+     \item pomocná řada: $\sum_{k=1}^{\infty} d_k$, kde $\{d_k\}: a_0b_0, a_1b_0, a_1b_1, a_0b_1, a_2b_0, \dots$ OBRAZEKOBRAZEK
+
+     tvrdíme, že $\sum d_k$ konverguje absolutně, neboť $\sum_{k=1}^{n^2}|d_k| = \sum_{i=0}^{n-1} \sum_{j=0}^{n-1} |a_i||b_j| = \left(\sum_{i=0}^{n-1} |a_i|\right)\cdot\left(\sum_{j=0}^{n-1}|b_j|\right) \leq \underbrace{\left(\sum^{\infty} |a_i|\right)}_{\in \mathbb R}\cdot\underbrace{\left(\sum^{\infty}|b_j|\right)}_{\in \mathbb R}$
+
+     $\stackrel{L. 10. 2}{\implies} \sum |d_k|$ konverguje
+     \item tvrdíme, že: $\sum_{k=1}^{\infty} d_k = \left(\sum^{\infty} a_i\right)\left(\sum^{\infty}b_j\right)$ stejný OBRAZEKOBRAZEK, neboť označíme-li $s_n \coloneq \sum_{i=0}^{n}a_i, t_n \coloneq \sum_{j=0}^{n}b_j, p_n \coloneq \sum_{k=0}^{n}d_k$, pak zřejmě (viz 2.) $o_{n^2} = s_{n-2}\cdot t_{n-1}$ což je to, co chceme pro $n\to \infty$
+     \item další pomocná řada: $\sum_{k=1}^{\infty}$, kde $\{e_k\}: a_0b_0, a_1b_0, a_0b_1, a_2b_0, a_1b_1, a_0b_2$ OBRAZEKOBRAZEK
+
+     $\stackrel{V. 10. 14}{\implies} \sum^\infty e_k= \sum^\infty d_k \eqcolon o$
+
+     poslední pozorování: $\sum_{k=0}^{n-1} c_k = \sum_{k=2}^N e_k$, kde $N = 1+2+3+\dots+n=\frac{n(n-1)}{2}$
    \end{enumerate}
 \end{proof}
 
