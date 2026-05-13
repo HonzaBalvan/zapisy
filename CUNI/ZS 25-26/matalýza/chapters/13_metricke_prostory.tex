@@ -1,18 +1,18 @@
 \section{Metrické prostory}
 
 \begin{definice}
- Metrický prostor je dvojice $(X, \rho)$, kde $X$ je množina a $\rho$ je funkce $\rho: X \times X \to \mathbb R_0^+$, kterou nazveme metrikou, pro niž platí $\forall x, y, z \in X$:
+ Metrický prostor je dvojice $(X, \varrho)$, kde $X$ je množina a $\varrho$ je funkce $\varrho: X \times X \to \mathbb R_0^+$, kterou nazveme metrikou, pro niž platí $\forall x, y, z \in X$:
  \begin{enumerate}[i)]
-  \item $\rho(x, y) \geq 0; \rho(x,y) = 0 \iff x= y$,
-  \item $\rho(x, y) = \rho (y,x)$,
-  \item $\rho(x, z)\leq \rho(x, y) + \rho (y, z)$.
+  \item $\varrho(x, y) \geq 0; \varrho(x,y) = 0 \iff x= y$,
+  \item $\varrho(x, y) = \varrho (y,x)$,
+  \item $\varrho(x, z)\leq \varrho(x, y) + \varrho (y, z)$.
  \end{enumerate}
 \end{definice}
 
 \begin{priklad} Příklady metrických prostorů:
   \begin{enumerate}[1)]
-  \item $\mathbb R$ s metrikou $\rho(x,y)=|x-y|$
-  \item diskrétní metrický prostor: $(P, \rho)$, P lib., $\rho(x, y)\begin{cases}0, x = y \\ 1, x \neq y\end{cases}$
+  \item $\mathbb R$ s metrikou $\varrho(x,y)=|x-y|$
+  \item diskrétní metrický prostor: $(P, \varrho)$, P lib., $\varrho(x, y)\begin{cases}0, x = y \\ 1, x \neq y\end{cases}$
   \end{enumerate}
 \end{priklad}
 
@@ -27,14 +27,14 @@
 
 \begin{priklad}
   \begin{enumerate}[3)]
-  \item Normovaný vektorový prostor je metrický prostor: $\rho(\textbf{x}, \textbf{y}) = \|\textbf{x}-\textbf{y}\|, \forall \textbf{x}, \textbf{y} \in X$
+  \item Normovaný vektorový prostor je metrický prostor: $\varrho(\textbf{x}, \textbf{y}) = \|\textbf{x}-\textbf{y}\|, \forall \textbf{x}, \textbf{y} \in X$
   \end{enumerate}
 \end{priklad}
 
 \begin{priklad} Příklady normovaných vektorových prostorů:
   \begin{enumerate}[1)]
-  \item \begin{align*}\mathbb R^n \text{ s normou } &\|\textbf{x}\|_1\coloneq\sum_{j=1}^{n}|x_j| \\ &\|\textbf{x}\|_\infty \coloneq \max \{|x_1|, \dots, |x_n|\}\\ &\|\textbf{x}\|_2 \coloneq \sqrt{\sum_{j=1}^{n}x_j^2} \text{ -- eukleidovská norma}\end{align*}
-      \item \begin{align*} C([a, b])\text{ s normou } & \|f\|_1 \coloneq \int_{a}^{b}|f(x)| \d x \\ & \|f\|_\infty \coloneq \max\{|f(x)|; x \in [a, b]\} \end{align*}
+  \item \,$\begin{aligned}[t]\mathbb R^n \text{ s normou } &\|\textbf{x}\|_1\coloneq\sum_{j=1}^{n}|x_j| \\ &\|\textbf{x}\|_\infty \coloneq \max \{|x_1|, \dots, |x_n|\}\\ &\|\textbf{x}\|_2 \coloneq \sqrt{\sum_{j=1}^{n}x_j^2} \text{ -- eukleidovská norma}\end{aligned}$
+      \item \,$\begin{aligned}[t]C([a, b])\text{ s normou } & \|f\|_1 \coloneq \int_{a}^{b}|f(x)| \d x \\ & \|f\|_\infty \coloneq \max\{|f(x)|; x \in [a, b]\} \end{aligned}$
   \end{enumerate}
 \end{priklad}
 
@@ -43,7 +43,7 @@
 \end{poznamka}
 
 \begin{definice}
-    Nechť $(x, \rho)$ je metrický prostor, $x \in X, \delta >0$. Pak kruhovým okolím nazveme $\mathscr U(x, \\delta)\coloneq \{y \in X; \rho (x, y) < \delta\}$, prstencovým okolím nazveme $\mathscr P(x, \delta)\coloneq\{y \in X; 0 <\rho (x, y)< \delta\} = \mathscr U(x, \delta)\smallsetminus \{x\}$.
+    Nechť $(x, \varrho)$ je metrický prostor, $x \in X, \delta >0$. Pak kruhovým okolím nazveme $\mathscr U(x, \delta)\coloneq \{y \in X; \varrho (x, y) < \delta\}$, prstencovým okolím nazveme $\mathscr P(x, \delta)\coloneq\{y \in X; 0 <\varrho (x, y)< \delta\} = \mathscr U(x, \delta)\smallsetminus \{x\}$.
 \end{definice}
 
 \begin{definice}
@@ -60,8 +60,8 @@
 \end{priklad}
 
 \begin{veta}[Vlastnosti otevřených množin]
-    Buď $(X, \rho)$ metrický prostor. Pak:
-    \begin{enumerate}[i)]
+    Buď $(X, \varrho)$ metrický prostor. Pak:
+    \begin{enumerate}[i.]
   \item $\emptyset, X$ jsou otevřené
   \item $G_\alpha$ otevřené $\forall \alpha \in \mathcal A \implies \bigcup_{\alpha \in \mathcal A} G_\alpha$ otevřená (může jich být nekončeně mnoho),
   \item $G_1, \dots, G_N$ otevřené $\implies \bigcap_{n=1}^N G_n$ otevřená (konečně mnoho).
@@ -69,8 +69,423 @@
 \end{veta}
 
 \begin{proof}
-    \begin{enumerate}[i)]
+    \begin{enumerate}[{ad} i.]
         \item $\underbrace{\forall x \in \emptyset}_{\text{platí vždy cokoliv}} \exists \delta>0: \mathscr U(x, \delta)\subseteq \emptyset$
-            $\forall x \in X \exists \delta>0: \underbrace{\mathscr U(x, \delta) \subseteq x}_{\text{platí vždy}}$
+
+        $\forall x \in X \exists \delta>0: \underbrace{\mathscr U(x, \delta) \subseteq X}_{\text{platí vždy}}$
+        \item buď $x \in \bigcup_{\alpha \in \mathcal A} G_\alpha$ lib., tj. $\exists \alpha^\prime \in \mathcal A$ t. ž. $x \in G_{\alpha^\prime}$
+
+        $G_{\alpha^\prime}$ otevřená $\implies \exists \delta >0$ t. ž. $\mathscr U(x, \delta) \subseteq G_{\alpha^\prime} \subseteq \bigcup_{\alpha\in\mathcal A} G_\alpha$
+        \item buď $x \in \bigcap_{n=1}^N G_n$ lib., tj. $\exists \delta_n >0$ t. ž. $\mathscr U(x, \delta_n)\subseteq G_n, \forall n = 1, \dots, N$; položme $\delta \coloneq \min\{\delta_1, \dots, \delta_N\}>0$, pak $\mathscr U(x, \delta) \subseteq \mathscr U(x, \delta_n), \forall n = 1, \dots, N \subseteq G_n, \forall n = 1, \dots, N$
+
+        $\implies  \bigcap_{n=1}^N \mathscr U(x, \delta) = \mathscr U(x, \delta)\subseteq \bigcap_{n=1}^N G_n$
     \end{enumerate}
 \end{proof}
+
+\begin{poznamka}
+konečný počet množin v bodě iii. je podstatný: množiny $(-1/n, 1/n)$ jsou otevřené, jejich průnik přes $n \in \mathbb N$ je však jednobodová množina $\{0\}$, která není otevřená.
+\end{poznamka}
+
+\renewcommand{\theveta}{\arabic{section}.$\arabic{veta}^\prime$}
+\setcounter{veta}{0}
+\begin{veta}[Vlastnosti uzavřených množin]
+  $(X,\varrho)$ je m.p. Pak
+  \begin{enumerate}[1.]
+    \item $X, \emptyset$ jsou uzavřené množiny
+    \item $F_{\alpha}$ uzavřené pro $\forall \alpha \in \mathcal{A} \quad \Longrightarrow \quad \bigcap_{\alpha \in \mathcal{A}} F_{\alpha}$ je uzavřená
+    \item $F_{1}, \ldots, F_{N}$ jsou uzavřené $\quad \Longrightarrow \quad \bigcup_{n=1}^{N} F_{n}$ je uzavřená
+  \end{enumerate}
+\end{veta}
+\renewcommand{\theveta}{\arabic{section}.\arabic{veta}}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definice}
+  Nechť $(X,\varrho)$ je m.p., $\{x_{n}\} \subseteq X$ posloupnost bodů. Řekneme, že $\{x_{n}\}$ má limitu $x_0 \in X$ (neboli konverguje k $x_0$), jestliže
+  \[
+  \left(\forall \varepsilon > 0\right) \left(\exists n_{0} \in \mathbb N\right) \left[ n \geq n_{0} \Rightarrow x_{n} \in U(x_{0}, \varepsilon) \right].
+  \]
+  Značíme: $x_{n} \to x_{0}$ pro $n \to \infty$, nebo $\lim_{n \to \infty} x_{n} = x_{0}$.
+
+  Ekvivalentní je požadovat, aby posloupnost (reálných čísel) $\varrho(x_{n}, x_{0})$ měla limitu 0. Pokud limita existuje je určena jednoznačně (plyne z Hausdorffova principu oddělení)
+\end{definice}
+
+\begin{veta}[Charakterizace uzavřených množin pomocí posloupností]
+  $(X,\varrho)$ je m.p., $F \subset X$. Potom je ekvivalentní:
+  \begin{enumerate}[1.]
+    \item $F$ je uzavřená
+    \item Jsou-li $x_{n} \in F$ libovolné body, splňující $x_{n} \to x_{0}$ pro $n \to \infty$, pak nutně též $x_{0} \in F$. Názorně: z uzavřené množiny nelze vykonvergovat ven.
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $F = [0,1)$ není uvazřená v $\mathbb \R$: volme $x_n = \frac{n}{n+1}, x_n \in F, \forall n \in \mathbb N$, ale $x_n \to 1 \notin F, n \to \infty$
+    \item K. 6.: $x_n \in [a,b], x_n \to x_0 \implies x_0 \in [a, b]$, tj. $[a,b]$ je uzavřená
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+Nechť $(X,\varrho)$ je m.p. \textbf{Uzávěr množiny} $A \subset X$ definujeme jako
+\[
+\overline{A} = \left\{y \in X; \left(\forall \delta > 0\right) U(y, \delta) \cap A \neq \emptyset \right\}.
+\]
+\end{definice}
+
+\begin{priklad}
+\begin{enumerate}[1.]
+    \item $\overline{(0,1)} = [0,1]$
+    \item $\overline{\mathbb{Q}} = \mathbb{R}$
+    \begin{proof}
+      $x\in \mathbb R: \mathscr U(x, \delta) \cap \mathbb Q \neq \emptyset, \forall \delta >0$
+
+      to stejné jako v ZS: v každém (lib. malém) intervalu v $\mathbb R$ lze najít rac. číslo
+    \end{proof}
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Vlastnosti uzávěrů]
+$(X,\varrho)$ je m.p., $A, B \subset X$. Pak
+
+\begin{enumerate}[i.]
+    \item $A \subset B \quad \Longrightarrow \quad \overline{A} \subset \overline{B}, \quad \overline{\emptyset} = \emptyset$
+    \item $\overline{A}$ je uzavřená množina
+    \item $A \subset \overline{A}$, přičemž $A = \overline{A}$, právě když $A$ je uzavřená
+    \item $y \in \overline{A} \iff \exists x_{n} \in A, x_{n} \to y$ pro $n \to \infty$
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[{ad} i.]
+    \item TODO
+  \end{enumerate}
+\end{proof}
+
+\begin{priklad}
+  $(P, \varrho)$ diskrétní metrický prostor
+
+  vidíme: $\mathscr U(x, \delta) = \{x\}, \forall x \in P, \forall 0 < \delta \leq 1$
+  \begin{itemize}
+    \item[$\implies$] $A$ je uzavřená i otevřená $\forall A \subseteq P$
+
+    $\overline{A} =A$
+
+    $x_n \to x_0 \in P: \forall \varepsilon > 0\, \exists n_0 \in \mathbb N: n\geq n_0 \implies x_n \in \mathscr U(x_0, \delta) = \{x_0\}$, volme $\varepsilon = \frac{1}{2}$, tj. $x_n = x_0$ od $n_0$
+  \end{itemize}
+\end{priklad}
+
+\begin{definice}
+$(X, \varrho)$ je m.p. \textbf{Hranici množiny} $A \subset X$ definujeme jako
+\[
+\partial A = \left\{y \in X; \ (\forall \delta > 0) \ U(y, \delta) \cap A \neq \emptyset \ \text{a zároveň} \ U(y, \delta) \cap A^c \neq \emptyset \right\}.
+\]
+\end{definice}
+OBRAZEKOBRAZEK
+
+\begin{veta}[Vlastnosti hranice]
+  Nechť $(X, \varrho)$ je metrický prostor, $A\subseteq X$. pak
+  \begin{enumerate}[i.]
+    \item $\partial A = \overline{A} \cap \overline{A^c}, \quad \partial A = \partial (A^c)$
+    \item $\partial A$ je uzavřená, $\overline{A} = A \cup \partial A$
+    \item $A$ je uzavřená $\iff \partial A \subset A$, $A$ je otevřená $\iff \partial A \cap A = \emptyset$
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[{ad} i]
+    \item TODO
+  \end{enumerate}
+\end{proof}
+
+\begin{poznamka}
+Definujeme další pojmy: \textbf{vnitřek} $A$
+\[
+\operatorname{int} A = \left\{y \in X; \ (\exists \delta > 0) \ U(y, \delta) \subset A \right\},
+\]
+\textbf{vnějšek} $A$
+\[
+\operatorname{ext} A = \left\{y \in X; \ (\exists \delta > 0) \ U(y, \delta) \cap A = \emptyset \right\}.
+\]
+
+Platí:
+\begin{itemize}
+    \item $\operatorname{int} A \subseteq A$, přičemž rovnost nastává právě když $A$ je otevřená;
+    \item $\overline{A} = \operatorname{int} A \cup \partial A$
+    \item $X = \operatorname{int} A \cup \partial A \cup \operatorname{ext} A$
+\end{itemize}
+\end{poznamka}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $(P, \varrho)$ diskrétní metrický prostor
+
+    $\partial A = \emptyset, \forall A  \subseteq P$, neboť $\partial A \stackrel{dk. V. 13. 4. i}{implies} \partial A = \overline{A} \cap \overline{A^C}= A\cap A^C = \emptyset$
+    \item $\mathbb Q \subset R, \partial \mathbb Q = \mathbb R$
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+$(X, \varrho)$, $(Y, \sigma)$ jsou m.p. Funkce $f: X \to Y$ se nazve \textbf{spojitá}, jestliže
+\[
+\left(\forall x_0 \in X\right) \left(\forall \varepsilon > 0\right) \left(\exists \delta > 0\right) \left[ x \in U(x_0, \delta) \implies f(x) \in U(f(x_0), \varepsilon) \right].
+\]
+\end{definice}
+
+\textbf{Připomenutí.} Pro funkci $f: X \to Y$ definujeme \textbf{vzor množiny} $B \subset Y$
+\[
+f^{-1}(B) = \left\{x \in X; \ f(x) \in B \right\};
+\]
+- je to obecně něco jiného než inverzní funkce (kterou značíme $f_{-1}$ a která je definována pouze tehdy, je-li $f$ prostá).
+
+\begin{veta}
+Nechť $(X, \varrho)$, $(Y, \sigma)$ jsou m.p., $f: X \to Y$. Pak je ekvivalentní:
+
+\begin{enumerate}[i.]
+    \item $f$ je spojitá
+    \item pro každou $G \subseteq Y$ otevřenou je $f^{-1}(G) \subseteq X$ otevřená
+    \item pro každou $F \subseteq Y$ uzavřenou je $f^{-1}(F) \subseteq X$ uzavřená
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[Heineho věta pro spojitost v metrickém prostoru]
+Nechť $(X, \varrho)$, $(Y, \sigma)$ jsou metrické prostory, $f: X \to Y$. Pak je ekvivalentní:
+
+\begin{enumerate}[i.]
+    \item $f$ je spojitá
+    \item $\forall x_0 \in X$ a pro libovolnou posloupnost $\{x_n\} \subseteq X$, splňující $x_n \to x_0$ pro $n \to \infty$, platí $f(x_n) \to f(x_0)$ pro $n \to \infty$
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+Platí následující tvrzení (důkazy neprovádíme, neboť jsou velmi podobné situaci v $\mathbb R$, viz kapitoly 2 resp. 7 zimního semestru):
+
+\begin{itemize}
+    \item Nechť $(X, \varrho)$, $(Y, \sigma)$, $(Z, \tau)$ jsou metrické prostory, $f: X \to Y$, $g: Y \to Z$ jsou spojité. Potom $g \circ f: X \to Z$ je spojité.
+
+    \item Je-li $(X, \varrho)$ m.p., $f: X \to \mathbb R$, $g: X \to \mathbb R$ spojité funkce, potom i $f + g$, $f - g$, $f \cdot g: X \to \mathbb R$ jsou spojité. (Místo $\mathbb R$ může být i lineární normovaný prostor.)
+
+    Je-li navíc $g(x) \neq 0$ pro $\forall x \in X$, je také $f / g: X \to \mathbb R$ spojitá.
+\end{itemize}
+\end{poznamka}
+
+\begin{definice}
+$(X, \varrho)$, $(Y, \sigma)$ jsou m.p., $f: X \to Y$ funkce. Řekneme, že $b \in Y$ je \textbf{limita funkce} $f$ v bodě $x_0 \in X$, jestliže
+\[
+\left(\forall \varepsilon > 0\right) \left(\exists \delta > 0\right) \left[ x \in P(x_0, \delta) \Longrightarrow f(x) \in U(b, \varepsilon) \right].
+\]
+Značíme $\lim_{x\to x_0}f(x) = b$, nebo $f(x)\rightarrow b$ pro $x\to x_0$. Je rozumné požadovat, aby $\mathscr P(x_0, \delta) \neq \emptyset,  \forall \delta >0$ tj. $x_0$ není izolovaný bod metrického prostoru.
+\end{definice}
+
+\begin{definice}
+Řekneme, že $f$ je \textbf{spojitá v bodě} $x_0 \in X$, jestliže
+\[
+\left(\forall \varepsilon > 0\right) \left(\exists \delta > 0\right) \left[ x \in U(x_0, \delta) \Longrightarrow f(x) \in U(f(x_0), \varepsilon) \right].
+\]
+\end{definice}
+
+\begin{definice}
+  Metrický prostor $(\tilde{X}, \tilde{\varrho})$ se nazve podprostorem metrického prostoru $(X, \varrho)$, jestliže $\tilde{X}\subseteq X, \tilde{\varrho} = \varrho|_{\tilde{X}\times \tilde{X}}$, tj. $\varrho(x, y)=\tilde{\varrho}(x, y), \forall x,y \in \tilde{X}$.
+\end{definice}
+
+\begin{poznamka}
+Vidíme, že hodnota $f(x_0)$ nehraje v definici limity žádnou roli, fakticky zde $f$ nemusí být ani definována. Platí opět věty analogické situaci v $\mathbb R$:
+
+\begin{itemize}
+    \item \textbf{Heineho charakterizace limity}: nechť $(X, \varrho)$, $(Y, \sigma)$ jsou m.p., $f: X \to Y$ daná funkce, $x_0 \in X$, $b \in Y$. Potom je ekvivalentní:
+
+    \begin{enumerate}[i.]
+        \item $\lim_{x\to x_0}f(x) = b$
+        \item pro libovolnou posloupnost $\{x_n\} \subset X$, splňující $x_n \to x_0$ pro $n \to \infty$, a zároveň $x_n \neq x_0$ pro $\forall n$, platí $f(x_n) \to b$ pro $n \to \infty$.
+    \end{enumerate}
+
+    \item $f: X \to Y$ je spojitá, právě když je spojitá v každém bodě $x_0 \in X$
+
+    \item $f: X \to Y$ je spojitá v bodě $x_0$, právě když $\lim_{x \to x_0} f(x) = f(x_0)$
+\end{itemize}
+\end{poznamka}
+
+\begin{definice}
+Nechť $(X, \varrho)$ je m.p., $\{x_n\} \subset X$ posloupnost bodů. Řekneme, že $\{y_n\}$ je \textbf{podposloupnost} (též vybraná posloupnost), jestliže existuje rostoucí posloupnost přirozených čísel $\{k_n\}_{n=1}^\infty$ tak, že $y_n = x_{k_n}$ pro $\forall n$.
+\end{definice}
+
+\begin{poznamka}
+  V ZS jsme dokazovali: $\{x_n\}_n \subseteq [a,b] \implies \exists$ podposloupnost $\{\tilde{x}_n\}_n$ a $\exists x_0 \in [a,b]$ t. ž. $\tilde{x}_n \to x_0, n\to \infty$. Nyní vidíme, že to je důkaz kompaktnosti uzavřeného intervalu.
+\end{poznamka}
+
+\begin{definice}
+Nechť $(X, \varrho)$ je m.p., $\{x_n\}$ posloupnost bodů. Potom:
+
+\begin{itemize}
+    \item $x_0$ se nazve \textbf{hromadný bod posloupnosti} $\{x_n\}$, jestliže existuje podposloupnost $\{x_{k_n}\}$ taková, že $x_{k_n} \to x_0$ pro $n \to \infty$
+
+    \item ekvivalentně: $x_0$ je hromadný bod posloupnosti $\{x_n\}$, právě když
+    \[
+    \left(\forall \varepsilon > 0\right) \left[ x_n \in U(x_0, \varepsilon) \quad \text{platí pro nekonečně indexů } n \right].
+    \]
+
+    \item ekvivalentní definice limity: $\lim_{n\to \infty}x_n = x_0$, právě když
+    \[
+    \left(\forall \varepsilon > 0\right) \left[ x_n \in U(x_0, \varepsilon) \quad \text{platí pro všechna } n \text{ až na konečně výjimek} \right].
+    \]
+
+    \item jestliže $\lim_{n\to \infty}x_n = x_0$, pak $x_0$ je hromadný bod této posloupnosti, a je to jediný její hromadný bod.
+
+    \item ekvivalentní definice kompaktnosti: $A$ je kompaktní, právě když libovolná posloupnost $\{x_n\} \subset A$ má v $A$ hromadný bod
+\end{itemize}
+\end{definice}
+
+\begin{definice}
+Nechť $(X, \varrho)$ je m.p. Množina $A \subset X$ se nazve \textbf{kompaktní}, jestliže pro libovolnou posloupnost $\{x_n\} \subset A$ existuje podposloupnost $\{x_{k_n}\}$ a bod $x_0 \in A$ tak, že $x_{k_n} \to x_0$ pro $n \to \infty$.
+\end{definice}
+
+\begin{definice}
+$(X, \varrho)$ je m.p. Množina $A \subset X$ se nazve \textbf{omezená}, jestliže
+\[
+\left(\exists x_0 \in X\right) \left(\exists K > 0\right) \left[ A \subset U(x_0, K) \right].
+\]
+\end{definice}
+
+\begin{veta}[Vlastnosti kompaktních množin]
+  Nechť $(X, \varrho)$ je m.p. a $A \subset X$ je kompaktní. Potom
+
+  \begin{enumerate}[i.]
+    \item $A$ je omezená a uzavřená
+    \item Je-li $B \subset A$, a $B$ je uzavřená, pak $B$ je též kompaktní.
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[Vztah kompaktnosti a spojitosti]
+Nechť $(X, \varrho), (Y, \sigma)$ jsou m.p., nechť $X$ je kompaktní. Potom:
+
+\begin{enumerate}[i.]
+    \item Je-li $f: X \to Y$ spojité, potom $f(X)$ je kompaktní.
+    \item Je-li $f: X \to \mathbb R$ spojité, potom $f$ je v $X$ omezená, a nabývá zde maxima a minima.
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $[0, \infty), (0,1) \subset \mathbb R$ nejsou kompakty
+    \item $S_1 \coloneq \{(x, y); x^2+y^2=1\}\subset \mathbb R^2$ je kompaktní
+
+    $S_1 = \varphi([0, 2\pi]), \varphi(t): \mathbb R \to \mathbb R^2, t\mapsto (\cos t, \sin t)$ spojitá
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  \begin{enumerate}[1.]
+    \item $A$ konečná $\implies A$ kompaktní ($\impliedby$ platí v diskrétním metrickém prostoru)
+    \item $\mathbb R^*$ je komapktní topologický prostor (nikoliv metrický)
+  \end{enumerate}
+\end{poznamka}
+
+\begin{definice}
+Nechť $(X, \varrho)$ je m.p. Řekneme, že posloupnost $\{x_n\} \subset X$ splňuje \textbf{Bolzano-Cauchyho podmínku} (neboli je \textbf{cauchyovská}), jestliže
+\[
+\left(\forall \varepsilon > 0\right) \left(\exists n_0 \in \mathbb N\right) \left[ m, n \geq n_0 \implies \varrho(x_n, x_m) < \varepsilon \right].
+\]
+\end{definice}
+
+\begin{poznamka}
+Jestliže posloupnost $\{x_n\}$ má limitu, pak je cauchyovská.
+\end{poznamka}
+
+\begin{definice}
+Metrický prostor $(X, \varrho)$ se nazve \textbf{úplný}, jestliže libovolná cauchyovská posloupnost bodů z $X$ má zde také limitu.
+\end{definice}
+
+\begin{poznamka}
+  $\stackrel{V. 7. 5}{\implies} \mathbb R$ je úplný metrický prostor
+\end{poznamka}
+
+\begin{definice}
+Nechť $(X, \varrho), (Y, \sigma)$ jsou metrické prostory. Funkce $f: X \to Y$ se nazve \textbf{lipschitzovská}, jestliže existuje $L > 0$ tak, že
+\[
+\sigma(f(x), f(y)) \leq L \varrho(x, y) \quad \forall x, y \in X.
+\]
+Je zjevné, že lipschitzovská funkce je spojitá. Funkce, která je lipschitzovská s konstantou $L < 1$, se nazývá \textbf{kontrakce}.
+\end{definice}
+
+\begin{veta}[Banachova věta o pevném bodě]
+Nechť $X$ je úplný metrický prostor, nechť $f: X \to X$ je kontrakce. Potom existuje jediné $x_0 \in X$ tak, že $f(x_0) = x_0$.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+  V. 12. 4. (Picard) -- $\exists!$ lokální řešení pro $y^\prime = g(x,y)$ pro $y(x_0)=y_0$, a to $y(x) = y_0+\int_{x_0}^x g(t, y(t)) \d t, x \in [x_0 - \delta, x_0 + \delta]$ -- problém pevného bodu
+\end{poznamka}
+
+\begin{poznamka}
+Zbytek kapitoly je věnován speciálně situaci v $\mathbb R^N$, což normovaný vektorový prostor s eukleidovskou normou
+\[
+\|x\| = \sqrt{\sum_{i=1}^N x_i^2}
+\]
+kde $x_i$ jsou jednotlivé složky vektoru $x$. Speciálně, $\mathbb R^N$ považujeme též za metrický prostor s metrikou $\varrho(x,y) = \|x - y\|$.
+\end{poznamka}
+
+\begin{lemma}[O konvergenci v $\mathbb R^N$ po složkách]
+Posloupnost bodů $x_n \in \mathbb R^N$ konverguje k $x_0 \in \mathbb R^N$, právě když každá složka vektoru $x_n$ konverguje k odpovídající složce vektoru $x_0$.
+\end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{veta}[Kompaktní množiny v $\mathbb R^N$]
+Množina $A \subseteq \mathbb R^N$ je kompaktní, právě když je omezená a uzavřená.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+Implikace kompaktní $\implies$ omezená a uzavřená platí obecně (viz Věta 13.7). Obrácená implikace obecně neplatí; fakticky vzato platí pouze v konečně-dimenzionálních prostorech.
+\end{poznamka}
+
+\begin{veta}[Vztah $\mathbb R^N$ k úplnosti]
+Prostor $\mathbb R^N$ je úplný.
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+  $(X, \varrho)$ je úplný metrický prostor, $\tilde{X} \subseteq X$ uzavřená $\implies (\tilde{X}, \varrho)$ je úplný metrický prostor.
+\end{poznamka}
+
+\begin{definice}
+Normovaný vektorový prostor, který je úplný vzhledem k metrice, určené jeho normou, se nazývá \textbf{Banachův prostor}.
+
+Prostor se skalárním součinem, který je úplný vzhledem k metrice, určené normou, která je určena skalárním součinem, se nazývá \textbf{Hilbertův prostor}.
+\end{definice}
+
+\begin{poznamka}
+Analogické vlastnosti (Lemma 13.1, Věta 13.10 a 13.11) má také množina komplexních čísel $\mathbb C$, kterou přirozeně ztotožňujeme s $\mathbb R^2$.
+\end{poznamka}

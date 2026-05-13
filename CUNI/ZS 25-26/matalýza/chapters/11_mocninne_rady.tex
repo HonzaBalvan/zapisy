@@ -52,7 +52,7 @@
 \end{veta}
 
 \begin{proof}
-    \textsc{trik}: užijeme V. 10. 4. (podíl krit.) na řadu $\sum b_k$, kde $_k = |c_k||z-z_0|^k$ (BÚNO $z\neq z_0$)
+    \textsc{trik}: užijeme V. 10. 4. (podíl krit.) na řadu $\sum b_k$, kde $b_k = |c_k||z-z_0|^k$ (BÚNO $z\neq z_0$)
 
     $\frac{b_{k+1}}{b_k}=\frac{|c_{k+1}|}{|c_k|}\cdot \frac{|z-z_0|^{k+1}}{|z-z_0|^k}= \frac{|c_{k+1}|}{|c_k|}\cdot |z-z_0| \to r \cdot |z-z_0|$
 
@@ -72,7 +72,19 @@
 \end{veta}
 
 \begin{proof}
-  \textsc{trik}: užijeme V. 10. 5. (odmoc. krit.), dále obdobně jak dk. 11. 2.
+  \textsc{trik}: užijeme V. 10. 5. (odmoc. krit.) na řadu $\sum b_k$, kde $b_k = |c_k||z-z_0|^k$ (BÚNO $z\neq z_0$)
+
+  $\sqrt{k}{b_k}= \sqrt{k}{c_k} \sqrt{k}{|z-z_0|^k}=  \sqrt{k}{c_k} \cdot |z-z_0| \to r \cdot |z-z_0|$
+
+    diskuze: \begin{enumerate}[1.]
+   \item $\underline{r \in (0, \infty)}: \stackrel{V. 10. 5.}{\implies} \sum b_k$ konverguje, pokud $r\cdot|z-z_0|<1 \implies |z-z_0| < \frac{1}{r}$; $\sum b_k$ diverguje, pokud $r\cdot|z-z_0|>1 \implies |z-z_0| > \frac{1}{r}$
+
+   $\implies$ mocninná řada $\begin{cases}
+     \text{konverguje absolutně pro } |z-z_0| <\frac{1}{r},& \\\text{určitě diverguje pro } |z-z_0| >\frac{1}{r},&
+     \end{cases}$
+   \item $\underline{r=0}: \stackrel{V. 10. 5.}{\implies} \sum b_k$ konverguje $\forall z \in \mathbb C\implies R = \infty$,
+   \item $\underline{r= \infty}: b_k \cancel{\to} 0, \forall z \in \mathbb C, z \neq z_0 \implies R = 0.$
+ \end{enumerate}
 \end{proof}
 
 \begin{poznamka}
@@ -92,10 +104,6 @@ Formálně jde o \uv{derivování řady člen po členu}, neboli o záměnu $\su
 Řady $(M_1)\sum_{k=0}^{\infty}c_k(z - z_0)^k$ a $(M_2)\sum_{k=1}^{\infty}kc_k(z - z_0)^{k-1}$ mají stejný poloměr konvergence.
 \end{lemma}
 
-\begin{dusledek}
-Také řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\frac{c_k}{k+1}(z - z_0)^{k+1}$ mají stejný poloměr konvergence jako řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$.
-\end{dusledek}
-
 \begin{proof}
   označme $R_1, R_2$ poloměry konvergence řad $(M_1), (M_2)$
   $\stackrel{V. 11. 1.}{\implies} R_1 = \sup \mathscr K_1 \coloneq \left\{\rho \geq 0; \{|\tilde{c}_k|\rho^k\} \text{ je omezená}\right\}, R_2 = \sup \mathscr K_2 \coloneq \left\{\rho \geq 0; \{|\tilde{c}_k|\rho^k\} \text{ je omezená}\right\}$
@@ -108,6 +116,10 @@ Také řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\
     $\underbrace{(k+1)|c_{k+1}|\rho_2^k}_{\text{neomezené, neboť } \rho_2 \in \mathscr K_2}=\underbrace{(k+1)\left(\frac{\rho_2}{\rho_1}^k\cdot \frac{1}{\rho_1}\right)}_{\to 0, k \to \infty}\underbrace{|c_{k+1}|\rho_1^{k+1}}_{\leq K\text{, neboť } \rho_1 \in \mathscr K_1}$ -- \textsc{spor} \Lightning
   \end{enumerate}
 \end{proof}
+
+\begin{dusledek}
+Také řady $\sum_{k=2}^{\infty}k(k-1)c_k(z - z_0)^{k-2}$, $\sum_{k=1}^{\infty}\frac{c_k}{k+1}(z - z_0)^{k+1}$ mají stejný poloměr konvergence jako řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$.
+\end{dusledek}
 
 \begin{veta}
 Nechť řada $\sum_{k=0}^{\infty}c_k(z - z_0)^k$ má poloměr konvergence $R > 0$. Označme
@@ -130,11 +142,17 @@ Potom $F'(z) = f(z)$ pro $\forall z \in U(z_0, R)$, kde $U(z_0, R) = \{z \in \C;
 
   $f(z) = 0 + \cancel{c_1} + \sum_{k=2}^\infty k\cdot c_k \cdot z_{k-1}$
 
-  $\varphi(h) = \sum_{k=2}^\infty c_k \cdot\frac{1}{h}\cdot [\underbrace{(z+h)^k}_{\mathclap{\textstyle =\cancel{z^k}+\cancel{kz^{k-1}h}+\sum_{j=2}^k {k\choose j}z^{k-j}h^j}}-z^k]-kz^{k-1} \stackrel{\text{binom. v.}}{=} \sum_{k=2}^\infty h\cdot c_k\cdot \underbrace{\sum_{j=2}^\infty {k\choose j} z^{h-j}\cdot h^{j-2}}_{\eqcolon S_k}$
+  $\varphi(h) = \sum_{k=2}^\infty c_k \cdot\frac{1}{h}\cdot [\underbrace{(z+h)^k}_{\mathclap{\textstyle =\cancel{z^k}+\cancel{kz^{k-1}h}+\sum_{j=2}^k \binom{k}{j} z^{k-j}h^j}}-z^k]-kz^{k-1} \stackrel{\text{binom. v.}}{=} \sum_{k=2}^\infty h\cdot c_k\cdot \underbrace{\sum_{j=2}^\infty {k\choose j} z^{h-j}\cdot h^{j-2}}_{\eqcolon S_k}$
 
   ukážeme, že $\sum_{k=2}\infty |c_k||S_k|<K$ nezávisle na $|h|<\delta$, pak $|\varphi(h)|\leq|h|\cdot K \to 0$
 
-  odhady $S_k: S_k = \sum_{l=0}^{k-2} \underbrace{{k \choose l+2}}_{= \frac{k!}{(l+2)!(k-l-2)!}= \frac{k(k-1)(k-2)!}{\underbrace{(l+2)(l+1)}_{\geq 1}l! (k-l-2)!}}$
+  odhady $S_k: S_k = \sum_{l=0}^{k-2} \underbrace{\binom{k}{l+2}}_{\mathrlap{\hspace{-1.5em}\textstyle = \frac{ k!}{ (l+2)!(k-l-2)!}= \frac{ k(k-1)(k-2)!}{\underbrace{\scriptstyle(l+2)(l+1)}_{\mathclap{\textstyle \geq 1}} l! (k-l-2)!}\leq k(k-1)\frac{(k-2)!}{l!(k-2-l)!}=k(k-1)\binom{k-2}{l}}}z^{k-2-l}h^l$
+
+  $\implies |S_k| \leq k(k-1)\underbrace{\sum_{l=0}^{k-2} \binom{k-2}{l} |z|^{k-2-l}|h|^l}_{\textstyle \text{binom. v.: }(|z|+|h|)^{k-2}}$
+
+  \textsc{celkem} $|S_k| \leq k(k-1)(|z|+|h|)^{k-2}$
+
+  $\implies \sum_{k=2}^{\infty} |c_k||S_k| \leq \underbrace{\sum_{k=2}^\infty k(k-1) |c_k| \rho^{k-2}}_{\mathrlap{\hspace{-4em}\textstyle \eqcolon K < \infty \text{, neboť řada} \sum_{k=2}^\infty k(k-1) c_k z^{k-2} \text{ konverguje absolutně uvnitř kruhu}}}$, kde $\rho \coloneq |z|+\delta, \rho<R$
 \end{proof}
 
 \begin{poznamka}
@@ -180,15 +198,24 @@ podobně definujeme
 \end{lemma}
 
 \begin{proof}
-  TODO
+  \begin{align*}
+  e^{x+iy}&=e^xe^{iy}= e^x\cdot\left[\sum_{k=0}^\infty \frac{(iy)^k}{k!}\right] = e^x\cdot\left[\sum_{l=0}^\infty \frac{(iy)^{2l}}{(2l)!} + \sum_{l=0}^\infty \frac{(iy)^{2l+1}}{(2l+1)!} \right]\\
+  &= e^x\cdot\left[\sum_{l=0}^\infty (-1)^l\frac{y^{2l}}{(2l)!}+i\sum_{l=0}^\infty (-1)^l\frac{y^{2l+1}}{(2l+1)!}\right]=e^x\left(\cos y+i\cdot\sin y\right)
+  \end{align*}
 \end{proof}
 
 \begin{veta}
-  Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $F^{(k)}(z_0) = k! c_k$ pro $\forall l = 0, 1, \ldots$.
+  Nechť řada $F(z) = \sum_{k=0}^{\infty} c_k (z - z_0)^k$ má kladný poloměr konvergence. Potom $F^{(k)}(z_0) = k! c_k$ pro $\forall l = 0, 1, \dots$.
 \end{veta}
 
 \begin{proof}
-  TODO
+   $F(z) = \sum_{k=0}^\infty k! c_k \cdot Q_{z_0, k}(z)$, kde $Q_{z_0, k}(z) \coloneq \frac{(z-z_0)^k}{k!}$
+
+   $\stackrel{l\text{-krát V. 11. 4.}}{\implies} F^{(l)}(z) = \sum_{k=0}^\infty k!c_k \cdot Q^{(l)}_{z_0, k}(z), \forall z \in \mathscr U(z_0, R)$
+
+   speciálně pro $z=z_0: F^{(l)}(z_0)= \sum_{k=0}^\infty k!c_k \cdot \underbrace{Q^{(l)}_{z_0, k}(z_0)}_{\mathclap{\textstyle\stackrel{L. 8. 1}{=}\begin{cases} 1,&k=l \\ 0,&k\neq 1 \end{cases}}}$
+
+   $\implies F^{(l)}(z_0) = l!c_l$
 \end{proof}
 
 \begin{poznamka}
@@ -200,7 +227,11 @@ podobně definujeme
 \end{veta}
 
 \begin{proof}
-  TODO
+  $F\equiv\tilde{F}$ na $\mathscr U(z_0, \delta)\implies F^{(l)} \equiv \tilde{F}^{(l)}$ na $\mathscr U(z_0, \delta), \forall l\geq 0$
+
+  speciálně $z=z_0: F^{(l)}(z_0) = \tilde{F}^{(l)}(z_0), \forall l \geq 0$
+
+  $\stackrel{V. 11. 5}{\implies} \cancel{l!}c_l = \cancel{l!}\tilde{c}_l, \forall l \geq 0$
 \end{proof}
 
 \begin{poznamka}
