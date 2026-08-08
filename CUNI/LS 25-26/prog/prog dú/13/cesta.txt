@@ -1,0 +1,39 @@
+Vrcholy si označím dle obrázku.
+
+Topologické uspořádání najdu tak, že si vyberu nějaký vrchol, do kterého nevede žádná šipka, poznamenám si ho a následně ho odstraním spolu s šipkami, které z něj vedou, a takto opakuji dokud jsem neodstranil všechny vrcholy.
+
+Topologické uspořádání tedy např. A, B, C, D, I, F, E, H, G.
+
+Pro každý vrchol budu hledat délku nejdelší dílčí cesty a předchůdce, ze kterého tato cesta vede.
+
+Délky nejdelších dílčích cest budu hledat tak, že projdu vrcholy v topologickém pořadí a pro každý z nich vypočítám tuto délku jako největší ze součtů nejdelších dílčích cest možných předchůdců řešeného vrcholu a vah cest z těchto předchůdců do řešeného vrcholu, tím zjistím i hledaného předchůdce. Procházení v topologickém pořadí zajišťuje, že znám všechny hodnoty potřebné pro výpočet.
+
+Z těchto délek pak vyberu tu největší, ten vrchol, který ji má, je konec cesty a pomocí předchůdců se dostanu až na začátek cesty.
+
+Všechny vrcholy, které nemají předchůdce, mají nejdelší dílčí cestu délky 0.
+
+| Řešený vrchol | Možní předchůdci | Délka dílčí cesty | Délka nejdelší dílčí cesty | Předchůdce na nejdelší dílčí cestě |
+|---|---|---|---|---|
+| A | žádní | není | 0 | žádný |
+| | | | | |
+| B | A | 6 | **6** | **A** |
+| | | | | |
+| C | A | 5 | **5** | **A** |
+| | | | | |
+| D | B | 15 | 15 | B |
+|  | C | 13 | **15** | **B** |
+| | | | | |
+| I | žádní | není | 0 | žádný |
+| | | | | |
+| F | B | 11 | 11 | B |
+|  | I | 12 | **12** | **I** |
+| | | | | |
+| E | D | 18 | 18 | D |
+|  | F | 19 | **19** | **F** |
+| | | | | |
+| H | žádní | není | 0 | žádný |
+| | | | | |
+| G | E | 29 | 29 | E |
+|  | H | 3 | ***29*** | ***E*** |
+
+Nejdelší cesta má délku 29 a vede vrcholy (v pořadí): I, F, E, G.

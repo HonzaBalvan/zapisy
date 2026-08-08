@@ -1,4 +1,4 @@
-####Reprezentace stavů: 
+#### Reprezentace stavů: 
 pětice $(k_l, m_l, k_p, m_p, l)$
 
 - $k_l$ -- počet kanibalů na prvním břehu (možné hodnoty: 0 - 3)
@@ -12,18 +12,31 @@ koncový stav: (0, 0, 1, 3, 3)
 
 #### Možné přechody:
 ##### Loďka jede od prvního břehu k druhému
-(-1, 0, +1, 0, +1)
-(0, -1, 0, +1, +1)
-(-1, -1, +1, +1, +1)
-(-2, 0, +2, 0, +1)
-(0, -2, 0, +2, +1)
+1: (-1, 0, +1, 0, +1)
+
+2: (0, -1, 0, +1, +1)
+
+3: (-1, -1, +1, +1, +1)
+
+4: (-2, 0, +2, 0, +1)
+
+5: (0, -2, 0, +2, +1)
 
 ##### Loďka jede od druhého břehu k prvnímu
-(+1, 0, -1, 0, -1)
-(0, +1, 0, -1, -1)
-(+1, +1, -1, -1, -1)
-(+2, 0, -2, 0, -1)
-(0, +2, 0, -2, -1)
+6: (+1, 0, -1, 0, -1)
 
-přičemž vždy musí platit $k_l \lwq m_l \lor m_l = 0$ a $k_p \leq m_p \lor m_p = 0$
+7: (0, +1, 0, -1, -1)
 
+8: (+1, +1, -1, -1, -1)
+
+9: (+2, 0, -2, 0, -1)
+
+10: (0, +2, 0, -2, -1)
+
+přičemž vždy musí platit $k_l \leq m_l \lor m_l = 0$ a $k_p \leq m_p \lor m_p = 0$.
+
+#### Graf prohledávání
+Přípustné stavy jsou vrcholy a možné přechody jsou hrany grafu.
+
+#### Řešení
+Řešení je víc, např. sekvence přechodů (viz výše) 3 7 4 6 5 8 5 6 4 6 4

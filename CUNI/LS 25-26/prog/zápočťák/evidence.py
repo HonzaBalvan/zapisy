@@ -1,4 +1,4 @@
-### !# bin/python něco
+#!/usr/bin/python3
 
 ### u povinných stačí název u nepovinných název a hodnotu
 
@@ -13,8 +13,13 @@ parser.add_argument("--nepovinny", choices = ["moznost_1", "moznost_2"], default
 
 args = parser.parse_args()
 
-databaze = open(args.soubor, encoding="utf-8")
+with open(args.soubor, encoding="utf-8") as vstup:
+    #něco
+    #print("test")
 
+    vstup_radky = readlines(vstup)
+    
+    databaze = []
+    for radek_vstupu in vstup_radky:
+        #tady něco že se čtou jenom řádky s "@," na začátku
 #něco
-
-databaze.close()
