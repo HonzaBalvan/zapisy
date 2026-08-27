@@ -17,9 +17,14 @@ with open(args.soubor, encoding="utf-8") as vstup:
     #něco
     #print("test")
 
-    vstup_radky = readlines(vstup)
+    vstup_radky = vstup.readlines()
     
     databaze = []
     for radek_vstupu in vstup_radky:
-        #tady něco že se čtou jenom řádky s "@," na začátku
+        radek_split = radek_vstupu.strip().split(",")
+        if radek_split[0] == "@":
+            radek_split.pop(0)
+            databaze.append(radek_split)
+
+    print(*databaze)
 #něco

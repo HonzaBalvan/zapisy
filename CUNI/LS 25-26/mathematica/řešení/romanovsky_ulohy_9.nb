@@ -1,0 +1,1759 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     86893,       1751]
+NotebookOptionsPosition[     83902,       1698]
+NotebookOutlinePosition[     84295,       1714]
+CellTagsIndexPosition[     84252,       1711]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pascal", "[", "m_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", "k", ",", 
+        RowBox[{"Binomial", "[", 
+         RowBox[{"n", ",", "k"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "0", ",", "m"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"barva", "[", "n_", "]"}], ":=", 
+  RowBox[{"Gray", "/;", 
+   RowBox[{
+    RowBox[{"Mod", "[", 
+     RowBox[{"n", ",", "2"}], "]"}], "==", "1"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"barva", "[", "n_", "]"}], ":=", 
+  RowBox[{"White", "/;", 
+   RowBox[{
+    RowBox[{"Mod", "[", 
+     RowBox[{"n", ",", "2"}], "]"}], "==", "0"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pascalCtverecky", "[", "seznam_", "]"}], ":=", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"barva", "[", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+       RowBox[{"EdgeForm", "[", "Black", "]"}], ",", 
+       RowBox[{"Rectangle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "/", "2"}]}], ",", 
+           RowBox[{"-", 
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "-", 
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "/", "2"}], "+", "1"}], ",", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"#", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], "+", "1"}]}], "}"}]}], 
+        "]"}]}], "}"}], "&"}], ",", "seznam"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.9963802867532787`*^9, 3.9963804964945917`*^9}, {
+  3.996380540474188*^9, 3.996380653839847*^9}, {3.996386564260248*^9, 
+  3.996386567153419*^9}, {3.996386922407112*^9, 3.996386925126333*^9}, {
+  3.9963870895866823`*^9, 3.9963871142644367`*^9}, {3.996387259329955*^9, 
+  3.996387260872361*^9}, {3.9963878245411777`*^9, 3.996387854278326*^9}, {
+  3.996391786409581*^9, 3.996391790019206*^9}, {3.996391834180716*^9, 
+  3.996391900671159*^9}},
+ CellLabel->
+  "In[234]:=",ExpressionUUID->"236a0052-101d-4cb4-9868-d213495a19fb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"pascalCtverecky", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"pascal", "[", "15", "]"}], ",", "1"}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.996386828663899*^9, 3.996386830220337*^9}, {
+  3.9963869066720743`*^9, 3.996386910060959*^9}, {3.996387868768145*^9, 
+  3.9963879545034924`*^9}, {3.996391757313773*^9, 3.996391770940055*^9}, {
+  3.99639193102702*^9, 3.996391945851562*^9}},
+ CellLabel->
+  "In[241]:=",ExpressionUUID->"a39eb971-9456-4157-ad44-f6331ba7e1c2"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{0, 0}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -1}, {-0.5, -1}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -1}, {0.5, -1}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -2}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -2}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{1, -2}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -3}, {-1.5, -3}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -3}, {-0.5, -3}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -3}, {0.5, -3}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -3}, {1.5, -3}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -4}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -4}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -4}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{1, -4}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{2, -4}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -5}, {-2.5, -5}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -5}, {-1.5, -5}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -5}, {-0.5, -5}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -5}, {0.5, -5}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -5}, {1.5, -5}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -5}, {2.5, -5}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-3, -6}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -6}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -6}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -6}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{1, -6}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{2, -6}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{3, -6}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-7, 2], -7}, {-3.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -7}, {-2.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -7}, {-1.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -7}, {-0.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -7}, {0.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -7}, {1.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -7}, {2.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[7, 2], -7}, {3.5, -7}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-4, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-3, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{1, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{2, -8}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{3, -8}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{4, -8}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-9, 2], -9}, {-4.5, -9}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-7, 2], -9}, {-3.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -9}, {-2.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -9}, {-1.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -9}, {-0.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -9}, {0.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -9}, {1.5, -9}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -9}, {2.5, -9}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[7, 2], -9}, {3.5, -9}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[9, 2], -9}, {4.5, -9}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-5, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-4, -10}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-3, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{1, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{2, -10}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{3, -10}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{4, -10}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{5, -10}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-11, 2], -11}, {-5.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-9, 2], -11}, {-4.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-7, 2], -11}, {-3.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -11}, {-2.5, -11}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -11}, {-1.5, -11}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -11}, {-0.5, -11}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -11}, {0.5, -11}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -11}, {1.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -11}, {2.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[7, 2], -11}, {3.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[9, 2], -11}, {4.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[11, 2], -11}, {5.5, -11}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-6, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-5, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-4, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-3, -12}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{1, -12}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{2, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{3, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{4, -12}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{5, -12}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{6, -12}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-13, 2], -13}, {-6.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-11, 2], -13}, {-5.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-9, 2], -13}, {-4.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-7, 2], -13}, {-3.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -13}, {-2.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -13}, {-1.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -13}, {-0.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -13}, {0.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -13}, {1.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -13}, {2.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[7, 2], -13}, {3.5, -13}]]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[9, 2], -13}, {4.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[11, 2], -13}, {5.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[13, 2], -13}, {6.5, -13}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-7, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-6, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-5, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-4, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-3, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{-2, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{-1, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{0, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{1, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{2, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{3, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{4, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{5, -14}]}, 
+   {GrayLevel[1], EdgeForm[GrayLevel[0]], RectangleBox[{6, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], RectangleBox[{7, -14}]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-15, 2], -15}, {-7.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-13, 2], -15}, {-6.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-11, 2], -15}, {-5.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-9, 2], -15}, {-4.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-7, 2], -15}, {-3.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-5, 2], -15}, {-2.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-3, 2], -15}, {-1.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[-1, 2], -15}, {-0.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[1, 2], -15}, {0.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[3, 2], -15}, {1.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[5, 2], -15}, {2.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[7, 2], -15}, {3.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[9, 2], -15}, {4.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[11, 2], -15}, {5.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[13, 2], -15}, {6.5, -15}]]}, 
+   {GrayLevel[0.5], EdgeForm[GrayLevel[0]], 
+    RectangleBox[NCache[{Rational[15, 2], -15}, {7.5, -15}]]}}]], "Output",
+ CellChangeTimes->{{3.996386911089748*^9, 3.996386927698442*^9}, 
+   3.996387118808111*^9, 3.996387265008313*^9, 3.996387834224276*^9, {
+   3.9963878902055063`*^9, 3.9963879258324413`*^9}, {3.996391764863723*^9, 
+   3.996391771430601*^9}, {3.99639184134203*^9, 3.996391878223846*^9}, {
+   3.996391910191375*^9, 3.9963919461847057`*^9}},
+ CellLabel->
+  "Out[241]=",ExpressionUUID->"d633e7e0-e26c-4704-a88f-b7c4fffe7606"]
+}, Open  ]],
+
+Cell[BoxData["\"\<Pouze lich\[AAcute] kombina\[CHacek]n\[IAcute] \[CHacek]\
+\[IAcute]sla jsou v \[RHacek]\[AAcute]dc\[IAcute]ch, kter\[EAcute] jsou \
+mocninami dvojky (kdy\[ZHacek] je \[CHacek]\[IAcute]slujeme od 1)\>\""], \
+"Input",
+ CellChangeTimes->{{3.996391949099465*^9, 
+  3.996392007318534*^9}},ExpressionUUID->"c0f04275-b5fe-4854-a524-\
+8b847841fa14"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"uhelAn", "[", "n_", "]"}], ":=", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{"ArcTan", "[", 
+     RowBox[{"1", "/", 
+      RowBox[{"Sqrt", "[", "i", "]"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9963921232306137`*^9, 3.9963922047442417`*^9}, {
+  3.996392291252681*^9, 3.996392293288703*^9}, {3.996393168475731*^9, 
+  3.996393171570673*^9}, {3.996393741345373*^9, 3.996393742172113*^9}, {
+  3.996393812365185*^9, 3.9963938127587547`*^9}},
+ CellLabel->
+  "In[273]:=",ExpressionUUID->"fade70e8-44e6-4494-a289-1866bb67a684"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"polomerAn", "[", "n_", "]"}], ":=", 
+  RowBox[{"Sqrt", "[", "n", "]"}]}]], "Input",
+ CellChangeTimes->{{3.996392355538556*^9, 3.996392369513173*^9}, {
+  3.996393197975704*^9, 3.996393213908618*^9}},
+ CellLabel->
+  "In[265]:=",ExpressionUUID->"c2ab7ca8-a84b-479a-9050-fe7863efc2d4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"zPolDoKart", "[", 
+   RowBox[{"polomer_", ",", "uhel_"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"polomer", "*", 
+     RowBox[{"Cos", "[", "uhel", "]"}]}], ",", 
+    RowBox[{"polomer", "*", 
+     RowBox[{"Sin", "[", "uhel", "]"}]}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.9963923787195168`*^9, 3.996392417808525*^9}, {
+  3.996392478818852*^9, 3.9963924976675158`*^9}},
+ CellLabel->
+  "In[248]:=",ExpressionUUID->"7d195471-3e70-4d2e-9d08-cecff80a7017"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vrcholyAn", "[", "n_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"zPolDoKart", "[", 
+     RowBox[{
+      RowBox[{"polomerAn", "[", "i", "]"}], ",", 
+      RowBox[{"uhelAn", "[", "i", "]"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.996392511331891*^9, 3.996392564644802*^9}, {
+  3.996392902715118*^9, 3.996392924185843*^9}, {3.996393120681759*^9, 
+  3.9963931296887503`*^9}, {3.996393922062031*^9, 3.996393924503203*^9}},
+ CellLabel->
+  "In[277]:=",ExpressionUUID->"53728651-e7e2-4ac9-a497-1cf390b96072"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"vrcholy", "=", 
+    RowBox[{"vrcholyAn", "[", "18", "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Point", "[", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], "]"}], ",", 
+    RowBox[{"Map", "[", 
+     RowBox[{"Point", ",", "vrcholy"}], "]"}], ",", 
+    RowBox[{"Map", "[", 
+     RowBox[{"Line", ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"vrcholy", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ";;", 
+           RowBox[{"i", "+", "1"}]}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "vrcholy", "]"}], "-", "1"}]}], "}"}]}], 
+       "]"}]}], "]"}], ",", 
+    RowBox[{"Map", "[", 
+     RowBox[{"Line", ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"vrcholy", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "vrcholy", "]"}]}], "}"}]}], "]"}]}], 
+     "]"}]}], "}"}], "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.9963929300776176`*^9, 3.996392935162716*^9}, {
+   3.996393045747287*^9, 3.996393070072176*^9}, {3.9963931055339527`*^9, 
+   3.996393106646179*^9}, {3.99639318509278*^9, 3.9963931854466963`*^9}, {
+   3.9963936799780416`*^9, 3.9963936881794767`*^9}, {3.99639372268927*^9, 
+   3.996393729676038*^9}, {3.996393929800803*^9, 3.996393977816331*^9}, {
+   3.9963988554673653`*^9, 3.9963988920941553`*^9}, {3.996399216689107*^9, 
+   3.996399221757365*^9}, {3.996399307641925*^9, 3.9963993100549927`*^9}, {
+   3.996399383364822*^9, 3.996399390578328*^9}, 3.996399422127388*^9, 
+   3.996399624256371*^9, {3.99639971074524*^9, 3.9963997145593977`*^9}, {
+   3.9963997542713118`*^9, 3.996399773454711*^9}, {3.9964000168957577`*^9, 
+   3.9964000201760283`*^9}, {3.996400068157907*^9, 3.996400069781095*^9}, {
+   3.9964008802763367`*^9, 3.9964009153596153`*^9}, {3.996401411752487*^9, 
+   3.996401418993299*^9}},
+ CellLabel->
+  "In[311]:=",ExpressionUUID->"338621c2-a919-4b3f-a5a9-76c8eba1f6e1"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   PointBox[{0, 0}], {PointBox[{1, 0}], PointBox[{1, 1}], 
+    PointBox[NCache[{
+      3^Rational[1, 2] Cos[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]], 
+       3^Rational[1, 2] Sin[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]]}, {
+      0.2928932188134524, 1.7071067811865475`}]], 
+    PointBox[NCache[{
+      2 Sin[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]], 2 
+       Cos[Rational[1, 12] Pi - ArcTan[
+         2^Rational[-1, 2]]]}, {-0.6927053408400362, 1.8762087599123103`}]], 
+    PointBox[NCache[{
+      5^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]]], 5^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]]]}, {-1.6308097207961914`, 1.5298560894922923`}]], 
+    PointBox[NCache[{
+      6^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]], 6^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[
+         5^Rational[-1, 2]]]}, {-2.3149821631755443`, 0.8005358106787452}]], 
+    PointBox[NCache[{
+      7^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]]], 7^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]]]}, {-2.641799539340245, -0.1445516998920067}]], 
+    PointBox[NCache[{
+      2 2^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 2 2^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]]]}, {-2.587164132267975, -1.1430580705747617`}]], 
+    PointBox[NCache[{
+      3 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]]], 3 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]]]}, {-2.1830320757712625`, -2.057758721559409}]], 
+    PointBox[NCache[{
+      10^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 10^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]]]}, {-1.4971125019181264`, -2.7854360801498297`}]],
+     PointBox[
+     NCache[{11^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]]], 11^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]]]}, {-0.6162802729096473, -3.2588646221072777`}]],
+     PointBox[
+     NCache[{2 3^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]], 2 
+       3^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+         6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]]}, {
+      0.36630438109882374`, -3.444680115829016}]], 
+    PointBox[NCache[{
+      13^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]]], 13^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]]]}, {1.3606978771718412`, -3.338937149312644}]], 
+    PointBox[NCache[{
+      14^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]], 14^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]]}, {
+      2.286752423125556, -2.9615474595774076`}]], 
+    PointBox[NCache[{
+      15^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+         14^Rational[-1, 2]]], 15^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+         14^Rational[-1, 2]]]}, {3.0782592751548, -2.350387167026626}]], 
+    PointBox[NCache[{
+      4 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+         14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 4 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+         Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+         2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+         ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+         7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+         11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+         14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}, {
+      3.68512663215705, -1.555584039827755}]], 
+    PointBox[NCache[{
+      17^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+         Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - 
+         ArcTan[6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]] - ArcTan[
+         13^Rational[-1, 2]] - ArcTan[14^Rational[-1, 2]] - ArcTan[
+         15^Rational[-1, 2]]], 17^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+         Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - 
+         ArcTan[6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]] - ArcTan[
+         13^Rational[-1, 2]] - ArcTan[14^Rational[-1, 2]] - ArcTan[
+         15^Rational[-1, 2]]]}, {4.074022642113989, -0.6343023817884921}]], 
+    PointBox[NCache[{
+      3 2^Rational[1, 2] 
+       Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+         Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - 
+         ArcTan[6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]] - ArcTan[
+         13^Rational[-1, 2]] - ArcTan[14^Rational[-1, 2]] - ArcTan[
+         15^Rational[-1, 2]] - ArcTan[17^Rational[-1, 2]]], 3 
+       2^Rational[1, 2] 
+       Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+         Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+         Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+         ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - 
+         ArcTan[6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+         10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]] - ArcTan[
+         13^Rational[-1, 2]] - ArcTan[14^Rational[-1, 2]] - ArcTan[
+         15^Rational[-1, 2]] - ArcTan[17^Rational[-1, 2]]]}, {
+      4.227863566743096, 0.3537932461287981}]]}, {LineBox[{{1, 0}, {1, 1}}], 
+    LineBox[NCache[{{1, 1}, {
+       3^Rational[1, 2] Cos[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]], 
+        3^Rational[1, 2] 
+        Sin[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]]}}, {{1, 1}, {
+       0.2928932188134524, 1.7071067811865475`}}]], 
+    LineBox[NCache[{{
+       3^Rational[1, 2] Cos[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]], 
+        3^Rational[1, 2] 
+        Sin[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]]}, {
+       2 Sin[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]], 2 
+        Cos[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]]}}, {{
+      0.2928932188134524, 1.7071067811865475`}, {-0.6927053408400362, 
+      1.8762087599123103`}}]], 
+    LineBox[NCache[{{
+       2 Sin[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]], 2 
+        Cos[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]]}, {
+       5^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]], 5^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]]}}, {{-0.6927053408400362, 
+      1.8762087599123103`}, {-1.6308097207961914`, 1.5298560894922923`}}]], 
+    LineBox[NCache[{{
+       5^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]], 5^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]]}, {
+       6^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]], 6^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]]]}}, {{-1.6308097207961914`, 
+      1.5298560894922923`}, {-2.3149821631755443`, 0.8005358106787452}}]], 
+    LineBox[NCache[{{
+       6^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]], 6^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]]}, {
+       7^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]], 7^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]]}}, {{-2.3149821631755443`, 
+      0.8005358106787452}, {-2.641799539340245, -0.1445516998920067}}]], 
+    LineBox[NCache[{{
+       7^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]], 7^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]]}, {
+       2 2^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 2 2^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 
+             2]]]}}, {{-2.641799539340245, -0.1445516998920067}, \
+{-2.587164132267975, -1.1430580705747617`}}]], 
+    LineBox[NCache[{{
+       2 2^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 2 2^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]]}, {
+       3 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]]], 3 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 
+             2]]]}}, {{-2.587164132267975, -1.1430580705747617`}, \
+{-2.1830320757712625`, -2.057758721559409}}]], 
+    LineBox[NCache[{{
+       3 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]]], 3 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]]]}, {
+       10^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 10^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 
+             2]]]}}, {{-2.1830320757712625`, -2.057758721559409}, \
+{-1.4971125019181264`, -2.7854360801498297`}}]], 
+    LineBox[NCache[{{
+       10^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 10^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]]}, {
+       11^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]]], 11^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 
+             2]]]}}, {{-1.4971125019181264`, -2.7854360801498297`}, \
+{-0.6162802729096473, -3.2588646221072777`}}]], 
+    LineBox[NCache[{{
+       11^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]]], 11^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]]]}, {
+       2 3^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]], 2 
+        3^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 
+             2]]]}}, {{-0.6162802729096473, -3.2588646221072777`}, {
+      0.36630438109882374`, -3.444680115829016}}]], 
+    LineBox[NCache[{{
+       2 3^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]], 2 
+        3^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]]}, {
+       13^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]], 13^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]]}}, {{
+      0.36630438109882374`, -3.444680115829016}, {
+      1.3606978771718412`, -3.338937149312644}}]], 
+    LineBox[NCache[{{
+       13^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]], 13^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]]}, {
+       14^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]], 
+        14^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]]}}, {{
+      1.3606978771718412`, -3.338937149312644}, {
+      2.286752423125556, -2.9615474595774076`}}]], 
+    LineBox[NCache[{{
+       14^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]], 
+        14^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]]}, {
+       15^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]], 15^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]]}}, {{
+      2.286752423125556, -2.9615474595774076`}, {
+      3.0782592751548, -2.350387167026626}}]], 
+    LineBox[NCache[{{
+       15^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]], 15^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]]}, {
+       4 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 4 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}}, {{
+      3.0782592751548, -2.350387167026626}, {
+      3.68512663215705, -1.555584039827755}}]], 
+    LineBox[NCache[{{
+       4 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 4 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}, {
+       17^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 
+        17^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}}, {{
+      3.68512663215705, -1.555584039827755}, {
+      4.074022642113989, -0.6343023817884921}}]], 
+    LineBox[NCache[{{
+       17^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 
+        17^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}, {
+       3 2^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]] - ArcTan[
+          17^Rational[-1, 2]]], 3 2^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]] - ArcTan[
+          17^Rational[-1, 2]]]}}, {{4.074022642113989, -0.6343023817884921}, {
+      4.227863566743096, 0.3537932461287981}}]]}, {LineBox[{{0, 0}, {1, 0}}], 
+    LineBox[{{0, 0}, {1, 1}}], 
+    LineBox[NCache[{{0, 0}, {
+       3^Rational[1, 2] Cos[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]], 
+        3^Rational[1, 2] 
+        Sin[Rational[1, 4] Pi + ArcTan[2^Rational[-1, 2]]]}}, {{0, 0}, {
+       0.2928932188134524, 1.7071067811865475`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       2 Sin[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]], 2 
+        Cos[Rational[1, 12] Pi - ArcTan[2^Rational[-1, 2]]]}}, {{0, 
+       0}, {-0.6927053408400362, 1.8762087599123103`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       5^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]], 5^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]]]}}, {{0, 0}, {-1.6308097207961914`, 
+       1.5298560894922923`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       6^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]], 6^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]]]}}, {{0, 
+       0}, {-2.3149821631755443`, 0.8005358106787452}}]], 
+    LineBox[NCache[{{0, 0}, {
+       7^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]], 7^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]]]}}, {{0, 
+       0}, {-2.641799539340245, -0.1445516998920067}}]], 
+    LineBox[NCache[{{0, 0}, {
+       2 2^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 2 2^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]]}}, {{0, 
+       0}, {-2.587164132267975, -1.1430580705747617`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       3 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]]], 3 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]]]}}, {{0, 
+       0}, {-2.1830320757712625`, -2.057758721559409}}]], 
+    LineBox[NCache[{{0, 0}, {
+       10^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]], 10^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]]]}}, {{0, 
+       0}, {-1.4971125019181264`, -2.7854360801498297`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       11^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]]], 11^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]]]}}, {{0, 
+       0}, {-0.6162802729096473, -3.2588646221072777`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       2 3^Rational[1, 2] 
+        Sin[
+         Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[Rational[1, 2]] - 
+          ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]], 2 
+        3^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[5^Rational[-1, 2]] - ArcTan[
+          6^Rational[-1, 2]] - ArcTan[7^Rational[-1, 2]] - ArcTan[
+          10^Rational[-1, 2]] - ArcTan[11^Rational[-1, 2]]]}}, {{0, 0}, {
+       0.36630438109882374`, -3.444680115829016}}]], 
+    LineBox[NCache[{{0, 0}, {
+       13^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]], 13^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]]]}}, {{0, 0}, {
+       1.3606978771718412`, -3.338937149312644}}]], 
+    LineBox[NCache[{{0, 0}, {
+       14^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]], 
+        14^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]]]}}, {{0, 0}, {
+       2.286752423125556, -2.9615474595774076`}}]], 
+    LineBox[NCache[{{0, 0}, {
+       15^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]], 15^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]]]}}, {{0, 0}, {
+       3.0782592751548, -2.350387167026626}}]], 
+    LineBox[NCache[{{0, 0}, {
+       4 Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 4 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 3]] - ArcTan[
+          Rational[1, 2]] - ArcTan[Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[
+          2^Rational[-1, 2]] - ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - 
+          ArcTan[5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}}, {{0, 0}, {
+       3.68512663215705, -1.555584039827755}}]], 
+    LineBox[NCache[{{0, 0}, {
+       17^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]], 
+        17^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]]]}}, {{0, 0}, {
+       4.074022642113989, -0.6343023817884921}}]], 
+    LineBox[NCache[{{0, 0}, {
+       3 2^Rational[1, 2] 
+        Sin[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]] - ArcTan[
+          17^Rational[-1, 2]]], 3 2^Rational[1, 2] 
+        Cos[Rational[1, 12] Pi - ArcTan[Rational[1, 4]] - ArcTan[
+          Rational[1, 3]] - ArcTan[Rational[1, 2]] - ArcTan[
+          Rational[1, 2] 2^Rational[-1, 2]] - ArcTan[2^Rational[-1, 2]] - 
+          ArcTan[Rational[1, 2] 3^Rational[-1, 2]] - ArcTan[
+          5^Rational[-1, 2]] - ArcTan[6^Rational[-1, 2]] - ArcTan[
+          7^Rational[-1, 2]] - ArcTan[10^Rational[-1, 2]] - ArcTan[
+          11^Rational[-1, 2]] - ArcTan[13^Rational[-1, 2]] - ArcTan[
+          14^Rational[-1, 2]] - ArcTan[15^Rational[-1, 2]] - ArcTan[
+          17^Rational[-1, 2]]]}}, {{0, 0}, {4.227863566743096, 
+       0.3537932461287981}}]]}}]], "Output",
+ CellChangeTimes->{
+  3.9963938331675873`*^9, 3.996393940575597*^9, {3.996398885059452*^9, 
+   3.996398893119238*^9}, 3.99639922228389*^9, 3.996399310804481*^9, 
+   3.9963993918522987`*^9, 3.996399626225103*^9, 3.996399715083581*^9, 
+   3.9963997741612053`*^9, 3.996400070404481*^9, 3.9964009174949923`*^9, {
+   3.996401412413656*^9, 3.996401419608673*^9}},
+ CellLabel->
+  "Out[312]=",ExpressionUUID->"4d0bbe2c-a144-469b-9b3b-813c7504c847"]
+}, Open  ]],
+
+Cell[BoxData["\"\<Je pot\[RHacek]eba 17 troj\[UAcute]heln\[IAcute]k\[URing]\>\
+\""], "Input",
+ CellChangeTimes->{{3.9964014375722113`*^9, 
+  3.996401443110901*^9}},ExpressionUUID->"990a1eed-a63b-4121-80cb-\
+f1824940bed7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"stredy", "[", "s_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"RotateLeft", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "/", "2"}], "*", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "2"}], "]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"3", ",", "1"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "2"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"3", ",", "2"}], "]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"3", ",", "1"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"3", ",", "2"}], "]"}], "]"}], "+", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}]}], "}"}]}], "}"}]}], ",", 
+    "1"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.996402318522957*^9, 3.996402324537681*^9}, {
+  3.9964032995460043`*^9, 3.996403330539137*^9}, {3.99640344786649*^9, 
+  3.996403457197487*^9}, {3.996403538714593*^9, 3.9964036146418447`*^9}, {
+  3.996403713519702*^9, 3.9964037441919317`*^9}, {3.996403835721684*^9, 
+  3.996403875868581*^9}, {3.996404066452721*^9, 3.996404066900592*^9}, {
+  3.996565466653319*^9, 3.9965654748635817`*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"84ffa5cd-f4c3-4dbf-8077-35861b2fa280"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"stredy", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.996403752683813*^9, 3.996403765203247*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"c7025658-04a0-4d9a-bca0-b76d6f378559"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "2"], ",", 
+     FractionBox["3", "2"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "2"], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     FractionBox["3", "2"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.996403765798337*^9, 3.996403846056858*^9, 
+  3.996403878594866*^9, 3.996404071217177*^9, 3.99647234894923*^9, 
+  3.996565340549144*^9, 3.996565478093964*^9},
+ CellLabel->"Out[76]=",ExpressionUUID->"fd9061e8-d822-4a6b-a5ea-d2ec893a492b"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"teziste", "[", "s_", "]"}], ":=", 
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "3"}], "*", "#"}], "&"}], ",", 
+    RowBox[{"MapThread", "[", 
+     RowBox[{"Plus", ",", "s"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.99640185914995*^9, 3.996401976563534*^9}, {
+  3.996402229909061*^9, 3.996402243112125*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"f49553c5-13b9-44b9-a2d5-184f471808ae"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"teziste", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.996401902631167*^9, 3.99640191620512*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"1360d417-8b28-4dd6-9f11-af87965ac096"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["4", "3"], ",", 
+   FractionBox["4", "3"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.996401921372429*^9, 3.996401986130672*^9}, 
+   3.996402244680353*^9, 3.996472353625209*^9, 3.996565345220849*^9},
+ CellLabel->"Out[62]=",ExpressionUUID->"7b96ff5f-92bc-4581-976a-452a1e65bf8c"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"paty", "[", "s_", "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"s", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], "+", 
+     RowBox[{"Projection", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"s", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], "+", 
+     RowBox[{"Projection", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}]}], "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"s", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "+", 
+     RowBox[{"Projection", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "-", 
+        RowBox[{"s", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], "]"}]}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.9964049688066063`*^9, 3.996404972751115*^9}, {
+  3.996405069859138*^9, 3.996405174943062*^9}, {3.996405245030492*^9, 
+  3.9964052842782507`*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"f1e94b2f-4e35-4f5d-ac1c-65435754aa1e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"paty", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.996405177918221*^9, 3.996405186521999*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"882f1b14-5b29-414b-92f8-8d029e4d4a61"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "2"], ",", 
+     FractionBox["3", "2"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.9964051870344877`*^9, 3.996405286922817*^9, {3.996472181873996*^9, 
+   3.996472186884947*^9}, 3.996472358348093*^9, {3.996562609659347*^9, 
+   3.996562614405643*^9}, 3.9965653496233253`*^9},
+ CellLabel->"Out[64]=",ExpressionUUID->"c24cc72d-381a-4e92-a639-cf4ece2cf6e0"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "ortocentrum", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ortocentrum", "[", "s_", "]"}], ":=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{"Solve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"y", "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"paty", "[", "s", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}], "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ")"}]}], "==", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"paty", "[", "s", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}], "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ")"}]}]}], "&&", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"y", "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "2"}], "]"}], "]"}]}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"paty", "[", "s", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1"}], "]"}], "]"}], "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ")"}]}], "==", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"paty", "[", "s", "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "2"}], "]"}], "]"}], "-", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", 
+            RowBox[{"2", ",", "2"}], "]"}], "]"}]}], ")"}]}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "y"}], "}"}]}], "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.996405449161317*^9, 3.996405481535321*^9}, {
+   3.996405587463497*^9, 3.9964055972723*^9}, {3.996405705948242*^9, 
+   3.996405782636051*^9}, 3.996405845886572*^9, {3.996405888094881*^9, 
+   3.9964059121518307`*^9}, {3.99640595498363*^9, 3.996405964856072*^9}, {
+   3.996406453222406*^9, 3.996406461576314*^9}, {3.9964681128155622`*^9, 
+   3.996468140295615*^9}, {3.996471822838077*^9, 3.996471843094302*^9}, {
+   3.996471942362175*^9, 3.9964719452593937`*^9}, {3.996471987059436*^9, 
+   3.996472038689386*^9}, {3.996472087080428*^9, 3.996472153074296*^9}, {
+   3.996472218557856*^9, 3.9964722259230137`*^9}, {3.996562518298523*^9, 
+   3.996562534192114*^9}, {3.9965625899328203`*^9, 3.996562596102236*^9}, {
+   3.996562641162912*^9, 3.996562736105548*^9}, {3.996562822535677*^9, 
+   3.99656291660225*^9}, {3.996563022610339*^9, 3.996563027157331*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"f15ad039-0615-4718-9157-98de3ed71b0a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ortocentrum", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9964058521631727`*^9, 3.996405864714424*^9}, {
+  3.996472136947929*^9, 3.9964721389844007`*^9}, {3.9964721772225447`*^9, 
+  3.99647220181175*^9}, {3.996562629824204*^9, 3.996562630537643*^9}, {
+  3.996565415640019*^9, 
+  3.996565417824904*^9}},ExpressionUUID->"eb5b6ed2-cb12-4e48-9c36-\
+de98baf38ecb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"x", "\[Rule]", "1"}], ",", 
+   RowBox[{"y", "\[Rule]", "1"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.9965626185652037`*^9, 3.996562646722188*^9}, {
+   3.996562710217988*^9, 3.996562739801566*^9}, {3.996562852220097*^9, 
+   3.996562875648757*^9}, 3.996562919669609*^9, 3.996563029390753*^9, 
+   3.9965653555653267`*^9},
+ CellLabel->"Out[67]=",ExpressionUUID->"7485197e-4487-49b8-ae33-4b1e7e924181"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vykresliTrojuhelnik", "[", "s_", "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"s", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Orange", ",", 
+        RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"stredy", "[", "s", "]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Dashed", ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"stredy", "[", "s", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"stredy", "[", "s", "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"stredy", "[", "s", "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"teziste", "[", "s", "]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"paty", "[", "s", "]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"DotDashed", ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"paty", "[", "s", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"paty", "[", "s", "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}], ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"s", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"paty", "[", "s", "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"Green", ",", 
+        RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], "/.", 
+          RowBox[{"ortocentrum", "[", "s", "]"}]}], "]"}]}], "}"}]}], "}"}], ",", 
+    RowBox[{"PlotRangePadding", "->", "0.5"}], ",", 
+    RowBox[{"Axes", "->", "True"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.996472274338469*^9, 3.996472446112267*^9}, {
+   3.996472480382202*^9, 3.996472527417097*^9}, {3.9964725652162247`*^9, 
+   3.996472589001326*^9}, {3.996472645059189*^9, 3.9964727358824167`*^9}, {
+   3.9965631015138903`*^9, 3.9965632978133087`*^9}, 3.9965633674741488`*^9, {
+   3.9965648906146107`*^9, 3.9965650374087887`*^9}, {3.996565115747897*^9, 
+   3.996565191186924*^9}, 3.996565229496294*^9, {3.9965653601030073`*^9, 
+   3.9965653828651447`*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"4199435e-439b-4215-96c5-7778579ae020"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vykresliTrojuhelnik", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0.9", ",", "0.9"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1.2"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"1.4", ",", "2"}], "}"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.99647244835248*^9, 3.996472456018036*^9}, {
+  3.996565421398699*^9, 3.9965654381959333`*^9}, {3.996565490042098*^9, 
+  3.996565504238168*^9}},
+ CellLabel->"In[79]:=",ExpressionUUID->"06b9d279-9982-48bc-a752-430c1814656d"],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{0.9, 0.9}, {2, 1.2}, {1.4, 2}, {0.9, 0.9}}], 
+   {RGBColor[1, 0.5, 0], PointSize[0.02], 
+    PointBox[{{1.7, 1.6}, {1.15, 1.45}, {1.45, 1.05}}]}, 
+   {Dashing[{Small, Small}], LineBox[{{0.9, 0.9}, {1.7, 1.6}}], 
+    LineBox[{{2, 1.2}, {1.15, 1.45}}], LineBox[{{1.4, 2}, {1.45, 1.05}}]}, 
+   {RGBColor[0, 0, 1], PointSize[0.02], 
+    PointBox[{1.4333333333333331`, 1.3666666666666665`}]}, 
+   {RGBColor[1, 0, 0], PointSize[0.02], 
+    PointBox[{{1.748, 1.536}, {1.2013698630136986`, 1.563013698630137}, {
+     1.6446153846153846`, 1.103076923076923}}]}, 
+   {Dashing[{0, Small, Small, Small}], LineBox[{{0.9, 0.9}, {1.748, 1.536}}], 
+    LineBox[{{2, 1.2}, {1.2013698630136986`, 1.563013698630137}}], 
+    LineBox[{{1.4, 2}, {1.6446153846153846`, 1.103076923076923}}]}, 
+   {RGBColor[0, 1, 0], PointSize[0.02], 
+    PointBox[{1.5641509433962264`, 1.3981132075471698`}]}},
+  Axes->True,
+  PlotRangePadding->0.5]], "Output",
+ CellChangeTimes->{
+  3.996472456544685*^9, 3.996472487357209*^9, 3.9964725319363737`*^9, {
+   3.996472569169016*^9, 3.996472592207459*^9}, 3.996472686353085*^9, 
+   3.9964727382711363`*^9, 3.9965631785764093`*^9, {3.9965632760626583`*^9, 
+   3.996563300795701*^9}, {3.996565233229074*^9, 3.996565281719399*^9}, {
+   3.9965653646032143`*^9, 3.9965653855631733`*^9}, {3.9965654231542463`*^9, 
+   3.996565438658127*^9}, {3.9965654818993073`*^9, 3.99656550490723*^9}},
+ CellLabel->"Out[79]=",ExpressionUUID->"4d795b0d-9f8f-441c-b2b7-690b727b9dec"]
+}, Open  ]]
+},
+WindowSize->{509.25, 522.75},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"fc28459e-b62f-49c8-b02b-a55e605a2593"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 2650, 72, 189, "Input",ExpressionUUID->"236a0052-101d-4cb4-9868-d213495a19fb"],
+Cell[CellGroupData[{
+Cell[3229, 96, 548, 12, 29, "Input",ExpressionUUID->"a39eb971-9456-4157-ad44-f6331ba7e1c2"],
+Cell[3780, 110, 12632, 216, 373, "Output",ExpressionUUID->"d633e7e0-e26c-4704-a88f-b7c4fffe7606"]
+}, Open  ]],
+Cell[16427, 329, 359, 6, 69, "Input",ExpressionUUID->"c0f04275-b5fe-4854-a524-8b847841fa14"],
+Cell[16789, 337, 670, 16, 29, "Input",ExpressionUUID->"fade70e8-44e6-4494-a289-1866bb67a684"],
+Cell[17462, 355, 316, 7, 29, "Input",ExpressionUUID->"c2ab7ca8-a84b-479a-9050-fe7863efc2d4"],
+Cell[17781, 364, 505, 13, 49, "Input",ExpressionUUID->"7d195471-3e70-4d2e-9d08-cecff80a7017"],
+Cell[18289, 379, 641, 15, 49, "Input",ExpressionUUID->"53728651-e7e2-4ac9-a497-1cf390b96072"],
+Cell[CellGroupData[{
+Cell[18955, 398, 2318, 54, 169, "Input",ExpressionUUID->"338621c2-a919-4b3f-a5a9-76c8eba1f6e1"],
+Cell[21276, 454, 44458, 741, 296, "Output",ExpressionUUID->"4d0bbe2c-a144-469b-9b3b-813c7504c847"]
+}, Open  ]],
+Cell[65749, 1198, 221, 4, 29, "Input",ExpressionUUID->"990a1eed-a63b-4121-80cb-f1824940bed7"],
+Cell[65973, 1204, 2339, 64, 109, "Input",ExpressionUUID->"84ffa5cd-f4c3-4dbf-8077-35861b2fa280"],
+Cell[CellGroupData[{
+Cell[68337, 1272, 414, 11, 29, "Input",ExpressionUUID->"c7025658-04a0-4d9a-bca0-b76d6f378559"],
+Cell[68754, 1285, 584, 16, 45, "Output",ExpressionUUID->"fd9061e8-d822-4a6b-a5ea-d2ec893a492b"]
+}, Open  ]],
+Cell[69353, 1304, 472, 12, 29, "Input",ExpressionUUID->"f49553c5-13b9-44b9-a2d5-184f471808ae"],
+Cell[CellGroupData[{
+Cell[69850, 1320, 414, 11, 29, "Input",ExpressionUUID->"1360d417-8b28-4dd6-9f11-af87965ac096"],
+Cell[70267, 1333, 332, 7, 45, "Output",ExpressionUUID->"7b96ff5f-92bc-4581-976a-452a1e65bf8c"]
+}, Open  ]],
+Cell[70614, 1343, 1772, 53, 69, "Input",ExpressionUUID->"f1e94b2f-4e35-4f5d-ac1c-65435754aa1e"],
+Cell[CellGroupData[{
+Cell[72411, 1400, 412, 11, 29, "Input",ExpressionUUID->"882f1b14-5b29-414b-92f8-8d029e4d4a61"],
+Cell[72826, 1413, 572, 15, 45, "Output",ExpressionUUID->"c24cc72d-381a-4e92-a639-cf4ece2cf6e0"]
+}, Open  ]],
+Cell[73413, 1431, 3297, 84, 155, "Input",ExpressionUUID->"f15ad039-0615-4718-9157-98de3ed71b0a"],
+Cell[CellGroupData[{
+Cell[76735, 1519, 598, 15, 29, "Input",ExpressionUUID->"eb5b6ed2-cb12-4e48-9c36-de98baf38ecb"],
+Cell[77336, 1536, 452, 9, 33, "Output",ExpressionUUID->"7485197e-4487-49b8-ae33-4b1e7e924181"]
+}, Open  ]],
+Cell[77803, 1548, 4017, 103, 289, "Input",ExpressionUUID->"4199435e-439b-4215-96c5-7778579ae020"],
+Cell[CellGroupData[{
+Cell[81845, 1655, 534, 13, 29, "Input",ExpressionUUID->"06b9d279-9982-48bc-a752-430c1814656d"],
+Cell[82382, 1670, 1504, 25, 389, "Output",ExpressionUUID->"4d795b0d-9f8f-441c-b2b7-690b727b9dec"]
+}, Open  ]]
+}
+]
+*)
+
