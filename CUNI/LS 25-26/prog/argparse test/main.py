@@ -14,9 +14,6 @@ parser.add_argument("--nepovinny", choices = ["moznost_1", "moznost_2"], default
 args = parser.parse_args()
 
 with open(args.soubor, encoding="utf-8") as vstup:
-    #něco
-    #print("test")
-
     vstup_radky = vstup.readlines()
     
     databaze = []
@@ -26,5 +23,5 @@ with open(args.soubor, encoding="utf-8") as vstup:
             radek_split.pop(0)
             databaze.append(radek_split)
 
-    print(*databaze)
+    #print(*databaze)
 #něco

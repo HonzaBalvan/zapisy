@@ -1,5 +1,8 @@
-čtou se jen řádky začínající "@, "
-formát: @, jméno, datum, množství, kategorie
+čtou se jen řádky začínající "@" s položkami oddělenými ","
+formát: @, jméno, datum (YYYY/MM/DD), množství, kategorie
+přepisuje se tak  že se smažou všechny řádky s "@" na začátku a připíše se databáze v pracovní paměti programu ve stejném formátu
 ====
-@, eidam 30 bloček, 2018/12/23, 3, sýr
-@, šunka nejvyšší jakosti, 2019/06/23, 4, šunka
+@, asddasd, 2222/12/22, 2, 2
+@, asas, 2022/12/11, 5, s
+@, ssd, 2222/12/22, 8, 8
+@, testovací salám, 2026/09/09, 3, salám
