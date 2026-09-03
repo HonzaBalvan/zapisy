@@ -4,25 +4,25 @@ from tkinter import ttk
 from prace_s_databazi import *
 
 def udelejOknoHlavni(args, databaze):
-    global okno_cele
+    """OKNA"""
+    okno_hlavni = tk.Tk()
+    okno_hlavni.title("Evidence – Hlavní okno")
+    okno_hlavni.configure(bg = "grey80")
 
-    okno_cele = tk.Tk()
-    okno_cele.geometry("800x600")
-    okno_cele.title("Evidence – Hlavní okno")
-    okno_cele.configure(bg="grey80")
-
-    ramcovy_frame = tk.Frame(okno_cele)
+    ramcovy_frame = tk.Frame(okno_hlavni)
 
     okno_tabulky = tk.Frame(ramcovy_frame)
 
     lista_tlacitek = tk.Frame(ramcovy_frame, width = 100, height = 300)
+    
+    """TLAČÍTKA"""
+    tlacitko_pridat = tk.Button(lista_tlacitek, text = "Přidat", command = lambda:udelejOknoPridat(args, databaze, okno_hlavni))
 
-    tlacitko_pridat = tk.Button(lista_tlacitek, text = "Přidat", command = lambda:udelejOknoPridat(args, databaze))
+    tlacitko_odstranit = tk.Button(lista_tlacitek, text = "Odstranit", command = lambda:udelejOknoOdstranit(args, databaze, okno_hlavni))
 
-    tlacitko_odstranit = tk.Button(lista_tlacitek, text = "Odstranit", command = lambda:udelejOknoOdstranit(args, databaze))
+    tlacitko_ukoncit = tk.Button(lista_tlacitek, text = "Uložit a ukončit", command = lambda:ukonciProgram(args, databaze, okno_hlavni))
 
-    tlacitko_ukoncit = tk.Button(lista_tlacitek, text = "Uložit a ukončit", command = lambda:ukonciProgram(args, databaze))
-
+    """TABULKA"""
     tabulka = ttk.Treeview(okno_tabulky)
 
     tabulka["columns"] = ("#", "Jméno", "Datum", "Počet", "Kategorie")
@@ -49,57 +49,56 @@ def udelejOknoHlavni(args, databaze):
         else:
             tabulka.insert(parent = "", index = i, values = databaze[i], tags = ("liché",))
 
-    ramcovy_frame.pack(side = "top")
+    """ZOBRAZENÍ"""
+    ramcovy_frame.pack(side = "top", padx = 10, pady = 10)
 
-    lista_tlacitek.pack(side = "left")
+    lista_tlacitek.pack(side = "left", padx = (10, 0), pady = 10)
 
     tlacitko_pridat.pack(expand=True, fill=tk.BOTH, side = "top")
     tlacitko_odstranit.pack(expand=True, fill=tk.BOTH, side = "top")
     tlacitko_ukoncit.pack(expand=True, fill=tk.BOTH, side = "bottom")
 
-    okno_tabulky.pack(side = "right", anchor = tk.NE)
+    okno_tabulky.pack(side = "right", anchor = tk.NE, padx = 10, pady = 10)
 
     tabulka.pack(expand=True, fill=tk.BOTH)
 
-    okno_cele.mainloop()
+    okno_hlavni.mainloop()
 
-def udelejOknoPridat(args, databaze):
-    global okno_cele
+def udelejOknoPridat(args, databaze, okno_hlavni):
+    okno_hlavni.destroy()
 
-    okno_cele.destroy()
-    okno_cele = tk.Tk()
-    okno_cele.geometry("800x600")
-    okno_cele.title = ("Evidence – Přidat položku")
-    okno_cele.configure(bg="grey80")
+    okno_pridat = tk.Tk()
+    okno_pridat.title("Evidence – Přidat položku")
+    okno_pridat.configure(bg="grey80")
 
-    frame_input = tk.Frame(okno_cele)
-    frame_input.pack()
+    frame_pridat = tk.Frame(okno_pridat)
+    frame_pridat.pack(padx = 10, pady = 10)
 
-    jmeno_label = tk.Label(frame_input, text = "Jméno")
-    jmeno_label.grid(row = 0, column = 0)
+    jmeno_label = tk.Label(frame_pridat, text = "Jméno")
+    jmeno_label.grid(row = 0, column = 0, pady = (10, 0))
 
-    datum_label = tk.Label(frame_input, text="Datum (YYYY/MM/DD)")
-    datum_label.grid(row = 0, column = 1)
+    datum_label = tk.Label(frame_pridat, text="Datum (YYYY/MM/DD)")
+    datum_label.grid(row = 0, column = 1, pady = (10, 0))
 
-    pocet_label = tk.Label(frame_input, text = "Počet")
-    pocet_label.grid(row = 0, column = 2)
+    pocet_label = tk.Label(frame_pridat, text = "Počet")
+    pocet_label.grid(row = 0, column = 2, pady = (10, 0))
 
-    kategorie_label = tk.Label(frame_input,text="Kategorie")
-    kategorie_label.grid(row=0,column=3)
+    kategorie_label = tk.Label(frame_pridat,text="Kategorie")
+    kategorie_label.grid(row = 0,column = 3, pady = (10, 0))
 
-    jmeno_entry = tk.Entry(frame_input)
-    jmeno_entry.grid(row = 1, column = 0)
+    jmeno_entry = tk.Entry(frame_pridat)
+    jmeno_entry.grid(row = 1, column = 0, padx = (10, 0), pady = 10)
 
-    datum_entry = tk.Entry(frame_input)
-    datum_entry.grid(row = 1, column = 1)
+    datum_entry = tk.Entry(frame_pridat)
+    datum_entry.grid(row = 1, column = 1, padx = (10, 0), pady = 10)
 
-    pocet_entry = tk.Entry(frame_input)
-    pocet_entry.grid(row = 1, column = 2)
+    pocet_entry = tk.Entry(frame_pridat)
+    pocet_entry.grid(row = 1, column = 2, padx = (10, 0), pady = 10)
 
-    kategorie_entry = tk.Entry(frame_input)
-    kategorie_entry.grid(row = 1, column = 3)
+    kategorie_entry = tk.Entry(frame_pridat)
+    kategorie_entry.grid(row = 1, column = 3, padx = 10, pady = 10)
 
-    def udelejInput(args, databaze):
+    def udelejPridat(args, databaze):
         if dataValidacePridat(jmeno_entry.get(), datum_entry.get(), pocet_entry.get(), kategorie_entry.get()):
             databaze.append([len(databaze) + 1, jmeno_entry.get(), datum_entry.get(), pocet_entry.get(), kategorie_entry.get()])
             jmeno_entry.delete(0, tk.END)
@@ -107,33 +106,42 @@ def udelejOknoPridat(args, databaze):
             pocet_entry.delete(0, tk.END)
             kategorie_entry.delete(0, tk.END)
     
-            zrusitOkno(args, databaze)
+            zrusitOknoPridat(args, databaze, okno_pridat)
         else:
             udelejOknoUpozorneni()
 
-    tlacitko_input = tk.Button(frame_input, text = "Potvrdit", command = lambda:udelejInput(args, databaze))
-    tlacitko_input.grid(row = 2, column = 1)
+    tlacitko_pridat = tk.Button(frame_pridat, text = "Potvrdit", command = lambda:udelejPridat(args, databaze))
+    tlacitko_pridat.grid(row = 2, column = 1, pady = (0, 10))
 
-    tlacitko_zrusit = tk.Button(frame_input, text = "Zrušit", command = lambda:zrusitOkno(args, databaze))
-    tlacitko_zrusit.grid(row = 2, column = 2)
+    tlacitko_zrusit = tk.Button(frame_pridat, text = "Zrušit", command = lambda:zrusitOknoPridat(args, databaze, okno_pridat))
+    tlacitko_zrusit.grid(row = 2, column = 2, pady = (0, 10))
 
-def udelejOknoOdstranit(args, databaze):
-    global okno_cele
+    def stiskKlavesyPridat(udalost):
+        nonlocal args, databaze, okno_pridat
 
-    okno_cele.destroy()
-    okno_cele = tk.Tk()
-    okno_cele.geometry("800x600")
-    okno_cele.title = ("Evidence – Odstranit položku")
-    okno_cele.configure(bg="grey80")
+        print(udalost.char, udalost.keysym, udalost.keycode)
+        if udalost.keycode == 36: #klávesa Enter
+            udelejPridat(args, databaze)
+        if udalost.keycode == 9: #klávesa Escape
+            zrusitOknoPridat(args, databaze, okno_pridat)
 
-    frame_odstranit = tk.Frame(okno_cele)
-    frame_odstranit.pack()
+    okno_pridat.bind("<Key>", stiskKlavesyPridat)
+
+def udelejOknoOdstranit(args, databaze, okno_hlavni):
+    okno_hlavni.destroy()
+
+    okno_odstranit = tk.Tk()
+    okno_odstranit.title("Evidence – Odstranit položku")
+    okno_odstranit.configure(bg="grey80")
+
+    frame_odstranit = tk.Frame(okno_odstranit)
+    frame_odstranit.pack(padx = 10, pady = 10)
 
     cislo_label = tk.Label(frame_odstranit, text = "Číslo položky, kterou chcete odstranit:")
-    cislo_label.grid(row = 0, column = 0)
+    cislo_label.grid(row = 0, column = 0, padx = 10, pady = (10, 0))
 
     cislo_entry = tk.Entry(frame_odstranit)
-    cislo_entry.grid(row = 0, column = 1)
+    cislo_entry.grid(row = 0, column = 1, padx = (0, 10), pady = (10, 0))
 
     def udelejOdstranit(args, databaze):
         if dataValidaceOdstranit(databaze, cislo_entry.get()):
@@ -145,18 +153,32 @@ def udelejOknoOdstranit(args, databaze):
                 for j in range(1, len(databaze[i])):
                     databaze[i][j] = databaze[i][j].strip()
 
-            zrusitOkno(args, databaze)
+            zrusitOknoOdstranit(args, databaze, okno_odstranit)
         else:
             udelejOknoUpozorneni()
 
-    tlacitko_input = tk.Button(frame_odstranit, text = "Potvrdit", command = lambda:udelejOdstranit(args, databaze))
-    tlacitko_input.grid(row = 2, column = 0)
+    tlacitko_pridat = tk.Button(frame_odstranit, text = "Potvrdit", command = lambda:udelejOdstranit(args, databaze))
+    tlacitko_pridat.grid(row = 2, column = 0, pady = 10)
 
-    tlacitko_zrusit = tk.Button(frame_odstranit, text = "Zrušit", command = lambda:zrusitOkno(args, databaze))
-    tlacitko_zrusit.grid(row = 2, column = 1)
+    tlacitko_zrusit = tk.Button(frame_odstranit, text = "Zrušit", command = lambda:zrusitOknoOdstranit(args, databaze, okno_odstranit))
+    tlacitko_zrusit.grid(row = 2, column = 1, pady = 10)
 
-def zrusitOkno(args, databaze):
-    okno_cele.destroy()
+    def stiskKlavesyOdstranit(udalost):
+        nonlocal args, databaze, okno_odstranit
+
+        if udalost.keycode == 36: #klávesa Enter
+            udelejOdstranit(args, databaze)
+        if udalost.keycode == 9: #klávesa Escape
+            zrusitOknoOdstranit(args, databaze, okno_odstranit)
+
+    okno_odstranit.bind("<Key>", stiskKlavesyOdstranit)
+
+def zrusitOknoPridat(args, databaze, okno_pridat):
+    okno_pridat.destroy()
+    udelejOknoHlavni(args, databaze)
+
+def zrusitOknoOdstranit(args, databaze, okno_odstranit):
+    okno_odstranit.destroy()
     udelejOknoHlavni(args, databaze)
 
 def udelejOknoUpozorneni():
@@ -169,7 +191,7 @@ def udelejOknoUpozorneni():
     upozorneni_button = tk.Button(okno_upozorneni, text = "Zavřít", command = lambda:okno_upozorneni.destroy())
     upozorneni_button.grid(row = 1, column = 0)
 
-def ukonciProgram(args, databaze):
+def ukonciProgram(args, databaze, okno_hlavni):
     ulozDatabazi(args, databaze)
     
-    okno_cele.destroy()
+    okno_hlavni.destroy()

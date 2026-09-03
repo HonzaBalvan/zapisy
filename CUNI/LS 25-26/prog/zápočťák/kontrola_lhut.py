@@ -37,4 +37,4 @@ def kontrolaLhut(databaze):
                 posliEmail(subject, body)
                 print(f"Email sent for {polozka[1]}")
         
-        #time.sleep(60*30)
+        time.sleep(60*60*24)

@@ -1,6 +1,6 @@
 funkcionalita úpravy položky
 
-místo klikání na tlačítka zmáčknutí enteru
+~~místo klikání na tlačítka zmáčknutí enteru~~
 
 ~~kontrola neprázdnosti všech inputů~~
 
@@ -12,4 +12,14 @@ scrollbary
 
 ~~správně nadpisy oken~~
 
-přejmenovat okno_cele na něco jinýho při přidavání a odstraňování
+~~přejmenovat okno_cele na něco jinýho při přidavání a odstraňování~~
+
+~~oddělat ten arg na soubor a dát tam soubor natvrdo (dát to jako optional arg?)~~
+
+~~přidat do path~~ a startu a na plochu
+
+~~udělat ať se auto přidělává do path a na start~~
+
+~~přidat paddingy~~
+
+nějak noGUI mode

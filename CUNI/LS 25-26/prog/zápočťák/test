@@ -1,0 +1,33 @@
+"""TABULKA"""
+    tabulka = ttk.Treeview(okno_tabulky)
+
+    tabulka["columns"] = ("#", "Jméno", "Datum", "Počet")
+
+    tabulka.column("#0", width = 0, stretch = tk.NO)
+    tabulka.column("#", width = 30, anchor = tk.W)
+    tabulka.column("Jméno", anchor = tk.W)
+    tabulka.column("Datum", width = 100, anchor = tk.W)
+    tabulka.column("Počet", width = 50, anchor = tk.W)
+
+    tabulka.heading("#", text = "#", anchor = tk.W)
+    tabulka.heading("Jméno", text = "Jméno", anchor = tk.W)
+    tabulka.heading("Datum", text = "Datum", anchor = tk.W)
+    tabulka.heading("Počet", text = "Počet", anchor = tk.W)
+
+    tabulka.tag_configure("liché", background="#E8E8E8")
+    tabulka.tag_configure("sudé", background="#FFFFFF")
+
+    list_kategorii = []
+    for polozka in databaze:
+        list_kategorii.append(polozka[4])
+    mnozina_kategorii = list(dict.fromkeys(list_kategorii)).sort()
+
+    for kategorie in mnozina_kategorii:
+        tabulka.insert(parent = "", index = i
+
+    for i in range(len(databaze)):
+        if i % 2 == 0:
+            tabulka.insert(parent = "", index = i, values = databaze[i], tags = ("sudé",))
+        else:
+            tabulka.insert(parent = "", index = i, values = databaze[i], tags = ("liché",))
+

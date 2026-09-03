@@ -4,5 +4,4 @@ přepisuje se tak  že se smažou všechny řádky s "@" na začátku a připí�
 ====
 @, asddasd, 2222/12/22, 2, 2
 @, asas, 2022/12/11, 5, s
-@, ssd, 2222/12/22, 8, 8
-@, testovací salám, 2026/09/09, 3, salám
+@, já, 2022/11/22, 2, sdsds
