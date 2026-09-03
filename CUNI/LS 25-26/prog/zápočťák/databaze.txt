@@ -2,6 +2,10 @@
 formát: @, jméno, datum (YYYY/MM/DD), množství, kategorie
 přepisuje se tak  že se smažou všechny řádky s "@" na začátku a připíše se databáze v pracovní paměti programu ve stejném formátu
 ====
-@, asddasd, 2222/12/22, 2, 2
-@, asas, 2022/12/11, 5, s
-@, já, 2022/11/22, 2, sdsds
+@, asddasd, 2222/12/22, 2, salám
+@, asas, 2022/12/11, 5, sýr
+@, já, 2022/11/22, 2, salám
+@, jty, 2032/11/22, 2, šunka
+@, salám, 2222/11/23, 67, salám
+@, on, 2042/11/22, 2, šunka
+@, jabko, 2222/12/12, 33, ovoce

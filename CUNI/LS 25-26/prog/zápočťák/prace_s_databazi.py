@@ -101,22 +101,37 @@ def dataValidacePridat(jmeno, datum, pocet, kategorie):
 
     return True
 
-def dataValidaceOdstranit(databaze, cislo):
+def dataValidaceOdebrat(databaze, polozka, pocet):
     """
-    kontroluje správný formát položky, kterou se uživatel snaží odstranit, tj. neprázdný vstup a vstup je id, které je v databázi
+    kontroluje správný formát čísla položky a počet položek, které se uživatel snaží odebrat, tj. neprázdný vstup a vstup v přípustném rozsahu
     """
 
-    if len(cislo) == 0:
+    """POLOŽKA"""
+    if len(polozka) == 0:
         return False    
 
-    if cislo.isnumeric():
+    if polozka.isnumeric():
         pass
     else:
         return False
 
-    if int(cislo) <= databaze[-1][0]:
+    if int(polozka) <= databaze[-1][0]:
         pass
     else:
         return False
 
+    """POČET"""
+    if len(pocet) == 0:
+        return False
+
+    if pocet.isnumeric():
+        pass
+    else:
+        return False
+
+    if int(pocet) <= int(databaze[int(polozka)-1][3]):
+        pass
+    else:
+        return False
+    
     return True

@@ -274,3 +274,4 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+/CUNI/LS 25-26/prog/zápočťák/__pycache__

@@ -1,4 +1,4 @@
-funkcionalita úpravy položky
+~~funkcionalita úpravy položky nebo u odstranit dát kolik kusů, popř. všechny (a kontrolovat správnost inputu)~~
 
 ~~místo klikání na tlačítka zmáčknutí enteru~~
 
@@ -8,7 +8,7 @@ funkcionalita úpravy položky
 
 ~~tlačítka zrušit když nechci přidat a odstranit~~
 
-scrollbary
+~~scrollbar~~
 
 ~~správně nadpisy oken~~
 
@@ -23,3 +23,5 @@ scrollbary
 ~~přidat paddingy~~
 
 nějak noGUI mode
+
+~~paddingy v upozornění~~
