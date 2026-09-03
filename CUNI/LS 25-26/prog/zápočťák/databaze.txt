@@ -1,6 +1,6 @@
 čtou se jen řádky začínající "@" s položkami oddělenými ","
 formát: @, jméno, datum (YYYY/MM/DD), množství, kategorie
-přepisuje se tak  že se smažou všechny řádky s "@" na začátku a připíše se databáze v pracovní paměti programu ve stejném formátu
+přepisuje se tak, že se smažou všechny řádky s "@" na začátku a připíše se databáze v pracovní paměti programu ve stejném formátu
 ====
 @, asddasd, 2222/12/22, 2, salám
 @, asas, 2022/12/11, 5, sýr
