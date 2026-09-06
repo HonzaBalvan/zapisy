@@ -9,3 +9,4 @@ přepisuje se tak, že se smažou všechny řádky s "@" na začátku a připí�
 @, salám, 2222/11/23, 67, salám
 @, on, 2042/11/22, 2, šunka
 @, jabko, 2222/12/12, 33, ovoce
+@, švestky, 2026/09/09, 44, ovoce

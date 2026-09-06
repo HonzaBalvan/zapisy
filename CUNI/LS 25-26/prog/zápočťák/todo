@@ -16,12 +16,19 @@
 
 ~~oddělat ten arg na soubor a dát tam soubor natvrdo (dát to jako optional arg?)~~
 
-~~přidat do path~~ a startu a na plochu
+přidat do path a startu a na plochu
 
-~~udělat ať se auto přidělává do path a na start~~
+udělat ať se auto přidělává do path a na start
 
 ~~přidat paddingy~~
 
-nějak noGUI mode
+~~nějak noGUI mode -- byl by gui mode pro databázi a separátní nogui mode co jen posílá emaily~~
 
 ~~paddingy v upozornění~~
+
+~~lepší způsob jak psát email~~
+
+kontrola vstupu  v email_setup
+
+~~nefunguje posílání emialu víc lidem protože nefunguje správně strip na ty položky~~
+
