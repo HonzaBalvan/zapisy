@@ -10,7 +10,7 @@ Evidence trvanlivosti je program určený k evidenci zásob potravin v domácnos
 
 ## Požadavky
 
-Na zařízení je potřeba nainstalovaný Python, knihovny 'tkinter', 'date', 'datetime', 'smtplib' a 'email'. Pro rozesílání e-mailů je taktéž potřeba připojení k internetu a e-mailová adresa s SMTP serverem (stačí např. Gmail nebo Seznam).
+Na zařízení je potřeba nainstalovaný Python, knihovny `tkinter`, `date`, `datetime`, `smtplib` a `email`. Pro rozesílání e-mailů je taktéž potřeba připojení k internetu a e-mailová adresa s SMTP serverem (stačí např. Gmail nebo Seznam).
 
 ---
 
@@ -22,7 +22,7 @@ Stáhněte si všechny soubory projektu do jedné složky.
 
 ### 2. První spuštění programu
 
-Všechny další kroky předpokládají terminál spuštěný ve složce s projektem. Před prvním spuštěním je potřeba pro správné fungování rozesílání e-mailů tuto službu nastavit spuštěním souboru 'email_setup.py',
+Všechny další kroky předpokládají terminál spuštěný ve složce s projektem. Před prvním spuštěním je potřeba pro správné fungování rozesílání e-mailů tuto službu nastavit spuštěním souboru `email_setup.py`,
 
 ```bash
 python3 email_setup.py
@@ -61,7 +61,7 @@ python evidence.py --mode nogui
 
 #### Použití jiného souboru databáze:
 
-Ve výchozím nastavení se otevírá soubor 'databaze.txt', program ale umí i načítat z jiných souborů stejného formátu.
+Ve výchozím nastavení se otevírá soubor `databaze.txt`, program ale umí i načítat z jiných souborů stejného formátu.
 
 ```bash
 python evidence.py --soubor jina_databaze.txt
@@ -71,25 +71,25 @@ Nastavení lze samozřejmě kombinovat.
 
 ---
 
-## Použití (Grafický režim – 'gui')
+## Použití (Grafický režim – `gui`)
 
 Po spuštění příkazem `python evidence.py` se otevře hlavní okno s tabulkou potravin z databáze.
 
 ### Hlavní okno
 
-V pravé části okna je tabulka zobrazující všechny potraviny v evidenci, t.ž. v řádku je jedna položka, která má ve sloupcích vypsané své proměnlivé **id (sloupec '#')** pro účely odebírání a dále všechny své hodnoty (název, datum **ve formátu YYYY/MM/DD**, počet), položky jsou dále seskupené podle kategorie. V levé části tlačítko 'Přidat', které vede na okno pro přidání potraviny, tlačítko 'Odebrat', které vede na okno pro odebrání potraviny a tlačítko 'Uložit a ukončit', kterým se tabulka přepíše do souboru s databází a program se ukončí, jindy se změny do souboru databáze **neukládají**.
+V pravé části okna je tabulka zobrazující všechny potraviny v evidenci, t.ž. v řádku je jedna položka, která má ve sloupcích vypsané své proměnlivé **id (sloupec `#`)** pro účely odebírání a dále všechny své hodnoty (název, datum **ve formátu YYYY/MM/DD**, počet), položky jsou dále seskupené podle kategorie. V levé části tlačítko `Přidat`, které vede na okno pro přidání potraviny, tlačítko `Odebrat`, které vede na okno pro odebrání potraviny a tlačítko `Uložit a ukončit`, kterým se tabulka přepíše do souboru s databází a program se ukončí, jindy se změny do souboru databáze **neukládají**.
 
 ---
 
 ### Okno pro přidání potraviny
 
-Okno s políčky pro název, datum, počet a kategorii a tlačítkem pro potvrzení přidání potraviny do evidence. **Zadávané datum musí být ve formátu YYYY/MM/DD.** Tlačítkem 'Potvrdit' nebo stisknutím klávesy 'Enter' se přídá položka do tabulky, tlačítkem 'Zrušit' nebo stisknutím klávesy 'Escape' se program vrátí beze změn na hlavní okno.
+Okno s políčky pro název, datum, počet a kategorii a tlačítkem pro potvrzení přidání potraviny do evidence. **Zadávané datum musí být ve formátu YYYY/MM/DD.** Tlačítkem `Potvrdit` nebo stisknutím klávesy `Enter` se přídá položka do tabulky, tlačítkem `Zrušit` nebo stisknutím klávesy `Escape` se program vrátí beze změn na hlavní okno.
 
 ---
 
 ### Okno pro odebrání potraviny
 
-Okno s políčky pro **id potraviny**, ze které chce uživatel odebírat a políčko pro počet kusů, které chce uživatel odebrat. Tlačítkem 'Potvrdit' nebo stisknutím klávesy 'Enter' se odebere daný počet dané položky z tabulky, v případě odebrání všech kusů se položka odstraní. Tlačítkem 'Zrušit' nebo stisknutím klávesy 'Escape' se program vrátí beze změn na hlavní okno.
+Okno s políčky pro **id potraviny**, ze které chce uživatel odebírat a políčko pro počet kusů, které chce uživatel odebrat. Tlačítkem `Potvrdit` nebo stisknutím klávesy `Enter` se odebere daný počet dané položky z tabulky, v případě odebrání všech kusů se položka odstraní. Tlačítkem `Zrušit` nebo stisknutím klávesy `Escape` se program vrátí beze změn na hlavní okno.
 
 ---
 

@@ -11,14 +11,6 @@ def posliEmail(subject, body, nastaveni):
     SENDER_EMAIL = nastaveni[4][0].strip()
     RECIPIENT_EMAIL = [email.strip() for email in nastaveni[5]]
 
-
-    print(SMTP_SERVER)
-    print(SMTP_PORT)
-    print(SMTP_USERNAME)
-    print(SMTP_PASSWORD)
-    print(SENDER_EMAIL)
-    print(RECIPIENT_EMAIL)
-
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = SENDER_EMAIL
@@ -51,4 +43,4 @@ def kontrolaLhut(databaze):
             subject = f"Upozornění z evidence"
             body = f"Lhůta položky '{polozka[1]}' se blíží!\nJméno: {polozka[1]}\nDatum: {polozka[2]}\nPočet: {polozka[3]}\nKategorie: {polozka[4]}"
             posliEmail(subject, body, nastaveni)
-            print(f"Email sent for {polozka[1]}")
+            print(f"E-mail pro položku {polozka[1]} úspěšně odeslán.")
