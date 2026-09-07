@@ -28,7 +28,9 @@ udělat ať se auto přidělává do path a na start
 
 ~~lepší způsob jak psát email~~
 
-kontrola vstupu  v email_setup
+~~kontrola vstupu  v email_setup~~
 
 ~~nefunguje posílání emialu víc lidem protože nefunguje správně strip na ty položky~~
+
+dát kontroly vstupů v email_setup do jedné funkce
 

@@ -1,5 +1,8 @@
 vystup = []
 
+def formatujAPripis(vystup, vec):
+    vystup.append(f"@, {vec}\n")
+
 with open("nastaveni_emailu.txt", encoding="utf-8") as soubor:
     soubor_radky = soubor.readlines()
 
@@ -8,48 +11,47 @@ with open("nastaveni_emailu.txt", encoding="utf-8") as soubor:
         if radek_split[0] != "@":
             vystup.append(",".join(radek_split))
 
-vystup.append(f"@, {input("Zadejte adresu SMTP serveru: ")}\n")
-print(vystup[-1])
-while not vystup[-1]:
+smtp_server = input("Zadejte adresu SMTP serveru: ")
+while not smtp_server:
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte adresu SMTP serveru: ")}\n")
+    smtp_server = input("Zadejte adresu SMTP serveru: ")
+formatujAPripis(vystup, smtp_server)
 
-vystup.append(f"@, {input("Zadejte port SMTP serveru (většinou 587): ")}\n")
-while not vystup[-1] or not vystup[-1].strip().isnumeric():
+smtp_port = input("Zadejte port SMTP serveru (většinou 587): ")
+while not smtp_port or not smtp_port.strip().isnumeric():
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte port SMTP serveru (většinou 587): ")}\n")
+    smtp_port = input("Zadejte port SMTP serveru (většinou 587): ")
+formatujAPripis(vystup, smtp_port)
 
-vystup.append(f"@, {input("Zadejte uživatelské jméno na SMTP serveru: (většinou celá e-mailová adresa): ")}\n")
-while not vystup[-1]:
+smtp_username = input("Zadejte uživatelské jméno na SMTP serveru: (většinou celá e-mailová adresa): ")
+while not smtp_username:
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte uživatelské jméno na SMTP serveru: (většinou celá e-mailová adresa): ")}\n")
+    smtp_username = input("Zadejte uživatelské jméno na SMTP serveru: (většinou celá e-mailová adresa): ")
+formatujAPripis(vystup, smtp_username)
 
-vystup.append(f"@, {input("Zadejte heslo pro přihlášení k SMTP serveru (většinou stejné jako pro běžné přihlašování): ")}\n")
-while not vystup[-1]:
+smtp_password = input("Zadejte heslo pro přihlášení k SMTP serveru (většinou stejné jako pro běžné přihlašování): ")
+while not smtp_password:
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte heslo pro přihlášení k SMTP serveru (většinou stejné jako pro běžné přihlašování): ")}\n")
+    smtp_password = input("Zadejte heslo pro přihlášení k SMTP serveru (většinou stejné jako pro běžné přihlašování): ")
+formatujAPripis(vystup, smtp_password)
 
-vystup.append(f"@, {input("Zadejte svoji e-mailovou adresu: ")}\n")
-while not vystup[-1]:
+sender_mail = input("Zadejte svoji e-mailovou adresu: ")
+while not sender_mail:
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte svoji e-mailovou adresu: ")}\n")
+    sender_mail = input("Zadejte svoji e-mailovou adresu: ")
+formatujAPripis(vystup, sender_mail)
 
-vystup.append(f"@, {input("Zadejte e-mailovou adresu adresáta (popř. více e-mailových adres oddělených čárkou a mezerou): ")}\n")
-while not vystup[-1]:
+recipient_mail = input("Zadejte e-mailovou adresu adresáta (popř. více e-mailových adres oddělených čárkou a mezerou): ")
+while not recipient_mail:
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte e-mailovou adresu adresáta (popř. více e-mailových adres oddělených čárkou a mezerou): ")}\n")
+    recipient_mail = input("Zadejte e-mailovou adresu adresáta (popř. více e-mailových adres oddělených čárkou a mezerou): ")
+formatujAPripis(vystup, recipient_mail)
 
-vystup.append(f"@, {input("Zadejte počet dní do konce lhůty, kdy má program zaslat e-mail: ")}\n")
-while not vystup[-1] or not vystup[-1].strip().isnumeric():
+days_in_advance = input("Zadejte počet dní do konce lhůty, kdy má program zaslat e-mail: ")
+while not days_in_advance or not days_in_advance.strip().isnumeric():
     print("Špatný formát vstupu.")
-    vystup.pop()
-    vystup.append(f"@, {input("Zadejte počet dní do konce lhůty, kdy má program zaslat e-mail: ")}\n")
+    days_in_advance = input("Zadejte počet dní do konce lhůty, kdy má program zaslat e-mail: ")
+formatujAPripis(vystup, days_in_advance)
 
 with open("nastaveni_emailu.txt", "w", encoding="utf-8") as soubor: #tady se soubor vymaže
     soubor.write("")

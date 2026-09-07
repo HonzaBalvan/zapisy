@@ -1,0 +1,5 @@
+čtou se jen řádky začínající "@, "
+pořadí řádků: adresa SMTP serveru; port; uživatelské jméno; heslo; e-mail odesílajícího; e-mail/y adresáta/adresátů; počet dní před lhůtou, kdy se pošle e-mail
+přepisuje se spuštěním "email_setup.py" tak, že se smažou všechny řádky s "@" na začátku a připíše uživatelský vstup
+====
+
