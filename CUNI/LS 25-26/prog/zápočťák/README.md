@@ -34,11 +34,11 @@ který vás nastavením interaktivně provede. Zde zadáte:
 |---------|-------|---------|
 | SMTP server | Adresa SMTP serveru vašeho e-mailového poskytovatele. | `smtp.gmail.com` (Gmail), `smtp.seznam.cz` (Seznam) |
 | SMTP port | Port pro SMTP. | `587` |
-| Uživatelské jméno | Vaše e-mailová adresa nebo uživatelské jméno pro SMTP. | `vas.email@gmail.com` |
+| Uživatelské jméno | Vaše uživatelské jméno pro SMTP (většinou vaše e-mailová adresa). | `vas.email@gmail.com` |
 | Heslo | Heslo pro SMTP server. | `••••••••` |
 | Odesílatel | Vaše e-mailová adresa, ze které se budou odesílat upozornění. | `vas.email@gmail.com` |
 | Příjemce | E-mailová adresa (nebo více adres oddělených čárkou), kam se mají odesílat upozornění. | `prijemce@seznam.cz, druhy.prijemce@email.cz` |
-| Počet dní před lhůtou | Kolik dní před expirací se má odeslat upozornění. | `3` (odeslat e-mail 3 dny před lhůtou) |
+| Počet dní před lhůtou | Kolik dní před lhůtou se má odeslat upozornění. | `3` (odeslat e-mail 3 dny před lhůtou) |
 
 > Poznámka pro Gmail:
 > - Pokud používáte Gmail s dvoufázovým ověřením, budete muset vytvořit tzv. aplikační heslo (viz [návod od Google](https://support.google.com/accounts/answer/185833)).
