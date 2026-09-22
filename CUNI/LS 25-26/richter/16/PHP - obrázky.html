@@ -1,0 +1,317 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>PHP - obrázky</title>
+<style>
+BODY{
+  font-family: sans-serif;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+  border-width: thin;
+}
+P{
+  width:750px;
+  text-align:justify;
+}
+</style><style>
+BODY {
+  color :BLACK;
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+LI{
+   width:700px;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+}
+TD {
+  font-family: sans-serif;
+  border-style:solid;
+  border-width:1px;
+  border-color:black;
+}
+p{
+width:750px;
+}
+</style></head>
+
+
+<body>
+<h2>PHP - tvorba obrázků</h2>
+<ul>
+<li>"základní kostra" obrázku:
+<table border="1">
+<tbody><tr><td>
+<pre>    Header("Content-Type: image/png");#možno použít jpg
+    $im = ImageCreate(100, 30);
+    $BG= ImageColorAllocate($im, 0, 0, 0);
+    ImageFill($im, 0, 0, $BG);
+    #kreslení bodů, čar, obdélníků, elips, textu atd. viz dále
+    ImagePNG($im);#možno použít ImageJPG
+    imagedestroy ( $im );
+</pre>
+</td></tr></tbody></table>
+</li>
+<li>
+hlavičku, která říka že to bude obrázek nastavíme pomocí<br>
+<span class="zlut">Header("Content-Type: image/span png");</span>  anebo <span class="zlut">Header("Content-Type: image/jpeg");</span>
+<br>
+před tímto nesmí být žádný výpis ať už HTM nebo PHP
+</li>
+<li>
+<span class="zlut">$img = ImageCreate(100, 30);</span><br> vytvoří obrázek o příslušné velikosti (šířka, výška), <span class="zlut">$img</span> funguje jako popisovač daného obrázku - kreslené elementy přiřazujeme tomuto popisovači
+</li>
+<li>
+pro kreslení je nejdřív nutné "vytvořit" barvy, které budeme používat:<br>
+<span class="zlut">$barva = ImageColorAllocate($img, R, G, B);</span><br>
+R,G,B - složky barvy 0-255, když bysme chtěli používat barvy podobně jako v HTML tzn. 00-ff je možné použít funkci <span class="zlut">HexDec();</span> např. bílá<br>
+<span class="zlut">$wh = ImageColorAllocate($im, 255, 255, 255);</span><br>
+jedná se o tzv. <b>aditivní</b> míchání barev tj. 100% červené+100% zelené + 100% modré je bílá a nikoliv černá<br>
+(pozn. to co známe např. z "míchání vodovek" je tzv. <b>subtraktivní</b> míchání barev tj. 100% červené+100% zelené + 100% modré je černá)
+</li>
+<li>
+nejprve vytvoříme pozadí obrázku:<br>
+<span class="zlut">ImageFill($im, 0, 0, $wh);</span><br>
+2. a 3. parametr jsou souřadnice od kterých se začíná vyplňovat (obvykle 0,0)
+</li>
+</ul>
+<h3>Jendotlivé elementy obrázku</h3>
+<ul>
+<li>souřadnice jsou chápany takto:<br>
+<span class="zlut">x</span> zleva do prava<br>
+<span class="zlut">y</span> odshora dolů
+</li>
+<li>šířka čáry v PiXelech <span class="zlut">imagesetthickness ($im, šířka);</span>
+</li>
+<li>styl čáry můžeme určit pomocí funkce <span style="background:yellow;">imagesetstyle($im, $style);</span><br>
+kde <i>$style</i> je pole kde každý prvek určuje jak bude barevný konkrétní pixel na čáře
+<pre>$w = ImageColorAllocate($im, 255, 255, 255); #bila
+$k = ImageColorAllocate($im, 0, 0, 0);       #cerna
+$style=Array($k,$k,$k,$k,$k,$k,$w,$w,$w);
+imagesetstyle($im, $styl);
+</pre>
+nastaví, že čáry se budou kreslit čárkovaně s dlouhou černou čárkou a krátkým bílým přerušením
+</li>
+<li>jednotlivý bod:<br>
+<span class="zlut">ImageSetPixel ($im, x, y, barva);</span>
+</li>
+<li>úsečka od <span class="zlut">[x1,y1]</span> do <span class="zlut">[x2,y2]</span><br>
+<span class="zlut">ImageLine ($im, x1, y1, x2, y2, barva);</span>
+</li>
+<li>
+obdélník <span class="zlut">[x1,y1]</span> - levý horní roh; <span class="zlut">[x2,y2]</span> - pravý dolní roh<br>
+<span class="zlut">ImageRectangle($im, x1, y1, x2, y2, barva);</span>
+</li>
+<li>vyplněný obdélník:<br>
+<span class="zlut">ImageFilledRectangle($im, x1, y1, x2, y2, barva);</span>
+</li>
+<li>
+mnohoúhelník:<br>
+<span class="zlut">ImagePolygon($im, x1, y1, x2, y2, ...xn ,yn , n, barva);</span><br>
+<span class="zlut">x1,y1, ..., xn, yn</span>souřadnice vrcholů mnohoúhelníku; jako předposlední parametr je počet vrcholů<br>
+vrcholy je pohodlnější mít v poli např.:<br>
+<span class="zlut">$vrcholy=Array(100, 100, 75, 100, 250, 75, 75, 175, 20, 190);</span><br>
+<span class="zlut">ImagePolygon($im, $vrcholy, Count($vrcholy)/2, barva);</span>
+</li>
+<li>vyplněný mnohoúhelník:<br>
+<span class="zlut">ImageFilledPolygon($im, $vrcholy, Count($vrcholy)/2, barva);</span>
+
+</li>
+<li>elipsa:
+<span class="zlut">ImageEllipse($im, stred_x, stred_y, a, b, barva);</span><br>
+<span class="zlut">stred_x, stred_y</span> jsou souřadnice středu elipsy<br>
+<span class="zlut">a</span> a <span class="zlut">b</span> jsou <b>dvojnásobky</b> poloos
+</li>
+<li>vyplněná elipsa:<br>
+<span class="zlut">ImageFilledEllipse($im, stred_x, stred_y, a, b, barva);</span><br>
+</li>
+<li>
+výseč z elipsy:<br>
+<span class="zlut">ImageArc($im, stred_x, stred_y, a, b, start, end, barva);</span><br>
+výseč z elipsy se středem v <span class="zlut">[stred_x,stred_y];</span><br>
+<span class="zlut">a</span> a <span class="zlut">b</span> jsou poloosy<br>
+<span class="zlut">start</span> a <span class="zlut">end</span> je směr od kterého se začíná, resp. ve kterém<br>se končí - ve stupních, orientace je po směru hodinových ručiček, 0<sup>o</sup> "směřuje" doprava
+</li>
+<li>vyplněná výseč z elipsy:<br>
+<span class="zlut">ImageFilledArc($im, stred_x, stred_y, a, b, start, end, barva, IMG_ARC_EDGED);</span><br>
+má přidaný parametr <span class="zlut">IMG_ARC_EDGED</span>
+</li>
+<li>text do obrázku:<br>
+<span class="zlut">ImageString($im, font, x, y, napis, barva);</span><br>
+<span class="zlut">x</span> a <span class="zlut">y</span> pravý horní roh obdélníku opsaného obrázku<br>
+<span class="zlut">font</span> typ fontu 1-5<br>
+<span class="zlut">napis</span> vypsaný text
+</li>
+<li>
+text vertikálně (zezdola nahoru):<br>
+<span class="zlut">ImageStringUP($im, font, x, y, $napis, barva);</span>
+</li>
+</ul>
+<h3>Příklad 1:</h3>
+<table border="1">
+<tbody><tr><td>
+<pre>Header("Content-Type: image/png");
+// obrázek 201x140px
+$img = imagecreatetruecolor(201, 140);
+
+// příprava barev
+$black = ImageColorAllocate($img, 0, 0, 0);
+$white = ImageColorAllocate($img, 255, 255, 255);
+$blue  = ImageColorAllocate($img,   0,   0, 255);
+//obrázek vyplním modrouo barvou
+ImageFill($img, 0, 0, $blue);
+
+
+//elipsa o středu 60, 70 "poloosách" 50 30
+ImageArc($img, 60, 70, 100, 60,  0, 360, $black);
+//cara 50,30-150,30 bilou barvou
+ImageLine($img,50,30,150,30,$white);
+
+//změním šířku čáry
+ImagesetThickness ($img, 5);
+
+//tlustá cara 50,110-150,110 bilou barvou
+ImageLine($img,50,110,150,110,$white);
+
+//vykreslení obrázku
+Imagepng($img);
+
+//uvolnění paměti
+Imagedestroy($img);
+die;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+<img src="PHP%20-%20obr%C3%A1zky_files/prvni.png">
+<br>
+<h3>Příklad 2:</h3>
+
+Složitější obrázek:
+<br>
+<table border="1">
+<tbody><tr><td>
+<pre>Header("Content-Type: image/png");
+// obrázek 201x201px
+$img = imagecreatetruecolor(201, 201);
+
+$black = ImageColorAllocate($img, 0, 0, 0);
+ImageFill($img, 0, 0, $black);
+
+// příprava barev
+$white = ImageColorAllocate($img, 255, 255, 255);
+$red   = ImageColorAllocate($img, 255,   0,   0);
+$green = ImageColorAllocate($img,   0, 255,   0);
+$blue  = ImageColorAllocate($img,   0,   0, 255);
+$lightblue = ImageColorAllocate($img,   20,   100, 255);
+//čáry
+for ($i=60;$i&lt;140;$i+=10){
+  ImageLine ($img, $i, 10, $i+20, 30, $white);
+}
+// kolečko
+ImageArc($img, 100, 100, 200, 200,  0, 360, $white);
+//výsek z elipsy
+ImageArc($img, 100, 140, 150, 50, 0, 180, $red);
+//kroužek
+ImageArc($img,  60,  75,  50,  50,  0, 360, $green);
+//elipsa
+ImageArc($img, 140,  75,  65,  50,  0, 360, $green);
+//plné kolečko
+ImageFilledArc($img,  68,  80,  20,  20,  0, 360, $blue,IMG_ARC_EDGED);
+//plná elipsa
+ImageFilledArc($img, 148,  80,  35,  20,  0, 360, $blue, IMG_ARC_EDGED);
+//obdelniky
+ImageRectangle($img, 10, 10, 30, 30, $green);
+ImageFilledRectangle($img, 170, 10, 190, 30, $green);
+//plný obdelnik
+ImageFilledRectangle($img, 90, 100, 110, 150, $red);
+//text vodorovný
+ImageString($img, 2, 60, 170, "Nazdar svete!", $lightblue);
+//text vodorovný
+ImageStringUP($img, 3, 10, 170, "Nastojato", $lightblue);
+
+//vykreslení obrázku
+Imagepng($img);
+
+//uvolnění paměti
+Imagedestroy($img);
+die;
+</pre>
+</td></tr></tbody></table>
+<img src="PHP%20-%20obr%C3%A1zky_files/obr1.png">
+<br>
+<h2>Čtvercová síť se zvýrazněným kliknutím</h2>
+<p>
+</p><ul>
+<li>Vytvoříme skript s názvem <i>ctverce.php</i>, který vykreslí 15×15 čtverečků</li>
+<li>Vytvoříme si obrázek 301×301px</li>
+<li>Vytvoříme si pole <i>$ctverec=Array(0,0,20,0,20,20,0,20,0,0);</i> tj. čtverec 20×20px</li>
+<li>Ve dvou do sebe vnořených cyklů ($i a $j = 0...301, v kroku po 20) vytvoříme čtvercovou síť</li>
+</ul>
+
+<ul>
+<li>Vytvoříme skript <i>klik.php</i>, kde bude formulář s jediným prvkem a to "odesílacím" obrázkem<br>
+<pre>&lt;input type=image src=ctverce.php name=sit&gt;
+</pre>
+</li>
+<li>Při kliknutí na obrázek obdržíme souřadnice kliknutí v proměnných<br>
+<pre>$x=$_POST["sit_x"]
+a
+$y=$_POST["sit_y"]
+</pre>
+</li>
+<li>
+Tyto odeslané proměnné předáme pomocí metody GET skriptu <i>ctverce.php</i> tj.:<br>
+<pre>ctverce.php?x=$x&amp;y=$y
+</pre>
+</li>
+</ul>
+Skript <i>ctverce.php</i> upravíme tak, aby příslušný čtvereček, kam se kliklo obarvil na červeno
+<br>
+<br>
+<iframe src="PHP%20-%20obr%C3%A1zky_files/pisk.html" width="325" height="325">
+</iframe>
+<h2>Kochova vločka</h2>
+<p>
+Kochova vločka vzniká postupně:
+</p><ul>
+<li>1. přiblížení je rovnostranný trojúhelník tj. body A<sub>0,0</sub>=[0,0], A<sub>0,1</sub>=[1,0], A<sub>0,2</sub>=[1/2,sqrt(3)/2], tj. útvar, který má tři strany</li>
+<li>2. přiblížení je šesticípá hvězda. Tj. každou stranu trojúhelníka z 
+1.přiblížení rozdělíme na třetiny a nad prostřední třetinou vztyčíme 
+rovnostranný trojúhelník o straně 1/3, tj útvar, který má 12 stran. Body
+ A<sub>1,0</sub>...A<sub>1,11</sub></li>
+<li>v každém dalším přiblížení postupujeme stejně tj. vezmeme stranu 
+útvaru z předchozího kroku, roztřetíme ji a nad prostřední třetinou 
+vztyčíme rovnostranný trojúhelník</li>
+<li>tento útvar vykreslíme pomocí PHP</li>
+</ul>
+<table border="0">
+<tbody><tr align="center">
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0_004.png"></td>
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0_003.png"></td>
+</tr>
+<tr align="center">
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0_002.png"></td>
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0.png"></td>
+</tr>
+<tr align="center">
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0_006.png"></td>
+<td><img src="PHP%20-%20obr%C3%A1zky_files/koch0_005.png"></td>
+</tr>
+</tbody></table>
+<br>
+<p></p>
+
+
+
+</body></html>

@@ -1,0 +1,51 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PHP cvičení</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+  LI{
+    width:700px;
+  }
+</style>
+</head>
+<body>
+<h2>PHP - cvičení</h2>
+Pro toto cvičení budeme potřebovat tyto funkce:
+<ul>
+<li><b>str_replace(co_nahradit, za_co_nahradit, kde)</b> - vrátí řetězec, kde v řetězci "kde" nahradí "co_nahratit" za "za_co_nahradit" a vrátí upravený řetězec</li>
+<li><b>substr(kde, od, delka)</b> vrátí podřetězec z "kde" o délce "delka" od pozice "od" - počítáno od 0</li>
+<li><b>$_SERVER['SCRIPT_NAME']</b> - proměnná ve které je uložena cesta k danému souboru (např.  /~richter/NMIN266/testy/index.php)</li>
+<li><b>basename("soubor s cestou")</b> z hodnoty proměnné <b>$_SERVER['SCRIPT_NAME']</b> vrátí pouze "index.php"</li>
+</ul>
+str_replace, substr, $_SERVER['SCRIPT_NAME'], basename
+<ol>
+<li>Vytvořte si adresář <i>~/public_html/html/test/</i> do tohoto adresíře zkopírujte soubor <i>/usr/html/NMIN266/otazky.txt</i> tento soubor má strukturu:<br>
+<ol>
+<li>Otázka</li>
+<li>Prázdný řádek</li>
+<li>čtyři možné odpovědi, přičemž správná otázka je označena hvězdičkou</li>
+<li>Prázdný řádek</li>
+</ol>
+</li>
+<li>Ve stejném adresáři vytvořte PHP skript (<i>index.php</i>), který z tohoto souboru vytvoří test (webový formulář). </li>
+<li>Odpovědi bude možné zaškrtnout jako políčko "radio". Ke každé otázce
+ přidejte jedno políčko s odpovědí "Nevím" a toto políčko bude při 
+načtení stránky zaškrtnuté. Do formuláře přidejte políčko s e-mailem 
+toho kdo to vyplňuje.</li>
+<li>Test vyhodnoťte. A do souboru vysledky.txt připište řádek kde bude 
+e-mail a počet správných odpovědí. Kromě zapsání do souboru se odešle 
+stejný řádek na váš e-mail.</li>
+<li>Vytvořte si symbolický link <i>ln -s index.php admin.php</i>. V případě, že navštívíte <i>admin.php</i>, pak skript zobrazí všechny dosažené výsledky.<br>
+<ul>
+<li>Proměnná <i>$_SERVER['SCRIPT_NAME']</i> (lze zjistit z funkce  <i>phpinfo()</i>)</li>
+<li>Na obsah této proměnné použijeme funkci <i>basename()</i></li>
+</ul>
+</li>
+</ol>
+
+
+</body></html>

@@ -1,0 +1,25 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="11d%20-%20javas3a_files/styl.css">
+<script language="JavaScript">
+function vypln(){
+  mesic=document.getElementById("mesic").value;
+  rok=document.getElementById("rok").value;
+  document.getElementById("kalendar").innerHTML=rok+" - "+mesic;
+  document.getElementById("kalendar").style.visibility="visible";
+}
+</script>
+</head>
+<body>
+<form>
+Rok:<input name="rok" id="rok"><br>
+Mesic:<input name="mesic" id="mesic"><br>
+<input type="button" onclick="vypln();">
+</form>
+<br>
+<span id="kalendar" style="border-style:solid;border:color:black;border-width:1px;visibility:hidden;">
+</span>
+
+
+</body></html>

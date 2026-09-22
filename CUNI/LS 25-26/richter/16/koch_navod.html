@@ -1,0 +1,261 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+</head>
+<body>
+<ol>
+<li>
+Základní kostra obrázku + definice barev
+<pre>&lt;?php
+Header("Content-Type: image/png");#možno použít jpg
+$sirka=801;
+#liché číslo, aby střed vyšel na "celý pixel"
+$im = ImageCreate($sirka, $sirka);
+$BG= ImageColorAllocate($im, 50, 205, 255);
+$K=ImageColorAllocate($im, 0,0,0);
+$R=ImageColorAllocate($im, 255,0,0);
+$G=ImageColorAllocate($im, 0,255,0);
+$B=ImageColorAllocate($im, 0,0,255);
+$C=ImageColorAllocate($im, 0,255,255);
+$M=ImageColorAllocate($im, 255,0,255);
+$Y=ImageColorAllocate($im, 255,255,0);
+ImageFill($im, 0, 0, $BG);
+#zde je obrázek
+ImagePNG($im);#možno použít ImageJPG
+imagedestroy ( $im );
+?&gt;
+</pre>
+</li>
+<li>
+Vyvoříme si pole pro jednotlivé body a vypočítáme střed obrázku
+<pre>$a=array();
+$stredx=($sirka-1)/2;
+$stredy=($sirka-1)/2;
+</pre>
+</li>
+<li>
+Do pole <i>x</i> a <i>y</i> vyplníme souřadnice bodů rovnostranného trojúhelníka
+<pre>$x[0]=0.4*$sirka*cos(1*pi()/6)+$stred[0];
+$y[0]=0.4*$sirka*sin(1*pi()/6)+$stred[1];
+$x[1]=0.4*$sirka*cos(5*pi()/6)+$stred[0];
+$y[1]=0.4*$sirka*sin(5*pi()/6)+$stred[1];
+$x[2]=0.4*$sirka*cos(9*pi()/6)+$stred[0];
+$y[2]=0.4*$sirka*sin(9*pi()/6)+$stred[1];
+</pre>
+</li>
+<li>
+Trojúhelník vykreslíme a do jednotlivých bodů vykreslíme červený puntík
+<pre>for ($i=0;$i&lt;count($x);$i++){
+  $z=$i;
+  $na=($i+1)%count($x);
+  ImageLine ($im, $x[$z], $y[$z], $x[$na], $y[$na], $K);
+  ImageFilledArc($im,  $x[$z],  $y[$z],  7,  7,  0, 360, $C,IMG_ARC_EDGED);
+}
+</pre>
+</li>
+<li>
+Vytvoříme si pole <i>x1</i> a <i>y1</i>, které doplní pole <i>x</i> a <i>y</i> o body v ⅓, ½ a ⅔ strany <b>[</b><i>$x[$i],$y[$i]</i><b>]</b><i>-</i><b>[</b><i>$x[$i+1],$y[$i+1]</i><b>]</b><br> do pole <i>$x</i> a <i>$y</i> vyplníme nově vytvořená pole <i>$x1</i> a <i>$y1</i>. Trojúhelník s novými body vykreslíme stejně jako v předchozím bodě.
+<pre>$x1=array();
+$y1=array();
+for ($i=0;$i&lt;count($x);$i++){
+  $x1[]=$x[$i];
+  $y1[]=$y[$i];
+  $z=$i;
+  $na=($i+1)%count($x);
+  #smerovy vektor strany
+  $sx=$x[$na]-$x[$z];
+  $sy=$y[$na]-$y[$z];
+  $x1[]=$x[$z]+1/3*$sx;
+  $y1[]=$y[$z]+1/3*$sy;
+  $pomx=$x[$z]+1/2*$sx;
+  $pomy=$y[$z]+1/2*$sy;
+  $x1[]=$pomx;
+  $y1[]=$pomy;
+  $x1[]=$x[$z]+2/3*$sx;
+  $y1[]=$y[$z]+2/3*$sy;
+}
+$x=$x1;$y=$y1;
+
+</pre>
+</li>
+<li>
+Vypočítáme normálový vektor na stranu <b>[</b><i>$x[$i],$y[$i]</i><b>]</b><i>-</i><b>[</b><i>$x[$i+1],$y[$i+1]</i><b>]</b> a jeho velikost upravíme na  ⅓ její délky
+<pre>  #smerovy vektor strany
+  $sx=$x[$na]-$x[$z];
+  $sy=$y[$na]-$y[$z];
+  #normálový vektor třetinové velikosti
+  $nx=-$sx/3;
+  $ny=$sy/3;
+</pre>
+</li>
+<li>
+V bodu <i>[$pomx;$pomy]</i> vztyčíme kolmici o velikosti √3/2; a vzniklý útvar znovu vykreslíme
+<pre>  $pomx=$x[$z]+1/2*$sx;
+  $pomy=$y[$z]+1/2*$sy;
+  $x1[]=$pomx+sqrt(3)*$nx/2;
+  $y1[]=$pomy+sqrt(3)*$ny/2;
+</pre>
+<img src="koch_navod_files/mitsubishi.jpg" width="300">
+</li>
+<li>
+Normálový vektor z bodu 6. musíme otočit ...
+<pre>$nx=-$sx/3;
+$ny=$sy/3;
+</pre>
+<img src="koch_navod_files/hvezda.jpg" width="300">
+</li>
+<li>
+Celý proces zopakujeme pomocí cyklu...
+<pre>for ($k=0;$k&lt;3;$k++){
+  $x1=array();
+  $y1=array();
+  for ($i=0;$i&lt;count($x);$i++){
+    $x1[]=$x[$i];
+    $y1[]=$y[$i];
+ ...
+  }
+  for ($i=0;$i&lt;count($x);$i++){
+    $z=$i;
+    $na=($i+1)%count($x);
+    ImageLine ($im, $x[$z], $y[$z], $x[$na], $y[$na], $K);
+    ImageFilledArc($im,  $x[$z],  $y[$z],  7,  7,  0, 360, $C,IMG_ARC_EDGED);
+  }
+}
+<img src="koch_navod_files/hvezda2.jpg" width="300">
+</pre>
+</li>
+<li>
+Místo vykreslení pomocí čar vytvoříme polygon. (po ukončení cyklu pro <i>k</i>)
+<pre>  ...
+  #for ($i=0;$i&lt;count($x);$i++){
+  #  $z=$i;
+  #  $na=($i+1)%count($x);
+  #  ImageLine ($im, $x[$z], $y[$z], $x[$na], $y[$na], $K);
+  #  ImageFilledArc($im,  $x[$z],  $y[$z],  7,  7,  0, 360, $C,IMG_ARC_EDGED);
+  #}
+}
+$obvod=array();
+for ($i=0;$i&lt;count($x);$i++){
+  $obvod[]=$x[$i];
+  $obvod[]=$y[$i];
+}
+ImageFilledPolygon($im, $obvod, Count($obvod)/2, $R);
+
+</pre>
+<img src="koch_navod_files/plnahvezda.jpg" width="300">
+</li>
+<li>
+Cyklus pro <i>k</i> upravíme o jednu víc:<br>
+<img src="koch_navod_files/plnahvezda2.jpg" width="300">
+</li>
+<li>
+ImageFilledPolygon(...) změníme na ImagePolygon<br>
+<img src="koch_navod_files/hvezda2obrys.jpg" width="300">
+</li>
+<li>
+V jednom php skriptu můžem mít formulář s nastavením i odkaz na obrázek
+<pre>&lt;?php
+if (!isset($_GET["obr"])){
+   ?&gt;
+   &lt;html&gt;
+   &lt;head&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   &lt;form method=post&gt;
+   &lt;img src=koch.php?obr=1&gt;
+   &lt;/form&gt;
+   &lt;/body&gt;
+   &lt;/html&gt;
+   &lt;?php
+}else{
+  Header("Content-Type: image/png");#možno použít jpg
+  $sirka=801;
+  ...
+  ImagePNG($im);#možno použít ImageJPG
+  imagedestroy ( $im );
+}
+?&gt;
+</pre>
+</li>
+<li>
+Dále do formuláře doplníme zaškrtávací políčko pro výplň/nevýplň, počet opakování a odesílací tlačítko
+<pre>Kolik opakování:&lt;select name="stupen" size=1&gt;
+  &lt;option value="0"&gt;0&lt;/option&gt;
+  &lt;option value="1"&gt;1&lt;/option&gt;
+  &lt;option value="2"&gt;2&lt;/option&gt;
+  &lt;option value="3"&gt;3&lt;/option&gt;
+  &lt;option value="4"&gt;4&lt;/option&gt;
+  &lt;option value="5"&gt;5&lt;/option&gt;
+&lt;/select&gt;
+Vyplnit:&lt;input type=checkbox name=vypln value=1&gt;
+&lt;input type=submit&gt;
+</pre>
+</li>
+<li>
+Zpracování formuláře a úprava tvorby obrázku
+<pre>if (isset($_POST["stupen"])){
+  $stupen=$_POST["stupen"];
+  if (isset($_POST["vypln"])){
+    $vypln=1;
+   }else{
+     $vypln=0;
+  }
+}else{
+  $vypln=0;
+  $stupen=0;
+}?&gt;
+...
+   &lt;form method=post&gt;
+   &lt;?php
+   print "&lt;img src=koch.php?obr=1&amp;vypln=$vypln&amp;stupen=$stupen&gt;";
+   ?&gt;
+</pre>
+</li>
+<li>
+Při tvorbě obrázku se zařídíme podle nastavení předaných metodou GET
+<pre>...
+}else{
+  Header("Content-Type: image/png");#možno použít jpg
+  if (isset($_GET["vypln"])){
+    $vypln=$_GET["vypln"];
+  }else{
+    $vypln=0;
+  }
+  if (isset($_GET["stupen"])){
+    $stupen=$_GET["stupen"];
+  }else{
+    $stupen=0;
+  }
+...
+for ($k=0;$k&lt;$stupen;$k++){
+...
+if ($vypln==1){
+  ImageFilledPolygon($im, $obvod, Count($obvod)/2, $R);
+}else{
+  ImagePolygon($im, $obvod, Count($obvod)/2, $R);
+}
+</pre>
+</li>
+<li>
+Formulář upravíme tak, aby hodnoty ve formuláři odpovídaly vykreslenému obrázku:
+<pre>&lt;?php
+  for ($i=0;$i&lt;6;$i++){
+    if ($i==$stupen){
+      print "&lt;option value=\"$i\" selected&gt;$i";
+    }else{
+      print "&lt;option value=\"$i\"&gt;$i";
+    }
+  }
+  if ($vypln==1){
+    print "Vyplnit:&lt;input type=checkbox name=vypln value=1 checked&gt;";
+  }else{
+    print "Vyplnit:&lt;input type=checkbox name=vypln value=1&gt;";
+  }
+?&gt;
+&lt;input type=submit&gt;
+</pre>
+</li>
+</ol>
+
+
+</body></html>

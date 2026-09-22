@@ -1,0 +1,29 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="11c%20-%20javas2_files/styl.css">
+<script language="JavaScript">
+function kontrola(){
+  email=document.getElementById("email").value;
+  var re = /^[_a-zA-Z0-9\.\-]+@[_a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,4}$/;
+  if (re.test(email)){
+    return true;
+  }else{
+    window.alert("Nesprávná forma e-mailové adresy!");
+    return false;
+  }
+}
+</script>
+
+</head>
+<body>
+<script language="JavaScript">
+document.write("Adresa okna:"+window.location.href+"<br>");
+</script>Adresa okna:https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas2.html<br>
+<form method="get" onsubmit="return kontrola();">
+e-mail:<input name="email" id="email"><br>
+<input type="submit">
+</form>
+
+
+</body></html>

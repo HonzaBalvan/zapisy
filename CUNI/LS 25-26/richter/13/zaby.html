@@ -1,0 +1,262 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+</head><body>
+<h2>HRA "Přeskakování žab"</h2>
+vytvořte si složku zaba<br>
+do této složky zkopírujte soubory: (z /usr/html/NMIN266/)
+<pre>zaba.png
+nezaba.png
+vo.png
+sv.png
+zabas.png
+zaba-data.txt
+</pre>
+<ol>
+<li> pomocí JavaScript si připravíme tabulku 5x5 buněk
+  <pre>  document.write("&lt;table border=1&gt;&lt;tr&gt;");
+  for (i=0;i&lt;5;i++){
+    for (j=0;j&lt;5;j++){
+      document.write("&lt;td&gt;&lt;/td&gt;");
+      if (j % 5 == 4){
+        document.write("&lt;/tr&gt;&lt;tr&gt;");
+      }
+    }
+  }
+  document.write("&lt;/table&gt;");
+  </pre>
+</li>
+<li>v buňkách "0,0;0,2;0,4;1,1; ..." tj. tam kde budou "sedět žáby" si připravíme obrázek (zatím bez src a dáme mu unikátní id)<br>
+  do ostatních buněk připravíme svislé (sv.png) resp. vodorovné čáry (vo.png) (vodorovné v sudých, svislé v lichých řádcích)
+  <pre>  document.write("&lt;table&gt;&lt;tr&gt;");
+
+  for (i=0;i&lt;5;i++){
+    for (j=0;j&lt;5;j++){
+      soucet=i+j;
+      if (soucet % 2 ==0){
+          document.write('&lt;td&gt;&lt;img  id=p'+i+'_'+j+'&gt;&lt;/td&gt;');
+      }else{
+        if (i % 2==0){
+          document.write("&lt;td align=center&gt;&lt;img src=vo.png&gt;&lt;/td&gt;");
+        }else{
+          document.write("&lt;td align=center&gt;&lt;img src=sv.png&gt;&lt;/td&gt;");
+        }
+      }
+      if (j % 5 == 4){
+        document.write("&lt;/tr&gt;&lt;tr&gt;");
+      }
+    }
+  }
+  document.write("&lt;/table&gt;");
+  </pre>
+</li>
+<li>ze souboru zaba-data.txt si zkopirujeme první řádek<br>
+
+00000;00010;00001;00000;10100<br>
+a připravíme podle něj rozmístění žab do dvourozměrného pole
+<pre>pom="00000;00010;00001;00000;10100";
+radky=pom.split(";");
+roz=Array(0);
+for (i=0;i&lt;5;i++){
+  roz[i]=radky[i].split("");
+}
+</pre>
+</li>
+<li>pripravíme si funkci "rozmisti()", která umístí žáby na políčka podle pole roz
+<pre>function rozmisti(){
+  for (i=0;i&lt;5;i++){
+    for (j=0;j&lt;5;j++){
+      soucet=i+j;
+      if (soucet % 2 ==0){
+        if (roz[i][j]==1){src="zaba.png";}else{src="nezaba.png";}
+        document.getElementById('p'+i+'_'+j).src=src;
+      }
+    }
+  }
+}
+</pre>
+a funkci zavoláme:
+<script language="javascript">
+function rozmisti(){
+  for (i=0;i<5;i++){
+    for (j=0;j<5;j++){
+      soucet=i+j;
+      if (soucet % 2 ==0){
+        if (roz[i][j]==1){src="zaba.png";}else{src="nezaba.png";}
+        document.getElementById('p'+i+'_'+j).src=src;
+      }
+    }
+  }
+}
+pom="00000;00010;00001;00000;10100";
+radky=pom.split(";");
+roz=Array(0);
+for (i=0;i<5;i++){
+  roz[i]=radky[i].split("");
+}
+  document.write("<table border=1><tr>");
+  for (i=0;i<5;i++){
+    for (j=0;j<5;j++){
+      soucet=i+j;
+      if (soucet % 2 ==0){
+          document.write('<td><img  id=p'+i+'_'+j+' onClick="klikna('+i+','+j+');"></td>');
+      }else{
+        if (i % 2==0){
+          document.write("<td align=center><img src=vo.png></td>");
+        }else{
+          document.write("<td align=center><img src=sv.png></td>");
+        }
+      }
+      if (j % 5 == 4){
+        document.write("</tr><tr>");
+      }
+    }
+  }
+  document.write("</table>");
+rozmisti();
+</script><table border="1"><tbody><tr><td><img id="p0_0" onclick="klikna(0,0);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p0_2" onclick="klikna(0,2);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p0_4" onclick="klikna(0,4);" src="zaby_files/nezaba.png"></td></tr><tr><td align="center"><img src="zaby_files/sv.png"></td><td><img id="p1_1" onclick="klikna(1,1);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/sv.png"></td><td><img id="p1_3" onclick="klikna(1,3);" src="zaby_files/zaba.png"></td><td align="center"><img src="zaby_files/sv.png"></td></tr><tr><td><img id="p2_0" onclick="klikna(2,0);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p2_2" onclick="klikna(2,2);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p2_4" onclick="klikna(2,4);" src="zaby_files/zaba.png"></td></tr><tr><td align="center"><img src="zaby_files/sv.png"></td><td><img id="p3_1" onclick="klikna(3,1);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/sv.png"></td><td><img id="p3_3" onclick="klikna(3,3);" src="zaby_files/nezaba.png"></td><td align="center"><img src="zaby_files/sv.png"></td></tr><tr><td><img id="p4_0" onclick="klikna(4,0);" src="zaby_files/zaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p4_2" onclick="klikna(4,2);" src="zaby_files/zaba.png"></td><td align="center"><img src="zaby_files/vo.png"></td><td><img id="p4_4" onclick="klikna(4,4);" src="zaby_files/nezaba.png"></td></tr><tr></tr></tbody></table>
+</li>
+<li>
+připravíme si funkci klikna(x,y), která ošetří kliknutí na políčko i,j <br>
+funkce bude zatím jen hlásit, kam bylo kliknuto
+<pre>function klikna(x,y){
+  alert("kliknul jsi na "+x+","+y);
+}
+</pre>
+</li>
+<li>
+funkci klikna(x,y) přidáme jako akci onClick() pro obrázky se žábami tj. při tvorbě tabulky<br>
+<pre>document.write('&lt;td&gt;&lt;img  id=p'+i+'_'+j+' onClick="klikna('+i+','+j+');"&gt;&nbsp;/td&gt;');
+</pre>
+</li>
+<li>
+musíme si zapamatovat jestli kliknutí je první (klik odkud žába skáče) nebo druhé (kam skáče)<br>
+resp. obecně souřadnice x,y "z" (políčka) a "na" (políčko) na začátek si připravíme čtyři proměnné a vyplníme -1
+<pre>zx=-1;
+zy=-1;
+nax=-1;
+nay=-1;
+</pre>
+</li>
+<li>
+ve funkci klikna(x,y) ošetříme 1.kliknutí, když na políčku "sedí" žába obrázek změníme na "zabas.png"<br>
+tj. žába se připravuje ke skoku (zároveň si musím zapamatovat souřadnice odkud skáču)<br>
+když tam žába nesedí, klik jakoby se nestal
+<pre>function klikna(x,y){
+  if (zx==-1){
+    //ošetřuji první kliknutí
+    zx=x;
+    zy=y;
+    if (roz[zx][zy]==1){
+      document.getElementById('p'+zx+'_'+zy).src="zabas.png";
+    }else{
+      zx=-1;
+    }
+  }
+}
+</pre>
+</li>
+<li>
+ve funkci klikna(x,y) ošetříme druhé kliknutí - zatím tak, že žába přeskočí na druhé políčko<br>
+(nekontrolujeme, jestli je ten skok "možný")
+<pre>function klikna(x,y){
+  if (zx==-1){
+    //ošetřuji první kliknutí
+    zx=x;
+    zy=y;
+    if (roz[zx][zy]==1){
+      document.getElementById('p'+zx+'_'+zy).src="zabas.png";
+    }else{
+      zx=-1;
+    }
+  }else{
+  //ošetřuji druhé kliknutí
+    nax=x;
+    nay=y;
+    roz[x][y]=1;
+    roz[zx][zy]=0;
+    rozmisti();
+    zx=-1;
+  }
+}
+</pre>
+</li>
+<li>
+funkci klikna(x,y) dále upravíme tak, aby bylo možné skočit pouze na prázdné políčko<br>
+není to jediná podmínka, proto si zavedeme proměnou kontrola a nastavíme na 0
+<pre>function klikna(x,y){
+  if (zx==-1){
+    //ošetřuji první kliknutí
+    zx=x;
+    zy=y;
+    if (roz[zx][zy]==1){
+      document.getElementById('p'+zx+'_'+zy).src="zabas.png";
+    }else{
+      zx=-1;
+    }
+  }else{
+  //ošetřuji druhé kliknutí
+    nax=x;
+    nay=y;
+    kontrola=0;
+    if (roz[nax][nay]==0){
+      kontrola=1;
+    }
+
+    if (kontrola==1){
+      roz[x][y]=1;
+      roz[zx][zy]=0;
+      rozmisti();
+    }else{
+      document.getElementById('p'+zx+'_'+zy).src="zaba.png";
+    }
+    zx=-1;
+  }
+}
+</pre> 
+</li>
+<li>
+další podmínka pro správný skok je, aby mezi políčky "z" a "na" seděla žába<br>
+políčko mezi získáme jako "průměr" "z" a "na"
+<pre>midx=zx+0.5*(nax-zx);
+midy=zy+0.5*(nay-zy);
+if (roz[midx][midy]==0){
+  kontrola=0;
+}
+...
+if (kontrola==1){
+  roz[x][y]=1;
+  roz[zx][zy]=0;
+  rozmisti();
+}else{
+   document.getElementById('p'+zx+'_'+zy).src="zaba.png";
+}
+</pre>
+</li>
+<li>
+předchozí kontrola nepostihne případ, kdy bych se pokusil přeskočit "z rohu do rohu" <br>
+a uprostřed by "seděla" žába, to mohu ošetřit např. vzdáleností skoku, která nesmí být delší
+než 4
+<pre>dx=nax-zx;
+dy=nay-zy;
+dist=Math.sqrt(dx*dx+dy*dy);
+if (dist&gt;4){
+  kontrola=0;
+}
+</pre>
+</li>
+<li>
+zatím jsme měli pouze jedno zadání pro zajímavost si můžeme vytvořit pole zadání (z zaba-data.txt)
+<pre>zadani=Array();
+zadani[0]="00000;00010;00001;00000;10100";
+zadani[1]="00100;01010;00100;01010;00000";
+zadani[2]="00000;01010;10101;01010;00000";
+...
+zadani[38]="10101;01010;10001;01010;10101";
+nahodne=Math.floor(Math.random() * 38);
+pom=zadani[nahodne];
+</pre>
+</li>
+
+
+</ol></body></html>

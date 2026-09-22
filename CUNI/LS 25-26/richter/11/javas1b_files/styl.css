@@ -1,0 +1,15 @@
+td{
+  font-family:arial;
+  border-style:solid;
+  border-width:2px;
+  border-color:blue;
+  text-align:center;
+}
+p{
+  width:400px;
+  text-align:justify;
+}
+TABLE {
+  border-collapse: collapse;
+}
+

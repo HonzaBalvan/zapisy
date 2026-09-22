@@ -1,0 +1,286 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+</head>
+<body>
+<h2>Langtonův mravenec</h2>
+<p align="justify">
+Je příkladem jednoduchého celularního automatu. "Mravenec" žije na 
+"čtvečkovaném papíře". Pro svůj "život" má jednoduchá pravidla:
+</p>
+<ul>
+<li>každé políčko na které vstoupí přebarví tj. černé na bílé a bílé na černé</li>
+<li>když vstoupí na bílé políčko pokračuje na políčko vpravo</li>
+<li>když vstoupí na černé políčko pokračuje na políčko vlevo</li>
+<li>prvotní směr mu musíme nějak zadat např. prvním krokem</li>
+</ul>
+<p align="justify">
+Tato jednoduchá pravidla vedou, překvapivě k "cílevědomému" počínání.
+</p>
+<h2>Langtonův mravenec za pomoci Javascript</h2>
+<ol>
+<li>Nejprve vytvoříme pro mravence "svět" tj. mřížku 200x200 čtverečků<br>
+(čísla řádků jsou přidána pro přehlednost)
+<table border="1">
+<tbody><tr>
+<td>
+<pre>1.  &lt;script language=JavaScript&gt;
+2.  document.write("&lt;table border=1&gt;");
+3.  for (r=0;r&lt;200;r++){
+4.    document.write("&lt;tr&gt;");
+5.    for (s=0;s&lt;200;s++){
+6.      document.write("&lt;td&gt;&lt;/td&gt;");
+7.    }
+8.    document.write("&lt;/tr&gt;");
+9.  }
+10. document.write("&lt;/table");
+11. &lt;/script&gt;
+</pre>
+</td>
+<td>
+<script language="JavaScript">
+document.write("<table border=1>");
+for (r=0;r<28;r++){
+  document.write("<tr>");
+  for (s=0;s<28;s++){
+    document.write("<td></td>");
+  }
+  document.write("</tr>");
+}
+document.write("</table");
+</script><table border="1"><tbody><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+</td></tr></tbody></table><br><br>
+</li>
+<li>
+Každé buňce dáme speciální identifikátor tj. <b>id</b> řádek 5.<br>
+(každá buňka ma id např. a1_10 používáme funkci přiřazenou k číslu tj. <b>r.toString()</b>)
+<table border="1">
+<tbody><tr><td>
+<pre>6.  document.write("&lt;td id=<font color="red">\"</font>a"+r.toString()+"_"+s.toString()+"<font color="red">\"</font>&gt;&lt;/td&gt;");
+</pre>
+</td></tr>
+</tbody></table>
+<br><br>
+</li>
+<li>
+Připravíme si funkci <i>obarvi(r,s,barva)</i>, která obarví políčko <i>r,s</i> příslušnou barvou
+<table border="1">
+<tbody><tr>
+<td>
+<pre>function obarvi(r,s,barva){
+  if (barva==1){
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="red";
+  }else{
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="white";
+  }
+}
+</pre>
+</td>
+</tr>
+</tbody></table>
+</li>
+<li>
+Obarvíme úhlopříčku - cyklus
+<table border="1">
+<tbody><tr>
+<td>
+<pre>for (i=0;i&lt;200;i++){
+  obarvi(i,i,1);
+}
+</pre>
+</td>
+<td>
+<script language="JavaScript">
+function obarvi(r,s,barva){
+  if (barva==1){
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="red";
+  }else{
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="white";
+  }
+}
+document.write("<table border=1>");
+for (r=0;r<28;r++){
+  document.write("<tr>");
+  for (s=0;s<28;s++){
+    document.write("<td id=\"a"+r.toString()+"_"+s.toString()+"\"></td>");
+  }
+  document.write("</tr>");
+}
+document.write("</table");
+for (i=0;i<28;i++){
+  obarvi(i,i,1);
+}
+</script><table border="1"><tbody><tr><td id="a0_0" style="background-color: red;"></td><td id="a0_1"></td><td id="a0_2"></td><td id="a0_3"></td><td id="a0_4"></td><td id="a0_5"></td><td id="a0_6"></td><td id="a0_7"></td><td id="a0_8"></td><td id="a0_9"></td><td id="a0_10"></td><td id="a0_11"></td><td id="a0_12"></td><td id="a0_13"></td><td id="a0_14"></td><td id="a0_15"></td><td id="a0_16"></td><td id="a0_17"></td><td id="a0_18"></td><td id="a0_19"></td><td id="a0_20"></td><td id="a0_21"></td><td id="a0_22"></td><td id="a0_23"></td><td id="a0_24"></td><td id="a0_25"></td><td id="a0_26"></td><td id="a0_27"></td></tr><tr><td id="a1_0"></td><td id="a1_1" style="background-color: red;"></td><td id="a1_2"></td><td id="a1_3"></td><td id="a1_4"></td><td id="a1_5"></td><td id="a1_6"></td><td id="a1_7"></td><td id="a1_8"></td><td id="a1_9"></td><td id="a1_10"></td><td id="a1_11"></td><td id="a1_12"></td><td id="a1_13"></td><td id="a1_14"></td><td id="a1_15"></td><td id="a1_16"></td><td id="a1_17"></td><td id="a1_18"></td><td id="a1_19"></td><td id="a1_20"></td><td id="a1_21"></td><td id="a1_22"></td><td id="a1_23"></td><td id="a1_24"></td><td id="a1_25"></td><td id="a1_26"></td><td id="a1_27"></td></tr><tr><td id="a2_0"></td><td id="a2_1"></td><td id="a2_2" style="background-color: red;"></td><td id="a2_3"></td><td id="a2_4"></td><td id="a2_5"></td><td id="a2_6"></td><td id="a2_7"></td><td id="a2_8"></td><td id="a2_9"></td><td id="a2_10"></td><td id="a2_11"></td><td id="a2_12"></td><td id="a2_13"></td><td id="a2_14"></td><td id="a2_15"></td><td id="a2_16"></td><td id="a2_17"></td><td id="a2_18"></td><td id="a2_19"></td><td id="a2_20"></td><td id="a2_21"></td><td id="a2_22"></td><td id="a2_23"></td><td id="a2_24"></td><td id="a2_25"></td><td id="a2_26"></td><td id="a2_27"></td></tr><tr><td id="a3_0"></td><td id="a3_1"></td><td id="a3_2"></td><td id="a3_3" style="background-color: red;"></td><td id="a3_4"></td><td id="a3_5"></td><td id="a3_6"></td><td id="a3_7"></td><td id="a3_8"></td><td id="a3_9"></td><td id="a3_10"></td><td id="a3_11"></td><td id="a3_12"></td><td id="a3_13"></td><td id="a3_14"></td><td id="a3_15"></td><td id="a3_16"></td><td id="a3_17"></td><td id="a3_18"></td><td id="a3_19"></td><td id="a3_20"></td><td id="a3_21"></td><td id="a3_22"></td><td id="a3_23"></td><td id="a3_24"></td><td id="a3_25"></td><td id="a3_26"></td><td id="a3_27"></td></tr><tr><td id="a4_0"></td><td id="a4_1"></td><td id="a4_2"></td><td id="a4_3"></td><td id="a4_4" style="background-color: red;"></td><td id="a4_5"></td><td id="a4_6"></td><td id="a4_7"></td><td id="a4_8"></td><td id="a4_9"></td><td id="a4_10"></td><td id="a4_11"></td><td id="a4_12"></td><td id="a4_13"></td><td id="a4_14"></td><td id="a4_15"></td><td id="a4_16"></td><td id="a4_17"></td><td id="a4_18"></td><td id="a4_19"></td><td id="a4_20"></td><td id="a4_21"></td><td id="a4_22"></td><td id="a4_23"></td><td id="a4_24"></td><td id="a4_25"></td><td id="a4_26"></td><td id="a4_27"></td></tr><tr><td id="a5_0"></td><td id="a5_1"></td><td id="a5_2"></td><td id="a5_3"></td><td id="a5_4"></td><td id="a5_5" style="background-color: red;"></td><td id="a5_6"></td><td id="a5_7"></td><td id="a5_8"></td><td id="a5_9"></td><td id="a5_10"></td><td id="a5_11"></td><td id="a5_12"></td><td id="a5_13"></td><td id="a5_14"></td><td id="a5_15"></td><td id="a5_16"></td><td id="a5_17"></td><td id="a5_18"></td><td id="a5_19"></td><td id="a5_20"></td><td id="a5_21"></td><td id="a5_22"></td><td id="a5_23"></td><td id="a5_24"></td><td id="a5_25"></td><td id="a5_26"></td><td id="a5_27"></td></tr><tr><td id="a6_0"></td><td id="a6_1"></td><td id="a6_2"></td><td id="a6_3"></td><td id="a6_4"></td><td id="a6_5"></td><td id="a6_6" style="background-color: red;"></td><td id="a6_7"></td><td id="a6_8"></td><td id="a6_9"></td><td id="a6_10"></td><td id="a6_11"></td><td id="a6_12"></td><td id="a6_13"></td><td id="a6_14"></td><td id="a6_15"></td><td id="a6_16"></td><td id="a6_17"></td><td id="a6_18"></td><td id="a6_19"></td><td id="a6_20"></td><td id="a6_21"></td><td id="a6_22"></td><td id="a6_23"></td><td id="a6_24"></td><td id="a6_25"></td><td id="a6_26"></td><td id="a6_27"></td></tr><tr><td id="a7_0"></td><td id="a7_1"></td><td id="a7_2"></td><td id="a7_3"></td><td id="a7_4"></td><td id="a7_5"></td><td id="a7_6"></td><td id="a7_7" style="background-color: red;"></td><td id="a7_8"></td><td id="a7_9"></td><td id="a7_10"></td><td id="a7_11"></td><td id="a7_12"></td><td id="a7_13"></td><td id="a7_14"></td><td id="a7_15"></td><td id="a7_16"></td><td id="a7_17"></td><td id="a7_18"></td><td id="a7_19"></td><td id="a7_20"></td><td id="a7_21"></td><td id="a7_22"></td><td id="a7_23"></td><td id="a7_24"></td><td id="a7_25"></td><td id="a7_26"></td><td id="a7_27"></td></tr><tr><td id="a8_0"></td><td id="a8_1"></td><td id="a8_2"></td><td id="a8_3"></td><td id="a8_4"></td><td id="a8_5"></td><td id="a8_6"></td><td id="a8_7"></td><td id="a8_8" style="background-color: red;"></td><td id="a8_9"></td><td id="a8_10"></td><td id="a8_11"></td><td id="a8_12"></td><td id="a8_13"></td><td id="a8_14"></td><td id="a8_15"></td><td id="a8_16"></td><td id="a8_17"></td><td id="a8_18"></td><td id="a8_19"></td><td id="a8_20"></td><td id="a8_21"></td><td id="a8_22"></td><td id="a8_23"></td><td id="a8_24"></td><td id="a8_25"></td><td id="a8_26"></td><td id="a8_27"></td></tr><tr><td id="a9_0"></td><td id="a9_1"></td><td id="a9_2"></td><td id="a9_3"></td><td id="a9_4"></td><td id="a9_5"></td><td id="a9_6"></td><td id="a9_7"></td><td id="a9_8"></td><td id="a9_9" style="background-color: red;"></td><td id="a9_10"></td><td id="a9_11"></td><td id="a9_12"></td><td id="a9_13"></td><td id="a9_14"></td><td id="a9_15"></td><td id="a9_16"></td><td id="a9_17"></td><td id="a9_18"></td><td id="a9_19"></td><td id="a9_20"></td><td id="a9_21"></td><td id="a9_22"></td><td id="a9_23"></td><td id="a9_24"></td><td id="a9_25"></td><td id="a9_26"></td><td id="a9_27"></td></tr><tr><td id="a10_0"></td><td id="a10_1"></td><td id="a10_2"></td><td id="a10_3"></td><td id="a10_4"></td><td id="a10_5"></td><td id="a10_6"></td><td id="a10_7"></td><td id="a10_8"></td><td id="a10_9"></td><td id="a10_10" style="background-color: red;"></td><td id="a10_11"></td><td id="a10_12"></td><td id="a10_13"></td><td id="a10_14"></td><td id="a10_15"></td><td id="a10_16"></td><td id="a10_17"></td><td id="a10_18"></td><td id="a10_19"></td><td id="a10_20"></td><td id="a10_21"></td><td id="a10_22"></td><td id="a10_23"></td><td id="a10_24"></td><td id="a10_25"></td><td id="a10_26"></td><td id="a10_27"></td></tr><tr><td id="a11_0"></td><td id="a11_1"></td><td id="a11_2"></td><td id="a11_3"></td><td id="a11_4"></td><td id="a11_5"></td><td id="a11_6"></td><td id="a11_7"></td><td id="a11_8"></td><td id="a11_9"></td><td id="a11_10"></td><td id="a11_11" style="background-color: red;"></td><td id="a11_12"></td><td id="a11_13"></td><td id="a11_14"></td><td id="a11_15"></td><td id="a11_16"></td><td id="a11_17"></td><td id="a11_18"></td><td id="a11_19"></td><td id="a11_20"></td><td id="a11_21"></td><td id="a11_22"></td><td id="a11_23"></td><td id="a11_24"></td><td id="a11_25"></td><td id="a11_26"></td><td id="a11_27"></td></tr><tr><td id="a12_0"></td><td id="a12_1"></td><td id="a12_2"></td><td id="a12_3"></td><td id="a12_4"></td><td id="a12_5"></td><td id="a12_6"></td><td id="a12_7"></td><td id="a12_8"></td><td id="a12_9"></td><td id="a12_10"></td><td id="a12_11"></td><td id="a12_12" style="background-color: red;"></td><td id="a12_13"></td><td id="a12_14"></td><td id="a12_15"></td><td id="a12_16"></td><td id="a12_17"></td><td id="a12_18"></td><td id="a12_19"></td><td id="a12_20"></td><td id="a12_21"></td><td id="a12_22"></td><td id="a12_23"></td><td id="a12_24"></td><td id="a12_25"></td><td id="a12_26"></td><td id="a12_27"></td></tr><tr><td id="a13_0"></td><td id="a13_1"></td><td id="a13_2"></td><td id="a13_3"></td><td id="a13_4"></td><td id="a13_5"></td><td id="a13_6"></td><td id="a13_7"></td><td id="a13_8"></td><td id="a13_9"></td><td id="a13_10"></td><td id="a13_11"></td><td id="a13_12"></td><td id="a13_13" style="background-color: red;"></td><td id="a13_14"></td><td id="a13_15"></td><td id="a13_16"></td><td id="a13_17"></td><td id="a13_18"></td><td id="a13_19"></td><td id="a13_20"></td><td id="a13_21"></td><td id="a13_22"></td><td id="a13_23"></td><td id="a13_24"></td><td id="a13_25"></td><td id="a13_26"></td><td id="a13_27"></td></tr><tr><td id="a14_0"></td><td id="a14_1"></td><td id="a14_2"></td><td id="a14_3"></td><td id="a14_4"></td><td id="a14_5"></td><td id="a14_6"></td><td id="a14_7"></td><td id="a14_8"></td><td id="a14_9"></td><td id="a14_10"></td><td id="a14_11"></td><td id="a14_12"></td><td id="a14_13"></td><td id="a14_14" style="background-color: red;"></td><td id="a14_15"></td><td id="a14_16"></td><td id="a14_17"></td><td id="a14_18"></td><td id="a14_19"></td><td id="a14_20"></td><td id="a14_21"></td><td id="a14_22"></td><td id="a14_23"></td><td id="a14_24"></td><td id="a14_25"></td><td id="a14_26"></td><td id="a14_27"></td></tr><tr><td id="a15_0"></td><td id="a15_1"></td><td id="a15_2"></td><td id="a15_3"></td><td id="a15_4"></td><td id="a15_5"></td><td id="a15_6"></td><td id="a15_7"></td><td id="a15_8"></td><td id="a15_9"></td><td id="a15_10"></td><td id="a15_11"></td><td id="a15_12"></td><td id="a15_13"></td><td id="a15_14"></td><td id="a15_15" style="background-color: red;"></td><td id="a15_16"></td><td id="a15_17"></td><td id="a15_18"></td><td id="a15_19"></td><td id="a15_20"></td><td id="a15_21"></td><td id="a15_22"></td><td id="a15_23"></td><td id="a15_24"></td><td id="a15_25"></td><td id="a15_26"></td><td id="a15_27"></td></tr><tr><td id="a16_0"></td><td id="a16_1"></td><td id="a16_2"></td><td id="a16_3"></td><td id="a16_4"></td><td id="a16_5"></td><td id="a16_6"></td><td id="a16_7"></td><td id="a16_8"></td><td id="a16_9"></td><td id="a16_10"></td><td id="a16_11"></td><td id="a16_12"></td><td id="a16_13"></td><td id="a16_14"></td><td id="a16_15"></td><td id="a16_16" style="background-color: red;"></td><td id="a16_17"></td><td id="a16_18"></td><td id="a16_19"></td><td id="a16_20"></td><td id="a16_21"></td><td id="a16_22"></td><td id="a16_23"></td><td id="a16_24"></td><td id="a16_25"></td><td id="a16_26"></td><td id="a16_27"></td></tr><tr><td id="a17_0"></td><td id="a17_1"></td><td id="a17_2"></td><td id="a17_3"></td><td id="a17_4"></td><td id="a17_5"></td><td id="a17_6"></td><td id="a17_7"></td><td id="a17_8"></td><td id="a17_9"></td><td id="a17_10"></td><td id="a17_11"></td><td id="a17_12"></td><td id="a17_13"></td><td id="a17_14"></td><td id="a17_15"></td><td id="a17_16"></td><td id="a17_17" style="background-color: red;"></td><td id="a17_18"></td><td id="a17_19"></td><td id="a17_20"></td><td id="a17_21"></td><td id="a17_22"></td><td id="a17_23"></td><td id="a17_24"></td><td id="a17_25"></td><td id="a17_26"></td><td id="a17_27"></td></tr><tr><td id="a18_0"></td><td id="a18_1"></td><td id="a18_2"></td><td id="a18_3"></td><td id="a18_4"></td><td id="a18_5"></td><td id="a18_6"></td><td id="a18_7"></td><td id="a18_8"></td><td id="a18_9"></td><td id="a18_10"></td><td id="a18_11"></td><td id="a18_12"></td><td id="a18_13"></td><td id="a18_14"></td><td id="a18_15"></td><td id="a18_16"></td><td id="a18_17"></td><td id="a18_18" style="background-color: red;"></td><td id="a18_19"></td><td id="a18_20"></td><td id="a18_21"></td><td id="a18_22"></td><td id="a18_23"></td><td id="a18_24"></td><td id="a18_25"></td><td id="a18_26"></td><td id="a18_27"></td></tr><tr><td id="a19_0"></td><td id="a19_1"></td><td id="a19_2"></td><td id="a19_3"></td><td id="a19_4"></td><td id="a19_5"></td><td id="a19_6"></td><td id="a19_7"></td><td id="a19_8"></td><td id="a19_9"></td><td id="a19_10"></td><td id="a19_11"></td><td id="a19_12"></td><td id="a19_13"></td><td id="a19_14"></td><td id="a19_15"></td><td id="a19_16"></td><td id="a19_17"></td><td id="a19_18"></td><td id="a19_19" style="background-color: red;"></td><td id="a19_20"></td><td id="a19_21"></td><td id="a19_22"></td><td id="a19_23"></td><td id="a19_24"></td><td id="a19_25"></td><td id="a19_26"></td><td id="a19_27"></td></tr><tr><td id="a20_0"></td><td id="a20_1"></td><td id="a20_2"></td><td id="a20_3"></td><td id="a20_4"></td><td id="a20_5"></td><td id="a20_6"></td><td id="a20_7"></td><td id="a20_8"></td><td id="a20_9"></td><td id="a20_10"></td><td id="a20_11"></td><td id="a20_12"></td><td id="a20_13"></td><td id="a20_14"></td><td id="a20_15"></td><td id="a20_16"></td><td id="a20_17"></td><td id="a20_18"></td><td id="a20_19"></td><td id="a20_20" style="background-color: red;"></td><td id="a20_21"></td><td id="a20_22"></td><td id="a20_23"></td><td id="a20_24"></td><td id="a20_25"></td><td id="a20_26"></td><td id="a20_27"></td></tr><tr><td id="a21_0"></td><td id="a21_1"></td><td id="a21_2"></td><td id="a21_3"></td><td id="a21_4"></td><td id="a21_5"></td><td id="a21_6"></td><td id="a21_7"></td><td id="a21_8"></td><td id="a21_9"></td><td id="a21_10"></td><td id="a21_11"></td><td id="a21_12"></td><td id="a21_13"></td><td id="a21_14"></td><td id="a21_15"></td><td id="a21_16"></td><td id="a21_17"></td><td id="a21_18"></td><td id="a21_19"></td><td id="a21_20"></td><td id="a21_21" style="background-color: red;"></td><td id="a21_22"></td><td id="a21_23"></td><td id="a21_24"></td><td id="a21_25"></td><td id="a21_26"></td><td id="a21_27"></td></tr><tr><td id="a22_0"></td><td id="a22_1"></td><td id="a22_2"></td><td id="a22_3"></td><td id="a22_4"></td><td id="a22_5"></td><td id="a22_6"></td><td id="a22_7"></td><td id="a22_8"></td><td id="a22_9"></td><td id="a22_10"></td><td id="a22_11"></td><td id="a22_12"></td><td id="a22_13"></td><td id="a22_14"></td><td id="a22_15"></td><td id="a22_16"></td><td id="a22_17"></td><td id="a22_18"></td><td id="a22_19"></td><td id="a22_20"></td><td id="a22_21"></td><td id="a22_22" style="background-color: red;"></td><td id="a22_23"></td><td id="a22_24"></td><td id="a22_25"></td><td id="a22_26"></td><td id="a22_27"></td></tr><tr><td id="a23_0"></td><td id="a23_1"></td><td id="a23_2"></td><td id="a23_3"></td><td id="a23_4"></td><td id="a23_5"></td><td id="a23_6"></td><td id="a23_7"></td><td id="a23_8"></td><td id="a23_9"></td><td id="a23_10"></td><td id="a23_11"></td><td id="a23_12"></td><td id="a23_13"></td><td id="a23_14"></td><td id="a23_15"></td><td id="a23_16"></td><td id="a23_17"></td><td id="a23_18"></td><td id="a23_19"></td><td id="a23_20"></td><td id="a23_21"></td><td id="a23_22"></td><td id="a23_23" style="background-color: red;"></td><td id="a23_24"></td><td id="a23_25"></td><td id="a23_26"></td><td id="a23_27"></td></tr><tr><td id="a24_0"></td><td id="a24_1"></td><td id="a24_2"></td><td id="a24_3"></td><td id="a24_4"></td><td id="a24_5"></td><td id="a24_6"></td><td id="a24_7"></td><td id="a24_8"></td><td id="a24_9"></td><td id="a24_10"></td><td id="a24_11"></td><td id="a24_12"></td><td id="a24_13"></td><td id="a24_14"></td><td id="a24_15"></td><td id="a24_16"></td><td id="a24_17"></td><td id="a24_18"></td><td id="a24_19"></td><td id="a24_20"></td><td id="a24_21"></td><td id="a24_22"></td><td id="a24_23"></td><td id="a24_24" style="background-color: red;"></td><td id="a24_25"></td><td id="a24_26"></td><td id="a24_27"></td></tr><tr><td id="a25_0"></td><td id="a25_1"></td><td id="a25_2"></td><td id="a25_3"></td><td id="a25_4"></td><td id="a25_5"></td><td id="a25_6"></td><td id="a25_7"></td><td id="a25_8"></td><td id="a25_9"></td><td id="a25_10"></td><td id="a25_11"></td><td id="a25_12"></td><td id="a25_13"></td><td id="a25_14"></td><td id="a25_15"></td><td id="a25_16"></td><td id="a25_17"></td><td id="a25_18"></td><td id="a25_19"></td><td id="a25_20"></td><td id="a25_21"></td><td id="a25_22"></td><td id="a25_23"></td><td id="a25_24"></td><td id="a25_25" style="background-color: red;"></td><td id="a25_26"></td><td id="a25_27"></td></tr><tr><td id="a26_0"></td><td id="a26_1"></td><td id="a26_2"></td><td id="a26_3"></td><td id="a26_4"></td><td id="a26_5"></td><td id="a26_6"></td><td id="a26_7"></td><td id="a26_8"></td><td id="a26_9"></td><td id="a26_10"></td><td id="a26_11"></td><td id="a26_12"></td><td id="a26_13"></td><td id="a26_14"></td><td id="a26_15"></td><td id="a26_16"></td><td id="a26_17"></td><td id="a26_18"></td><td id="a26_19"></td><td id="a26_20"></td><td id="a26_21"></td><td id="a26_22"></td><td id="a26_23"></td><td id="a26_24"></td><td id="a26_25"></td><td id="a26_26" style="background-color: red;"></td><td id="a26_27"></td></tr><tr><td id="a27_0"></td><td id="a27_1"></td><td id="a27_2"></td><td id="a27_3"></td><td id="a27_4"></td><td id="a27_5"></td><td id="a27_6"></td><td id="a27_7"></td><td id="a27_8"></td><td id="a27_9"></td><td id="a27_10"></td><td id="a27_11"></td><td id="a27_12"></td><td id="a27_13"></td><td id="a27_14"></td><td id="a27_15"></td><td id="a27_16"></td><td id="a27_17"></td><td id="a27_18"></td><td id="a27_19"></td><td id="a27_20"></td><td id="a27_21"></td><td id="a27_22"></td><td id="a27_23"></td><td id="a27_24"></td><td id="a27_25"></td><td id="a27_26"></td><td id="a27_27" style="background-color: red;"></td></tr></tbody></table>
+</td></tr></tbody></table><br><br>
+
+</li>
+<li>
+V rámci "výroby" tabulky vyplníme dvourozměrné pole <i>policka</i>, zatím vyplníme nulami. Zároveň upravíme funkci <i>obarvi()</i> tak, aby se příslušným způsobem změnila i hodnota v poli <i>policka[][]</i>
+<table border="1">
+<tbody><tr>
+<td>
+<pre>&lt;script language=JavaScript&gt;
+<font color="red">var policka=Array();</font>
+document.write("&lt;table border=1&gt;");
+for (r=0;r&lt;200;r++){
+  document.write("&lt;tr&gt;");
+  <font color="red">policka[r]=Array();</font>
+  for (s=0;s&lt;200;s++){
+    <font color="red">policka[r][s]=0;</font>
+    document.write("&lt;td&gt;&lt;/td&gt;");
+  }
+  document.write("&lt;/tr&gt;");
+}
+document.write("&lt;/table");
+&lt;/script&gt;
+</pre>
+</td>
+</tr></tbody></table><br><br>
+<table border="1">
+<tbody><tr>
+<td>
+<pre>function obarvi(r,s,barva){
+  if (barva==1){
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="red";
+    policka[r][s]=1;
+  }else{
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="white";
+    policka[r][s]=0;
+  }
+}
+</pre>
+</td>
+</tr>
+</tbody></table>
+<br><br>
+</li>
+<li>
+Potřebuji "znát" výchozí směr, proto si zadefinuji proměnné <i>r0,s0;r1,s1</i>
+<table border="1">
+<tbody><tr>
+<td>
+<pre>var r0=100;
+var s0=110;
+var r1=101;
+var s1=110;
+</pre>
+</td>
+</tr>
+</tbody></table>
+<br><br>
+tj. směr pohybu <i>dr=r1-r0;ds=s1-s0</i>
+<br><br>
+</li>
+<li>
+Co znamená v mřížce zahnout doleva/doprava?<br>
+<ul>
+<li>
+Jdu dolů tj. index řádku se zvětšuje, pak:<br>
+zahnout doprava znamená <b>zmenšit</b> index sloupce (doleva zvětšit index sloupce)
+</li>
+<li>
+Jdu doprava tj. index sloupce se zvětšuje, pak:<br>
+zahnout doprava znamená <b>zvětšit</b> index řádku (doleva zmenšit index řádku)
+</li>
+</ul>
+Protože to není souhlasné tj. v prvním případě index odečítám v druhém přičítám, tak změníme "sloupcový směr" tj. <i>ds=s0-s1</i>
+<br><br>
+</li>
+<li>
+Funkce <i>krok()</i> vstoupil jsem z políčka <i>0</i> na políčko <i>1</i>.
+ Podíváme se na jaké políčko jsme vstoupili - podle toho upravíme směr 
+dalšího posunu. Když vstoupíme na obarvené políčko zatočíme doleva tj. 
+"změníme" směr a políčko přebarvíme. Přeznačíme políčka <i>r0,s0;r1,s1</i> (to co bylo 1 se stane 0 a podle směru posunu určíme novou polohu tj. <i>r1,s1</i>).
+<table border="1">
+<tbody><tr>
+<td>
+<pre>function krok(){
+  dr=r1-r0;
+  ds=s0-s1;
+  if (policka[r1][s1]==1){
+    smer=-1;
+    obarvi(r1,s1,0);
+  }else{
+    smer=1;
+    obarvi(r1,s1,1);
+  }
+  r0=r1;
+  s0=s1;
+  r1=r1+smer*ds;
+  s1=s1+smer*dr;
+}
+</pre>
+</td>
+</tr>
+</tbody></table>
+<br><br>
+</li>
+<li>
+Změníme cyklus ve kterém jsme obarvovali úhlopříčku:
+<table border="1">
+<tbody><tr>
+<td>
+<pre>for (i=0;i&lt;200;i++){
+ krok(); 
+}
+</pre>
+</td>
+</tr></tbody></table><br><br>
+</li>
+</ol>
+Celý skript by měl vypadat takto:
+<table border="1">
+<tbody><tr>
+<td>
+<pre>&lt;script language=JavaScript&gt;
+var policka=Array();
+document.write("&lt;table border=1&gt;");
+for (r=0;r&lt;200;r++){
+  document.write("&lt;tr&gt;");
+  policka[r]=Array();
+  for (s=0;s&lt;200;s++){
+    document.write("&lt;td id=\"a"+r.toString()+"_"+s.toString()+"\"&gt;&lt;/td&gt;");
+    policka[r][s]=0;
+  }
+  document.write("&lt;/tr&gt;");
+}
+document.write("&lt;/table&gt;");
+
+function obarvi(r,s,barva){
+  if (barva==1){
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="red";
+    policka[r][s]=1;
+  }else{
+    document.getElementById("a"+r.toString()+"_"+s.toString()).style.backgroundColor="white";
+    policka[r][s]=0;
+  }
+}
+var r0=100;
+var s0=110;
+var r1=101;
+var s1=110
+function krok(){
+  dr=r1-r0;
+  ds=s0-s1;
+  if (policka[r1][s1]==1){
+    smer=-1;
+    obarvi(r1,s1,0);
+  }else{
+    smer=1;
+    obarvi(r1,s1,1);
+  }
+  r0=r1;
+  s0=s1;
+  r1=r1+smer*ds;
+  s1=s1+smer*dr;
+}
+for (i=0;i&lt;15000;i++){
+  krok();
+}
+&lt;/script&gt;
+</pre>
+</td>
+</tr></tbody></table><br><br>
+
+
+</body></html>

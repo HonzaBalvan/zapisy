@@ -1,0 +1,332 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>NMI266 - PHP</title>
+<style>
+BODY {
+  color :BLACK;
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+LI{
+   width:700px;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+}
+TD {
+  font-family: sans-serif;
+  border-style:solid;
+  border-width:1px;
+  border-color:black;
+}
+p{
+width:750px;
+}
+</style></head>
+
+<body>
+<h2>PHP</h2>
+<p>
+PHP je programovací jazyk pro tvorbu aktivních HTML stránek, skriptování
+ se děje na straně serveru. Uživatel nemůže vidět zdrojový kód skriptu 
+(narozdíl od JavaScriptu).
+</p>
+<p>
+Soubor s PHP skriptem má závaznou koncovku <span class="zlut">php</span> - podle ní webový server pozná jak má daný soubor interpretovat. Příkazy php jsou uzavřeny do <span class="zlut">&lt;?php</span> a <span class="zlut">?&gt;</span>. Příkazy jsou ukončeny středníkem.
+</p>
+<p>
+<!--Pro testování PHP skriptů používejte <span class="zlut">http://msekce.karlin.mff.cuni.cz/~vasejmeno/...</span> a ne <span class="zlut" style="text-decoration:line-through;">http://www.karlin.mff.cuni.cz/~vasejmeno</span>-->
+</p>
+<ul>
+<li>proměnné jsou označeny znakem <span class="zlut">$</span>. Proměnné je možné psát dovnitř uvozovek, případně uzavřít jméno do složených závorek <span class="zlut">print "ahoj ${jmeno}!"</span> (když za vypsanou proměnnou nechci mezeru)</li>
+<li>stejně jako v JavaScript nejsou rozeznávány typy proměnných</li>
+<li>PHP funkce můžeme, co se velkých malých písmenek týče, psát libovolně <span class="zlut">print $a;</span> je totéž co <span class="zlut">Print $a;</span></li>
+<li>pro komentáře používáme znak <span class="zlut">#</span></li>
+<li>
+jednoduchý příklad:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;?echo "toto vypsalo PHP";?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</td></tr>
+</tbody></table>
+</li>
+
+<li>PHP kód můžeme kombinovat s HTML kódem resp. ovlivňovat vypisovaný HTML kód
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;?php if ($hodina&lt;11){?&gt;
+&lt;p&gt;&lt;font color=red&gt;Dobré ráno&lt;/font&gt;&lt;/p&gt;
+&lt;?php }else{ ?&gt;
+&lt;p&gt;&lt;font color=blue&gt;Dobrý den&lt;/font&gt;&lt;/p&gt;
+&lt;?php } ?&gt;
+</pre>
+</td></tr>
+</tbody></table>
+</li>
+<li>pro přístup k proměným zaslaných z formuláře (podle použité metody):<br>
+<span class="zlut">$_POST["jmeno_promenne"]</span><br>
+resp.
+<span class="zlut">$_GET["jmeno_promenne"]</span>
+</li>
+<li>pokud nevíme, jak k dané proměnné přistupovat můžeme použít funkci<br>
+<span class="zlut">PHPinfo();</span><br>
+která nám vypíše tabulku s předávanými informacemi
+</li>
+<li>
+Pomocí PHP můžeme v jednom skriptu mít jak formulář, tak jeho zpracování. 
+Ve svém <i>~/public_html</i> si vytvořte soubor <i>form.php</i>, s timto obsahem:
+<!--<ol>
+<li>Přejmenujte ho na <i>form.php</i></li>
+<li>metodu odesílání <i>method</i> zaměňte z <i>GET</i> na <i>POST</i></li>
+<li>přidejte políčko <i>jmeno</i></li>
+<li><i>action</i> směřovala na <i>http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/form.php</i></li>
+<li>Celé <i>"body"</i> by mělo vypadat takto:-->
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;?php
+if ($_POST["jmeno"]){
+  echo "Prišel nám formulář ke zpracování od".$_POST["jmeno"];
+}else{
+#formulář je čisté HTML =&gt; mohl bych ho vypisovat přes echo, ale
+#zde je vhodné to kombinovat s HTML =&gt; "ukončím" PHP a začnu HTML
+?&gt;
+&lt;form action="http://www.karlin.mff.cuni.cz/~richter/form.php" method=POST&gt;
+jmeno:&lt;input name="jmeno"&gt;&lt;br&gt;
+
+&lt;input type=submit name="sub1"&gt;
+Input a:&lt;input name=a id=a&gt;<br>
+Input b:&lt;input name=b id=b&gt;<br>
+...
+&lt;/form&gt;
+&lt;?php #skončil jsem s HTML a pokračuji PHP
+}?&gt;
+</pre></td></tr>
+</tbody></table>
+</li>
+<li>
+Formulář si otevřete v prohlížeči a vyplňte políčko <b>jméno</b> a odešlete.<br>
+Co je špatně při otevření formuláře ... <i>Notice: Undefined index: jmeno in /usr/html/richter/form.php on line 2 </i><br>řešení - ošetřit existenci proměnné pomocí funkce <i>isset(jmeno_promenne)</i>, která testuje, je-li daná proměnná nastavena
+</li>
+<li>Skript bez, <i>warnings:</i>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;?php
+if (isset($_POST["jmeno"])){
+  echo "Prišel nám formulář ke zpracování od".$_POST["jmeno"];
+}else{...
+</pre>
+</td></tr></tbody></table>
+</li>
+
+
+</ul>
+<hr>
+<h3>Základní funkce</h3>
+<ul>
+<li>
+výpis<br>
+<span class="zlut">print "abc";</span><br>
+nebo<br>
+<span class="zlut">echo "abc";</span>
+</li>
+<li>
+operace s čísly:
+<ul>
+<li><span class="zlut">+ - * / % += *= -= %=</span></li>
+<li><span class="zlut">sin cos atan atan2( y, x) ...</span></li>
+<li><span class="zlut">DecBin() BinDec() DecHex() HexDec() Rad2Deg() Deg2Rad()</span></li>
+</ul>
+</li>
+<li>
+operace s řetězci:
+<ul>
+<li><span class="zlut">.</span> spojování řetězců</li>
+<li><span class="zlut">Strlen() SubStr(str, zac, delka);</span> od 0, je-li <span class="zlut">zac</span>&lt;0, pak se to počítá od konce</li>
+<li><span class="zlut">StrTr(str, "ABC", "abc");</span> transformace "znak za znak"</li>
+<li><span class="zlut">PREG_match('/regexp/', $str);</span> testování pomocí regulárních výrazů - vrací true/false</li>
+<li><span class="zlut">PREG_replace( '/regexp/', "nahrada", $str);</span> náhrada pomocí regulárních výrazů - vrací zaměněný řetězec - původní zůstane beze změny</li>
+<li><span class="zlut">NL2BR($str);</span> převod konců řádků <span class="zlut">\n</span> na <span class="zlut">&lt;br&gt;</span></li>
+<li><span class="zlut">HTMLEntities($retezec);</span> převod proměnné <span class="zlut">$retezec</span> na správné HTML zobrazování např. <span class="zlut">&lt;</span> na <span class="zlut">&amp;lt;</span></li>
+<li>"hrátky" s proměnnými:<br>
+<span class="zlut">$a="b";<br>
+$b="c";<br>
+$c="Nazdarek";<br>
+echo $$$a;<br>
+</span>
+vypíše Nazdarek
+</li>
+</ul>
+</li>
+<li>
+pole, operace s poli:
+<ul>
+<li>pole se označují jako běžné proměnné pomocí <span class="zlut">$</span></li>
+<li>definice pole <span class="zlut">$pole=Array(1,2,3,4);</span></li>
+<li>k jednotlivým položkám přistupujeme indexem v hranatých závorkách <span class="zlut">$pole[0];</span></li>
+<li>pokud se k řetězci "chováme" jako k poli, pak jsou jednotlivé znaky brány jako položky pole tj.:<br><span class="zlut">$text="Dnes je krasny den";<br>
+print $text[2];</span><br>
+vypíše <span class="zlut">e</span>
+</li>
+<li>počet položek pole:<br>
+<span class="zlut">Count($pole);</span>
+</li>
+<li>tvorba pole rozsekáním řetězce podle určitého oddělovače:<br>
+<span class="zlut">Explode("oddelovac", $str);</span>
+</li>
+</ul>
+</li>
+<li>podmínky:<br>
+<span class="zlut">if (){...}else if(){...}else{...}</span>
+</li>
+<li>cykly:
+<ul>
+<li><span class="zlut">for ($i;$i&lt;10;$i++){}</span></li>
+<li><span class="zlut">while () {}</span></li>
+<li><span class="zlut">do {} while ();</span></li>
+<li><span class="zlut">continue</span> přeskočí zbylé příkazy v daném kroku</li>
+<li><span class="zlut">break</span> ukončí celý cyklus</li>
+</ul>
+</li>
+<li>
+funkce<br>
+<span class="zlut">
+function max($a,$b){<br>
+  if ($a&gt;$b){return $a;}else{return $b;}<br>
+}<br>
+</span>
+</li>
+<li>datum/čas<br>
+<span class="zlut">Date("formát");</span><br>
+formát:
+<ul>
+<li><span class="zlut">Y</span> rok YYYY</li>
+<li><span class="zlut">y</span> rok yy</li>
+<li><span class="zlut">m</span> měsíc 01-12</li>
+<li><span class="zlut">w</span> den v týdnu 1..7</li>
+<li><span class="zlut">d</span> den v měsíci 1..31</li>
+<li><span class="zlut">z</span> číslo dne v roce</li>
+<li><span class="zlut">H</span> hodina  00-23</li>
+<li><span class="zlut">h</span> hodina  01-12</li>
+<li><span class="zlut">i</span> minuta  00-59</li>
+<li><span class="zlut">s</span> vteřina 00-59</li>
+<li><span class="zlut">A</span> dop/odp AM/PM</li>
+</ul>
+např.: <span class="zlut">Date("d.m.Y H:i:s");</span> vrátí: <span class="zlut">30.4.2014 13:05:00</span>
+</li>
+	př.<br><span style="background:yellow;">print Date("d.m. Y - H:i:s")." tj.".time();</span>  vypíše: 22.05. 2017 - 10:05:35 tj.1495440335	
+<li>Funkce <span style="background:yellow;">time()</span> vrátí počet vteřin od 1.1.1970 tzv. timestamp <br></li>
+<li><span style="background:yellow;">mktime($hodina,$minuta,$vteřina,$měsíc,$den,$rok)</span> vrátí počet vteřin od 1.1.1970 pro příslušné datum<br>
+př.<br>
+<div id="jazyk" style="border-style:solid;border:color:black;width:350px;">
+<pre>&lt;?php
+$novyrok2017=mktime(12,00,00,1,1,2017);
+$den=Date("w",$novyrok2017);
+print $den;
+?&gt;
+</pre>
+</div>
+<br>
+Vypíše "6" tj. 1.1.2017 byl sobota
+</li><li>okamžité ukončení skriptu:<br>
+<span class="zlut">die;</span>
+</li>
+<li>posílání e-mailu pomocí PHP<br>
+<span class="zlut">
+$to="richter@karlin.mff.cuni.cz";<br>
+$header="From: richter@karlin.mff.cuni.cz";<br>
+$subject="predmet dopisu";<br>
+$body="telo dopisu";<br>
+mail($to,$subject,$body,$header);<br>
+</span>
+</li>
+<li>operace se soubory:
+<ul>
+<li><span class="zlut">File_Exists</span> test existence souboru (na soubor se odkazujeme v rámci systému tj. <span class="zlut">/usr/html/richter/soubor</span>) </li>
+<li><span class="zlut">$lines=File(soubor);</span> v poli <span class="zlut">$lines</span> budou jednotlivé řádky daného souboru, jako "soubor" můžeme použít jednak odkaz v rámci systému, ale také www odkaz</li>
+<li><span class="zlut">$fp=FOpen($file, "jak");</span> <span class="zlut">$fp</span> je popisovač (handler) daného souboru<br>
+jak: "r","a","w"</li>
+<li><span class="zlut">$radek=FGetS($fp);</span> - přečte jeden řádek z daného souboru<br>
+<span class="zlut">while ($radek=FGetS($fp)){...}</span> - postupně přečte všechny řádky ze souboru, když je na konci vrátí <span class="zlut">false</span></li>
+<li><span class="zlut">FWrite($fp,"řádek zapsaný do souboru");</span> - do souboru s popisovačem <span class="zlut">$fp</span> zapíše jeden řádek</li>
+<li><span class="zlut">FClose($fp);</span> - ukončení práce se souborem</li>
+</ul>
+</li>
+<li>čtení adresáře:<br>
+<span class="zlut">
+$d=OpenDir("/usr/users/richter/public_html/doc/php");<br>
+while (($soubor=ReadDir($d))){<br>
+echo $soubor."&lt;BR&gt;";
+}
+</span>
+</li>
+<li>vkládání souborů - např. s připravenými funkcemi:<br>
+<span class="zlut">require(cosi);</span> - když se zavolá několikrát na stejný soubor, tak se vloží jen poprvé<br>
+<span class="zlut">include(cosi)</span> - když se zavolá několikrát vloží se pokaždé
+</li>kopírování souborů<br>
+<span class="zlut">copy($co,$kam);</span><br>
+funkce vrací <span class="zlut">true</span>/<span class="zlut">false</span> podle toho zda se kopírování zdařilo či ne.
+
+</ul>
+<!--<hr>
+Příklad: (registrace)
+<ul>
+<li>
+Ze začátku hodiny máme soubor <i>form.php</i>
+</li>
+<li>
+Z <i>/usr/html/hpspool/mu/NMIN266</i> si zkopírujte soubor <i>ctverce.png</i> - k odeslání formuláře použijeme klik do obrázku tj. místo elementu <i>submit</i> bude
+<pre>
+&lt;input type=image name=obrazek src=ctverce.png align=top>
+</pre>
+Odeslání bude uvozeno např. textem "Pro odeslání formuláře klikněte na vaši oblíbenou barvu" ?
+</li>
+<li>
+Pomocí funkce <i>PHPInfo()</i> zjistíme v jaké proměnné jsme dostali souřadnice kliknutí (v rámci obrázku ctverce.png)
+</li>
+<li>
+V rámci zpracování formuláře bude kontrola vyplnění/korektnosti jednotlívých políček a v případě nekorektnosti bude vygenerován link na nové vyplnění formuláře
+</li>
+<li>při zpracování korektně vyplněného formuláře vypište řádek:<br>
+Jméno Příjmení e-mail rok_narození barva<br>
+(barvu určíte podle kliknutí)<br>
+také tam přidejte odkaz na "nové vyplnění formuláře"
+</li>
+<li>
+odeslaná data zapisujte do souboru <span class="zlut">registrovani.txt</span>
+</li>
+<li>
+na soubor <span class="zlut">formular.php</span> si vytvořte link s názvem <span class="zlut">admin.php</span>
+</li>
+<li>
+v proměnné <span class="zlut">$_SERVER["SCRIPT_FILENAME"]</span> máte vyplněné jmého skriptu (i s cestou - pomocí funkce <i>basename()</i> můžeme cestu odstranit), který voláte - můžete se "rozhodovat" podle toho jestli k skriptu přistupujete přes <span class="zlut">formular.php</span> anebo přes <span class="zlut">admin.php</span> - upravte skript takto: když k němu přistupujete přes <span class="zlut">admin.php</span>, tak vypíše seznam registrovaných
+</li>
+<li>jako volbu do tagu <span class="zlut">form</span> přidejte <span class="zlut">enctype="multipart/form-data"</span> což nám umožní posílat soubory
+</li>
+<li>
+do formuláře přidejte input políčko typy file tj.:<br>
+&lt;input type=file name=foto accept="image/*,text/plain,application/x-zip-compressed"&gt;&lt;br&gt;
+</li>
+<li>při odeslání formuláře s vyplněným souborem budeme mít k dispozici tyto proměnné:<br>
+<span class="zlut">$_FILES["foto"]["name"]</span> tj. původní jméno souboru<br>
+<span class="zlut">$_FILES["foto"]["type"]</span> tj. typ souboru<br>
+<span class="zlut">$_FILES["foto"]["tmp_name"]</span> tj. cesta a jméno pod jakým se tento soubor uložil<br>
+vytvořte si adresář <span class="zlut">fotografie</span> a při zpracování formuláře do něj ukládejte zaslané obrázky (pod původním názvem)
+</li>
+<li>do "administrátorského" vypisu přidejte k řádku s údaji i fotografii</li>
+</ul>-->
+
+
+</body></html>
