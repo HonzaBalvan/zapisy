@@ -1,0 +1,136 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>NMI266 - 4.5. JavaScript - cvičení</title>
+<style>
+BODY {
+  color :BLACK;
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+LI{
+   width:700px;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+}
+TD {
+  font-family: sans-serif;
+  border-style:solid;
+  border-width:1px;
+  border-color:black;
+}
+</style></head>
+
+<body>
+<h2>JavaScript - cvičení</h2>
+<ol>
+<!--<li>
+Soubor <i>/usr/html/NMIN266/cerven.pl</i> si zkopírujte do <i>~/public_html/</i> a pomocí tohoto skriptu vygenerujte <i>cerven.html</i> (budete potřebovat i <i>styl.css</i>) - ... proč je text přes tabulku?<br>
+<pre>
+cp /usr/html/NMIN266/cerven.pl ~/public_html
+cp /usr/html/NMIN266/styl.css ~/public_html
+cd ~/public_html
+chmod u+x cerven.pl
+./cerven.pl &gt; cerven.html
+
+</pre>
+<br><br>
+<A HREF=cerven.html>cerven.html</A>
+</li>-->
+<li>
+Pomocí událoati <i>onLoad</i> spusťte při otevření stránky <i>jazyk.html</i>
+ dotazovací okénko s možností výběru jazyka (en,cz,fr,de) a podle 
+odpovědi zobrazte správnou jazykovou verzi. Jako text použijte báseň od 
+Williama Blake Tygr viz. níže ve daných jazykových verzích.<br><br>
+Potřebné "nástroje"
+<pre>onLoad
+window.prompt
+function
+document.getElemenById
+.innerHTML
+</pre>
+CSS
+<pre>&lt;div&gt;
+border-style:solid
+border-color:red
+bordr-width:1px
+width:400px
+
+</pre>
+
+<pre>en="&lt;pre&gt;\nTyger\n(William Blake)\n\nTyger, Tyger burning bright,\nIn the forest on the night:\nWhat immortal hand of eye.\nCould frame thy fearful symmetry?\n\nIn what distant deep or skies\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand dare seize the fire?\n\nAnd what shoulder, what art\nCould twist the sinews on thy heart?\nAnd when thy heart began to beat,\nWhat dread hand? what dread feet?\n\nWhat the hammer? what the chain.\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp\nDare is deadly terrors clasp?\n\nWhen the stars threw down their spears\nAnd wate´d heaven with their tears,\nDid he smile his work to see?\nDid he who made the Lamb make thee?\n\nTyger, Tyger, burning bright\nIn the forest of the night:\nWhat immortal hand or eye\nDare frame thy fearful symmetry?\n&lt;/pre&gt;";
+fr="&lt;pre&gt;\nTigre O Tigre\n(William Blake)\n\nTigre O Tigre! Toi qui luis\nAu fond des forêts de la nuit,\nQuel esprit immortel sut faire\nTa symétrie meurtrière?\n\nSur quels gouffres et sous quels cieux\nBrûla-t-il le feu de tes yeux?\nQuelle aile prît un tel essor?\nQuel bras saisit ce feu, cet or?\n\nQuelle force de quel sculpteur\nTordit les tendons de ton cœur?\nEt quand ce cœur se mut en toi\nQuels pieds, quels bras, et quel effroi!\n\nA qui la chaîne, le marteau,\nLa forge où flamba ton cerveau,\nL'enclume? Quelle poigne cruelle\nCrut serrer ses terreurs mortelles?\n\nTout astre a déposé ses armes,\nEt trempé le ciel de ses larmes.\nSourit-il? Te fit-il Celui\nQui fit l'agneau au temps jadis?\n\nTigre O Tigre! Toi qui luis\nAu fond des forêts de la nuit,\nQuel immortel oserait faire\nTa symétrie meurtrière?\n&lt;/pre&gt;";
+de="&lt;pre&gt;\nDer Tiger\n(William Blake)\n\nTiger, Tiger, Feuerspracht\nin der Dschungeln dunkler Nacht:\nWelches Aug', welch' ew'ge Hand\nformten Deiner Schrecken Brand?\n\nIn welch' Himmeln ungeheuer\nbrannte Deiner Augen Feuer?\nWessen Flügel, wessen Hand\nwagte sich an diesen Brand?\n\nWelcher Schulter Können wand\nDeines Herzens Sehnenstrang?\nWer, als Herzens Schlag begann,\nfurchtbar Hand und Fuß ersann?\n\nWelche Kett' und Hammer fand\nin welch' Esse den Verstand?\nWelcher Amboß, welche Welt\nDeine Todesschrecken hält?\n\nAls der Sterne Speer herab\nTränen unserm Himmel gab:\nHat vollbracht er's und bedacht,\ndaß er Lamm und Dich gemacht?\n\nTiger, Tiger, Feuerspracht\nin der Dschungeln dunkler Nacht:\nWelches Auge, welche Hand\nwagten Deines Schreckens Brand?\n&lt;/pre&gt;";
+cz="&lt;pre&gt;\nTygr\n(William Blake)\n\nTygře tygře ohnivou\nzáříš svítíš lesní tmou\nkdo ten nesmrtelník byl\njenž z ní ti souměr setrojil\n\nV kterých hlubinách či nebesích\nhořel oheň v očích tvých\nkdo opovážil vlet se dál\nrukou tam ten oheň brát\n\nKdo v tvém srdci k svalu sval\numěním a silou spjal\nčí hrozná ruka mohla vzít\nsrdce když chce jalo bít\n\nKým byl mozek ukován\nv kterou pec byl potom dán\njeho hrůzy strašlivé\nkdo je sevřel v pěsti své\n\nA kdy hvězdy vrhaly střely\nspokojen byl s dílem svým\nje snad tvůrce beránků\ni stvořitelem tvým\n\nTygře tygře ohnivou\nzáříš svítíš lesní tmou\nkdo ten nesmrtelník byl\njenž z ní ti souměr setrojil\n&lt;/pre&gt;";
+</pre>
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas1a.html">Tygr</a>
+<br><br>
+</li>
+<li>
+Modifikujte předchozí bod tak, aby byl ošetřen neznámý jazyk - varování znovu otázka
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas1b.html">Tygr</a>
+<br><br>
+</li>
+<li><b>Kontrola formuláře</b> Vytvořte jednoduchý formulář - jedno input
+ políčko "email" a odesílací tlačítko, při odeslání zkontrolujte, jestli
+ je email korektně vyplněn<br><br>
+Potřebné "nástroje"
+<pre>loc=window.location.href;
+onSubmit="return funkce();"
+var re = /^[_a-zA-Z0-9\.\-]+@[_a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,4}$/;
+re.test(email);
+</pre>
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas2.html">Kontrola</a>
+<br><br>
+</li>
+<li>
+Stránku na které bude formulář s dvěmi vyplňovacími políčky <i>rok</i> <i>mesic</i> neviditelný &lt;div&gt; a tlačítko, po kliknutí na tlačítko se do &lt;div&gt; vyplní rok a mesic z input políček<br><br>
+Potřebné nástroje
+<pre>  ...style.visibility="visible"/"hidden"
+</pre>
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas3a.html">Kalendář1</a>
+<br><br>
+</li>
+<li>
+Modifikace předchozího bodu - po vyplnění roku a měsíce se do elementu 
+&lt;div&gt; vyplní kalendář pro příslušný měsíc, navíc bude tento 
+&lt;div&gt; umístěn absolutně na pozici <i>top=100</i> a <i>left=300</i><br><br>
+Potřebné nástroje
+<pre>   prvniho=new Date(rok,mesic,den,0,0,10);
+   prvniho.getMonth()
+   prvniho.getDay()
+   ...style.position="absolute"/"relative"
+   ...style.top="100"
+</pre>
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas3b.html">Kalendář2</a>
+<br><br>
+</li>
+<li>
+Soubor <i>/usr/html/hpspool/mu/NMIN266/kvetiny.tar</i> si zkopírujte do <i>~/public_html</i>
+ a tam rozbalte (je to barevná a černobílá varianta šesti květin). 
+Vytvořte stránku, na které bude tabulka s šesti buňkami v každé buňce se
+ zobrazí obrázek jedné květiny v ČB provedení, po najetí myši se zobrazí
+ barevné provedení a po odjetí myší se zobrazí znovu ČB verze.<br><br>
+Potřebné nástroje
+<pre>  onMouseOver
+  onMouseOut
+  this.src
+</pre>
+<br><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/javas4.html">Květiny</a>
+<br><br>
+</li>
+</ol>
+
+
+</body></html>

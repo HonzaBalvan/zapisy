@@ -1,0 +1,630 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NMIN266 - 19.2.2026</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<a href="#ukoly">Úkoly</a>
+<h2>Podmínky zápočtu</h2>
+<ul>
+<li>max. 3 neúčasti</li>
+<li>aktivní účast</li>
+</ul>
+<h2>Obsah kurzu</h2>
+<ul>
+<li>Uživatelské seznámení UNIX/LINUX</li>
+	<ul>
+	<li>příkazová řádka - shell</li>
+	<li>základní příkazy</li>
+	<li>editory <i>vi/vim</i></li>
+	<li>regulární výrazy</li>
+	<li>jednoduché skripty v <i>bash</i></li>
+	</ul>
+<li>základy <i>html</i>, <i>css</i>, formulářové prvky</li>
+<li>aktivní html stránky na straně klienta (prohlížeče) tj. <i>JavaScript</i></li>
+<li>aktivní html stránky na straně serveru <i>php</i></li>
+<li>spolupráce <i>php</i> s databází <i>MySQL</i> ... bude-li čas</li>
+</ul>
+<hr>
+<h2><span style="background:yellow;">Historie UNIXu</span></h2>
+<ul>
+<li>první verze <i>UNIXu</i>1969-1970 Bellovy laboratoře</li>
+<li>OS cca od roku 1970, většina je naprogamovaná v jazyce <i>C</i></li>
+<li>hlavní autoři Ken Thomson, Denis Ritchie, Brian Kerningham (autoři jazyka <i>C</i></li>
+<li>první implementace na 8bitových počítačích, naprogramováno v <i>assembleru</i></li>
+<li>snaha o snadnou přenositelnost (nezávislost na konkrétním HW), jazyk <i>C</i> je v něm napsáno cca 90% OS UNIX</li>
+<li>1975 UNIX verze 7 uvolněna i mimo Bellovy laboratoře</li>
+<li>1979 UNIX ve verzi z Belových laboratoří (AT&amp; T) a z univerzity v Berkley (BSD)</li>
+<li>univerzita v Berkley - <i>C-shell</i> editor <i>vi</i></li>
+<li>1980 verze <i>XENIX</i> (Microsoft), HP-UX (Hewlet Packard) ...</li>
+<li>1991 napsal Linus Torvalds volně šiřitelnou (licence GNU GPL) verzi <i>UNIXu</i> <i>LINUX</i></li>
+</ul>
+<h2><span style="background:yellow;">Architektura systému</span></h2>
+<ul>
+<li>na HW je závislé jen jádro systému (kernel)</li>
+<li>bežící program tzv. <i>proces</i></li>
+<li><span style="background:yellow;color:red;">KERNEL</span>:(systém ovládání souborů roury, ovladače(<span style="color:#1F497D;">správa procesů</span>(<span style="color:#92D050">správa paměti</span>(<span style="color:#FFC000">správa procesoru</span>(<span style="color:red">kernel</span>))))) (shell|systémové a aplikační procesy) - interaktivní uživatelé</li>
+<li>jádro je v operační paměti trvale ostatní programy jen po dobu běhu (to se týká i shellu)</li>
+<li>při nedostatku paměti odkládání na disk - <i>SWAPPING</i></li>
+<li>uživatel komunikuje s jádrem pomocí <i>SHELLU</i> (sh, csh, bash ...), každý uživatel má nastaven svůj výchozí shell - dnes je to obvykle <i>bash</i></li>
+<li>UNIX byl velmi brzy (70.léta) navržen jako systém <i>multitasking</i> a <i>multiuser</i><br>
+'multitaskingový' (ve skutečnosti procesor rychle přepíná mezi jednotlivými procesy)<br>
+multiuživatelský (root)</li>
+<li>adresářová struktura <i>UNIX</i> vs. <i>MS DOS</i> resp. <i>MS Windows</i><br>
+<pre>/ - kořen (root)
+	/sbin - správa systému
+	/bin - základní syst. programy, shell
+	/dev - zařízení CD, FD, HD, PRN ...
+	/usr/local/bin - spustitelné programy doplněné správcem
+	/home či /usr/users - domovské adresáře uživatelů (public_html = /usr/html)
+	/tmp - dočasný adresář
+	/etc - konfigurace systému (/etc/passwd ...)
+	/var - soubory s časově proměnnou délkou /var/spool/mail/* došlá pošta
+	/mnt - prázdný pro možnost mountovaní ext zařízení
+</pre>
+</li>
+<li>soubory, jména souborů
+<ul>
+<li>délka názvu souboru až 255 znaků (<i>UNIX</i> vs. <i>DOS</i> 8.3)</li>
+<li>jediný zakázaný znak v názvu souboru je '<span style="background:yellow;">\</span>'</li>
+<li>nedoporučené znaky v názvech souborů jsou 
+<span style="background:yellow;">@</span>,
+<span style="background:yellow;">$</span>,
+<span style="background:yellow;">|</span>,
+<span style="background:yellow;">&amp;</span>,
+<span style="background:yellow;">*</span>,
+<span style="background:yellow;">!</span>,
+<span style="background:yellow;">?</span>,
+<span style="background:yellow;">[</span>,
+<span style="background:yellow;">]</span>,
+<span style="background:yellow;">(</span>,
+<span style="background:yellow;">)</span>,
+<span style="background:yellow;">;</span>,
+<span style="background:yellow;">`</span>,
+<span style="background:yellow;">'</span>,
+<span style="background:yellow;">"</span>
+- metaznaky viz. dále</li>
+<li>senzitivita na malé/VELKÉ v názvu souboru - znaky soubor <i>ahoj</i> je jiný než soubor <i>AHOJ</i></li>
+<li>koncovky souborů jsou (až na výjimky) nezávazné, je však vhodné je volit pro přehlednost (.pl,.c ...)</li>
+<li>konce řádků v textových souborech jsou v UNIXu prezentovány "znakem" <i>[CR]</i> narozdíl od MS Windows (<i>[CR][LF]</i>) a MAC OS (<i>[LF]</i>)</li>
+<li>systémové soubory začínají znakem "." (např. <i>.bash_profile</i>)</li>
+<li>cesta k souborům absolutní (<i>/bin/bash</i>) vs. relativní (<i>../../bin/bash</i>) případně s náhradou za domovský adresář (<i>~/bin/mujskript</i>)</li>
+</ul>
+</li>
+</ul>
+<h2><span style="background:yellow;">Systémové programy</span></h2>
+<ul>
+<li>programovatelné interprety příkazů (<i>sh</i>, <i>bash</i>, ...)</li>
+<li>programy pro práci se soubory (zakládání, rušení, výpis adresářů, zobrazení obsahu souborů)</li>
+<li>textové editory</li>
+<li>práce s textem (formátování)</li>
+<li>práce s procesy (zobrazení stavu procesů, zastavení procesu, spuštění procesu v daný čas)</li>
+<li>komunikační programy (e-mail, vzdálený přístup, vzdálený přenos souborů, talk)</li>
+<li>překladače programovacích jazyků, sestavovací programy, ladící prostředky</li>
+<li>programy pro tisk souborů a archivaci souborů na výměnná média (pásky)</li>
+<li>programy pro 'komfort' uživatele (<i>man</i>, kalendář, diář ...)</li>
+<li>programy pro údržbu systému (instalace zařízení, zřizování kont uživatelů, instalace systému...)</li>
+</ul>
+<h2><span style="background:yellow;">Komunikace SYSTÉM ↔ uživatel</span></h2>
+<ul>
+<li>nelze anonymě - nutné přihlášení login/password<br>
+změna hesla:<br>
+obecně - příkaz <span style="background:yellow;">passwd</span><br>
+karlín - přes stránku <a href="https://www.karlin.mff.cuni.cz/network/ldap/">https://www.karlin.mff.cuni.cz/network/ldap/</a>
+</li>
+<li>vzdálené přihlášení pomocí programu <i>putty</i> nebo jiného, který umožní přístu pomocí <i>ssh</i> tj. SecureSHell<br> (my se budeme přihlašovat k stoji <span style="background:yellow;">hill2.karlin.mff.cuni.cz</span> )</li>
+<li>jako shell, pomocí kterého komunikujete se systémem je nastaven <i>bash</i></li>
+<li>při zadání příkazu spustí shell odpovídající program a předá mu řízení po skončení převezme řízení opět shell</li>
+<li>shell může interpretovat i 'dávku' příkazů (obdoba souborů *.bat, *.cmd ve win) tzv. <i>skripty</i></li><li>
+</li><li> UNIX vs WIN - v UNIXu je GUI (Graphical User Interface) jen 
+nadstavba vše lze ovládat jen z příkazové řádky vs. WIN kde je GUI ten 
+'základ'</li>
+<li>editace příkazového řádku (šipky nebo ^P ^N)</li>
+<li>historie spuštěných příkazů, příkaz <span style="background:yellow;">history</span> a jejich editace šipky na klávenici ↑ - předchozí použitý příkaz, ↓ - následující příkaz; <br>← → - pohyb v rámci příslušného příkazu z historie</li>
+<li>na běžných klávesnicích dříve neexistovaly šipky ... =&gt; ctrl seqence
+<pre>^h = DELETE či BACKSPACE
+^i = tabelátor
+^u = rušení celého řádku
+^l = vyčištění 'obrazovky' 
+^a = konec řádku
+^e = začátek řádku
+^k = smazání až na konec řádku
+!t = spuštění předchozího příkazu, který začínal na t
+</pre>
+</li>
+<li>pomocí klávesy  [tabelátor] nám systém pomáhá doplnit co "můžeme" mít na mysli<br>
+<span style="background:lime;">cv.<br>
+napište 'cale' a zmáčkněte [tabelátor] - automaticky se doplní 'calendar'<br>
+tento příkaz odešlete klávesou [enter]
+</span></li>
+<li>^s - pozastavení (např. výpisu)</li>
+<li>^q - opětovné oživení</li>
+<li>^c - ukončení aktuálního příkazu</li>
+<li><span style="background:lime;">cv.<br>
+ls -lR / (dlouhý výpis kořene i s podadresáři)<br>
+^s (výpis se pozastaví, po chvíli)<br>
+^q (výpis bude pokračovat)<br>
+^c (výpis se ukončí)
+</span></li>
+<li>přesměrování vstupu, výstupu, chybového výstupu, roury<br>
+<pre>  &lt; přesměrování vstupu
+  &gt; přesměrování výstupu (když výstup existuje, pak bude přepsán)
+  &gt;&gt; přesměrování výstupu (když výstup existuje, pak bude výstup přidán na konec)
+  2&gt; přesměrování chybového výstupu
+  | roura tj.přesměrování výstupu jednoho procesu jako vstup druhého
+</pre>
+<span style="background:lime;">
+  cv.<br>
+  echo richter@karlin.mff.cuni.cz &gt; .forward (výstup příkazu <i>echo</i> se přesměruje do souboru .forward<br>
+  takto si můžete zajistit přeposílání pošty na svou aktivní e-mailovou adresu
+</span>
+</li>
+<li>metaznaky<br>
+* - libovolná posloupnost znaků (i 'prázdnou')<br>
+? - libovolný znak<br>
+[abce] nebo [a-d] - jeden znak z výčtu<br>
+shell nejprve interpretuje metaznaky a pak je předá příkazu
+když mocí mermo chci metaznak tak escape konvence \*
+</li>
+</ul>
+<h2><span style="background:yellow;">Uživatelé, skupiny, práva</span> </h2>
+<li>skupiny - každý uživatel má svou <i>primární</i> skupinu (students), ale může být členem několika skupin (students,guestk)</li>
+<li>typy souborů (náhled získáme pomocí<span style="background:yellow;"> ls -l)</span>
+<pre>  -rwxr-xr-x   : obyčejný soubor
+  drwxr-xr-x   : adresář
+  brwxr-xr-x   : blokové zařízení
+  crwxr-xr-x   : znakové zařízení
+  lrwxr-xr-x   : link
+</pre>
+</li>
+<li>práva k souborům <i>rwx</i> vs <i>755</i> co znamenají čísla jak se skládají<br>
+každý soubor (adresář) má tato práva: uživatel-skupina-ostatní
+<pre>  čísly 0--- (součty)
+  1--x spouštět obsah přepnout se do adresáře
+  2-w- modifikovat soubor zakládat a rušit soubory
+  4r-- číst obsah souboru číst obsah adresáře
+  v každé trojici tedy 0-7
+</pre>
+  když převedeme na binární číslo tak 1 dostaneme u povoleného práva a 0 u zakázaného<br>
+  <pre>  5=101,7=111,4=100 ...
+  </pre>
+</li><li>příkaz na změnu práv <i>chmod</i> dva způsoby chmod a+r soubor chmod 444 kdy je co výhodnější</li>
+<li>změna skupiny chgrp</li>
+<li><i>mask</i> maska přístupových práv pro nově zakládané soubory
+</li><li>skripty, první řádek <i>#!cesta k interpretu</i>, jinak # značí komentář</li>
+<li>jednoduchý skript (s názvem pozdrav)<br>
+<span style="background:lime;">
+  cv.<br>
+    echo '#!/bin/sh' &gt; pozdrav<br>
+    echo 'echo ahoj' &gt;&gt; pozdrav<br>
+    chmod u+x pozdrav<br>
+    ./pozdrav<br>
+</span>
+</li>
+<h2><span style="background:yellow;">Procesy</span> </h2>
+<ul>
+<li>výpis běžících procesů - příkaz <i>ps</i><br>
+(číslo-identifikátor příslušného procesu)</li>
+<li>příkaz <i>kill</i> 'číslo procesu' - ukončení běhu příslušného procesu</li>
+<li>^z - aktivní proces na pozadí</li>
+<li>příkaz <i>jobs</i> výpis procesů které běží "na pozadí"</li>
+<li>příkaz <i>fg</i> "přesun" z pozadí na popředí</li>
+<li>v GUI příkaz&amp; - spuštění příkazu rovnou na pozadí (obvyklé pro X aplikace)</li>
+<li>
+<span style="background:lime;">
+cv.<br>
+mc (spuštění aplikace pro praci se soubory)<br>
+^z (aplikace mc umístíme na "pozadí")<br>
+jobs (výpis běžících aplikací)<br>
+[1]+  Stopped                 mc<br>
+fg (opět na "popředí")
+</span>
+</li>
+</ul>
+<h2><span style="background:yellow;">Základní příkazy</span></h2>
+<ul>
+<li>práce s příkazovou řádkou <br>
+TAB<br>
+^A = HOME<br>
+^E = END<br>
+</li>
+<li>historie příkazů šipky; ^P, ^N </li>
+<li>^S, ^Q, ^L</li>
+<li>spuštění více příkazů naráz: příkaz 1;příkaz 2 ...</li>
+<li><span style="background:yellow;">Informativní příkazy</span>
+<ul>
+<li><i>whoami</i>   (kdo jsem :)</li>
+<li><i>hostname</i> (kde jsem)</li>
+<li><i>who</i>      (kdo je tu se mnou)</li>
+<li><i>pwd</i>      (kde jsem, aktuální adresář)</li>
+<li><i>history</i>  (co jsem spustil za příkazy)</li>
+<li><i>ping</i>     (ověření, že daný stroj žije)</li>
+<li><i>which</i>    (odkud se spouští daný příkaz)</li>
+<li><i>wc</i> (počet řádek (-l) počet slov (-w) znaků (-c))</li>
+<li><i>ls</i> (výpis adresáře/info o souboru(-ech)<br>
+  -l dlouhý výpis<br>
+  -d jen info o adresáři ne o obsahu<br>
+  -R rekurzivně do podadresářů<br>
+  -a vše tzn. i systémové .XYZ <br>
+  -t setříděno podle času<br>
+  lze používat metaznaky (?,*,[] ...)
+  <br>
+</li>
+<li><i>file</i> (heuristikou zjistí o jaký se jedná soubor)</li>
+<li><i>date</i> datum, čas</li>
+<li><i>cal</i> (kalendář)</li>
+<li>[příkaz] <i>--help</i> krátká nápověda k příkazu</li>
+<li><i>man [příkaz]</i> manuálové stránky</li>
+</ul>
+</li>
+<li><span style="background:yellow;">Práce se soubory/adresáři</span>
+<ul>
+<li><i>cd</i> (Change Directory) přepnutí do konkrétního adresáře<br>
+    absolutní vs. relativní cesta, bez parametru přepne do domovského adresáře<br>
+    .  - náhrada za aktuální adresář<br>
+    .. - náhrada za nadřazený adresář<br>
+    ~  - náhrada za domovský adresář<br>
+</li>
+<li><i>mkdir</i> (Make Directory) vytvoření jednoho či více adresářů<br>
+<span style="background:lime;">cv. vytvořte si adresář NMIN266<br>
+<i>mkdir NMIN266</i>
+</span>
+</li>
+<li><i>rmdir</i> (Remove Directory) odstranění prázdného (!) adresáře</li>
+<li><i>rm</i> (ReMove) odstranění souboru <br>
+   <i>-r</i> rekurzivně tj. i obsah podadresářů<br>
+   <i>-i</i> před smazáním se zeptá <br>
+   <i>-f</i> force smaže i neprázdný adresář<br>
+   pozor na příkaz typu "rm *!" je vhodné se ujistit kde jsem (pwd) případně jaké soubory předá shell
+   příkazu rm (tzn. nejprve <i>ls *</i>)<br>
+</li>
+<li><i>cp</i> (odkud co x x x x) kam/za co ( -i, -r) pozor v případě, že cíl existuje pak se přepíše<br>
+<span style="background:lime;">
+   cv.<br>
+   Zkopírujte si soubory z /usr/html/NMIN266/1/ do svého adresáře ~/NMIN266<br>
+   <i>cp /usr/html/NMIN266/1/* ~/NMIN266/</i><br>
+   ……chyba? -&gt; -r<br>
+   <i>cp -r /usr/html/NMIN266/1/* ~/NMIN266/</i><br>
+     a pak ještě jednou s přepínačem -i<br>
+   <i>cp -ri /usr/html/NMIN266/1/* ~/NMIN266/</i><br>
+   zkopíroval se soubor <i>.vimrc</i>?
+    <br><br>
+     v adresáři kniha vytvořte adresáře "kapitoly" a "obrazky"<br>
+   <i>cd NMIN266/kniha</i>
+   <i>mkdir kapitoly</i><br>
+   <i>mkdir obrazky</i>
+</span>
+<br><br>
+<span style="background:lime;">
+cv.<br>
+<i>file soubor*</i><br>
+zobrazí co jsou zač soubory s názvem soubor[něco]
+</span>
+</li>
+<li>mv (odkud co x x x x) kam/za co ( -i)</li>
+<span style="background:lime;">
+ cv.<br>
+ do příslušných adresářů přesuňte soubory kap* a obr*<br>
+ <i>mv kap* ./kapitoly</i><br>
+ <i>mv obr* ./obrazky 2&gt; /dev/null</i><br>
+</span>
+
+</ul>
+</li><li><span style="background:yellow;">Práva k souborům</span></li>
+<ul>
+<li><i>chmod</i> změna práv k souborům a+r vs 751<br>
+<span style="background:lime;">
+  cv. souboru prvocisla.pl přiřaďte právo x<br>
+  <i>chmod u+x prvocisla.pl</i><br>
+  anebo<br>
+  <i>chmod 744 prvocilsa.pl</i><br>
+</span>
+<br>
+<span style="background:lime;">
+  cv. spusťte skript prvocisla.pl<br>
+  <i>./prvocisla.pl</i><br>
+      … příliš dlouhý výpis…
+</span>
+</li>
+<li><i>umask</i> standardně 022 tzn. nové soubory 777 - 022 resp. 666 - 022</li><li><i>chgrp</i> (students, guestk)</li>
+</ul>
+<li><span style="background:yellow;">Výpisy (obsahu souborů)</span></li>
+<ul>
+<li><i>echo</i> vypíše to co se mu řekne<br>
+<span style="background:lime;">
+cv.<br>
+<i>echo ahoj</i><br>
+</span>
+</li>
+<li><i>cat</i> (conCATenate) -n očísluje řádky; pomocí cat lze spojit více souborů do jednoho</li>
+<li><i>more</i>, <i>less</i> [space]-další stránka, šipky CTRL-N, 
+CTRL-P, / - vyhledávání dopředu, ? -vyhledávání dozadu ,n - další výskyt
+ hledaného stejným směrem, N - další výskyt hledaného opačným směrem, q -
+ ukončení<br>
+<span style="background:lime;">
+   cv.<br>
+   <i>less ./kniha/kapitoly/kap07</i><br>
+   <i>/eros</i><br>
+</span>
+</li>
+<li><i>tail</i>, <i>head</i> vypíše n řádků z konce/začátku (-n xyz ovlivní kolik řádků se vypíše<br> -f "sleduje" soubor</li>
+<li><i>sort</i> setřídí soubor podle abecedy a vypíše na STDOUT, -n setřídí numericky<br>
+<span style="background:lime;">
+   cv. setřídit soubor <i>seznam1.txt</i><br>
+   <i>sort seznam1.txt</i> - vypíše soubor seznam1.txt na tzv. standardní výstup tj. na obrazovku
+</span>
+</li>
+<li><i>split</i> 'rozsekání' souboru po n řádcích (defaultně 1000) tvoří soubory xyzaa, xyzab ...<br>
+
+       zpětně lze spojit <i>cat xyza[a-z] &gt; cely_soubor</i>
+</li>
+</ul>
+<li><span style="background:yellow;">Linky</span>
+<ul>
+<li><i>ln</i> link na soubor obdoba "zástupce" ve windows ( -s soft link)<br>
+<i>ln 'staré jméno' 'nové jméno'</i><br>
+<span style="background:lime;">
+cv. link na skript <i>pozdrav</i><br>
+<i>ln pozdrav Pozdrav</i> vytvoří se hard link na skript <i>pozdrav</i> s názvem <i>Pozdrav</i><br>
+ověřte co to je za soubor tj.<br>
+<i>ls -l Pozdrav</i><br>
+<i>ln -s pozdrav pozdraveni</i> vytvoří soft link na skript <i>pozdrav</i><br>
+opět ověřte co to je za soubor tj.<br>
+<i>ls -l pozdraveni</i><br>
+všiměte si, že na prvním místě je 'l'<br>
+<i>./pozdrav</i> spustíme původní soubor - spustí se<br>
+<i>./Pozdrav</i> spustíme hard link - spustí se<br>
+<i>./pozdraveni</i> spustíme soft link - spustí se<br>
+<i>rm ./pozdrav</i> smažeme původní soubor <br>
+<i>./Pozdrav</i> spustíme hard link - spustí se<br>
+<i>./pozdraveni</i> spustíme soft link - NEspustí se, protože odkazuje na neexistující soubor<br>
+
+
+
+</span>
+</li></ul>
+</li>
+<li><span style="background:yellow;">IN/OUT - vstupy/výstupy</span></li>
+<ul>
+<li><i>&gt;</i> výstup se přesměruje do souboru, v případě, že již existuje pak bude přepsán<br>
+<span style="background:lime;">
+  cv.<br>
+  <i>ls -l &gt; obsah_adresare</i><br>
+  dlouhý výpis se zapíše do souboru <i>obsah_adresare</i>
+</span>
+</li>
+<li><i>&gt;&gt;</i> výstup se přesměruje do souboru, v případě, že již existuje pak se připíše na konec<br>
+<span style="background:lime;">
+   cv.<br>
+   <i>echo -n "Vypsano dne" &gt;&gt; obsah_adresare</i><br>
+   <i>date &gt;&gt; obsah_adresare</i><br>
+   <i>ls &gt;&gt; obsah_adresare</i><br>
+   <i>cat obsah_adresare</i>
+</span>
+</li>
+<li><i>&lt;</i> přesměrování vstupu<br>
+<span style="background:lime;">
+cv.<br>
+  <i>mail richter@karlin.mff.cuni.cz &lt; pozdrav</i><br>
+  obsah souboru <i>pozdrav</i> se použije jako vstup pro příkaz <i>mail</i>
+</span>
+</li>
+<li><i>2&gt;</i> přesměrování chybového výstupu<br>
+<span style="background:lime;">
+  cv.<br>
+   <i>cp soubor.txt</i><br>
+   <i>cp soubor.txt 2&gt;chybicka</i> přesměrování chybového výstupu do souboru <i>chybicka</i><br>
+   <i>cp soubor.txt 2&gt; /dev/null</i> přesměrování chybového výpisu do  <i>/dev/null</i> tj. "černá díra"<br><br>
+   <i>grep -n</i><br>
+   <i>grep -n 2&gt;/dev/null</i>
+</span>
+</li>
+<li><i>|</i> roura tj.výstup jednoho programu jako vstup druhého<br>
+<span style="background:lime;">
+cv.<br>
+<i>ls -l | grep ^l</i> výstup příkazu <i>ls -l</i> se použije jako vstup příkazu <i>grep</i>
+</span><br><br>
+</li></ul>
+<li><span style="background:yellow;">Komprese, kódování, konce řádků</span></li>
+<ul>
+<li><i>uuecode/uudecode</i> 7-8bit kódování souborů (<i>uuecode soubor nazev &gt; 7bit_soubor)</i></li>
+<li><i>tar</i> sbalení více souborů do jednoho<br>
+<span style="background:lime;">
+cv.<br>
+<i>tar cvf kniha.tar ./kniha/</i> vytvoří soubor <i>kniha.tar</i><br>
+<i>tar xvf kniha.tar </i> rozbalí soubor <i>kniha.tar</i><br>
+</span>
+</li>
+<li><i>gzip</i>, <i>gunzip</i><br>
+<span style="background:lime;">
+cv.
+<i>gzip kniha.tar</i> - vytvoří komprimovaný soubor <i>kniha.tar.gz</i>, původní soubor smaže<br>
+<i>gunzip kniha.tar.gz</i> - dekomprimuje soubor na <i>kniha.tar</i>, původní smaže<br><br>
+</span>
+je možné se setkat se souborem s koncovkou <i>.tgz</i> což je totéž co <i>.tar.gz</i>
+</li>
+<li><i>bzip2</i>, <i>bunzip2</i> - funguje obdobně jako <i>gzip</i>, <i>gunzip</i>, ale používá jinou metodu komprese</li>
+</ul>
+<li><span style="background:yellow;">Vyhledání</span></li>
+<ul>
+<li>souborů <i>find</i><br>
+<span style="background:lime;">
+cv.<br>
+<i>find . -name 'kap*' -print</i> vyhledá všechny soubory, které vyhovují podmínce 'kap*' a vypíše je<br>
+<i>find . \( -name 'kap*' -o -name 'obr*' \) -exec head {} \;</i><br>
+se soubory, které vyhověly podmínce je proveden příkaz <i>head</i> <i>{}</i>=jména souborů<br>
+příkaz musí být zakončen <i>\;</i>
+</span>
+</li>
+<li>v souborech <i>grep, egrep</i> s přepínačem <i>-i</i> nerozlišuje (ignoruje) rozdíl mezi malými a velkými písmeny(více viz. Regulární výrazy)<br>
+<span style="background:lime;">
+cv.<br>
+<i>grep tempor ./kniha/kapitoly/kap07</i><br>
+vypíše všechny řádky ze souboru <i>./kniha/kapitoly/kap07</i>, které obsahují řetězec "tempor"
+</span>
+</li>
+</ul>
+<li>
+<span style="background:yellow;">Různé</span>
+</li>
+<ul>
+<li><i>tr</i> 'transformace'  znaků v řetězci<br>
+<span style="background:lime;">
+cv.<br>
+   <i>echo ahoj | tr "abcdefghijklmnopqrstuvwxyz" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"</i><br>
+   řetězec vypsaný pomocí <i>echo</i> převede na velké znaky<br>
+
+   <i>cat soubor06 | tr "abcdefghijklmnopqrstuvwxyz" "ABCDEFGHIJKLMNOPQRSTUVWXYZ"</i><br>
+   pomocí příkazu <i>cat</i> vypíše soubor <i>soubor06</i>, převede ho na velké znaky a vypíše<br>
+</span>
+</li>
+<li><i>alias</i> 'zkratka' za často používáný příkaz př. <i>alias ll ls -l</i></li>
+<li><i>touch</i> vytvoření souboru nebo změna času souboru<br>př. <i>touch -t 0301020305 soubor06</i> - nastaví datum souboru <i>soubor06</i> na 2003/01/02/0305, formát čísla je:  YYMMDDhhmm
+</li>
+<li><i>`příkaz`</i> výstup z příkazu jako string př. <i>`which perl` &gt; tady_je_perl</i>
+<!--
+   cv.
+     touch soubor
+     f=soubor
+     mv $f `echo $f` | tr "s" "S"
+     přejmenuje "soubor" na "Soubor"
+-->
+</li>
+<li><i>diff</i> porovnání dvou souborů př. <i>diff seznamprv1 seznamprv2</i></li>
+<li>procesy<br>
+
+    <i>ps</i> výpis procesů daného uživatele s volbami:
+<pre><i>a</i> all všechny běžící procesy
+<i>u</i> uživatel vypíše i vlastníka daného procesu
+(číslo 'větve na které sedím' v systemové proměnné <i>$$</i> tj. <i>echo $$</i>)
+</pre>
+<i>kill 'číslo procesu'</i> - zabití procesu příslušného čísla
+
+</li>
+<li>mail <i>mail,mutt,pine</i><br>
+<span style="background:lime;">
+  cv.<br>
+  <i>mail richter@karlin.mff.cuni.cz &lt; soubor_s_dopisem
+</i></span><i>
+</i></li><i>
+<!--
+v  scp
+  scp soubor richter@hill: resp. scp soubor richter@hill:adresar1/adresar2 
+  scp richter@hill:soubor ./ resp. scp richter@hill:adresar1/soubor ./
+-->
+</i></ul><i>
+</i></ul><i>
+<hr>
+<a name="ukoly"></a>
+<h2>Úkoly</h2>
+<ul>
+<li>Zkontrolujte si obsah souboru <i>.forward</i></li>
+<li>Upravte (bez použití textového editoru) skript <i>pozdrav</i> tak, aby pozdravil toho kdo ho spouští<br>
+<span style="background:yellow;">hint: obsah souboru <i>pozdrav</i> by měl být:<br>
+#!/bin/sh<br>
+echo -n ahoj<br>
+echo `whoami`
+</span></li>
+<li>Vytvořte soubor <i>kalendar2026</i>  který bude mít tento formát:<br>
+(použijte přesměrování výstupu do souboru)
+<pre>
+    January 2026      
+Su Mo Tu We Th Fr Sa  
+             1  2  3  
+ 4  5  6  7  8  9 10  
+11 12 13 14 15 16 17  
+18 19 20 21 22 23 24  
+25 26 27 28 29 30 31  
+                      
+   February 2026      
+Su Mo Tu We Th Fr Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+                      
+
+     March 2026       
+Su Mo Tu We Th Fr Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30 31              
+                      
+.
+.
+.
+
+   November 2026      
+Su Mo Tu We Th Fr Sa  
+ 1  2  3  4  5  6  7  
+ 8  9 10 11 12 13 14  
+15 16 17 18 19 20 21  
+22 23 24 25 26 27 28  
+29 30                 
+
+
+   December 2026      
+Su Mo Tu We Th Fr Sa  
+       1  2  3  4  5  
+ 6  7  8  9 10 11 12  
+13 14 15 16 17 18 19  
+20 21 22 23 24 25 26  
+27 28 29 30 31        
+                      
+</pre>
+<span style="background:yellow;">hint: cal --help</span><br>
+na konec souboru <i>kalendar2026</i> vypište (opět bez použití textového editoru) vaše uživatelské jméno.<br>
+<b>POZOR!</b> soubor <i>kalendar2026</i> <font color="red">nemá vypadat takto:</font>
+<pre>
+                            2026
+      January               February               March          
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
+             1  2  3   1  2  3  4  5  6  7   1  2  3  4  5  6  7  
+ 4  5  6  7  8  9 10   8  9 10 11 12 13 14   8  9 10 11 12 13 14  
+11 12 13 14 15 16 17  15 16 17 18 19 20 21  15 16 17 18 19 20 21  
+18 19 20 21 22 23 24  22 23 24 25 26 27 28  22 23 24 25 26 27 28  
+25 26 27 28 29 30 31                        29 30 31              
+                                                                  
+
+       April                  May                   June          
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
+          1  2  3  4                  1  2      1  2  3  4  5  6  
+ 5  6  7  8  9 10 11   3  4  5  6  7  8  9   7  8  9 10 11 12 13  
+12 13 14 15 16 17 18  10 11 12 13 14 15 16  14 15 16 17 18 19 20  
+19 20 21 22 23 24 25  17 18 19 20 21 22 23  21 22 23 24 25 26 27  
+26 27 28 29 30        24 25 26 27 28 29 30  28 29 30              
+                      31                                          
+
+        July                 August              September        
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
+          1  2  3  4                     1         1  2  3  4  5  
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   6  7  8  9 10 11 12  
+12 13 14 15 16 17 18   9 10 11 12 13 14 15  13 14 15 16 17 18 19  
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  20 21 22 23 24 25 26  
+26 27 28 29 30 31     23 24 25 26 27 28 29  27 28 29 30           
+                      30 31                                       
+
+      October               November              December        
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
+             1  2  3   1  2  3  4  5  6  7         1  2  3  4  5  
+ 4  5  6  7  8  9 10   8  9 10 11 12 13 14   6  7  8  9 10 11 12  
+11 12 13 14 15 16 17  15 16 17 18 19 20 21  13 14 15 16 17 18 19  
+18 19 20 21 22 23 24  22 23 24 25 26 27 28  20 21 22 23 24 25 26  
+25 26 27 28 29 30 31  29 30                 27 28 29 30 31        
+</pre>
+</li>
+<li>Soubor <i>kalendar2026</i> pošlete pomocí příkazu <i>mail</i> a přesměrování vstupu na adresu <b>richter@karlin.mff.cuni.cz</b></li>
+<!--<li>Soubor <i>.vimrc</i> přejmenujte (příkazem <i>mv</i>) na <i>.vimrc.00</i></li>-->
+<li>Zkopírujte si souboru <i>/usr/html/NMIN266/1/.virmc</i> do svého domácího adresáře (tj. ~/)</li>
+</ul>
+
+
+</i></body></html>

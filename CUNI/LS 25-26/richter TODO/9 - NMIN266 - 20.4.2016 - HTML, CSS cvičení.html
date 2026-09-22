@@ -1,0 +1,116 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NMIN266 - 20.4.2016 - HTML, CSS cvičení</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+  LI{
+    width:700px;
+  }
+</style>
+</head>
+<body>
+<h2>HTML - cvičení</h2>
+<p>
+<font size="-1">
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/hesse-demian.txt">Před upravami</a><br>
+<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/demian.html">Po upravách</a>
+</font>
+</p>
+<p>
+Soubor <i>/usr/html/NMIN266/3/hesse-demian.txt</i> si zkopírujte do adresáře </p><li>~/public_html/</li> pod názvem <i>hesse-demian.html</i>. Tetno soubor upravíme tak, aby se správně zobrazoval jako HTML dokument tj.:
+<ul>
+<li>přidáme tagy &lt;html&gt;, &lt;head&gt;, &lt;head a &lt;body&gt;</li>
+<li>nastavíme kódování tj. &lt;meta charset="utf-8"&gt;</li>
+</ul>
+<p></p>
+<p>
+Zkuste si teď dokument prohlédnout v prohlížeči tj.<br http:="" www.karlin.mff.cuni.cz="" ~vase_uzivatelske_jmeno="" hesse-demian.html<br="">
+nic moc...<br>
+další úpravy:
+</p><ul>
+<li>řádky <i>Herman Hesse</i> a <i>Demian</i> nastavíme jako nadpis první úrovně tj. &lt;H1&gt; </li>
+<li>text <i>Příběh mládí Emila Sinclaira</i> nastavte jako jeden odstavec zarovnaný na střed, psaný kurzivou &lt;p align=center&gt;&lt;i&gt;</li>
+<li>text <i>překlad Vratislav Slezák</i> nastavte jako jeden odstavec zarovnaný doprava&lt;p align=right&gt; a velikost písma zmenšete o jednotku &lt;font size=-1&gt;</li>
+<li>z následujících čtyř řádek udělejte jeden odstavec s vynucenými přechody na novou řádku &lt;br&gt;</li>
+<li>na další řádek doplňte slovo "KAPITOLA" a v celém dokumentu zaměňte 
+slovo KAPITOLA za &lt;h2&gt;KAPITOLA&lt;/h2&gt; - tj. nadpis druhé 
+úrovně. Navíc odřádkujte (pomocí záměn vložíte konec řádku jako CTRL+V, 
+ENTER tj. ^M) a tag pro začátek odstavce &lt;p&gt;</li>
+<li>postupně najděte všechna slova "KAPITOLA" a přidejte čísla 1,2,3 ...</li>
+<li>navíc před každkou kapitolu přidejte tag &lt;a name=kap1&gt; atd. podle příslušného čísla kapitoly</li>
+<li>v celém textu zaměňte tečku na konci řádku za konec a začátek odstavce (:%s/\.$/.^M&lt;\/p&gt;^M&lt;p&gt;)</li>
+<li>na úplném začátku vytvořte obsah. tj. hypertextový odkaza na část dokumentu <i>kap1</i>...<i>kap9</i>tj.<br>
+&lt;a href=#kap1&gt;1. kapitola&lt;a&gt;
+</li>
+</ul>
+znovu si výsledek prohlédněte v prohlížeči.<br>
+...lepší, ale stále to má mouchy...<br>
+Použijeme <b>CSS</b> tj.
+na začátek dokumetu (do &lt;head&gt;) přidáme:
+<pre>&lt;style&gt;
+body{
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+p{
+  text-align:justify;
+  width:700px;
+}
+&lt;/style&gt;
+</pre>
+Z umístění <i>/usr/html/NMIN266/</i> si zkopírujte soubory <i>Hermann_Hesse.jpg</i> a <i>Hermann_Hesse_2.jpg</i> do <i>~/public_html/</i><br>
+Na závěr dokumentu vložte vertikální čáru tj. &lt;hr&gt; a do prvku &lt;div&gt; vložte <br>zkopírovaný obrázek a text Hermann Hesse: 2.6.1877-9.8.1962tj.
+<pre>&lt;hr&gt;
+&lt;div&gt;
+&lt;img src=Hermann_Hesse_2.jpg&gt;&lt;br&gt;
+Hermann Hesse 2.6.1877-9.8.1962
+&lt;/div&gt;
+</pre>
+	Opět si dokument prolédněte v prohlížeči ...<br>
+Obrázek je moc velký - upravíme velikost obrázku:
+<pre>&lt;hr&gt;
+&lt;div&gt;
+&lt;img src=Hermann_Hesse_2.jpg width=200px<f5>&gt;&lt;br&gt;
+Hermann Hesse 2.6.1877-9.8.1962
+&lt;/div&gt;
+</f5></pre>
+a na závěr prvek &lt;div&gt; posuneme, orámujeme a nastavíme mu šířku:
+<pre>&lt;hr&gt;
+&lt;div style="position:relative;left:300px;border-width:1px;border-style:solid;width:300px;"&gt;
+&lt;img src=Hermann_Hesse_2.jpg width=200px;&lt;br&gt;
+Hermann Hesse 2.6.1877-9.8.1962
+&lt;/div&gt;
+
+</pre>
+<p></p>
+<!--<h2>CSS - cvičení</h2>
+<p style="width:800px;">
+Ze stránky <A HREF=http://www.free-css-templates.com/>Free-css-templates</A> jsme si stáhli styl "Oranges". Vy si zkopirujte z <i>/usr/html/NMIN266/oranges.zip</i> do <i>~/public_html/css-test</i> (adresář <i>css-test</i> si předem vytvořte) a v tomto adresáři rozbalte (<i>unzip oranges.zip</i>) a prohlédněte si ve webovém prohlížeči tj.<br>
+http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/css-test<br>
+Prohlédněte si <i>index.html</i>
+</p>-->
+<h2>Formulářové prvky</h2>
+<p>
+v adresáři <i>~/public_html</i> vytvořte soubor <i>form.html</i>, který  bude obsahovat tři input políčka s názvem (name)<br>
+</p><pre>  jmeno
+  prijmeni
+  heslo (type password)
+  narozeni s předvyplněnou hodnotou DDMMYYYY
+  email
+  odesílací tlačítko
+</pre>
+odesílací metoda bude <span class="&lt;span" style="background:yellow;">POST</span><br>
+skript k zpracování formuláře bude:<br>
+<pre>http://www.karlin.mff.cuni.cz/~richter/NMIN266/form.php
+</pre>
+tj.<br>
+<span class="&lt;span" style="background:yellow;">&lt;form method=post action=http://www.karlin.mff.cuni.cz/~richter/NMIN266/form.php&gt;</span><br>
+formulář si otevřete na webu, vyplňte a odešlete""
+<p></p>
+
+
+</body></html>

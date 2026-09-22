@@ -1,0 +1,318 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>vim</title>
+<style>
+  body {
+    color :black;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<h2>textový editor vi(m)</h2>
+<ul>
+<li>rozložení terminálu:<br>
+ ~ - označení prázdných řádků<br>
+ poslední řádek - informativní/příkazový<br>
+ předopslední řádek (po nastavení 'set laststatus=2')<br>
+ nastavení 'nekompatibilního' režimu - <i>:set nocompatible</i><br>
+</li>
+<li>
+obecně nastavení v souboru <i>.vimrc</i><br>
+(soubor <i>~/NMIN266/.vimrc</i> přesuňte do <i>~/</i>)
+<pre>set bs=2                 "backspace funguje 'beznym' zpusobem
+set showcmd              "ukaze co delame za prikaz
+set showmode             "ukaze v jakem jsme modu
+set ruler                "ukaze kde jsem
+set wrap                 "dlouhy radek je na nekolik radku
+set laststatus=2         "mame specialni radek na stav
+set list                 "zobrazi konce radku jako $ (dolar)
+set visualbell " nebude nam piskat ale na chvili prebarvi obrazovku
+set term=xterm "mame barvicky
+syntax on                "barevne zvyrazneni zdrojovych souboru
+                         "napr perl, sh, cc, ...
+set hlsearch
+colorscheme elflord
+</pre>
+</li>
+<li><span style="background:yellow;">spuštění</span><br>
+<i>vim soubor</i><br>
+<i>vim -d soubor1 soubor2</i><br>
+<i>vim</i>
+</li>
+<li><span style="background:yellow;">3 typy režimů:</span>
+<ul>
+<li>příkazový (v něm jsem po spuštění vim, dostanu se do něj několikerým [esc])</li>
+<li>vkládací/přepisovací (ins,ii,aa,oo/rr)</li>
+<li>ex příkazový (dostanu se do něj po stisku ':' nebo '/' z příkazového režimu)</li>
+</ul>
+</li>
+<li><span style="background:yellow;">otevření souboru</span><br>
+  <i>esc...</i><br>
+  <i>:e  (funguje doplňování pomocí tab)</i><br>
+  <i>:enew (založení nového-prázdného souboru viz. dále buffery)</i><br>
+  <i>:r soubor (načtení obsahu souboru do stávajícího)</i><br>
+</li>
+<li><span style="background:yellow;">uložení souboru</span>
+  <i>esc...</i><br>
+  <i>:w</i>
+</li>
+<li>
+<span style="background:yellow;">ukončení</span><br>
+  <i>esc...</i><br>
+  <i>:q, :q!, :wq, ZZ</i><br>
+  <i>esc...</i><br>
+</li>
+<li><span style="background:yellow;">otevření dalšího souboru</span><br>
+  <i>:e  (funguje doplňování pomocí tab)</i><br>
+  <i>:enew (založení nového-prázdného souboru viz. dále buffery)</i><br>
+  <i>:r soubor (načtení obsahu souboru do stávajícího)</i><br>
+  mezi otevřenými soubory s mohu pohybovat příkazy <i>:bnext</i> <i>:bprevious</i>
+</li>
+<li>
+historií <i>ex</i> příkazů lze procházet pomocí ↑, ↓ - obdobně jako v <i>bash</i>
+</li>
+<li>
+<span style="background:yellow;">editace</span><br>
+  (vkládání-přepis)<br>
+  do vkládacího režimu se dostaneme (z příkazového režimu):
+  <ul>
+  <li><i>i, insert</i> - začneme psát před znak, na kterém byl nastaven kurzor</li>
+  <li><i>I</i>        - začneme psát před první 'nemezerový' znak na řádku</li>
+  <li><i>a </i>        - začneme psát za znak, na kterém byl nastaven kurzor</li>
+  <li><i>A </i>        - začneme psát na konec řádku (včetně mezer)</li>
+  <li><i>o/O       - začneme psát na nový řádek pod/nad řádkem, na kterém je kurzor</i></li><i>
+  <li><i>r </i>        - přepis znaku na kterém je kurzor</li>
+  <li><i>R </i>        - zapnutí 'přepisovacího' režimu</li>
+  </i></ul><i>
+  <br>
+  pozn. vi je nastaveno tak, že nezalamuje řádky tj. když píšeme dlouhý řádek, pak <br>sice začne pokračovat jakoby na dalším řádku, ale 'konce řádky nevloží'
+  <br>
+  změna<br>
+  &nbsp;&nbsp;<i>c'rozsah kam'</i> - změna slova (<i>cw</i>), věty (<i>c)</i>), odstavce (<i>c}</i>)<br>
+</i></li><i>
+<li>
+ <span style="background:yellow;">mazání</span><br>
+  <ul>
+  <li><i>x </i>- smaže znak, na kterém je nastaven kurzor (lze opakovat <i>3x </i>smaže 3znaky)(rozdíl mezi <i>xxx</i><br> a <i>3x</i> viz. undo - redo)</li>
+  <li><i>dd</i> - smaže aktuální řádku</li>
+  <li><i>d'rozsah' </i> - např. <i>dw</i> smaže slovo <i>3dw</i> nebo <i>d3w</i> smaže 3 slova <i>d3)</i> smaže 3 věty</li>
+  </ul>
+</li>
+<li>
+<span style="background:yellow;">pohyby v rámci textu šipky resp. 'k' ↑, 'j' ↓, 'h' ←, 'l' →</span>
+  <ul>
+  <li><i>^/$</i> - začátek/konec řádku</li>
+  <li><i>w, W</i> - začátek následujícího slova</li>
+  <li><i>e, E</i> - konec tohoto slova</li>
+  <li><i>b, B</i> - nejbližší začátek slova</li>
+  <li>malá/velká písmena<br>
+  <i>malá:  slovo se bere jako shluk [a-za-z0-9_]<br>
+  <i>velká: slovo se bere jako shluk 'nemezer'</i></i></li><i><i>
+  <li><i>()</i> - začátek/konec věty (věta je ukončena '.','!','?')</li>
+  <li><i>{}</i> - začátek/konec odstavce (odstavce jsou odděleny prázdnými řádky)</li>
+  <li><i>lze opakovat</i> - tzn. příkaz '3w' nás posune na začátek třetího slova</li>
+  <li><i>% </i> - cyklický skok na párovou závorku</li>
+  <li><i>G </i> - skok na konec soboru (^g informuje kde, procentuálně, jsem v rámci textu)</li>
+  <li><i>13g</i> - skok na 13.řádek</li>
+  <li><i>'' </i> - návrat na řádek, kde jsem byl před posledním skokem</li>
+  <li><i>`` </i> - návrat na místo, kde jsem byl před posledním skokem</li>
+  <li><i>ma </i> - označení místa v textu <b>m</b>ark<b>a</b> (lze užít a-zA-Z)</li>
+  <li><i>'a </i> - skok na řádek označený 'a'</li>
+  <li><i>`a </i> - skok na místo označené 'a'</li>
+   </i></i></ul><i><i>
+</i></i></li><i><i>
+<li><span style="background:yellow;"> undo/redo</span>
+  <ul>
+  <li><i>  u </i> - zpět (opět funguje opakování '3u' 3x 'undo') příkaz 'xxx' jsou tři kroky narozdíl od '3x' což je jeden krok</li>
+  <li><i>  ^r</i> - vpřed</li>
+  <li><i>  U </i> - vrátí aktuální řádek do tvaru 'než jsem na něj skočil'</li>
+  </ul>
+</li>
+<li><span style="background:yellow;">vyhledávání</span>
+  <ul>
+  <li><i>f'znak', F'znak' </i>- hledej 'znak' v rámci aktuálního řádku (směrem ke konci/začátku řádku)</li>
+  <li><i>/</i>- hledám určitý řetězec směrem ke konci souboru (př.<i>/ahoj</i> hledej 'ahoj')</li>
+  <li><i>?</i> - hledám určitý řetězec směrem k začátku souboru (př. <i>?ahoj</i> hledej 'ahoj')</li>
+  <li><i>n/N</i>- hledej další výskyt stejným/opačným směrem<br><br>
+  (obecně lze vyhledávat ne jen konkrétní řetězce, ale pomocí regulárních
+  výrazů je možné <br>vyhledávat pomocí určité 'masky')
+  </li><li><i>#</i> - hledej stejné slovo jako to, na kterém jsi kurzorem</li>
+</ul>
+</li>
+<li><span style="background:yellow;">záměna</span><br>
+  <i>:'rozsah's/řetězec/zaměnit za řetězec/'volby</i><br>
+   rozsah může být:
+  <ul>
+    <li><i>nic</i> - záměna se použije jen pro aktuální řádek</li>
+    <li><i>%</i> - záměna se použije pro celý soubor</li>
+    <li><i>&lt;,'&gt;&lt;,’&gt;</i> - záměna v rámci bloku (tj. označíme blok a zmáčkneme <i>:)</i></li>
+  </ul>
+  <br>
+  volby:
+  <ul>
+  <li><i>i</i> - nerozlišuj velká/malá písmena</li>
+  <li><i>g</i> - změnu použij pro všechny výskyty na daném řádku</li>
+  <li><i>c</i> - před každou změnou se zeptej</li>
+   </ul>
+   <br>
+   nastavení pro vyhledávání:
+   <ul>
+  <li><i>:set hlsearch (set nohlsearch)</i> - zvýrazní najité řetězce</li>
+  <li><i>nohlsearch</i> - pro tuto chvíli vypne zvýraznění (volba hlsearch ale zůstane zapnuta)</li>
+  <li><i>:set wrapscan</i> - prohledává stále dokola (když není další výskyt ke konci textu začne vyhledávat znovu od začátku)</li>
+   </ul>
+  <br>
+  Záměna malých písmen za velká a naopak
+  <ul>
+  <li>označený blok převedeme příkazem <i>u</i> na malá písmena</li>
+  <li>označený blok převedeme příkazem <i>U</i> na velká písmena</li>
+  </ul>
+</li>
+<li>
+<span style="background:yellow;">bloky-kopírování/mazání/operace v rámci bloku</span><br>
+označování bloku
+<ul>
+  <li><i>v</i> - označuji blok typu 'od poloviny řádku' do 'poloviny řádku'</li>
+  <li><i>V</i> - označuji blok 'po celých řádcích'</li>
+  <li><i>^v</i> - označuji 'sloupcový' blok</li>
+</ul>
+s označeným blokem mohu:
+<ul>
+  <li><i>d</i> - smazat</li>
+  <li><i>y</i> - 'kopírovat do schránky'</li>
+  <li><i>Y</i> - do schránky se zkopíruje aktuální řádka</li>
+  <li><i>:</i> - automaticky se doplní za "'&lt;,'&gt;" a mohu např. zaměňovat jen v rámci bloku "'&lt;,'&gt;s/ahoj/nazdar/"</li>
+</ul>
+<br>
+poslední smazaná 'jednotka' se automaticky ukládá do 'schránky'<br><br>
+vložení bloku:
+<ul>
+  <li><i>p</i> - za kurzor (za řádek) </li>
+  <li><i>P</i> - před kurzor (před řádek) </li>
+</ul>
+        (např. <i>xp</i> prohodí písmenka - smaže písmeno na kurzoru a vloží ho před aktuální znak)
+</li>
+<li>
+<span style="background:yellow;">doplňování slov</span>
+  <ul>
+  <li><i>  ^p,^n</i> - navrhuje jaké slovo bychom 'mohli chtít napsat', navrhuje slova která nachází směrem<br>k začátku/konci textu (případně taková, která odpovídají tomu co už jsme napsali)</li>
+  <li><i>   ^xf   </i> - navrhuje možná jména souborů (doplňování, obdobně jako tab v příkazové řádce)</li>
+  </ul>
+</li>
+<li>
+<span style="background:yellow;">okna (dělení obrazovky)</span>
+  <ul>
+  <li><i>:split</i> - rozdělí obrazovku horizontálně (split novy_soubor rozdělí obrazovku a v horní části zobrazí obsah souboru novy_soubor)</li>
+  <li><i>:vsplit</i> - rozděli obrazovku vertikálně</li>
+  <li><i>^w+kurzorová šipka</i> přesun do příslušné části obrazovky </li>
+  </ul>
+</li>
+<li>
+<span style="background:yellow;">porovnání dvou souborů</span><br>
+<i>vim -d soubor1 soubor2</i><br>
+<span style="background:lime;">
+vim -d seznamprv1 seznamprv2
+</span>
+<br>
+<br>
+</li>
+<li>
+<span style="background:yellow;">makra - 1.typ tj. zopakuj co jsem ti ukázal</span><br>
+<i>.</i> - prostě zopakuje předchozí příkaz <br>
+např. chci vymazat všechny řádky kde se vyskytuje slovo 'karel'<br>
+<pre>/karel - najdi řádek kde je 'karel'
+dd - smaž tento řádek
+n - najdi další řádek, kde je 'karel'
+. - zopakuj předchozí příkáz (což bylo smazání řádky)
+</pre>
+<br>
+učení více příkazů<br>
+v příkazovém režimu <i>qa</i> - budu definovat makro na písmeno <i>a</i><br>
+posloupnost příkazů<br>
+v příkazovém režimu <i>q</i> tj. ukončení 'učení'<br>
+v příkazovém režimu <i>@a</i> - zavolám makro definované pro písmenko <i>a</i><br>
+<span style="background:lime;">
+cv.<br>
+Otevřete si soubor seznam1.txt, tj. seznam ve tvaru prijmeni jmeno, „něco“.<br>
+    Chci ho ve tvaru jmeno prijmeni, a to „něco“<br>
+    <i>ESC …</i> - dostanu se do příkazového režimu<br>
+    <i>qa</i> - definuji makro pro písmenko <i>a</i><br>
+    první řádek je<br>
+    Prijmeni1 Jmeno1, "nějaké další informace"<br>
+    <i>^</i> skočím na začátek řádku<br>
+    <i>dw</i> jsem smazal Prijmeni1 (mám ho ve schránce)<br>
+    <i>e</i> skočil jsem na konec slova<br>
+    <i>a␣</i> připsal jsem mezeru za prijmeni1<br>
+    <i>ESC</i> návrat do příkazového režimu<br>
+    <i>p</i> jsem vložil jmeno1<br>
+    <i>x</i> smažu mezeru, která je za příjmením<br>
+    <i>↓</i> přesunu se na nižší řádek<br>
+    <i>q</i> skončím definici makra pro 'a'<br>
+    druhý řádek je:<br> Prijmeni2 Jmeno2, … - jsem někde v rámci slova Jmeno2 v příkazovém režimu<br>
+    <i>SHIFT+G</i> skočím na konec souboru a zjistím, že tento soubor má 718řádek<br>
+    <i>’’</i> skočím zpět na 2.řádek<br>
+    <i>717@a</i> 717 zopakuj makro definované pro klávesu a<br>
+    <i>…</i> a je hotovo<br>
+</span>
+</li>
+<li>
+<span style="background:yellow;">makra - 2.typ tj. psaní příkaz po příkazu</span><br>
+tato makra lze psát pro příkazový (:map) tj. použijí se, když jsem v příkazovém režimu<br>
+i pro vkládací režim (:imap) tj. použíjí se, když jsem ve vkládacím režimu<br>
+tato makra se dají zadat i jako 'trvalá' do souboru <i>.vimrc</i>, sem se píšou bez úvodní dvoutečky<br>
+<span style="background:lime;">
+cv. makro pro vkládací režim - doplnění párové (kulaté) závorky<br>
+:imap ( ()^[i<br>
+</span>
+ mapuji pro vkládací režim makro, které se spustí tehdy, když napíšu levou kulatou závorku tj. první kulatá závorka po 'imap'<br>
+     závorka byla 'pouhým' spoutěčem tj. zatím se nic nenapsalo<br>
+     stále jsem ve vkládacím režimu<br>
+     napíšu levou a pravou kulatou závorku<br>
+     <i>^[</i> je náhrada za stisk ESC, toho dosáhnu takto: <br>
+     <i>^V </i> - tím 'odstraním' funkci dané klávesy<br>
+     <i>ESC</i> - stisk Escape<br>
+     tím se dostanu do příkazového režimu<br>
+     pomocí příkazu <i>i</i> říkám, že vkládám před znak na kurzoru<br>
+   od této chvíle kdykoliv napíšu '(' tak se automaticky doplní uzavírací ')'<br>
+   pozn. stejně funkční makro by bylo možné definovat i takto:<br>
+   <i>:imap ( ()^[←</i>
+   <br>
+<span style="background:lime;">
+cv.<br>
+makro pro příkazový režim, vytvoří 'kostru' HTML dokumentu
+   <br>
+   :map htm i&lt;HTML&gt;^M&lt;HEAD&gt;^M&lt;HEAD&gt;^M&lt;BODY&gt;^M&lt;BODY&gt;^M&lt;HTML&gt;^[?BODY^MO<br>
+   :map htm - kdykoliv v příkazovém režimu napíšu htm tak se udělá:<br>
+    i       - přechod do vkládacího režimu<br>
+    &lt;HTML&gt;^M&lt;HEAD&gt;^M&lt;HEAD&gt;^M&lt;BODY&gt;^M&lt;BODY&gt;^M&lt;HTML&gt; - napíše se kostra dokumentu<br>
+    ^M  - jsem vložil jako ^V[ENTER] (tzn. odřádkování)<br>
+    ^]  - návrat do příkazového režimu (^V[ESC])<br>
+    ?BODY - najdi řetězec 'BODY' směrem k začátku textu + [ENTER]<br>
+    O - začni psát na nový řádek nad řádkem aktuálním<br>
+</span>
+</li>
+<li>
+<span style="background:yellow;">folding</span><br>
+použije se např. když v zdrojovém kódu pro program je dlouhá funkce<br>
+  <pre>  označím řádkový blok
+  :’&lt;,’&gt;fo
+  označený text se 'sbalí' do jednoho řádku
+  na příslušném místě příkaz zo/zc rozbalení/sbalení
+  </pre>
+</li>
+<li>
+<span style="background:yellow;">nastavování <i>set něco</i> resp. <i>set noněco</i></span><br>
+<i>set hlsearch set nohlsearch</i> – vyhledaný text bude zvýrazněn „podsvícením“<br>
+<i>set number set nonumber</i> – číslování řádků (čísla ale nejsou součástí textu)<br>
+<i>set list set nolist</i> – zobrazuje neviditelné znaky ($ - konec řádku, ^I – tabelátor)<br>
+</li>
+<li>
+<span style="background:yellow;">zalámání vybrané části textu</span><br>
+<i>gq</i>
+</li>
+</i></i></i></ul><i><i>
+
+
+</i></i></body></html>

@@ -1,0 +1,874 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>HTML, CSS, Formulářové prvky</title>
+<script src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/load.js"></script><script src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/jsMath-easy-load.js"></script><script src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/autoload.js"></script>
+<style>
+BODY {
+  color :BLACK;
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+LI{
+   width:700px;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+}
+TD {
+  font-family: sans-serif;
+  border-style:solid;
+  border-width:1px;
+  border-color:black;
+}
+</style>
+<style type="text/css">#jsMath_test {font-size:200%}
+</style><style type="text/css">.math {font-family: serif; font-style: normal; font-weight: normal}
+.typeset {font-family: serif; font-style: normal; font-weight: normal; line-height: normal; text-indent: 0px; white-space: normal}
+.typeset .normal {font-family: serif; font-style: normal; font-weight: normal}
+div.typeset {text-align: center; margin: 1em 0px}
+span.typeset {text-align: left}
+.typeset span {text-align: left; border: 0px; margin: 0px; padding: 0px}
+a .typeset img, .typeset a img {border: 0px; border-bottom: 1px solid blue;}
+.typeset .size0 {font-size: 50%}
+.typeset .size1 {font-size: 60%}
+.typeset .size2 {font-size: 70%}
+.typeset .size3 {font-size: 85%}
+.typeset .size4 {font-size: 100%}
+.typeset .size5 {font-size: 120%}
+.typeset .size6 {font-size: 144%}
+.typeset .size7 {font-size: 173%}
+.typeset .size8 {font-size: 207%}
+.typeset .size9 {font-size: 249%}
+.typeset .cmr10 {font-family: jsMath-cmr10, serif}
+.typeset .cmbx10 {font-family: jsMath-cmbx10, jsMath-cmr10}
+.typeset .cmti10 {font-family: jsMath-cmti10, jsMath-cmr10}
+.typeset .cmmi10 {font-family: jsMath-cmmi10}
+.typeset .cmsy10 {font-family: jsMath-cmsy10}
+.typeset .cmex10 {font-family: jsMath-cmex10}
+.typeset .textit {font-family: serif; font-style: italic}
+.typeset .textbf {font-family: serif; font-weight: bold}
+.typeset .link {text-decoration: none}
+.typeset .error {font-size: 90%; font-style: italic; background-color: #FFFFCC; padding: 1px; border: 1px solid #CC0000}
+.typeset .blank {display: inline-block; overflow: hidden; border: 0px none; width: 0px; height: 0px}
+.typeset .spacer {display: inline-block}
+#jsMath_hiddenSpan {visibility: hidden; position: absolute; top: 0px; left: 0px; line-height: normal; text-indent: 0px}
+#jsMath_message {position: fixed; bottom: 1px; left: 2px; background-color: #E6E6E6; border: solid 1px #959595; margin: 0px; padding: 1px 8px; z-index: 102; color: black; font-size: small; width: auto}
+#jsMath_panel {position: fixed; bottom: 1.75em; right: 1.5em; padding: .8em 1.6em; background-color: #DDDDDD; border: outset 2px; z-index: 103; width: auto; color: black; font-size: 10pt; font-style: normal}
+#jsMath_panel .disabled {color: #888888}
+#jsMath_panel .infoLink {font-size: 85%}
+#jsMath_panel * {font-size: inherit; font-style: inherit; font-family: inherit; line-height: normal}
+#jsMath_panel div {background-color: inherit; color: inherit}
+#jsMath_panel span {background-color: inherit; color: inherit}
+#jsMath_panel td {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit}
+#jsMath_panel tr {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit}
+#jsMath_panel table {border: 0px; padding: 0px; margin: 0px; background-color: inherit; color: inherit; height: auto; width: auto}
+#jsMath_button {position: fixed; bottom: 1px; right: 2px; background-color: white; border: solid 1px #959595; margin: 0px; padding: 0px 3px 1px 3px; z-index: 102; color: black; text-decoration: none; font-size: x-small; width: auto; cursor: hand}
+#jsMath_button * {padding: 0px; border: 0px; margin: 0px; line-height: normal; font-size: inherit; font-style: inherit; font-family: inherit}
+#jsMath_global {font-style: italic}
+#jsMath_noFont .message {text-align: center; padding: .8em 1.6em; border: 3px solid #DD0000; background-color: #FFF8F8; color: #AA0000; font-size: small; width: auto}
+#jsMath_noFont .link {padding: 0px 5px 2px 5px; border: 2px outset; background-color: #E8E8E8; color: black; font-size: 80%; width: auto; cursor: hand}
+#jsMath_PrintWarning .message {text-align: center; padding: .8em 1.6em; border: 3px solid #DD0000; background-color: #FFF8F8; color: #AA0000; font-size: x-small; width: auto}
+@media print {#jsMath_button {display: none}
+#jsMath_Warning {display: none}
+}
+@media screen {#jsMath_PrintWarning {display: none}
+}
+.typeset .scale {font-size: 120%}
+</style><style type="text/css">.typeset .math {font-style: normal}
+.typeset .typeset {font-style: normal}
+.typeset .icmr10 {font-family: serif}
+.typeset .icmmi10 {font-family: serif; font-style: italic}
+.typeset .icmbx10 {font-family: serif; font-weight: bold}
+.typeset .icmti10 {font-family: serif; font-style: italic}
+</style></head>
+<body><div id="jsMath_PrintWarning"><center><table><tbody><tr><td><div class="message">To print higher-resolution math symbols, click the<br>
+<b>Hi-Res Fonts for Printing</b> button on the jsMath control panel.<br>
+</div><div style="width:22em; height:1px"></div></td></tr></tbody></table></center><hr></div><div id="jsMath_button" title=" Open jsMath Control Panel "><span onclick="jsMath.Controls.Panel()">jsMath</span></div><div id="jsMath_panel" style="display: none;"></div><div id="jsMath_Hidden" style="visibility: hidden; position: absolute; top: 0px; left: 0px; border: 0px; padding: 0px; margin: 0px;"></div><div style="position: fixed; bottom: 1px; left: 2px; background-color: rgb(230, 230, 230); border: 1px solid rgb(149, 149, 149); margin: 0px; padding: 1px 8px; z-index: 102; color: black; font-size: 75%; width: auto; visibility: hidden;" id="jsMath_message" title=""></div>
+<h1>HTML, CSS, Formulářové prvky</h1>
+<h2>HTML</h2>
+<ul>
+<li>HTML=Hyper Text Markup Language</li>
+<li>koncovky jsou závazné - říkají WWW serveru jak má daný soubor interpretovat<br>
+<span class="zlut">html,htm,php</span>
+</li>
+<li>soubory umístíme do adresáře <i>~/public_html</i></li>
+<li>práva musí být <span class="zlut">-rw-r--r--</span> u souborů; <span class="zlut">-rwxr-xr-x</span> u adresářů</li>
+<li>pro webový přísup použijeme:<br>
+http://www.karlin.mff.cuni.cz/~uzivatelske_jmeno<br>
+pokud nezadáme jméno souboru zobrazí se automaticky <i>index.php</i> <i>index.html</i> <i>index.htm</i> - s touto prioritou
+</li>
+<li>html značky - TAGY jsou uzavřeny v <span class="zlut">&lt;...&gt;</span></li>
+<li>TAGY mohou mít určité parametry např. <span class="zlut">&lt;table border=1&gt;</span></li>
+<li>párové tagy &lt;TAG&gt; ...&lt;/TAG&gt; (např. <span class="zlut">body</span> <span class="zlut">li</span>)... vs. nepárové tagy (např. <span class="zlut">&lt;br&gt;</span> <span class="zlut">&lt;img&gt;</span> ...  )<br>
+prohlížeče obvykle "akceptují" nekorektnost tj. chybějící párový tag (<span class="zlut">&lt;li&gt;...&lt;li&gt;...</span>)<br>
+od verze HTML 5 se nepárové tagy píší ve tvaru: <span class="zlut">&lt;br/&gt;</span>
+</li>
+<li>zápis speciálních znaků:<br>
+<span class="zlut">&lt; ... &amp;lt;</span><br>
+<span class="zlut">&gt; ... &amp;gt;</span><br>
+<span class="zlut">&amp; ... &amp;amp;</span><br>
+<span class="zlut">" ... &amp;quot;</span><br>
+<span class="zlut">mezera (nezlomitelná) ... &amp;nbsp;</span><br>
+<a href="https://www.rapidtables.com/web/html/html-codes.html">ostatní speciální znaky</a> (např. &amp;#8734;: ∞)
+</li>
+<li>komentáře se uzavírají do <span class="zlut">&lt;!--</span> a <span class="zlut">--&gt;</span></li>
+<li>Základní struktura dokumentu:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;html&gt;               párový tag uvození celého dokumentu
+&lt;head&gt;               párový tag
+ hlavička dokumentu
+ zde se nastaví kódování dokumentu styl (CSS)
+ JavaScript funkce ...
+&lt;title&gt;nadpis stránky&lt;/title&gt;      párový tag, "nadpis stránky" se objeví
+                                   v záhlaví (horní liště) prohlížeče
+  obecné informace o dokumentu
+  přesměrování
+&lt;/head&gt;
+&lt;body&gt;               párový tag, tělo dokumentu
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</td></tr>
+</tbody></table>
+</li>
+</ul>
+<h3>HEAD<br>hlavička dokumentu</h3>
+<ul>
+<li>kódování dokumentu<br>
+&lt;meta charset="UTF-8"&gt;
+</li>
+<li>přesměrování dokumentu<br>
+<span class="zlut">
+&lt;meta http-equiv="refresh" content="4;url=http://jina_adresa.cz/cokoliv"&gt;
+</span>
+<br>
+<span class="zlut">4</span> je počet sekund za který se přesměrování stane
+</li>
+<li>Hlavička dokumentu - to co se objeví v záhlaví prohlížeče<br>
+<span class="zlut">&lt;title&gt;Hlavička&lt;/title&gt;</span>
+</li>
+<li>obecné informace o dokumentu<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;meta name="author" content="Jaroslav Richter"&gt;
+&lt;meta name="description" content="Popis tvorby a publikování WWW stránek"&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+</li>
+<li>Kaskádové styly (viz. níže)<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;style&gt;
+  BODY{font-family: sans-serif;}
+&lt;/style&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+</li>
+<li>JavaScript, definice JavaScript funkcí (viz. příští hodina)<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;script language=JavaScript&gt;
+  window.alert("Nazdar");
+&lt;/script&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+</li>
+</ul>
+<h3>BODY<br>tělo dokumentu</h3>
+<ul>
+<li>vlastnosti samotného těla dokumentu<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;body background="pozadi.jpg" bgcolor="yellow" text="black" ...&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+</li>
+<li>strukturování dokumentu
+<ul>
+<li>
+Nadpisy (víceúrovňové)<span class="zlut">&lt;h1&gt;</span>, <span class="zlut">&lt;h2&gt;</span>, <span class="zlut">&lt;h3&gt;</span>
+</li>
+<li>odstavce, zarovnání odstavců <span class="zlut">&lt;p&gt;</span> resp. <span class="zlut">&lt;p align=left/right/center/justify&gt;</span><br>text se automaticky zalamuje na šířku prohlížeče
+</li>
+<li>oddělení části dokumentu:<br>
+<span class="zlut">&lt;div&gt;...&lt;/div&gt;</span> - oddělení části dokumentu s řádkovým zalomením<br>
+<span class="zlut">&lt;span&gt;...&lt;/span&gt;</span> - oddělení části dokumentu bez řádkového zalomení
+</li>
+<li>seznamy:
+<ul>
+<li><span class="zlut">&lt;ul&gt;</span> seznam označný puntíky</li>
+<li><span class="zlut">&lt;ol type="..." start="..." &gt;</span><br>
+<span class="zlut">type</span><br>
+<span class="zlut">"i"</span> - číslovaný seznam malými římskými čísly<br>
+<span class="zlut">"I"</span> - číslovaný seznam velkými římskými čísly<br>
+<span class="zlut">"A"</span> - označení velkými písmeny<br>
+<span class="zlut">"a"</span> - označení malými písmeny
+</li>
+<li><span class="zlut">&lt;li&gt;...&lt;/li&gt;</span> jednotlivé položky</li>
+</ul>
+</li>
+<li><span class="zlut">&lt;br&gt;</span> "násilné" zalomení řádku</li>
+<li><span class="zlut">&lt;hr&gt;</span> oddělení textu vodorovnou čarou</li>
+<li>tabulky<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;td colspan=3&gt;&lt;/td&gt; &lt;!--spojení sloupců--&gt;
+&lt;td rowspan=3&gt;&lt;/td&gt; &lt;!--spojení řádků--&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<ul>
+<li>Volby pro <span class="zlut">&lt;td&gt;</span>
+<ul>
+<li><span class="zlut">cellpadding</span> vzdálenost textu od okraje buňky</li>
+<li><span class="zlut">cellspacing</span> vzdálenost buněk mezi sebou</li>
+<li><span class="zlut">align=center/left/right</span> horizontální zarovnání v buňce</li>
+<li><span class="zlut">valign=top,middle,bottom</span> vertikální zarovnání v buňce</li>
+<li><span class="zlut">width=10px/30%</span> šířka buňky v pixelech nebo v procnetech</li>
+<li><span class="zlut">height=10px/30%</span> výška buňky v pixelech nebo v procentech</li>
+<li><span class="zlut">colspan=3</span> buňka bude "zabírat" tři sloupce</li>
+<li><span class="zlut">rowspan=3</span> buňka bude "zabírat" tři řádky</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li><li>vzhled dokumentu
+<ul>
+<li>barvy<br>
+Předdefinované barvy:<span class="zlut">RED,GREEN,BLUE,YELLOW,BLACK,WHITE ...</span><br>
+<span class="zlut">#rrggbb</span> - definování barvy po složkách (červená,zelená,modrá)<br>
+<span class="zlut">&lt;body bgcolor=black text=white link=red&gt;</span><br>
+<span class="zlut">&lt;font color=#fa96fa&gt;fialový nápis&lt;/font&gt;</span><br>
+Seznam barev:
+<a href="http://www.karlin.mff.cuni.cz/~richter/doc/barvy.php">barvy</a>
+<!--<a href=https://www.jakpsatweb.cz/archiv/barvy-pojmenovane.html>barvy</a>-->
+</li>
+<li>velikost písma<br>
+<span class="zlut">&lt;font size=1 až 7/-1 až +6&gt;</span>
+</li>
+<li>Odkazy (HTTP,MAILTO)<br>
+absolutní:<br>
+<span class="zlut">&lt;a href=http://www.mff.cuni.cz&gt;stránky mff&lt;/a&gt;</span><br>
+relativní:<br>
+<span class="zlut">&lt;a href=../index.html&gt;zpět&lt;/a&gt;</span><br>
+značka v rámci dokumentu:<span class="zlut">&lt;a name=sem&gt;</span> a odskok na ni:<br>
+<span class="zlut">&lt;a href="#sem"&gt;</span><br>
+odkaz na odeslání dopisu:<br>
+<span class="zlut">&lt;a href="mailto:richter@karlin.mff.cuni.cz"&gt;napište mi&lt;/a&gt;</span><br>
+otevření odkazu v novém/pojmenovaném okně:<br>
+<span class="zlut">&lt;a href=index.html target="_blank"/"nazev"&gt;Odkaz&lt;/a&gt;</span>
+</li>
+<li>obrázky:<br>
+<span class="zlut">&lt;img src="obrazek.gif" alt="To je obrazek" align="LEFT|RIGHT|TOP|MIDDLE|BOTTOM"&gt;</span><br>
+<span class="zlut">BORDER=""</span> - v případě, že je obrázek odkaz, pak je kolem něj modrý<br>
+rámeček, chceme-li ho potlačit pak použijeme BORDER="0"<br>
+<span class="zlut">WIDTH=</span>šířka obrázku v px<br>
+<span class="zlut">HEIGHT=</span>výška obrázku v px<br>
+<span class="zlut">ALIGN=</span>zarovnání v rámci textu<br>
+<span class="zlut">ALT=</span>alternativni popis obrazku, zobrazí<br> se po najetí myší (resp. v prohlížečích, které neumí obrázky se zobrazí jen tento popis)
+</li>
+
+</ul>
+</li><li>Klikací mapa:<br>
+rect,circle<br>
+<table border="1">
+<tbody><tr><td>
+<pre>  &lt;MAP <span class="zlut">NAME="ruzne_barvy1"</span>&gt;
+    &lt;AREA HREF="4.html" ALT="cervena" SHAPE=RECT COORDS="5,5,53,53"&gt;
+    &lt;AREA HREF="1.html" ALT="modra" SHAPE=RECT COORDS="113,5,161,53"&gt;
+    &lt;AREA HREF="3.html" ALT="zluta" SHAPE=CIRCLE COORDS="83,29,24"&gt;
+  &lt;/MAP&gt;
+  &lt;IMG SRC="klikaci.bmp" <span class="zlut">USEMAP="#ruzne_barvy1"</span>&gt;  
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+shape<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;MAP <span class="zlut">NAME="ruzne_barvy2"</span>&gt;
+     &lt;AREA HREF="1.html" ALT="Nápověda" SHAPE=POLY COORDS="2,2,2,28,47,28,47,23,26,2,2,2"&gt;
+     &lt;AREA HREF="2.html" ALT="Nápověda" SHAPE=POLY COORDS="49,28,49,22,29,2,82,2,82,18,56,18,57,28,49,28"&gt;
+     &lt;AREA HREF="3.html" ALT="Nápověda" SHAPE=POLY COORDS="59,21,89,21,97,13,97,28,59,28,59,21"&gt;
+     &lt;AREA HREF="4.html" ALT="Nápověda" SHAPE=POLY COORDS="85,18,88,18,97,9,97,2,85,2,85,18"&gt;
+  &lt;/MAP&gt;
+  &lt;IMG SRC="poly.bmp" <span class="zlut">USEMAP="#ruzne_barvy2"</span>&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+Ukázka viz.<a href="http://www.karlin.mff.cuni.cz/~richter/NMIN266/klikaci.html">Klikací mapa</a>
+</li>
+
+</ul>
+<h3>Matematika</h3>
+V <i>~/public_html/</i> si vytvořte soubor <i>math.html</i> s tímto obsahem:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;SCRIPT SRC="/jsMath/easy/load.js"&gt;&lt;/SCRIPT&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="math"&gt;\alpha \beta \gamma \Delta c_0 \int_0^\infty x^2dx&lt;/div&gt;
+&lt;br&gt;
+&lt;div class="math"&gt; \frac{a^2-b^2}{a+b}=a-b&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</td></tr></tbody></table>
+Vysledek si můžete prohlédnout na:<br><br>
+http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/math.html
+<table border="1">
+<tbody><tr><td>
+<div class="typeset"><nobr><span class="scale"><span style="position:relative;"><span style="position:absolute; top:0em; left:0em;"><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char0B.png" style=" width:13px; vertical-align:-1px; margin-right:-0.010em;"><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char0C.png" style=" width:12px; vertical-align:-4px; margin-right:-0.034em;"><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char0D.png" style=" width:11px; vertical-align:-5px; margin-right:-0.032em;"><span class="spacer" style="margin-left:0.055em"></span><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char01.png" style=" width:16px; margin-right:0.032em;"><span class="icmmi10">c</span><span style="position: relative; top:0.277em;"><span class="size2"><span class="icmr10">0</span></span><span class="spacer" style="margin-left:0.05em"></span></span><span style="position: relative; margin-left:0.166em;"><span style="position: relative; top:-1.36em;"><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char5A.png" style="height:46px; width:19px; vertical-align:-45px; margin-right:-0.394em;"></span><span style="position: relative; top:0.895em;"><span class="size2"><span class="icmr10">0</span></span><span class="spacer" style="margin-left:0.05em"></span></span><span style="position: relative; margin-left:0.027em; top:-1.089em;"><span class="size2"><img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/char31.png" style=" width:14px; vertical-align:-1px;"></span><span class="spacer" style="margin-left:0.05em"></span></span></span><span style="position: relative; margin-left:0.166em;"><span class="icmmi10">x</span><span style="position: relative; top:-0.412em;"><span class="size2"><span class="icmr10">2</span></span><span class="spacer" style="margin-left:0.05em"></span></span></span><span class="icmmi10">dx</span>&nbsp;</span><span class="blank" style="width:7.610em;height:0.938em;"></span></span><span class="blank" style="height:2.386em;vertical-align:-0.945em"></span></span></nobr></div>
+<br>
+<div class="typeset"><nobr><span class="scale"><span class="spacer" style="margin-left:0.12em"></span><span style="position: relative; margin-left:0.390em; top:0.700em;"><span class="icmmi10">a</span><span style="position: relative; margin-left:0.222em;"><span class="icmr10">+</span></span><span style="position: relative; margin-left:0.222em;"><span class="icmmi10">b</span></span></span><span style="position: relative; margin-left:-2.475em; top:-0.676em;"><span class="icmmi10">a</span><span style="position: relative; top:-0.362em;"><span class="size2"><span class="icmr10">2</span></span><span class="spacer" style="margin-left:0.05em"></span></span><span style="position: relative; margin-left:0.222em;"><span class="icmsy10">−</span></span><span style="position: relative; margin-left:0.222em;"><span class="icmmi10">b</span><span style="position: relative; top:-0.362em;"><span class="size2"><span class="icmr10">2</span></span><span class="spacer" style="margin-left:0.05em"></span></span></span></span><span style="position: relative; margin-left:-2.866em; top:-0.22em;"><span class="blank" style="border-left:2.866em solid;height:1.5px;"></span></span><span class="spacer" style="margin-left:0.12em"></span><span style="position: relative; margin-left:0.277em;"><span class="icmr10">=</span></span><span style="position: relative; margin-left:0.277em;"><span class="icmmi10">a</span></span><span style="position: relative; margin-left:0.222em;"><span class="icmsy10">−</span></span><span style="position: relative; margin-left:0.222em;"><span class="icmmi10">b</span></span><span class="blank" style="height:2.358em;vertical-align:-0.750em"></span></span></nobr></div>
+</td></tr>
+</tbody></table>
+<h3>Kaskádové styly CSS</h3>
+<ul>
+<li>
+slouží k globálnímu nastavení vzhledu dokumentu
+(např. že všechny nadpisy budou modrým písmem)
+tím se zvyšuje přehlednost/srozumitelnost HTML kodu
+</li>
+<li>
+mužeme snadno zajistit stejný vzhled více dokumentů
+</li>
+<li>
+pomocí CSS lze ovlivnit více vlastností než pomocí prostého HTML a to např.<br>
+barvu<br>
+velikost<br>
+pozadí<br>
+použitý font<br>
+umístění
+</li>
+<li>
+existuje velké množství předdefinovaných CSS viz. např.  <a href="http://www.dreamtemplate.com/templates/simple-personal-css-templates.html">Simple CSS Personal Website Templates</a>
+</li>
+<li>
+definice CSS
+<ul>
+<li>v hlavičce dokumentu
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;head&gt;
+&lt;style&gt;
+&lt;!--
+body{
+       font-size:     12px;
+       color:         navy;
+       font-family:   sans-serif;
+       /*celý dokument bude napsán bezpatkovým, tmavěmodrým */
+       /*písmem o velikosti 12 pixelů */
+}--&gt;
+&lt;/style&gt;
+&lt;/head&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<br>
+</li>
+<li>v externím souboru (s koncovkou css)<br>
+soubor <i>styl.css</i>
+<table border="1">
+<tbody><tr><td>
+<pre>body{
+       font-size:     12px;
+       color:         navy;
+       font-family:   sans-serif;
+       /*celý dokument bude napsán bezpatkovým, tmavěmodrým */
+       /*písmem o velikosti 12 pixelů */
+     }
+</pre>
+</td></tr>
+</tbody></table><br>
+v souboru, kde chceme tento styl poutžít, bude v <span class="zlut">&lt;head&gt;</span><br>
+<span class="zlut">
+&lt;link rel=stylesheet type="text/css" href="./styl.css"&gt;
+</span>
+</li>
+<li>jen pro část dokumentu (pro konkrétní TAG)<br>
+&lt;p <span class="zlut">style="color: navy;"</span>&gt;pouze tento odstvec bude napsán modře&lt;/p&gt;
+</li>
+</ul>
+</li>
+<li>obecná definice (/* ... */ slouží pro komentáře)<br>
+pro známé HTML tagy:<br>
+<table border="1">
+<tbody><tr><td><pre>TAG {
+color :BLUE;
+/*barva pisma*/
+background-color : RED;
+/*barva pozadi*/
+font-family: sans-serif;
+/*serif, arial - pismo*/
+font-size: 14pt/px;
+/*velikost pisma*/
+}
+</pre></td></tr>
+</tbody></table><br>
+pro 'podtřídy':<br>
+<table border="1">
+<tbody><tr><td><pre>A:link    {color: green;}
+A:visited {color: navy;}
+A:active  {color: black;}
+A:hover   {color: red; text-decoration: underline;}
+</pre></td></tr>
+</tbody></table><br>
+definice vlastní třídy a její použití:<br>
+<table border="1">
+<tbody><tr><td><pre>&lt;style&gt;
+.MOJE{
+background-color: #e6d250;
+color:       black;
+font-family:      Arial;
+font-size:        11pt;
+}
+&lt;/style&gt;
+&lt;tag class=MOJE&gt;
+</pre></td></tr>
+</tbody></table><br>
+</li>
+<li>stručný přehled css vlastností:<br>
+<table border="1">
+<tbody><tr><td><pre>font-family:   Arial; /* použitý font Times, Sans-Serif, Courier*/
+font-size:     10px;  /*velikost písma px, pt ....
+font-style:    normal; /*řez písma normal, italic (normální, kurzíva)*/
+font-variant:  normal; /* normal, small-caps (normal, kapitálky) */
+font-weight:   normal; /* normal, bold (normální, tučné)*/
+text-decoration: none; /*none, underline, overline*/
+line-height:     8px; /*výška řádku*/
+text-align:      left; /*left,right,center, justify (vlevo,vpravo,uprostřed, blok)*/
+color:            #00CC00; /*barva písma*/
+background-color: #0000FF; /*barva pozadí*/
+margin-top:    10px;   /*vnější horní okraj*/
+margin-left:   20px;   /*vnější levý okraj*/
+margin-bottom: 0px;    /*vnější spodní okraj*/
+margin-right:  0px;    /*vnější pravý okraj*/
+padding-top:    10px;  /*vnitřní horní okraj*/
+padding-left:   20px;  /*vnitřní levý okraj*/
+padding-bottom: 0px;   /*vnitřní spodní okraj*/
+padding-right:  0px;   /*vnitřní pravý okraj*/
+border-width:   2px;   /*šířka rámečku*/
+border-color:   RED;   /*barva rámečku*/
+border-style:   none;  /*styl rámečku none, solid,inset,outset*/
+/*            žádný, plný ,'díra', 'kopeček' */
+position:       absolute; /*poloha se zadává abslolutně vzhledem k*/
+/*levému hornímu rohu */
+top:         20px;     /*horní okraj*/
+left:        20px;     /*levý okraj*/
+position:       relative; /*poloha se zadavá relativně vzhledem k stavající poloze*/
+top:         20px;     /*říká posun v horizontálním směru*/
+left:         20px;     /*říká posun ve vertikálním směru */
+width:         100px;     /*šířka*/
+height:         80px;     /*výška*/ 
+border-collapse: collapse; /* pro tabulku, zruší mezery mezi buňkami*/
+visibility:hidden/visible; /* pro libovolný prvek skrytí zobrazení
+</pre></td></tr>
+</tbody></table><br>
+</li>
+</ul>
+<h3>Formuláře</h3>
+<ul>
+<li>celý formulář musí být uzavřen mezi<br>
+<span class="zlut">&lt;form&gt;</span>a<span class="zlut">&lt;/form&gt;</span><br>
+resp.
+<span class="zlut">&lt;form action=index.php method=GET/POST&gt;</span>a<span class="zlut">&lt;/form&gt;</span><br>
+<span class="zlut">action</span> - jméno skriptu, kterému se formulář předá ke zpracování<br>
+metoda <span class="zlut">GET</span> - předávání dat v řádce adresy<br>
+<span class="zlut">http://www.karlin.mff.cuni.cz/~richter/index.php?jmeno=jan&amp;prijmeni=novak</span><br>
+touto metodou lze předat jen omezený objem dat (nelze takto např. poslat soubor)<br>
+metoda <span class="zlut">POST</span> - předávaná data nejsou 'viditelná', ale objem dat je omezen jen administrátorem daného<br>systému (obvykle několik málo desítek MB), lze poslat soubor
+</li>
+<li>Formulářové prvky:<br>
+<ul>
+<li>
+obyčejné vkládací políčko<br>
+<span class="zlut">
+&lt;input name="jmeno" value="jan novák"&gt;
+</span>
+</li>
+<li>vkládací políčko typu password (při zadávání jsou znaky skryté)<br>
+<span class="zlut">
+&lt;input type=password&gt;
+</span>
+</li>
+<li>políčko, které nelze přepsat<br>
+<span class="zlut">
+&lt;input .......... readonly&gt;
+</span>
+</li>
+<li>"neviditelné" políčko, přenos informací, které nejsou vidět na www stránec (ale jsou vidět při zobrazení zdrojového kódu)<br>
+<span class="zlut">
+&lt;input type=hidden name="skryta" value="123"&gt;
+</span>
+</li>
+<li>odeslání formuláře (tlačítko)<br>
+<span class="zlut">
+&lt;input type=submit value="odešli" name="sub1"&gt;
+</span>
+</li>
+<li>uvednení formuláře do výchozího stavu (tlačítko)<br>
+<span class="zlut">
+&lt;input type=reset&gt;
+</span>
+</li>
+<li>tlačítko<br>
+<span class="zlut">
+&lt;input type=button&gt;
+</span>
+</li>
+<li>zatrhávací (výběrová políčka)
+typ 'čtvereček' (checkbox) se použije na 'dobrovolnou'<br>volbu
+'čtvereček' několik vzájemně nezávislých prvků<br>
+<span class="zlut">
+&lt;input type=checkbox value=ano name=mleko&gt;
+</span><br>
+'čtvereček' několik prvků, které spolu vzájemně souvisí
+můžeme sdružit do pole<br>
+<span class="zlut">
+&lt;input type=checkbox value=mleko name=docaje[]&gt;
+<br>
+&lt;input type=checkbox value=cukr name=docaje[]&gt;
+</span>
+</li>
+<li>
+typ 'kolečko' (radiobox) se použije na 'povině volitelnou' volbu
+je nutno vybrat pravě jednu nabídku<br>
+<span class="zlut">
+&lt;input type=radio value=mleko name=docaje checked&gt;
+<br>
+&lt;input type=radio value=cukr name=docaje &gt;
+<br>
+&lt;input type=radio value=sul name=docaje &gt;
+</span><br>
+volba <span class="zlut">CHECKED</span> znamená zatržení daného políčka.
+U typu RADIO by vždy některá z voleb měla být předem zaškrtnutá.
+</li>
+<li>seznam<br>
+<span class="zlut">
+&lt;select name="format1[]" size=1 multiple&gt;
+<br>
+&lt;option value="txt"&gt;prosty text txt
+<br>
+&lt;option value="pdf"&gt;portable document format pdf
+<br>
+.
+<br>
+.
+<br>
+&lt;/select&gt;<br>
+</span>
+SIZE říká kolik řádků má být viditelných<br>
+    volba MULTIPLE říká, že lze vybrat více než jednu položku
+(pomocí CTRL či SHIFT)
+</li>
+<li>víceřádkový text<br>
+<span class="zlut">
+&lt;textarea rows=10 cols=20&gt;...&lt;/textarea&gt;
+</span><br>
+ROWS a COLS říká rozměr rámečku (v jednotkách řadky resp. sloupce)
+</li>
+<li>výběr souboru na lokálním disku<br>
+<span class="zlut">
+&lt;input type=file name=cr accept="image/*,text/plain,application/x-zip-compressed"&gt;
+</span>
+<br>
+v TAGu &lt;form ...&gt; musí být uvedena volba <span style="background:yellow;">enctype="multipart/form-data"</span> 
+<br>
+ve volbě ACCEPT lze říct jaké soubory jsou přijatelné<br>
+(tento prvek lze použít jen pro metodu <span class="zlut">POST</span>)
+</li>
+<li>klikací mapa<br>
+<span class="zlut">
+&lt;input type=image name=mapa src="rep.gif" alt="mapa cr"&gt;
+</span>
+<br>
+obrázek funguje jako odesílací tlačítko, přičemž navíc předá informaci<br>
+kam bylo kliknuto
+</li>
+</ul>
+</li>
+<li>ukázky formulářových prvků:<br>
+<!--<A HREF=http://www.karlin.mff.cuni.cz/~richter/doc/formulare.php>Formuláře 1</A><br>-->
+<a href="http://www.karlin.mff.cuni.cz/~richter/doc/formulare/index.php">Formuláře 2</a>
+</li>
+</ul>
+<h2>Input políčka pro HTML 5</h2>
+<form method="get">
+<script language="JavaScript">
+loc=window.location.href;
+document.write(loc);
+</script>https://www.karlin.mff.cuni.cz/~richter/NMIN266/HTML_CSS_FORM.html
+<ul>
+<li>
+&lt;input type="color" name="barva" value="blue"&gt;<br>
+<input type="color" name="barva" value="#000000">
+</li>
+<li>
+&lt;input type="date" name="datum"&gt;<br>
+	<input type="date" name="datum"> (nefunguje v IE, ve FireFox, Chrome a Edge ano)
+</li>
+<li>
+&lt;input type="email" name="email"&gt;<br>
+<input type="email" name="email"> (při odeslání se políčko zkontroluje - když je formát e-mailu špatný, tak se neodešle)
+</li>
+<li>
+&lt;input type="range" name="rozsah" value="4"&gt;<br>
+<input type="range" name="rozsah" value="4">
+</li>
+</ul>
+<input type="submit">
+</form>
+<h3>Ukázka HTML5</h3>
+
+Graf f:y=ax<sup>2</sup>+bx+c
+<style>
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 300px;
+    padding: 0 0px;
+}
+</style>
+<form>
+<div>
+<span style="display:inline-block;&quot;">
+a=<input id="a" onchange="document.getElementById('ap').value=document.getElementById('a').value;draw();" value="1" style="width:50px;"><input type="range" id="ap" min="-10" max="10" value="1" step="0.1" onchange="document.getElementById('a').value=document.getElementById('ap').value;draw();" style="-webkit-appearance:none;width:250px;background-color:green;">&nbsp;&nbsp;<span id="predpis"><i>f(x)=1x<sup>2</sup>+2x-2</i></span><br>
+b=<input id="b" onchange="document.getElementById('bp').value=document.getElementById('b').value;draw();" value="2" style="width:50px;"><input type="range" id="bp" min="-10" max="10" value="2" step="0.1" onchange="document.getElementById('b').value=document.getElementById('bp').value;draw();" style="-webkit-appearance:none;width:250px;background-color:red;">
+<input type="checkbox" id="vykresliosu" onchange="draw();">
+        <span style="display:inline-block;width:200px;text-align:left;vertical-align:top;">
+&nbsp;vykreslit osu
+</span><br>
+c=<input id="c" onchange="document.getElementById('cp').value=document.getElementById('c').value;draw();" value="-2" style="width:50px;"><input type="range" id="cp" min="-10" max="10" value="-2" step="0.1" onchange="document.getElementById('c').value=document.getElementById('cp').value;draw();" style="-webkit-appearance:none;width:250px;background-color:blue;">
+<input type="checkbox" id="vykreslitecnu" onchange="draw();">
+        <span style="display:inline-block;width:220px;text-align:left;vertical-align:top;">
+&nbsp;vykreslit tečnu v průsečíku s osou <i>y</i>
+</span><br>
+
+</span>
+</div></form>
+<div>
+<canvas width="550" height="400" id="canvas" onclick="draw();" style="border-style:solid;border-width:1px;border-color:black;"></canvas>
+<span style="display:inline-block;">
+<img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/zoomin.gif" onclick="posunto(5);"><br>
+<input type="range" id="meritko" min="5" max="50" value="30" step="5" orient="vertical" onchange="draw();"><br>
+<img src="8%20-%20HTML,%20CSS,%20Formul%C3%A1%C5%99ov%C3%A9%20prvky_files/zoomout.gif" onclick="posunto(-5);">
+</span>
+</div>
+<script language="javascript">
+var wi=document.getElementById("canvas").width;
+var he=document.getElementById("canvas").height;
+draw();
+
+function posunto(okolik){
+  a=1*document.getElementById('meritko').value+okolik;
+  aktual=a+okolik;
+  document.getElementById('meritko').value=aktual;
+  draw();
+}
+function draw() {
+    var a=1*document.getElementById('a').value;
+    var b=1*document.getElementById('b').value;
+    var c=1*document.getElementById('c').value;
+  //vyplneni predpisu
+  var text="<i>f(x)=";
+      text+=document.getElementById('a').value+"x<sup>2</sup>";
+      if (b>0){
+        text+="+";
+      }
+      if (b!=0){
+        text+=document.getElementById('b').value+"x";
+      }
+      text+=document.getElementById('c').value+"</i>";
+      document.getElementById('predpis').innerHTML=text;
+  var jednotka=1*document.getElementById('meritko').value;
+  var jednotkapl=jednotka+0.5;
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle="#f8f8e8";
+    ctx.fillRect(0, 0, wi, he);
+    
+    mrizka(ctx,jednotka,0);
+    osy(ctx,jednotka,0);
+    //parabola
+    ctx.strokeStyle="red";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    var ox,oy,px;
+    ox=-1*(0.5*wi/jednotka);
+    px=ox*10;
+    oy=a*ox*ox+b*ox+c;
+    ox*=jednotka;
+    oy*=-jednotka;
+    ox+=200.5;
+    oy+=200.5;
+    ctx.moveTo(ox,oy);
+
+    for (i=(px+1);i<(-1*px+1);i++){
+      ox=i/10;
+      oy=a*ox*ox+b*ox+c;
+      ox*=jednotka;
+      oy*=-jednotka;
+      ox+=Math.floor(0.5*wi)+0.5;
+      oy+=Math.floor(0.5*he)+0.5;
+      ctx.lineTo(ox,oy);
+    }
+    ctx.stroke();
+    ctx.strokeStyle="black";
+    if (document.getElementById('vykresliosu').checked == true){
+      ox=-b/(2*a);
+      ox=Math.floor(jednotka*ox);
+      ox+=Math.floor(0.5*wi)+0.5;
+      
+      ctx.beginPath();
+      ctx.setLineDash([4, 2]);
+      ctx.moveTo(ox,0);
+      ctx.lineTo(ox,he);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    //tecna v pruseciku s osou y
+    if (document.getElementById('vykreslitecnu').checked == true){
+      ctx.strokeStyle="green";
+      ox=-40;
+      oy=-b*ox-c;
+      ox*=jednotka;
+      oy*=jednotka;
+      ox+=Math.floor(0.5*wi)+0.5;
+      oy+=Math.floor(0.5*he)+0.5;
+      ctx.beginPath();
+      ctx.moveTo(ox,oy);
+  
+      ox=40;
+      oy=-b*ox-c;
+      ox*=jednotka;
+      oy*=jednotka;
+      ox+=Math.floor(0.5*wi)+0.5;
+      oy+=Math.floor(0.5*he)+0.5;
+  
+      ctx.lineTo(ox,oy);
+      ctx.stroke();
+    }
+    ctx.strokeStyle="#000000";
+  }
+
+}
+function mrizka(ctx,jedn,pos){
+  //mrizka
+  if (pos<0){
+    posY=-pos;
+    posX=0;
+  }else{
+    posX=pos;
+    posY=0;
+  }
+  jednotka=jedn;
+  ox=Math.floor(0.5*he);
+  oy=Math.floor(0.5*wi);
+  ctx.strokeStyle="#d1d1d1";
+  for (i=0.5;i<he;i+=jednotka){
+    if (i<(0.5*he-posY)){
+      ctx.beginPath();
+      ctx.moveTo(0,ox+i);
+      ctx.lineTo(wi-posX,ox+i);
+      ctx.stroke();
+    }
+    if (i>0.5){ 
+      ctx.beginPath();
+      ctx.moveTo(0,ox-i);
+      ctx.lineTo(wi-posX,ox-i);
+      ctx.stroke();
+    }
+  }
+  for (i=0.5;i<wi;i+=jednotka){
+    if (i<(0.5*wi-posX)){
+      ctx.beginPath();
+      ctx.moveTo(oy+i,0);
+      ctx.lineTo(oy+i,he-posY);
+      ctx.stroke();
+    }
+    if (i>0.5){ 
+      ctx.beginPath();
+      ctx.moveTo(oy-i,0);
+      ctx.lineTo(oy-i,he-posY);
+      ctx.stroke();
+    }
+  }
+}
+function osy(ctx,jedn,pos){
+  jednotka=jedn;
+    //osy
+    ctx.strokeStyle="#000000";
+    ctx.beginPath();
+    ctx.moveTo(Math.floor(0.5*wi)+0.5,0);
+    ctx.lineTo(Math.floor(0.5*wi)+0.5,he);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0,Math.floor(0.5*he)+0.5);
+    ctx.lineTo(wi,Math.floor(0.5*he)+0.5);
+    ctx.stroke();
+    //popis - cisla
+    ctx.fillStyle="#000000";
+    ctx.font = "14px Arial";
+    //popisu pocatek
+    shx=Math.floor(0.5*wi)-10;
+    shy=Math.floor(0.5*he)+15;
+    ctx.fillText( 0, shx, shy);
+    //x+
+    x=0;
+    pridej=1;
+    if (jednotka<21){
+      pridej=2;
+    }
+    if (jednotka<11){
+      pridej=5;
+    }
+    for (i=(jednotka*pridej);i<wi;i+=(jednotka*pridej)){
+      x+=pridej;
+      if (x>9){posun=-7;}else{posun=0;}
+      ctx.fillText( x, shx+2+i+posun, shy);
+      ctx.fillText( (-1*x), shx-5-i+posun, shy);
+    }
+    y=0;
+    for (i=(jednotka*pridej);i<he;i+=(jednotka*pridej)){
+      y+=pridej;
+      if (y>9){posun=-7;}else{posun=0;}
+      ctx.fillText( y, shx+posun, shy-2-i);
+      ctx.fillText( (-1*y), shx-5+posun, shy+i);
+    }
+    ctx.font="20px Georgia";
+    ctx.fillText( "x", wi-15, 0.5*he-10);
+    ctx.fillText( "y", 0.5*wi+10, 15);
+}
+</script>
+
+
+
+</body></html>

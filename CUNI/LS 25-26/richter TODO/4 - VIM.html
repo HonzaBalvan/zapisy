@@ -1,0 +1,368 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>VIM</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<h2>13.3. - Cvičení VIM</h2>
+<ol>
+<li>
+V některé z minulých hodin jsme si pomocí příkazů:
+<pre>  echo '#!/bin/sh' &gt; pozdrav
+  echo 'echo ahoj' &gt;&gt; pozdrav
+  echo echo `whoami` &gt;&gt; pozdrav 
+  chmod u+x pozdrav
+</pre>
+Vytvořte si ho znovu, ať máme všichni stejnou podobu tohoto skriptu.<br>
+Vytvořili jsme první jednoduchý skript, který nás pozdravil. Problém byl, že předposlední<br> řádek je špatně - zdraví tvůrce a ne toho kdo skript spustil. Upravíme ho pomocí vim na tento tvar:
+<pre>#!/bin/sh
+echo -n "ahoj "
+echo `whoami`
+</pre>
+a to takto:
+<pre>vim pozdrav
+jsme v příkazovém režimu
+:set number (resp. :set num+tabelátor) - zapneme čísla řádků
+stále jsme v příkazovém režimu
+3+[SHIFT]+g - skočíme na 3.řádek
+dd - tento řádek smažeme
+/ahoj - najdeme slovo ahoj
+i - přepneme se do vkládacího režimu
+upravíme řádek na tvar:
+echo -n "ahoj␣"
+echo `whoami`
+ESC - přepneme se do příkazového režimu
+:set nonumber - vypneme číslování řádků
+:w - soubor uložíme
+^z - přepneme vim na pozadí
+./pozdrav - vyzkoušíme jestli skript správně funguje
+fg - zpět do vim
+:q - ukončíme vim
+</pre>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>
+Zpracování bodu <b>1.</b> cvičení z 1.3. pomocí vim:
+<i>rm -rf fimfarum</i> smazání předchozího částečného zpracování<br>
+<i>tar xzvf fimfarum.tar.gz</i> rozbalení souborů<br>
+<i>cd fimfarum</i><br>
+<i>file * &gt; zpracuj</i><br>
+<i>vim zpracuj</i> editace souboru zpracuj ve vim:
+<pre>ESC
+[SHIFT]+g - skok na konec souboru
+:%s/:␣/./  - záměna :␣ za .
+1 [SHIFT]+g - skok na 1.řádek
+fd - najdi znak "d" řádku
+^v - začni označovat sloupcový blok
+[SHIFT]+g skok na konec souboru
+5↑ - o 5 řádků nahoru (poslední je "příliš" krátký)
+$ - skok na konec řádku
+d - smaž označený blok
+[SHIFT]+g
+fd
+^v
+5↑
+$d
+[SHIFT]+g
+:%s/^/␣/ na začátek všech řádků jsem přidal mezeru, kurzor je na "s" od soubor40
+^v
+1 [SHIFT]+g
+f1 - skok na znak "1"
+y - kopie bloku do schránky
+← - o znak do leva
+P - vložím blok před aktuální pozici
+:%s/^/mv / - záměna začátku řádku za mv␣
+[SHIFT]+g
+$
+^v
+4←
+1 [SHIFT]+g
+f.
+u - vybraný blok převedu na malá písmena
+:wq - uložím a skončím
+</pre>
+sh zpracuj<br>
+mkdir obrazky<br>
+mkdir dokumenty<br>
+mv *pdf ./dokumenty<br>
+mv s* ./obrazky
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li>
+zkoprírujte si soubor /usr/html/NMIN266/3/HANOJ.php do ~/NMIN266
+<ul>
+<li>
+otevřete si ho ve vim
+</li>
+<li>
+najdeme první funkci
+<pre>/function
+</pre>
+</li>
+<li>
+do řádkového bloku označíme celou funkci
+<pre>[SHIFT]+v - označuji řádkový blok
+f{ - na řádku najdu otevírací složenou závorku
+% - skočím na párovou
+: - s blokem chci něco udělat (automaticky se doplní na :'&lt;,'&gt;)
+:'&lt;,'&gt;fo
+</pre>
+funkce se zbalí do jednoho řádku:
+<pre>+---- 14 lines" function presun($z,$na,$pom,$kolik){---------------
+</pre>
+</li>
+<li>
+na řádku kde je zbalená funkce mohu použít příkaz
+<pre>zo</pre>
+pro rozbalení a
+<pre>zc</pre>
+pro opětovné zbalení<br>
+pozn. tato zbalení se po ukončení editace "zapomenou"
+</li>
+<li>
+Na řádcích 23.-28. jsou nějaké pomocné výpisy - chci je rychle všechny zakomentovat (tj. mají začínat znakem #)
+<pre>/^print - našel jsem řádek, který začíná print
+[SHIFT]+v - označuji řádkový blok
+↓↓↓↓↓ - posunu se o 5 řádků níže
+:'&lt;,'&gt;s/^/#/ - na vybraném bloku přidám (zaměním) na začátek řádku #
+</pre>
+pozn. bylo by také možné provést záměnu v celém souboru tj.
+<pre>:%s/^print/#print
+</pre>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol start="4">
+<li>
+zkopírujte si soubor /usr/html/NMIN266/3/hesse-demian.txt do ~/NMIN266
+</li>
+<ul>
+<li>
+pomocí přesměrování výstupu vypište informace o tomto souboru do souboru <i>vystup</i><br>
+<pre>ls -l hesse-demian.txt &gt; vystup
+</pre>
+</li>
+<li>
+Soubor hesse-demian.txt si otevřete ve vim tj.<br>
+<pre>vim hesse-demian.txt
+</pre>
+jste na prvním řádku (to vidíte vpravo dole 1,5), tento řádek příkazem <i>dd</i> odstraňte.
+</li>
+<li>
+Pomocí sloupcového bloku odstraňte číslování řádků i s mezerou tj.
+<pre>I to je přepnutí se do vkládacího režimu a to tak, že na začátku řádky
+vložíme 5 mezer tj. 1 je na stejné pozici jako ostatní čísla
+</pre>
+<pre>ESC přejdete do příkazového režimu
+kurzorovou šipkou na mezeru za "1"
+^v tj. označení sloupcového bloku
+SHIFŤ+g tj. skok na konec souboru
+kurzorovou šipkou až na začátek řádku
+d tj. smazání označeného bloku
+</pre>
+</li>
+<li>
+soubor uložte
+<pre>ESC
+:w
+</pre>
+</li>
+<li>
+zkontrolujte, že jste v příkazovém režimu;  pak pomocí ^z "schovejte" vim na pozadí
+</li>
+<li>
+vypište informace o souboru <i>hesse-demian.txt</i> do souboru <i>vystup</i>
+<pre>ls -l hesse-demian.txt &gt;&gt; vystup
+</pre>
+</li>
+<li>
+vraťte se zpět do <i>vim</i>
+<pre>fg
+</pre>
+</li>
+<li>
+Jste zpátky ve vim v příkazovém režimu - příkazem <i>u</i> - undo vraťte očíslování řádků zpátky, opakováním příkazu <i>u</i> byste se dostali až do původního stavu souboru.
+</li>
+<li>
+Opakovaným příkazem <i>CTRL+r</i> - redo se dostanete znovu do stavu bez čísel řádků
+</li>
+<li>
+ zjistěte kolik je v souboru kapitol – každá kapitola začíná slovem "KAPITOL" (můžete použít záměnu tj.
+<pre> %s/KAPITOLA/KAPITOLA/
+</pre>
+<i>vim </i> oznámí kolik záměn bylo provedeno anebo, opět s <i>vim</i> na pozadí, a pomocí <i>grep</i> a <i>wc</i> tj.
+<pre>^z
+grep KAPITOLA hesse-demian.txt | wc –l
+fg
+</pre>
+</li>
+<li>
+nad každý řádek, kde je nápis KAPITOLA, vložte prázdný řádek (buďto 
+pomocí makra – kolikrát se bude opakovat víte z předchozího bodu
+<pre>:1 - tj. skok na první řádek
+qe - definuji makro na "e"
+/KAPITOLA - hledej slovo KAPITOLA
+i - přepni se do vkládacího režimu
+[ENTER]
+↓ - jdi na další řádek
+ESC
+q - ukončení učení makra
+xxx @e - makro na "e" spustíme tolikrát kolikrát je potřeba
+</pre>
+anebo pomocí záměny v celém souboru tj.
+<pre>%s/KAPITOLA/^v[ENTER]KAPITOLA
+</pre>
+pozn. ^v "odstíní" klávesu ENTER
+</li>
+<li>
+<i>vim</i> si rozdělte vertikálně na dvě podokna pomocí příkazu
+<pre>:vsplit vystup
+</pre>
+(pro psaní vsplit i vystup lze použít tabelátor)<br>
+(mezi <i>vypis</i> a <i>hesse-demian.txt</i> se přepínáte ^w a →←)
+</li>
+<li>
+ přepněte se do souboru <i>hesse-demian.txt</i> označte text od začátku souboru až po "...každý sám." – úvod až k prvnímu slovu KAPITOLA tj.
+<pre>:1 - skok na začátek souboru
+v - začátek označování bloku
+/každý sám.[ENTER]
+</pre>
+tento text zkopírujte do schránky
+<pre>y
+</pre>
+</li>
+<li>
+přepněte se do souboru <i>vypis</i>, skočte na konec souboru a vložte zkopírovaný text
+<pre>^w→ - přepnutí se do podokna vysledky
+[SHIFT]+g - skok na konec souboru
+p - vložení bloku
+</pre>
+</li>
+<li>
+soubor <i>vypis</i> uložte, <i>vim</i> skončete, a soubor <i>vypis</i> mi pošlete  pomocí příkazu <i>mail</i>
+<pre>ESC
+:w
+:q
+mail -s výsledky richter@karlin.mff.cuni.cz &lt; vypis
+</pre>
+</li>
+</ul>
+</ol>
+<hr>
+<ol start="5">
+<li>
+<!--Z <i>/usr/html/NMIN266/1/</i> si zkopírujte znovu soubor <i>seznam1.txt</i> (<i>cp /usr/html/NMIN266/1/seznam1.txt ~/NMIN266/</i>). Tento soubor si otevřete ve  <i>vim</i> si otevřete soubor <i>seznam1.txt</i> tj. seznam ve tvaru:<br> prijmeni jmeno, „něco“.<br>-->
+Z <i>/usr/html/NMIN266/1/</i> si zkopírujte znovu soubor <i>seznam1.txt</i> (<i>cp /usr/html/NMIN266/1/seznam1.txt ~/NMIN266/</i>). Tento soubor si otevřete ve  <i>vim</i>  tj. seznam ve tvaru:<br> prijmeni jmeno, „něco“.<br>
+    Chci ho mít setříděný podle příjmení a ve tvaru jmeno prijmeni, a to „něco“<br>
+<pre>    ESC - dostanu se do příkazového režimu
+    :% !sort - celý soubor "proženu" příkazem systému sort
+    ESC … - dostanu se do příkazového režimu
+    qa - definuji makro pro písmenko a
+    první řádek je
+    Prijmeni1 Jmeno1, "nějaké další informace"
+    ^ skočím na začátek řádku
+    dw jsem smazal Prijmeni1 (mám ho ve schránce)
+    e skočil jsem na konec slova
+    a␣ připsal jsem mezeru za prijmeni1
+    ESC návrat do příkazového režimu
+    p jsem vložil jmeno1
+    x smažu mezeru, která je za příjmením
+    ↓ přesunu se na nižší řádek
+    q skončím definici makra pro 'a'
+    druhý řádek je:
+    Prijmeni2 Jmeno2, … - jsem někde v rámci slova Jmeno2 v příkazovém režimu
+    [SHIFT]+g skočím na konec souboru a zjistím, že tento soubor má 718řádek
+    ’’ skočím zpět na 2.řádek
+    717@a 717 zopakuj makro definované pro klávesu a
+    … a je hotovo
+    :w - soubor uložím
+    1 [SHIFT]+g skočím na začátek souboru
+    </pre>
+ Vytvoříme makro na smazání veškerého textu na řádku počínaje znakem "," <br>(mazání od určité pozice na konec řádku je <i>d$</i>) tj.
+<pre>   qb - definuji makro pro písmenko b
+   ^ - skok na začátek řádku
+   f, - na řádku najdu čárku
+   d$ - smažu vše až do konce řádku
+   ↓  - přesunu se o řádek níž
+   ESC
+   q - ukončení záznamu makra
+   [SHIFT]+g
+</pre>
+zjistím, že soubor má 718 řádků
+<pre>2 [SHIFT]+g
+</pre>
+skok na 2.řádek (mohl bych také použít '' tj. dva apostrofy pro skok na 
+místo "kde jsem byl před tím než jsem skočil na konec řádku"
+<pre>717@a
+</pre>
+makro "a" spustím 717 ...<br>
+...? proč ale skončil po 29. opakování ....<br>
+soubor <i>seznam1.txt</i> uložte pod názvem <i>seznam-prosty.txt</i> a pošlete mi ho mailem
+<pre>ESC
+:w seznam-prosty.txt  - uložím pod příslušným názvem
+:q! - skončím bez uložení původního souboru
+mail -s seznam richter@karlin.mff.cuni.cz &lt; seznam-prosty.txt
+</pre>
+</li>
+</ol>
+<hr>
+<ol start="6">
+<li>Makra ve .vimrc
+<ul>
+<li>
+do souboru <i>~/.vimrc</i> si napište makro, které se bude volat v příkazovém režimu (na zavolání tex) a vyplní kostru LaTeXového dokumentu. tj.
+<pre>  \documentclass{article}
+  
+  \begin{dokument}
+  
+  \end{dokument}
+</pre>
+a kurzor bude umístěn na místo prázdné řádky
+<pre>  cd
+  vim .vimrc
+  [SHIFT]+g
+  i
+  map tex i\documentclass{article}^v[ENTER]\begin{document}^v[ENTER]\end{document}^v[ESC]O
+  ESC
+  :wq
+</pre>
+Otevřete si prázdný dokument a makro vyzkoušejte
+</li>
+<li>
+Vytvoříme si makra (opět do .vimrc) na doplňování párových závorek
+<pre>imap ( ()^vESCi - kdykoliv v textu napíšu otevírací závorku tak:
+                  se napíše otevírací a uzavírací kulatá závorka
+bylo by to možné udělat také takto:
+imap ( ()^v←
+</pre>
+stejným způsobem i pro [ a {
+</li>
+<li>
+Zkuste si sami vytvořit makro v příkazovém režimu volané htm, které vytvoří<br>
+kostru html dokumentu:
+<pre>  &lt;html&gt;
+  &lt;head&gt;
+  &lt;meta charset=utf8&gt;
+  &lt;/head&gt;
+  &lt;head&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+</pre>
+</li>
+</ul>
+</li></ol>
+
+
+</body></html>

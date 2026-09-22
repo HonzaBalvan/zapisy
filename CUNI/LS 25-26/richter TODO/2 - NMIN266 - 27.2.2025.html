@@ -1,0 +1,102 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NMIN266 - 27.2.2025</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<h2>Cvičení 27.2.2025 - základní příkazy</h2>
+<br>
+<i>všechny úkoly vypracujte bez textového editoru</i>
+<ol>
+<li>z <i>/usr/html/NMIN266/2/</i> si zkopírujte soubor <i>fimfarum.tar.gz</i> do <i>~/NMIN266/</i><br>
+  a tam ho pomocí <i>gunzip</i> a <i>tar</i> rozbalte<br>tj.:
+  <pre>gunzip fimfarum.tar.gz
+tar xvf fimfarum.tar
+  </pre>
+anebo jedním příkazem
+  <pre>tar xzvf fimfarum.tar.gz
+  </pre>
+  v adresáři <i>fimfarum</i>, který vznikne po rozbalení je 40 souborů<br>
+  jsou to PDF dokumenty a obrázky<br>
+  pro každý soubor určete jeho typ (použijte příkaz <i>file</i>) <br>
+  obrázky přesuňte do (vámi vytvořeného adresáře) <i>obrazky</i><br>
+  pdf dokumenty přesuňte do (vámi vytvořeného adresáře) <i>kapitoly</i><br>
+  obrázky i pdf dokumenty přejmenujte tak, aby měli příslušnou koncovku (v každém adresáři jen prvních 3)<br>
+  v adresáři fimfarum použijte příkaz<br>
+  <i>find ./ *</i>
+  (tj. vyhledání všech souborů)<br>
+  výsledek tohoto příkazu přesměrujte do souboru<br>
+  <i>~/NMIN266/vypis1</i><br>
+</li>
+<li>v souboru <i>seznam1.txt</i> (měli byste ho mít zkopírovaný z minula v <i>~/NMIN266/</i>) je 718 lidí, zjistěte kdo je na 521. pozici<br>
+<span style="background:yellow;">hint cat -n<br>
+grep 521 seznam1-s_cisly.txt
+tail -n 1
+</span><br>
+  tento řádek vypište do souboru <i>~/NMIN266/vypis2</i><br>
+  (může být s číslem řádku)<br>
+  zkuste to napsat jako řetěz několika příkazů spojených pomocí roury<br>
+  tento příkaz připište do souboru <i>vypis2</i><br>
+  (použijte listování v historii příkazů a editaci příkazového řádku)<br>
+</li>
+<li>v souboru <i>seznam1.txt</i> je několik profesorů<br>
+  vytvořte soubor <i>vypis3</i>, kde bude na začátku napsáno<br>
+  <pre>  "V tomto souboru je vypsáno xxx profesorů"
+  kde místo xxx bude počet profesorů
+  a dále tam budou vypsáni jednotliví profesoři setřídění podle přijmení
+  </pre>
+<span style="background:yellow;">
+hint:<br>
+grep<br>
+wc -l<br>
+</span>
+  na konec souboru <i>vypis3</i> připište příkazy, které jste použili<br>
+</li>
+<li>
+Prohlédněte si soubor <i>/usr/html/NMIN266/2/zadani4</i><br>
+v něm vyhledejte slovo <b>ZADÁNÍ</b> a vypracujte to co je tam napsáné<br>
+<span style="background:yellow;">
+hint:<br>
+less<br>
+/<br>
+head -n<br>
+tail -n
+</span>
+</li>
+<li>
+z <i>/usr/html/NMIN266/2/</i> si uložte soubor <i>karlin.tar.gz</i> do <i>~/NMIN266/</i><br>
+  a tam ho pomocí <i>gunzip</i> a <i>tar</i> rozbalte<br>
+<pre>tar xzvf karlin.tar.gz
+</pre>
+  rozbalí se vám soubory <i>KA, KDM, KMA, KPMS, KNM, MU</i><br>
+  z těchto souborů vytvořte soubor <i>vypis5</i> - v něm budou vypsány (obsah těchto souborů)<br>
+  všechny soubory z <i>karlin.tar.gz</i><br>
+<span style="background:yellow;">
+hint:<br>
+cat soubor1 soubor2 ... &gt; sloucene
+</span>
+</li>
+<li>
+ze souborů <i>vypis1</i>, <i>vypis2</i>, <i>vypis3</i>, <i>vypis4</i> a <i>vypis5</i><br>
+vytvořte balíček <i>tar.gz</i>, který se bude pojmenován vaším uživatelským<br>
+jménem a zkopírujte ho do <i>/usr/html/hpspool/mu</i><br>
+Použijte příkaz <i>tar</i> a <i>gzip</i>
+<pre>tar cvf richter.tar vypis1 vypis2 vypis3 vypis4 vypis5<br>
+gzip richter.tar
+</pre>
+</li>
+<li>
+vytvořte soubor s názvem <i>zprava</i> v kterém bude napsáno <b>HOTOVO</b><br> a ten mi pošlete pomocí
+příkazu <i>mail</i> a přesměrování vstupu
+</li>
+</ol>
+
+
+
+</body></html>

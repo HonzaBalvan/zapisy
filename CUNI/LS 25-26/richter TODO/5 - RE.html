@@ -1,0 +1,270 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RE</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<h2>Regulární výrazy (Regular Expression)</h2>
+<ul>
+<li>Programy pro práci s RE<br>
+<i>grep, egrep, fgrep, vim, sed, perl, javascript, php, ...</i>
+</li>
+<li>
+<i>grep, egrep</i> - vyhledávání pomocí RE v souborech<br>
+(egrep má trochu větší možnosti, umožňuje např. opakování vzoru)<br>
+volby:
+<ul>
+<li>-i nerozlišuje malé/VELKÉ znaky</li>
+<li>-v hledá "nevýskyt" daného RE</li>
+</ul>
+</li>
+<li><i>vim</i> interaktivní vyhledávání/záměna v textu</li>
+<li><i>sed</i> neinteraktivní vyhledávání/záměna v textu</li>
+<li>příklad <i>vim</i>/<i>sed</i><br>
+(zkopírujte si soubor <i>/usr/html/NMIN266/4/phones.txt</i>)<br>
+<span style="background:lime;">
+cv. - zrušení 1.slova na řádku v souboru <i>phones.txt</i> ve vim<br>
+</span>
+<pre>vim phones.txt
+:%s/^\([A-Z][a-z]*\)//
+</pre>
+<span style="background:lime;">
+cv. - to samé pomocí sed<br>
+</span>
+<pre>sed 's/^\([A-Z][a-z]*\)//' phones.txt
+</pre>
+</li>
+<li>
+vyhledávání ve <i>vim</i> je závislé na přepínači (defaultně rozlišuje malá/VELKÁ písmena)<br>
+<dl>
+<dd><i>:set ignorecase</i> MALÁ a velká jsou totéž</dd>
+<dd><i>:set noignorecase</i> rozlišuje malá a VELKÁ</dd>
+<dd><i>:set smartcase</i> malá a VELKÁ začne rozlišovat až od prvního velkého znaku (funguje až po přepnutí :set ignorecase)</dd>
+<dd>&nbsp;&nbsp;(přepnutí do tohoto modu se musí udělat "dvoukrokově" nejprve <i>ignorecase</i> a potom <i>smartcase</i>)</dd>
+<dd><i>:set hlsearch</i> zvýraznění najitého řetězce</dd>
+<dd><i>:nohlsearch</i> zruší zvýraznění aktuálně najitého řetězce (stejně funguje <i>/lkajd</i>)</dd>
+</dl>
+</li>
+<li>
+při záměně se ve <i>vim</i> (obdobně fungují i v <i>sed</i>)<br>
+<span style="background:yellow;">:%s/to co hledám/za co to zaměním/volby</span><br>
+volby mohou být:
+<dl>
+<dd><i>g</i> zaměň všechny výskyty na řádku (jinak by zaměnil jen první výskyt)</dd>
+<dd><i>i</i> pro tuto záměnu ignoruj rozdíl mezi malými a velkými písmeny</dd>
+<dd><i>c</i> před každou záměnou se zeptej jestli na tomto místě záměnu provést</dd>
+</dl>
+</li>
+<li>Samotné RE jsou velmi jednoduché:
+<dl>
+<dd><span style="background:yellow;">.</span> náhrada za libovolný znak (znak "." hledám pomocí "\.")</dd>
+<dd><span style="background:yellow;">[a-z]</span> interval, nebo výčet ("[","]" ve výčtu hledám pomocí "[][]")</dd>
+<dd><span style="background:yellow;">[^a]</span> znak na tomto místě být nemá</dd>
+<dd><span style="background:yellow;">^</span> náhrada za začátek řádku/řetězce</dd>
+<dd><span style="background:yellow;">$</span> náhrada za konec řádku/řetězce (chci-li hledat přes konec řádku musím použít \n)</dd>
+<dd><span style="background:yellow;">\&lt;,\&gt;</span> hranice slova</dd>
+</dl>
+</li>
+<li>
+Opakování předchozího RE
+<dl>
+<dd><span style="background:yellow;">*</span> předchozí RE se opakuje 0-n krát</dd>
+<dd><span style="background:yellow;">\+</span>předchozí RE se opakuje 1-n krát</dd>
+<dd><span style="background:yellow;">\?</span> předchozí RE se opakuje 0-1 krát</dd>
+<dd><span style="background:yellow;">\{3\}</span> přechozí RE se opakuje právě 3 krát</dd>
+<dd><span style="background:yellow;">\{1,3\}</span> předchozí RE se opakuje 1-3 krát</dd>
+<dd><span style="background:yellow;">\(řetězec\)</span> 'řetězec' tvoří 
+určitou skupinu, která se "zapamatuje" a je možné ji použít buďto znovu 
+ve vyhledávané masce anebo k použití v záměně<br>
+k tomuto zapamatovanému řetězci se můžeme dostata pomocí<span style="background:yellow;">\1 ... \9</span> </dd>
+<dd><span style="background:yellow;">|</span> logické OR - <span style="background:yellow;">/\(m\|d\|p\)rak</span> najde 'mrak','prak','drak'</dd>
+<dd>RE jsou tzv. 'hladové' tzn., že se zadaný regulární výraz roztáhne na maximální délku<br><br>
+Máme řádek:<br>
+<tt>Vzdáte-li se kouření, pití a milování, nebudete ve skutečnosti žít déle, ale jen vám to tak bude připadat.</tt><br>
+použijeme vyhledání<br>
+<span style="background:yellow;">/^.*,</span> "cokoliv od začátku řádku až po čárku<br>
+mohli bychom očekávat, že bude vybránáno:<br>
+<tt><span style="background:orange;">Vzdáte-li se kouření,</span> pití a milování, nebudete ve skutečnosti žít déle, ale jen vám to tak bude připadat.</tt><br>
+ale ve skutečnosti bude vybráno:<br>
+<tt><span style="background:orange;">Vzdáte-li se kouření, pití a milování, nebudete ve skutečnosti žít déle,</span> ale jen vám to tak bude připadat.</tt><br>
+Když bychom chtěli vybrat příslušný text jen k první čárce, pak bychom museli použít:<br>
+<i>/^[^,]*,</i> tj. začátek řádku následovaný libovolným počtem "nečárek" a zakončen je čárkou<br>
+(pozn. této masce by vyhovovalo i "<tt><span style="background:orange;">, ale jen vám to tak bude připadat</span></tt>" v tomto řetězci už žádná čárka není - jen na začátku"<br>
+tj. bezchybné by bylo <span style="background:yellow;">/^[^,]\+,</span> tj. začátek řetězce (řádku)-alespoň jedna nečárka-čárka
+</dd></dl>
+</li>
+</ul>
+<h3>Příklady - vyhledávání</h3>
+zkopírujte si soubory <i>kalendar.pl</i>, <i>mereni.txt</i>, <i>seznam.txt</i>, <i>seznam4.txt</i>, <i>ls.txt</i>, <i>htm2tex.txt</i> a <i>barva_kouzel.htm</i> z <br><i>/usr/html/NMIN266/4/</i><br> do<br> <i>~/NMIN266</i>
+<ol>
+<li>
+spočítejte kolik je v adresáři /bin symbolickych linku
+<pre>ls -l /bin | grep ^l | wc –l
+</pre>
+</li>
+<li>
+souboru <i>kalendar.pl</i> nastavte práva tak, aby ho uživatel mohl spouštět spusťte:<br>
+<i>kalendar.pl 2026</i> a zkontrolujte jestli se vytvořil soubor kalendar2026.html<br>
+
+ze souboru kalendar.pl vytvořte soubor kal.pl, který bude mít stejný obsah, ale
+<br>
+nebude obsahovat komentáře (komentář je na řádku, který začíná znakem #)
+<pre>grep -v ^\# kalendar.pl &gt; kal.pl
+chmod u+x kal.pl
+</pre>
+nastavte <i>kal.pl</i> jako spustitelný a opět vyzkoušejte jestli funguje
+<pre>kal.pl 2026
+</pre>
+...proč nefunguje?
+<pre>grep -v \#[^\!] kalendar.pl &gt; kal.pl
+chmod u+x kal.pl
+</pre>
+znovu zkuste spustit
+<pre>kal.pl 2026
+a
+kal.pl 2027
+</pre>
+vytvořte si symbolický link na <i>/usr/html/vaše uživatelské jméno</i> s názvem <i>public_html</i> tj.
+<pre>cd
+ln -s /usr/html/username ./public_html
+</pre>
+soubory <i>kalendar2026.html</i> a <i>kalendar2027.html</i> si zkopírujte do <i>~/public_html/</i><br>
+v tomto adresáři nastavte těmto souborům právo pro čtení pro všechny a pak se     podívejte na:<br>
+     http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/kalendar2026.html
+<br>
+resp.<br>
+     http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/kalendar2027.html
+
+</li>
+<li>
+najít v souboru <i>phones.txt</i> všechny lidi z karlína (víme, že jejich telefon začíná 32 nebo 33)
+<pre>egrep 3\[23\]\[0-9\]\{2\} phones.txt
+</pre>
+anebo ve <i>vim</i>
+<pre>/3[23][0-9]\{2\}
+</pre>
+</li>
+<li>
+v souboru <i>mereni.txt</i> najít všechna čísla, která jsou uvedena na více než dvě desetinná místa
+<pre>egrep \[0-9\]\+\.\[0-9\]\{2,10\} mereni.txt
+</pre>
+anebo ve <i>vim</i>
+<pre>/[0-9]\+\.[0-9]\{2,10\}
+</pre>
+</li>
+<li>
+v souboru <i>phones.txt</i> najít takové lidi, kteří jsou členy více než jednoho pracoviště (pracoviště je velkými písmeny)
+<pre>egrep [A-Z]\{2,7\},\ [A-Z]\{2,7\} phones.txt
+</pre>
+anebo ve <i>vim</i>
+<pre>\&lt;[A-Z]\+\&gt;\(, \+\&lt;[A-Z]\+\&gt;\)\{1,2\}
+</pre>
+</li>
+<li>
+zjistěte, kolik na mff pracuje lidí jejihž křestní jméno začíná stejnym písmenem jako jejich příjmení
+<pre>grep '^\([A-Z]\)[a-z]*, \1' phones.txt
+</pre>
+anebo ve <i>vim</i>
+<pre>/^\([A-Z]\)[a-z]*, \1
+</pre>
+</li>
+<li>
+v souboru <i>seznam.txt</i> najděte človeka jehož příjmení je totožné s křestním jménem
+<pre>grep '^\([A-Z][a-z]*\) \1,' seznam.txt
+</pre>
+anebo ve <i>vim</i>
+<pre>/^\([A-Z][a-z]*\) \1,
+</pre>
+</li>
+<li>
+v souboru <i>barva_kouzel.htm</i> najít všechny řetězce v uvozovkách (jen <i>vim</i>)
+<pre>/".*" 
+</pre>
+!! špatně viz.ř. 125
+<pre>/"[^"]*"
+</pre>
+Vyhledávání i "přes" konec řádku
+<pre>/"[^"]*\n[^"]*"
+</pre>
+</li>
+</ol>
+<br><br>
+<h3>RE použité pro zaměňování </h3>
+(zde už je důležité délka najitého řetězce)
+<ol>
+<li>v souboru <i>phones.txt</i>  zaměnit všechny výskyty jména Jiri za jiri
+<pre>%s/Jiri/jiri/g
+</pre>
+to je ale špatně, viz. ř. 722 Jirina ...
+<pre>%s/Jiri␣/jiri␣/g
+</pre>
+to samé pro <i>sed</i>
+<pre>cat phones.txt | sed 's/Jiri␣/jiri␣/g' &gt; ...
+</pre>
+</li>
+<li>
+v souboru <i>phones.txt</i> (Jmeno, Prijmeni ...neco...) zaměnit Jméno a Příjmení
+<pre>%s/^\([A-Z][a-z]*\),␣\([A-Z][a-z]*\)\(.*\)/\2,␣\1\3
+</pre>
+to samé pro <i>sed</i>
+<pre>sed 's/^\([A-Z][a-z]*\),␣\([A-Z][a-z]*\)\(.*\)/\2,␣\1\3/' phones.txt
+</pre>
+</li>
+<li>
+soubor <i>phones.txt</i> upravit tak, aby na prvním místě bylo pracoviště (navíc - pro jednoduchost - to poslední)<br>
+budeme vyhledávat "shluk" velkých písmen - mohl by nám dělat problém titul "RNDr." ... dočasně ho přejmenujeme na "rndr"
+<pre>%s/RNDr/rndr/g
+%s/^\(.*\)\([. ]\)\([A-Z]\{2,6\}\)\(.*\)$/\3 \1\2\3\4
+%s/(rndr)/RNDr/
+</pre>
+anebo, snadněji (v tomto případě budeme naopak brát - pro jednoduchost - první pracoviště)<br>
+zkratka pracoviště začíná vždy na 49. znaku tedy:
+<pre>%s/^\(.\{48\}\)\([A-Z]\{2,6\}\)\(.*\)$/\2 \1\2\3
+</pre>
+</li>
+<li>
+soubor <i>seznam4.txt</i> (ve formátu Jmeno Prijmeni rok) setřiďte podle roku, výsledný formát by měl být stejný jako vstupní
+<pre>%s/^\(.*\)␣\([0-9]\{4\}\)$/\2␣\1␣\2
+%! sort
+%s/.....//
+</pre>
+</li>
+<li>
+soubor <i>ls.txt</i> "upravit" aby se dal "rozsekat" za pomoci příkazu cut (tzn. jednu a více mezer zaměnit za ^I - tabelátor)
+<pre>%s/ \+/^I/g
+</pre>
+</li>
+<li>
+v souboru <i>htm2tex.txt</i> jsou některá slova zvýrazněna (pomocí HTML syntaxe &lt;B&gt;slovo&lt;/B&gt; nebo &lt;b&gt;slovo&lt;/b&gt;)<br>
+upravte tento soubor tak, aby tato slova byla zvýrazněna pomocí LaTeXové sekvence \textbf{slovo}
+<pre>%s/&lt;[Bb]&gt;\([^&lt;]\+\)&lt;\/[bB]&gt;/\\textbf{\1}/g
+</pre>
+</li>
+<li>
+Zkopírujte si soubor <i>/usr/html/NMIN266/4/soubory</i> do <i>~/NMIN266</i> a otevřete si tento soubor ve <i>vim</i><br>zrušte vše od ␣document resp. ␣image  až na konec řádku
+<pre>:%s/␣[di].*$//
+anebo
+:%s/␣[a-z].*$//
+</pre>
+to samé v <i>sed</i>
+<pre>sed 's/␣[di].*$//' soubory
+anebo
+sed 's/␣[a-z].*$//' soubory
+</pre>
+Vypište jen jména souborů typu soubory typu <i>PDF</i>
+<pre>grep PDF soubory | sed 's/:.*$//'
+</pre>
+</li>
+<li>
+Podívejte se na úlohu 1. z 7.3. viz. <a href="http://www.karlin.mff.cuni.cz/~richter/NMIN266/01-cviceni.html">Cvičení 7.3.2027</a> - dokážete ji nyní zpracovat ještě efektivněji?
+</li>
+</ol>
+
+
+</body></html>

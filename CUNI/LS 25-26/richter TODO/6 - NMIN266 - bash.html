@@ -1,0 +1,212 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NMIN266 - bash</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+</style>
+</head>
+<body>
+<h2>BASH v příkladech</h2><br>
+<ul>
+<li>
+ <i>bash</i> má přednastaveny některé systémové proměnné <i>$HOME, $PATH...</i>, vypsat je můžeme pomocí<br>
+ <pre> echo $PATH
+ </pre>
+ můžeme si nastavit své vlastní proměnné:
+ <pre> a=3;
+ b=4;
+ c="pejsek a kocicka";
+ d=soubor
+ odkud=/usr/html/NMIN266
+ </pre>
+ na ně se můžeme odkazovat jednak výpisem jednak je můžeme použít v příkazech:
+ <pre> …
+ echo $a
+ echo $c
+ cp $odkud/5/tex.tar ~/NMIN266
+ …
+ </pre>
+ Proměnné, které chceme používat při každém přihlášení si můžeme vložit do
+ souboru<br>
+ <i>.bash_profile</i>
+ <br>
+ Příkazy můžeme psát přímo na příkazovou řádku, anebo do souboru (soubor začíná<span style="background:yellow;">#!/bin/bash</span> a musí mít nastavené právo <i>x</i> pro uživatele.<br><!--Příkazy, které píšme na příkazovou řádku musí končit středníkem.<br>-->
+ <span style="background:yellow;">#bla bla</span> - kromě prvního řádku se považuje za komentář<br>
+ <span style="background:lime;">
+ cv.<br>
+ zkopírujte si soubor tex.tar (viz. výše) a rozbalte si ho (tar xvf tex.tar)<br>
+ při práci s LaTeXem vznikají soubory *.log a *.aux, ty jsou  pouze informativní ve chvíli<br>
+ překladu, ale skladovat je nechceme – jednoduchý skript na smazání těchto souborů<br>
+ 
+ </span>
+ <pre> vycisteni.sh
+ #!/bin/bash
+ rm *.log
+ rm *.aux
+ </pre>
+</li>
+<li>
+ Čtení zadaných hodnot<br>
+ <span style="background:yellow;">read</span>
+ <pre> #!/bin/bash
+ echo -n Jak se jmenujes:
+ read jmeno
+ echo -n ahoj $jmeno jak se vede. Jeste mi rekni kdy ses narodil:
+ read rok
+ vek=$[2024-$rok]
+ echo Aha tak to ti je $vek
+ </pre>
+</li>
+<li>
+ Jednoduché matematické operace<br>
+ <pre> a=1;
+ b=3;
+ c=`expr $a˽+˽$b`
+ anebo
+ c=$[3*$c]
+ </pre>
+ pozn. mezera v příkazu <tt>expr</tt> je důležitá!!<br><br>
+</li>
+<li>
+ Použití proměnných pro příkazy systému<br>
+ <pre> c=pejsek
+ d=kocicka    echo $c a $d #vypíše pejsek a kocicka
+ 
+ NMIN=${HOME}/NMIN266
+ cd; cd Mail; cd $NMIN
+ cp $odkud/5/5.3.tar.gz $NMIN
+ </pre>
+</li>
+<li>
+ Uvozovky a proměnné:
+ <pre> echo "$c a $d" #vypíše pejsek a kočička
+ echo '$c a $d' #vypíše $c a $d
+ </pre>
+ v případě, že za proměnnou nechceme mezeru, pak ji můžeme uzavřít do <i>{}</i>
+</li>
+<li>
+Použití řetězce jako příkazu:
+ <pre> e=pwd
+ echo `$e`      #vypíše aktuální adresář
+ </pre>
+</li>
+<li>
+ proměnnou bash nejprve interpretuje a pak předá příslušnému příkazu
+ <pre> alias ll="ls -l"
+ touch a.tmp b.tmp c.tmp # vytvořili jsme si soubory a.tmp,b.tmp a c.tmp
+ d=*.tmp
+ ll $d
+ </pre>
+ vypíše dlouhý výpis pro soubory <i>a.tmp, b.tmp, c.tmp</i>
+ <pre> touch d.tmp e.tmp f.tmp
+ rm $d # smaže a.tmp,b.tmp,c.tmp,d.tmp,e.tmp,f.tmp
+ </pre>
+</li>
+<li>
+ Zapamatování si aktuálního adresáře
+ <pre> cd
+ cd NMIN266
+ cd fimfarum
+ aktualni=`pwd`
+ cd
+ pwd #jsem v ~/
+ cd $aktualni
+ jsem v ~/NMIN266/fimfarum
+ </pre>
+</li>
+<li>
+Podmínka
+<pre>ab=ahoj
+if [ $ab == "ahoj" ];
+then
+echo ahoj;
+fi
+</pre>
+</li>
+<li>
+ Test existence souboru/adresáře:
+ <pre> cd #tj. jsme v domovském adresáři
+ htm=seznam1.txt
+ if [ -e $htm ];
+ then ls -l $htm;
+ else
+ echo soubor neexistuje;
+ fi
+
+ #vypíše, že soubor neexistuje
+ cd $NMIN
+ if [ -e $htm ]; then ls -l $htm; else echo soubor neexistuje; fi
+ #vypíše info o souboru seznam1.txt
+ </pre>
+ další podmínky:<br>
+ <span style="background:yellow;">[ -d $adresar]</span> #podmínka je splněna ve chvíli, kdy $adresar  #je adresář<br>
+ <span style="background:yellow;">[ -L $soubor]</span> #podmínka je splněna, když je $soubor symbolický link<br>
+ <span style="background:yellow;">[ -r $soubor]</span> #podmínka je splněna, když je $soubor nastaven s právy pro čtení<br>
+ <span style="background:yellow;">[ -w $soubor]</span> #podmínka je splněna, když je $soubor nastaven s právy pro zápis<br>
+ <span style="background:yellow;">[ -x $soubor]</span> #podmínka je splněna, když je $soubor nastaven s právy pro spuštění<br>
+ <span style="background:yellow;">[ $a == $b ]</span> #podmínka je splněna když se proměnné $a a $b rovnají<br>
+ <span style="background:yellow;">[ $a &lt;&gt; $b ]</span> #podmínka je splněna když se proměnné $a a $b nerovnají<br>
+ <span style="background:yellow;">[ $a -ge $b ]</span> #podmínka je splněna když se $a je větší nebo rovno $b<br>
+ <span style="background:yellow;">[ $a -le $b ]</span> #podmínka je splněna když se $a je menší nebo rovno $b<br>
+ <span style="background:yellow;">[ $a -ge 10 -a $a -le 15 ]</span> #podmínka je splněna když se $a je v rozmezí 10 a 15 včetně $b<br>
+ <pre>
+ </pre>
+</li>
+<li>
+ cyklus for <span style="background:yellow;">for "promněnná";do příkaz/příkazy;done</span>
+ <pre> for f in 1 2 3;do echo $[2*$f];done    #vypíše 2 4 6
+ for f in *.tex;do ls -l $f;done        #?? co když, žádný *.tex neexistuje ... 2&gt; /dev/null
+ </pre>
+ anebo ošetřit pomocí existence souboru:
+ <pre> for f in *.tex;
+ do
+   if [ -e $f ]
+     then ls -l $f
+   fi
+ done
+ </pre>
+</li>
+<li>
+ Smazání souborů *.log (ovšem ne jen v aktuálním adresáři)
+ <pre> for f in `find -name "*.log"`;
+  do
+   rm $f;
+ done
+ </pre>
+</li>
+<li>
+ zkopírujte si soubor <i>/usr/html/NMIN266/malapismena.tar.gz<i> do <i>~/NMIN266</i><br>
+ a tam ho pomocí příkazu <i>tar -xzvf malapismena.tar.gz</i> rozbalte, pak se přepněte do adresáře<br>
+ <i>mala</i><br>
+ když to uděláte uvidíte, že názvy souborů jsou různě malá a velká písmena
+ <pre> for f in `find ./ -name "*"`; do ls -l $f; done # vypíše nám všechny soubory
+ </pre>
+ vypsání jen souborů, které mají v názvu velké písmeno (<i>grep</i>):
+ <pre> for f in `find ./ -name "*" | grep [A-Z]`; do ls -l $f; done
+ </pre>
+ pomocí příkazu <i>tr</i> můžeme přejmenovat všechny soubory tak, aby byly jen malými písmenky
+ <pre> echo ABC | tr "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz"
+ </pre>
+ vytvořte skript <i>mala.sh</i> s tímto obsahem:
+ <pre> for f in `find ./ -name "*"`
+ do
+   mv $f `echo $f | tr "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz"
+ done
+ </pre>
+</i></i></li><i><i>
+<li>
+ Předdefinované proměnné
+ <pre> název samotného skriptu $0
+ parametry skriptu $1 … $9
+ počet parametrů $#
+ </pre>
+</li>
+</i></i></ul><i><i>
+
+
+
+</i></i></body></html>

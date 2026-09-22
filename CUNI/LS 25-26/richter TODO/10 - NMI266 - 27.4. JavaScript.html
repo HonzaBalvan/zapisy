@@ -1,0 +1,577 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>NMI266 - 27.4. JavaScript</title>
+<style>
+BODY {
+  color :BLACK;
+  background-color : #ffffe0;
+  font-family: sans-serif;
+}
+LI{
+   width:700px;
+}
+.zlut {
+  font-family: sans-serif;
+  background-color: yellow;
+}
+TABLE{
+  width:750px;
+}
+TD {
+  font-family: sans-serif;
+  border-style:solid;
+  border-width:1px;
+  border-color:black;
+}
+</style></head>
+
+<body>
+<h2>JavaScript</h2>
+<p>JavaScript je programovací jazyk pro tvorbu aktivních HTML stránek, 
+skriptování se děje na straně klienta (tj. webového prohlížeče). K jeho 
+testování nám stačí pouze webový prohlížeč.</p>
+<p>
+Z <span class="zlut">/usr/html/NMIN266/</span> si zkopírujte soubor: <span class="zlut">projavascript.tar</span> do <span class="zlut">~/public_html/</span> a tam ho rozbalte
+</p><ul>
+<li>
+samotný skript musí být uzavřen do tagů<br>
+<span class="zlut">
+&lt;script language=JavaScript&gt;<br>
+</span>
+a<br>
+<span class="zlut">
+&lt;/script&gt;
+</span>
+JavaScript můžeme kombinovat s HTML kodem
+</li>
+<li>
+externí skript (např s definicemi funkci) v souboru s koncovkou <i>js</i> do
+html stránky ho pak načteme v hlavičce takto:<br>
+<span class="zlut">
+ &lt;script language="JavaScript" src="externi.js"&gt;&lt;/script&gt;
+</span>
+</li>
+<li>příkaz pro výpis je<br>
+<span class="zlut">
+document.write("Nazdar světe!");
+</span>
+</li>
+<li>
+Jednoduchá stránka s ukázkou JavaScriptu může vypadat např. takto:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script language=JavaScript&gt;
+document.write("Nazdar světe!");
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+</li>
+<li>
+JavaScript nerozeznává typy proměnných, tj. chová se k nim podle kontextu
+</li>
+<li>jednotlivé příkazy musí být ukončené středníkem</li>
+<li>pro komentáře používáme <span class="zlut">//</span> anebo pro víceřádkové komentáře<br> <span class="zlut">/*</span>na začátku komentáře a <span class="zlut">*/</span> na konci komentáře
+</li>
+<li>Proměnné:
+<ul>
+<li>
+typ číslo, řetězec je možné (ale většinou to není nutné) předem deklarovat:<br>
+<span class="zlut">var a,b,c;</span>
+</li>
+<li>typ datum, pole je nutné předem deklarovat<br>
+<span class="zlut">
+var datum=new Date();<br>
+var pole=new Array();<br>
+</span>
+pole je možné s deklarací i definovat:<br>
+<span class="zlut">
+pole=new Array("1.polozka","2.polozka" ...);<br>
+</span>
+ indexuje se od 0; odkaz na prvek pole je<br>
+<span class="zlut">
+ pole[0]; 
+</span>
+</li>
+<li>Operace s čísly:<br>
+<span class="zlut">
++ - * / += -= *= /=
+</span>
+</li>
+<li>Operace s řetězci:<br>
+<span class="zlut">+</span>skládání řetězců<br>
+tzv. metody řetězce<br>
+<span class="zlut">b=a.charAt(n);</span>  vrátí znak na n-té pozici řetězce (počítáno od 0<br>
+<span class="zlut">b=a.substr(od, počet);</span>vrátí podřetězec začínajcí na pozici od (počítáno od 0) dlouhý 'počet' znaků <br>
+<span class="zlut">b=a.toLowerCase();</span> vrátí řetězec zkonvertovaný do velkých znaků<br>
+<span class="zlut">b=a.toUpperCase();</span> vrátí řetězec zkonvertovaný do malých znaků<br>
+rozdělení řetězce do pole:<br>
+<span class="zlut">
+var str="1,2,3,4";
+var n=str.split(",");
+</span>
+<br>
+<span class="zlut">n</span> je pole obsahující prvky 1,2,3,4,<br>
+do souboru <span class="zlut">formlar.html doplňte tyto řádky:</span><br>
+</li>
+</ul>
+</li>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;script language=JavaScript&gt;
+loc=window.location.href;
+document.write(loc);
+&lt;/script&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+soubor si otevřete ve webovém prohlížeči, formulář můžete odeslat buďto 
+tlačítkem anebo kliknutím do obrázku (v tom případě získáte i 
+souřadnice, kam bylo kliknuto<br>
+pomocí metody <span class="zlut">.split</span> podle <span class="zlut">?</span>, <span class="zlut">&amp;</span> a <span class="zlut">=</span> zjistěte hodnoty jednotlivých proměnných odeslaných z formuláře a vypište je (pomocí document.write() do dokumentu), do <span class="zlut">Input a</span> zkuste vyplnit <span class="zlut">/</span> a formulář odeslat ...
+<li>...anebo:
+<pre>const params = new URLSearchParams(window.location.search);
+const X=params.get("obrazek.x");
+const Y=params.get("obrazek.y");
+</pre>
+</li>
+<li><span class="zlut">decodeURI();</span> a <span class="zlut">encodeURI();</span></li>
+<li><span class="zlut">decodeURIComponent();</span> a <span class="zlut">encodeURIComponent();</span></li>
+
+<li>podmínka<br>
+<span class="zlut">
+if (podmínka){příkazy}else{příkazy}<br>
+== != &gt; &lt; &gt;= &lt;= 
+</span><br>
+lotické operátory:<br>
+<span class="zlut">||</span>,<span class="zlut">&amp;&amp;</span>,<span class="zlut">!</span><br>
+</li>
+<li>
+dialogová okna (informační/rozhodovací/vyplňovací  dialogy)<br>
+upozornění/informace:(lze použít při debuovaní)<br>
+<span class="zlut">window.alert("Vítám vás na své stránce!");</span><br>
+rozhodnutí ANO/NE (uzavřená odpověď)<br>
+<span class="zlut">
+q=window.confirm("Zmáčkni tlačítko");<br>
+if (q){<br>
+  document.write('zmáčkl's [OK]');<br>
+}else{<br>
+  document.write('zmáčkl's [Cancel]');<br>
+}<br>
+</span><br>
+vyplnění odpovědi:<br>
+<span class="zlut">q=window.prompt('Otázka?','předvyplněná odpověď');</span><br>
+v <span class="zlut">q</span> se nám vrátí <span class="zlut">'null'</span> v případě, že jsme dialog ukončili tlačítkem <span class="zlut">[Cancel]</span><br>případně vyplněným textem, když jsme dialog odeslali tlačítkem<span class="zlut">[OK]</span>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;script language=javascript&gt;
+  q=window.prompt("ENG/CZ/DE","");
+
+  if (q=="ENG"){document.write("pokracujeme v Anglictine")}
+  if (q=="CZ"){document.write("pokracujeme v Cestine")}
+  if (q=="DE"){document.write("pokracujeme v Nemcine")}
+&lt;/script&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+<script language="javascript">
+function jazyk(){
+  q=window.prompt("ENG/CZ/DE","");
+
+  if (q=="ENG"){document.getElementById("jazyk").innerHTML="pokracujeme v Anglictine"}
+  if (q=="CZ"){document.getElementById("jazyk").innerHTML="pokracujeme v Cestine"}
+  if (q=="DE"){document.getElementById("jazyk").innerHTML="pokracujeme v Nemcine"}
+}
+</script>
+<form>
+<input type="button" onclick="jazyk();" value="Vyber si jazyk">
+</form>
+<div id="jazyk" style="border-style:solid;border:color:black;height:100px;text-align:justify;width:300px;">Jazyk... neznámý</div>
+</li>
+<li>cykly<br>
+<span class="zlut">
+for (i=1;i&lt;10;i++){}<br>
+while (podminka){}<br>
+do{}while(podminka)<br>
+</span><br>
+skok na další krok cyklu, ukončení cyklu:<br>
+<span class="zlut">
+continue<br>
+break<br>
+</span>
+</li>
+<li>funkce<br>
+<pre><span class="zlut">
+function max(a,b,c){
+  if (a&gt;b){
+    if (a&gt;c){return a;}else{return c;}
+  }else{
+    if (b&gt;c){return b;}else{return c;}
+  }
+}
+</span>
+</pre>
+</li>
+<li>Události (interakce s uživatelem)
+<table>
+<tbody><tr><td><span class="zlut">onLoad</span></td><td>při načtení stránky</td></tr>
+<tr><td><span class="zlut">onUnload</span></td><td>při opuštění stránky</td></tr>
+<tr><td><span class="zlut">onClick</span></td><td>při kliku myší na objekt</td></tr>
+<tr><td><span class="zlut">onDblClick</span></td><td>při dvojkliku</td></tr>
+<tr><td><span class="zlut">onMouseOver</span></td><td>když je kurzor myši nad objektem</td></tr>
+<tr><td><span class="zlut">onMouseOut</span></td><td>když kurzor myši odjede pryč z objektu</td></tr>
+<tr><td><span class="zlut">onFocus</span></td><td>když se prvek stane aktivním (přechod neaktivní-&gt;aktivní)</td></tr>
+<tr><td><span class="zlut">onBlur</span></td><td>opak k onFocus (přechod aktivní-&gt;neaktivní)</td></tr>
+<tr><td><span class="zlut">onSubmit</span></td><td>když se uživatel rozhodne odeslat formulář (použije se na tag <span class="zlut">form</span>), při návratu <span class="zlut">false</span> se formulář neodešle</td></tr>
+<tr><td><span class="zlut">onKeyDown</span></td><td>zmáčknutí klávesy</td></tr>
+<tr><td><span class="zlut">onKeyUp</span></td><td>puštění klávesy</td></tr>
+</tbody></table><br>
+viz.<a href="https://www.karlin.mff.cuni.cz/~richter/NMIN266/kontrola.html">ukázka</a>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=utf8&gt;
+&lt;script language=javascript&gt;
+  function kontroluj(){
+    if (document.getElementById("a").value=="Jan"){window.alert("Odesílám");return true;}else{window.alert("Tebe neznám");return false;}
+  }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Odešleme pouze toho kdo se jmenuje Jan.
+&lt;form onsubmit="return kontroluj();" method=get&gt;
+&lt;input name=a id=a&gt;
+&lt;input type="submit" value="odeslat"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+
+
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;form&gt;<br>
+&lt;input type=button value=pozdrav onClick='window.alert("Nazdar");'&gt;<br>
+&lt;/form&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+<form>
+<input type="button" value="pozdrav" onclick='window.alert("Nazdar");'>
+</form>
+</li>
+<li>Práce s formulářovými prvky:<br>
+každému formulářovému prvku můžeme přiřadit unikátní <span class="zlut">id</span> tj.<br>
+<span class="zlut">&lt;input name=jmeno id=jmeno&gt;</span><br>
+a potom se na tento prvek odkázat pomocí:<br>
+<span class="zlut">document.getElementById("jmeno")</span><br>
+konkrétně na jeho hodnotu:<br>
+<span class="zlut">document.getElementById("jmeno").value</span><br>
+Příklad:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;form&gt;
+Napiš své jméno&lt;input name=jmeno id=jmeno&gt;<br>
+&lt;input type=button onClick="window.alert('Nazdar'+document.getElementById('jmeno').value)" value=Pozdrav&gt;<br>
+&lt;/form&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+<form>
+Napiš své jméno<input name="jmeno" id="jmeno">
+
+<input type="button" onclick="window.alert('Nazdar'+document.getElementById('jmeno').value)" value="pozdrav">
+
+</form><br>
+Hodnoty formulářových prvků můžeme aktivně měnit:<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;form&gt;
+&lt;input name=a id=a&gt;+&lt;input name=b id=b&gt;=&lt;input name=c id=c readonly&gt;
+&lt;input type=button onClick="document.getElementById('c').value=eval(document.getElementById('a').value)+eval(document.getElementById('b').value);" value=Secti&gt;
+&lt;/form&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+<form>
+<input name="a" id="a" size="2">+<input name="b" id="b" size="2">=<input name="c" id="c" readonly="readonly" size="2">
+<input type="button" onclick="document.getElementById('c').value=eval(document.getElementById('a').value)+eval(document.getElementById('b').value);" value="Secti">
+</form>
+<br>
+funkce <span class="zlut">eval()</span> vyhodnotí řetězec jako matematický výraz<br>
+<br>
+zjištění umístění a rozměrů prvku<br>
+<span class="zlut">document.getElementById('id').offsetTop</span>:kolik PX od shora<br>
+<span class="zlut">document.getElementById('id').offsetLeft</span>:kolik PX od leva<br>
+<span class="zlut">document.getElementById('id').offsetWidth</span>:šířka prvku<br>
+<span class="zlut">document.getElementById('id').offsetHeight</span>:výška prvku<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;script language=JavaScript&gt;
+function souradnice(prvek){
+  nahore=document.getElementById(prvek).offsetTop;
+  vlevo=document.getElementById(prvek).offsetLeft;
+  sirka=document.getElementById(prvek).offsetWidth;
+  vyska=document.getElementById(prvek).offsetHeight;
+  window.alert("Vlevo:"+vlevo+"\n Top:"+nahore+"\n sirka:"+sirka+"\n vyska:"+vyska);
+}
+&lt;/script&gt;
+&lt;form&gt;
+&lt;input id=nahore value="ja jsem horni (široký)"size=300&gt;&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;input id=vpravo value="pravy" size=6&gt;&lt;br&gt;
+&lt;input type=button onClick='souradnice("nahore");' value=horni&gt;
+&lt;input type=button onClick='souradnice("vpravo");' value=pravy&gt;
+&lt;/form&gt;
+</pre>
+</td>
+</tr>
+</tbody></table>
+<br>
+<script language="JavaScript">
+function souradnice(prvek){
+  nahore=document.getElementById(prvek).offsetTop;
+  vlevo=document.getElementById(prvek).offsetLeft;
+  sirka=document.getElementById(prvek).offsetWidth;
+  vyska=document.getElementById(prvek).offsetHeight;
+  window.alert("Vlevo:"+vlevo+"\n Top:"+nahore+"\n sirka:"+sirka+"\n vyska:"+vyska);
+}
+</script>
+<form>
+<input id="nahore" value="ja jsem horni (široký)" size="300"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="vpravo" value="pravy" size="6"><br>
+<input type="button" onclick='souradnice("nahore");' value="horni">
+<input type="button" onclick='souradnice("vpravo");' value="pravy">
+</form>
+</li>
+<li>manipulace s prvky html stránky:<br>
+<span class="zlut">documetn.getElementById('id').style.visibility='visible'/'hidden'</span>-zobrazení/skrytí prvku<br>
+<span class="zlut">documetn.getElementById('id').style.background=red</span>-změna stylu, v tomto případě barvy (obecně lze cokoliv z CSS)<br>
+<span class="zlut">documetn.getElementById('id').innerHTML="zaměna prvku"</span>-změna obsahu prvku, zde se uplatí &lt;span&gt; a &lt;div&gt; (musí mít svoje <span class="zlut">id</span>)<br>
+Příklad:<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;span id=prvni&gt;
+Text ...
+&lt;/span&gt;
+&lt;br&gt;
+&lt;span id=druhy style="visibility:hidden;"&gt;toto je na začátku neviditelné&lt;/span&gt;&lt;br&gt;
+&lt;input value=červeně type=button onCLick="document.getElementById('prvni').style.background='RED';"&gt;
+&lt;input value=zeleně type=button onCLick="document.getElementById('prvni').style.background='GREEN';"&gt;
+&lt;input value=bíle type=button onCLick="document.getElementById('prvni').style.background='WHITE';"&gt;
+&lt;input value="Zobraz druhý" type=button onCLick="document.getElementById('druhy').style.visibility='visible';"&gt;
+&lt;input value="Skryj druhý" type=button onCLick="document.getElementById('druhy').style.visibility='hidden';"&gt;
+&lt;br&gt;&lt;input id=zamena&gt;&lt;input type=button onClick="document.getElementById('prvni').innerHTML=document.getElementById('zamena').value;" value="Vyplň první (textem v Input políčku)"&gt;
+</pre>
+</td></tr></tbody></table><br>
+
+<span id="prvni">
+Text ...
+</span>
+<br>
+<span id="druhy" style="visibility:hidden;">toto je na začátku neviditelné</span><br>
+<input value="červeně" type="button" onclick="document.getElementById('prvni').style.background='RED';">
+<input value="zeleně" type="button" onclick="document.getElementById('prvni').style.background='GREEN';">
+<input value="bíle" type="button" onclick="document.getElementById('prvni').style.background='WHITE';">
+<input value="Zobraz druhý" type="button" onclick="document.getElementById('druhy').style.visibility='visible';">
+<input value="Skryj druhý" type="button" onclick="document.getElementById('druhy').style.visibility='hidden';">
+<br><input id="zamena"><input type="button" onclick="document.getElementById('prvni').innerHTML=document.getElementById('zamena').value;" value="Vyplň první (textem v input políčku)">
+</li>
+<li>Obrázky, záměna src obrázku:<br>
+<span class="zlut">document.getElementById('obrazek').src="jiny_obr.png";</span><br>
+Příklad:
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;img id=obrazek src=bublina.png 
+onClick="document.getElementById('obrazek').src='click.png';"
+onMouseOver="document.getElementById('obrazek').src='mouseover.png';"
+onMouseOut="document.getElementById('obrazek').src='bublina.png';"&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+Přejeď na bublinu a klikni na ni:
+<img id="obrazek" src="10%20-%20NMI266%20-%2027.4.%20JavaScript_files/bublina.png" onclick="document.getElementById('obrazek').src='click.png';" onmouseover="document.getElementById('obrazek').src='mouseover.png';" onmouseout="document.getElementById('obrazek').src='bublina.png';">
+</li>
+<li>Matematika:<br>
+<span class="zlut">eval("1+3-4");</span>vyhodnotí řetězec jako matematický výraz<br>
+Matematické operace:<br>
+Uvozeno pomocí <span class="zlut">with (Math)</span><br>
+<span class="zlut">
+with (Math){<br>
+    acos(x)<br>
+    asin(x)<br>
+    atan(x)<br>
+    atan2(y,x)<br>
+    cos(x)<br>
+    sin(x)<br>
+    tan(x)<br>
+    ceil(x) zaokrouhleni nahoru<br>
+    floor(x) zaokrouhleni dolů<br>
+    abs(x)<br>
+    exp(x)<br>
+    log(x)<br>
+}<br>
+</span>
+anebo:<br>
+<span class="zlut">Math.cos(x)</span>
+</li>
+<li>datum/kalendář:<br>
+časový popisovač pro stávající okamžik:<br>
+<span class="zlut">
+datum=new Date();<br>
+document.write(datum);
+</span><br>
+vypíše:<br>
+<script language="JavaScript">datum=new Date();document.write(datum);</script>Sat Sep 19 2026 19:30:05 GMT+0000 (Greenwich Mean Time)<br>
+časový popisovač pro jiný, než aktuální den<br>
+<span class="zlut">
+nyd=new Date(2003,11,31,23,59,59);
+</span><br>
+rok měsíc den hodina minuta vteřina<br>
+pro přístup k jednotlívým položkám přes metody proměnné typu Date:<br>
+<span class="zlut">.getDate()</span>  číslo dne v měsíci 1-31<br>
+<span class="zlut">.getMonth()</span> číslo měsíce       0-11<br>
+<span class="zlut">.getDay()</span>   číslo dne v týdnu 0-6 (ne-po)<br>
+<span class="zlut">.getTime()</span>  milisekund od 1.1.1970<br>
+<span class="zlut">.getHours()</span>   0-23<br>
+<span class="zlut">.getMinutes()</span> 0-59<br>
+<span class="zlut">.getSeconds()</span> 0-59<br>
+<span class="zlut">.getFullYear()</span> YYYY<br>
+<table border="1">
+<tbody><tr><td>
+<pre>&lt;script language=JavaScript&gt;
+function najdiden(){
+  var dny=Array("nedele","pondeli","utery","streda","ctvrtek","patek","sobota");
+  den=document.getElementById("den").value;
+  mesic=document.getElementById("mesic").value;
+  rok=document.getElementById("rok").value;
+  mesic-=1;
+  nyd=new Date(rok,mesic,den,12,0,0);
+  dentydne=nyd.getDay();
+  window.alert(dny[dentydne]);
+}
+&lt;/script&gt;
+&lt;form&gt;
+Kdy ses narodil?&lt;br&gt;
+den:&lt;input name=den id=den&gt;&lt;br&gt;
+měsíc:&lt;input name=mesic id=mesic&gt;&lt;br&gt;
+rok:&lt;input name=rok id=rok&gt;&lt;br&gt;
+&lt;input type=button onClick="najdiden();" value="Den narození"&gt;
+&lt;/form&gt;
+</pre>
+</td></tr>
+</tbody></table><br>
+<script language="JavaScript">
+function najdiden(){
+  var dny=Array("nedele","pondeli","utery","streda","ctvrtek","patek","sobota");
+  den=document.getElementById("den").value;
+  mesic=document.getElementById("mesic").value;
+  rok=document.getElementById("rok").value;
+  mesic-=1;
+  nyd=new Date(rok,mesic,den,12,0,0);
+  dentydne=nyd.getDay();
+  window.alert(dny[dentydne]);
+}
+</script>
+<form>
+Kdy ses narodil?<br>
+den:<input name="den" id="den"><br>
+měsíc:<input name="mesic" id="mesic"><br>
+rok:<input name="rok" id="rok"><br>
+<input type="button" onclick="najdiden();" value="Den narození">
+</form>
+</li>
+<li>Regulární výrazy v JavaScriptu<br>
+<span class="zlut">
+^,*,+,.,[],?,{},(),$<br>
+\n nový řádek<br>
+\t tabulátor<br>
+\d číslice<br>
+\D ne číslice<br>
+\w písmena,číslice,_<br>
+\W ne (písmena,číslice,_)<br>
+\s mezera, tabulátor<br>
+\S ne (mezera,tabulátor)<br>
+</span>
+<ul>
+<li>nejprve si RE poskládáme do samostatné proměnné:<br>
+<span class="zlut"> var re = /^[_a-zA-Z0-9\.\-]+@[_a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,4}$/;</span>
+</li>
+<li>řetězec např. <br>
+<span class="zlut">
+email1="jirka@nikde.cz";<br>
+email2="@jirkanikde.cz";
+</span>otestujeme metodou test proměnné <span class="zlut">re</span>:<br>
+<span class="zlut">
+if (re.test(email1)){document.write("První e-mail je OK");}else{document.write("První e-mail není OK!");}<br>
+if (re.test(email2)){document.write("Druhý e-mail je OK");}else{document.write("Druhý e-mail není OK!");}
+</span>
+</li>
+</ul>
+</li>
+<li>načasování určité události (časovač):<br>
+<span class="zlut">
+casovac=window.setTimeout('funkce()', doba);
+</span><br>
+za <span class="zlut">doba</span>(tj. čas v milisekundách) se spustí <span class="zlut">funkce()</span>, samotný časovač může být uvnitř volané funkce tj. spustí se "nekonečná" smyčka<br>
+zrušení časovače:<br>
+<span class="zlut">window.clearTimeout(casovac);</span><br>
+Příklad:
+<table border="1">
+<tbody><tr><td>
+<pre>//v adresáři obrázky mám obrázky 01.jpg, 02.jpg, ...,08.jpg
+&lt;img src="./obrazky/01.jpg" id=casovac&gt;
+&lt;script language=JavaScript&gt;
+var a=1;
+var casovac;
+function anim(){//funkce, která zamění src obrázku a spustí časovač
+                //který tuto funkci spustí znovu z 1vteřinu
+    a++;
+    if (a&gt;=8){a=1;}
+    srcobrazku="./obrazky/0"+a+".jpg";
+    document.getElementById('casovac').src=srcobrazku
+    casovac=window.setTimeout('anim()', 1000);
+}
+function stop(){//funkce, která vypne (ukončí) časovač
+   window.clearTimeout(casovac);
+}
+&lt;/script&gt;
+&lt;form&gt;
+&lt;input type=button onClick="anim();" value="Spusť časování"&gt;
+&lt;input type=button onClick="stop();" value="Zastav časování"&gt;
+&lt;/form&gt;
+</pre>
+</td></tr>
+</tbody></table>
+<img src="10%20-%20NMI266%20-%2027.4.%20JavaScript_files/01.jpg" id="casovac">
+<form>
+<input type="button" onclick="anim();" value="Spusť časování">
+<input type="button" onclick="stop();" value="Zastav časování">
+</form>
+<script language="JavaScript">
+var a=1;
+var casovac;
+function anim(){
+    a++;
+    if (a>9){a=1;}
+    retez="./obrazky/0"+a+".jpg";
+    document.getElementById('casovac').src=retez
+    casovac=window.setTimeout('anim()', 1000);
+}
+function stop(){
+   window.clearTimeout(casovac);
+}
+</script>
+</li></ul>
+
+
+</body></html>

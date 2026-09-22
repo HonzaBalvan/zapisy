@@ -1,0 +1,412 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NMIN266 - BASH cvičení</title>
+<style>
+  BODY {
+    color :BLACK;
+    background-color : #ffffe0;
+    font-family: sans-serif;
+  }
+  LI{
+    width:700px;
+  }
+</style>
+</head>
+<body>
+<h2>BASH - cvičení</h2>
+Pokud v domovském adresáři nemáte <i>public_html</i>, tak si vytvořte tento link:<br>
+<pre>ln -s /usr/html/"uživatelské jméno" public_html
+</pre>
+<br>
+do souboru <i>.bash_profile</i> si nastavte proměnné:<br>
+
+<i>odkud=/usr/html/NMIN266</i><br>
+<i>kam=~/NMIN266</i><br>
+stejné proměnné si nastavte také pro aktuálně spuštěný BASH<br>
+<br>
+Zkopírujte si tyto soubory:<br>
+<i>cp $odkud/6/malapismena.tar.gz $kam/</i><br>
+<i>cp $odkud/6/tex2.tar.gz $kam</i><br>
+
+
+<ol>
+<li>
+Vytvoříme si knihu Fimfárum na webových stránkách<br>
+<br>
+	přepněte se do ~/public_html<br>
+	vytvořte adresář fimfarum a přepněte se do něj<br>
+	(mkdir ~/public_html/fimfarum;cd fimfarum)<br>
+	zkopírujte si /usr/html/NMIN266/fimfarumhtm.tar do ./<br>
+	(cp /usr/html/NMIN266/fimfarumhtm.tar ./)<br>
+	rozbalte jej<br>
+	(tar xvf fimfarumhtm.tar)<br>
+	vytvořte soubor index.htm, ve kterém bude seznam všech souborů s koncovkou htm<br>
+	(ls *htm &gt; index.htm)<br>
+<pre>	01-kolobezka.htm
+	02-fimfarum.htm
+	03-obri.htm
+	04-listi_z_dubu.htm
+	05-barka.htm
+	06-lina.htm
+	07-more.htm
+	08-sen.htm
+	09-sestry.htm
+	10-palecek.htm
+	11-nebojsa.htm
+	12-synove.htm
+	13-veterani.htm
+	14-vrabec.htm
+	15-hrbaci.htm
+	16-usporna.htm
+</pre>
+	soubor index.htm si otevřete ve vim a pomocí regulárního výrazu upravte všechny řádky na tvar:<br>
+	&lt;a href=xxxxx.htm&gt;xxxxx.htm&lt;/a&gt;&lt;br&gt;<br>
+	kde xxxxx je název příslušné kapitoly<br>
+	(:%s/^\(.*\)/&lt;a href=\1&gt;\1&lt;\/a&gt;&lt;br&gt;/)<br>
+	<br>
+	ve webovém prohlížeči si otevřete adresu https://www.karlin.mff.cuni.cz/~[vaše uživatelské jmého]/fimfarum<br>
+	dostanete seznam kapitol - zkuste na některou kliknout ...<br>
+	v souboru je "v nepořádku" čeština - opravíme ji tak, že na začátek každého souboru přidáme<br>
+	&lt;meta charset=utf-8&gt;<br>
+	nebudeme to dělat po jednotlivých souborech, ale použijeme cyklus v bash<br>
+ <pre>	for f in [0-9]*<br>
+	do
+	mv $f $f.00 #
+	echo "&lt;meta charset=utf-8&gt;" &gt; $f
+	cat $f.00 &gt;&gt; $f
+	done
+  </pre>
+	teď můžeme zkontrolovat na webu jestli je četina v pořádku ...<br>
+	...  toto byla dlouhá příprava<br>
+	vše to uděláme (o něco lépe pomocí krátkého skriptu)<br>
+<pre>	#!/bin/bash
+	echo "&lt;meta charset=utf-8&gt; &gt; index.htm
+	for f in *htm
+	do
+	nazev=`head -n 1 $f`
+	mv $f $f.00
+	echo "&lt;meta charset=utf-8&gt; &gt;&gt; $f
+	cat $f.00 &gt;&gt; $f 
+	echo "&lt;a href=$f&gt;$nazev&lt;/a&gt;&lt;br&gt;" &gt;&gt; index.htm
+	done
+	rm *.00
+</pre>
+<!--Přepěte se do adresáře <i>cd ~/public_html</i><br>
+Vytvořte adresář abstrakty <i>mkdir abstrakty</i> a přepněte se do něj <i>cd abstrakty</i><br>
+Zkopírujte si soubor <i>$odkud/abs.tar.gz</i> a rozbalte ho<br>
+<pre>
+cp $odkud/abs.tar.gz ./
+tar xzvf abs.tar.gz
+</pre>
+Názvy všech souborů s koncovkou <i>htm</i> vypište do souboru index.html
+<pre>
+ls *.htm &gt; index.html
+</pre>
+Otevřete si soubor <i>index.html</i> ve vim a pomocí RE upravte všechny řádky do tvaru:
+<pre>
+&lt; a href=soubor.htm&gt;soubor.htm&lt;/a&gt;
+</pre>
+RE příkaz:
+<pre>
+:%s/^\(.*\)$/&lt;a href=\1&gt;\1&lt;\/a&gt;<br>
+</pre>
+Ve webovém prohlížeči si otevřete stránku<br>
+http://www.karlin.mff.cuni.cz/~vase_uzivatelske_jmeno/abstrakty<br>
+a klikněte na odkaz <i>Kunen.htm</i> - všimněte si zvláštních znaků, to je dáno tím, že html soubor nemá v hlavičce nastaveno správné kódování.<br>
+Ve všech souborech s koncovkou <i>htm</i> potřebuji do hlavičky přidat nastavení kódování a odkaz na styl stránky tj. tyto dva řádky (za &lt;HEAD&gt;):
+<pre>
+&lt;link rel=stlylesheet type="text/css" href="./css.css"&gt;
+&lt;meta charset=utf=8&gt;
+</pre>
+Uděláme to nejprve pokusně na jeden soubor (pozor znaky <b>"</b> a <b>/</b> ty musíme "odstínit" pomocí <b>\</b>):
+<pre>
+sed "s/HEAD&gt;/HEAD&gt;&lt;meta charset=utf-8&gt;&lt;link rel=stylesheet type=\"text\/css\" href=.\/css.css&gt;/" Kunen.htm &gt; Kunen.html
+</pre>
+V prohlížeči se podívejte na <i>Kunen.html</i><br>
+Tuto operaci budu chtít udělat se všemi soubory s koncovkou <i>htm</i> s tím, že původní soubor zazalohuji
+<pre>
+for f in *htm
+do
+mv $f $f.00
+sed "s/HEAD&gt;/HEAD&gt;&lt;meta charset=utf-8&gt;&lt;link rel=stylesheet type=\"text\/css\" href=.\/css.css&gt;/" $f.00 &gt; $f
+done
+</pre>-->
+</li>
+<li>
+vytvořte soubor <i>bmi.sh</i>, který bude počítat BMI (bmi=hmotnost/(vyska<sup>2</sup>)) a to takto:
+  <ul>
+  <li>
+  v první variantě zadáme do souboru <i>bmi.sh</i> jméno/výšku/hmotnost takto:
+  <pre>  jmeno=Jaroslav
+  vyska=172
+  hmotnost=62
+  ...
+  pak vypíše bmi
+  </pre>
+  </li>
+  <li>
+  v další variantě se skript na jméno/výšku/hmotnost zeptá a pak BMI vypíše
+  </li>
+  <li>
+  dále skript upravíme tak, aby nás podle našeho BMI vyhodnotil takto:
+  <pre>  BMI&lt;16.5 - podvýživa
+  16.5&lt;BMI&lt;18.5 - podváha
+  18.5&lt;BMI&lt;25.0 - ideální váha
+  25.0&lt;BMI&lt;30.0 - nadváha
+  30.0&lt;BMI&lt;35.0 - obezita 1.stupně
+  35.0&lt;BMI&lt;40.0 - obezita 2.stupně
+  BMI&gt;40.0 - morbidní obezita
+  </pre>
+  </li>
+  <li>
+  dále skript upravíme tak, že si jméno,výšku a váhu vezme jako parametr
+  </li>
+  <li>
+  dále se skript rozhodne podle toho jestli dostal parametry nebo ne. V případě, že parametry nedostal, tak se zeptá
+  </li>
+  <li>
+  poslední variantu skriptu použijeme tak, že jmeno/výšku/hmotnost budeme mít zadanou v souboru
+  </li>
+  </ul>
+</li>
+<li>
+mazání souborů <i>*.log</i> v aktuálním adresáři bez chybových hlášek<br>
+  přepněte se do <i>~/NMIN266/tex2/</i><br>
+  rozbalte si soubor <i>$kam/tex2.tar.gz</i><br>
+  smažte všechny soubory <i>*.log</i> v adresáři <i>letter</i><br>
+  a pak to zkuste ještě jednou - dostaneme chybovou hlášku<br>
+  <i>rm: cannot remove `*.log': No such file or directory</i><br>
+
+  vytvořte skript, který smaže v daném adresáři všechny soubory *.log
+  bez chybových hlášek
+  mazani1.sh
+  <pre>  #!/bin/bash
+  for f in `ls * | grep "\.log"`;
+  do
+    rm $f;
+  done
+  </pre>
+  skript otestujte (spusťte ho 2x) v adresáři <i>~/NMIN266/tex2/ruzne</i><br>
+  ... existuje jednodušší řešení?
+</li>
+<li>
+mazání souborů *.log v aktuálním adresáři a jeho podadresářích bez chybových hlášek navíc s informací kolik souborů bude smazáno<br>
+ 
+ mazani2.sh
+<pre> #!/bin/bash
+ echo "Bude smazáno "
+ find ./ -name "*.log" | wc -l
+ echo souborů s koncovkou log.
+ for f in `find ./ -name "*.log"`;
+  do
+   rm $f;
+ done
+</pre>
+</li>
+<li>mazání souborů, které nemají koncovku <i>tex</i> nebo <i>pdf</i>
+  mazani3.sh
+<pre> #!/bin/bash
+ for f in `find * | grep -v "\.tex" | grep -v "\.pdf"`;
+  do
+   rm $f;
+ done
+</pre>
+ POZOR ! soubory s koncovkou sh budou také smazány ...<br>
+ 
+ při spuštění tohoto skriptu se objeví chybové hlášení při pokusu o mazání adresáře<br>
+ možná dvě řešení:<br>
+ nepříliš korektní:
+<pre> #!/bin/bash
+ for f in `find * | grep -v "\.tex" | grep -v "\.pdf" | grep -v "\.sh"`;
+ do
+   rm $f 2&gt;/dev/null;
+ done
+</pre>
+ lepší řešení:
+<pre>  #!/bin/bash
+ echo souborů.
+ for f in `find * | grep -v "\.tex" | grep -v "\.pdf" | grep -v "\.sh"`;
+ do
+   if [ ! -d $f ]
+   rm $f;
+ done
+</pre>
+</li>
+<li>změna názvů souborů na malá písmenka<br>
+rozbalte si soubor<br>
+<i>malapismena.tar.gz</i><br>
+pomocí příkazu <i>tr</i> můžeme převést řetězec napsaný velkými písmeny na malá
+<pre>echo ABC | tr "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz"
+</pre>
+vytvoříme skript, který přejmenuje všechny soubory v adresáři i podadresářích, tak aby názvy byly jen malými písmeny<br>
+
+ mala.sh
+<pre> #!/bin/sh
+ for f in `find ./ -name "*"`;
+ do
+   mv $f `echo $f | tr "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz"`;
+ done
+</pre>
+malé vylepšení (bez chybových hlášek)
+<pre> #!/bin/sh
+ for f in `find ./ -name "*" | grep [A-Z]`;
+ do
+   mv $f `echo $f | tr "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz"`;
+ done
+</pre>
+</li>
+<li>
+5.úloha 1. z 7.3.2024 efektivněji<br>
+smazání adresáře <i>~/NMIN266/fimfárum</i><br>
+rozbalte si soubor <i>fimfarum.tar.gz</i><br>
+vytvořte si adresáře <i>dokumenty</i> a <i>obrazky</i>
+  presun1.sh
+<pre> #!/bin/sh
+ for f in `file soubor* | grep PDF | sed 's/:.*$//'`;
+   do
+     mv $f ./dokumenty/${f}.pdf;
+   done
+
+ for f in `file soubor* | grep PNG | sed 's/:.*$//'`;
+   do
+     mv $f ./obrazky/${f}.png;
+   done
+
+ for f in `file soubor* | grep JPEG | sed 's/:.*$//'`;
+   do
+     mv $f ./obrazky/${f}.jpeg;
+   done
+</pre>
+anebo
+<br>
+příprava:
+<pre>novejmeno=`file soubor01 | sed "s/^\(.*\): \([A-Z\]*\).*$/\1.\2/"`
+echo $novejmeno
+</pre>
+nyní v cyklu:
+<pre>for f in `find *`; 
+do
+novejmeno=`file $f | sed "s/^\(.*\): \([A-Z\]*\).*$/\1.\2/"`;
+mv $f $novejmeno;
+done
+</pre>
+</li>
+<li>
+Zkopírute si soubor <i>/usr/html/NMIN266/foto.tar.gz</i> do svého domovského adresáře<br>
+rozbalte ho příkazem:
+<pre>tar xzvf foto.tar.gz
+</pre>
+Původní zazipovaný soubor smažte.<br>
+<pre>rm foto.tar.gz
+</pre>
+V adresáři <i>foto</i> jsou čtyři složky 2011,2012,2013,2014<br>
+v každé složce je několik dalších složek v kterých jsou jednak<br>
+fotografie ve formátu <i>jpg</i>, ale také ve formátu "raw" tj. soubory<br>
+s koncovkou <i>nef</i>. Naším úkolem bude:
+<ul>
+<li>Zjistit kolik je zde souborů <i>nef</i></li>
+<li>Zjistit jaké místo na disku zabírají všechny soubory <i>nef</i>
+<pre>for f in `find ./ -name "*.nef"`
+do
+ls=`ls -l $f`
+size=`echo $ls | sed "s/^.*guest \([0-9]*\).*$/\1/"`
+echo $size &gt;&gt; velikosti
+done
+</pre>
+Soubor <i>velikosti</i> upravit pomoci RE na tvar:
+<pre>echo $[123+234+...+568]
+</pre>
+tj.
+<pre>%s/\n/=/g
+s/^/echo $[/
+s/$/]
+</pre>
+a spustit
+<pre>bash velikosti
+</pre>
+</li>
+<li>Pro všechny adresáře 2011-2014 vytvořit (cyklem) adresáře 2011.raw-2014.raw<br>
+(představte si, že nejsou jen čtyři, ale je jich třeba třicet)<br>
+<pre>for f in `ls`
+do
+mkdir $f.raw
+for g in `ls $f`
+do 
+mkdir $f.raw/$g
+mkdir $f.raw/$g/raw
+done
+done
+</pre>
+</li>
+<li>
+Všechny soubory <i>nef</i> z adresářů 2011-2014 přesunout do adresářů 2011.raw-2014.raw<br>
+se zachováním adresářové struktury<br>
+<b>Příprava</b>
+<pre>for f in `find ./ -name "*.nef"`
+do 
+g=`echo $f | sed "s/\([0-9]\{4\}\)/\1.raw/"`
+echo $g
+done
+</pre>
+<b>Na ostro:</b>
+<pre>for f in `find ./ -name "*.nef"`
+do
+g=`echo $f | sed "s/\([0-9]\{4\}\)/\1.raw/"`
+mv $f $g
+done
+</pre>
+</li>
+</ul>
+</li>
+<li>
+Vytvořte si soubor <i>emaily.txt</i> s tímto obsahem:
+<pre>richter
+blaha
+calta
+chejn
+jurcik
+kasparek
+ekratochvilova
+kremen
+labaiova
+petru
+romanovsky
+reznicek
+sefcikova
+esvecova
+trojan
+vitu
+wolf
+hochman
+</pre>
+Pomocí RE přidejte na konec každého řádku <i>@karlin.mff.cuni.cz</i> (ESC :%s/$/@karlin.mff.cuni.cz)<br>
+Z <i>/usr/html/NMIN266/</i> si do stejného umístění zkopírujte soubory <i>swans.jpg</i> a <i>escher.txt</i><br>
+naším úkolem bude rozeslat všem lidem ze souboru <i>emaily.txt</i> rozeslat dopis kde:<br>
+<pre>subject: escher
+tělo dopisu: eshcer.txt
+příloha dopisu:swans.jpg
+</pre>
+Pro rozesílání použijeme program mutt s těmito parametry:
+<pre>mutt -s "subject" "emailova adresa"  &lt; telo dopisu (soubor) -a priloha ;echo emailova aderesa Odeslano; sleep 2;
+</pre>
+BASH skript bude vypadat takto:
+<pre>#!/bin/bash
+dopis=escher.txt
+priloha=swans.jpg
+subject="M.C.Escher"
+for email in `cat emaily.txt`
+do
+mutt -s "$subject" "$email"  &lt; $dopis -a $priloha ;echo $email Odeslano; sleep 2;
+done
+</pre>
+</li>
+<!--<li>
+Z <i>/usr/html/NMIN266/</i> si zkopírujte soubor <i>foto2.tar</i> do <i>~/NMIN266</i> a tam rozbalte. V souboru <i>seznam.txt</i> je seznam souborů, které chci najít a zkopírovat do jednoho adresáře.
+</li>-->
+
+
+
+<ol>
+
+
+</ol></ol></body></html>
