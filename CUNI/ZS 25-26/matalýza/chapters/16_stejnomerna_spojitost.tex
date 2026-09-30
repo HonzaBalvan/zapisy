@@ -1,0 +1,250 @@
+\section{Stejnoměrná spojitost}
+
+\begin{definice}
+  Řekneme, že fce $f_n(x) \colon I \to \mathbb R$ konvergují v $I$ bodově k funkci $f(x)\colon I \to \mathbb R$, jestliže
+  $$\lim_{n \to \infty} f_n(x)\to f(x) \quad \forall x \in I \text{ pevné.}$$
+  Značíme $f_n(x) \to f(x)$ v $I$.
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[1)]
+    \item $f_n(x) = (1+\frac{x}{n})^n \to e^x, x \in \mathbb R$; neboť $f_n(x) = e^{g_n(x)}$
+
+    $g_n(x)=n\ln(1+\frac{x}{n})=\frac{\ln (1+\frac{x}{n})}{\frac{x}{n}}\cdot x\to x, n \to \infty, x \in \mathbb R, x \neq 0$ pevné
+
+    $x=0\colon f_n(0) = (1+0)^n=1=e^0$
+    \item $f_n(x)=\frac{nx}{1+n|x|} = \frac{x}{\frac{1}{n}+|x|} \left\{ \begin{array}{ll}
+      \equiv 0 &x=0 \\ \to \frac{x}{0+|x|} &x \neq 0 \end{array} \right\} \sgn x, \forall x \in \mathbb R$
+
+    \begin{figure}[ht!]
+      \centering
+      \begin{tikzpicture}[x=2.6cm, y=2.2cm, >=latex, font=\small, scale=0.65]
+
+        \colorlet{fOne}{cyan!70!black}   % n = 1
+        \colorlet{fThree}{blue}          % n = 3
+        \colorlet{fTen}{blue!60!black}   % n = 10
+
+  % grid and axes
+  \draw[gray!25, very thin] (-2.2,-1.3) grid[step=1] (2.2,1.3);
+  \draw[->] (-2.35,0) -- (2.4,0) node[below] {$x$};
+  \draw[->] (0,-1.4) -- (0,1.45) node[left] {$y$};
+  \foreach \x in {-2,-1,1,2}
+    \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
+  \foreach \y in {-1,1}
+    \draw (2pt,\y) -- (-2pt,\y) node[left] {$\y$};
+
+  % the sequence f_n (odd functions, so one plot covers both branches)
+  \draw[fOne,   thick, domain=-2.2:2.2, samples=201]
+    plot (\x, {\x/(1+abs(\x))});
+  \draw[fThree, thick, domain=-2.2:2.2, samples=201]
+    plot (\x, {3*\x/(1+3*abs(\x))});
+  \draw[fTen,   thick, domain=-2.2:2.2, samples=201]
+    plot (\x, {10*\x/(1+10*abs(\x))});
+
+  % the limit: sgn x, drawn with sgn(0) = 0
+  \draw[very thick] (-2.2,-1) -- (0,-1);
+  \draw[very thick] (0,1)     -- (2.2,1);
+  \draw[fill=white, very thick] (0,-1) circle[radius=1.7pt]; % jump not attained
+  \draw[fill=white, very thick] (0,1)  circle[radius=1.7pt]; % jump not attained
+  \fill (0,0) circle[radius=1.7pt];                          % sgn(0) = 0
+
+  % legend
+  \begin{scope}[every node/.style={font=\small}]
+    \draw[fOne,   thick] (2.55,1.05) -- (2.95,1.05)
+      node[right, black] {$f_1$};
+    \draw[fThree, thick] (2.55,0.75) -- (2.95,0.75)
+      node[right, black] {$f_3$};
+    \draw[fTen,   thick] (2.55,0.45) -- (2.95,0.45)
+      node[right, black] {$f_{10}$};
+    \draw[very thick] (2.55,0.12) -- (2.95,0.12)
+      node[right, black] {$\sgn x$};
+  \end{scope}
+
+\end{tikzpicture}
+    \end{figure}
+
+  \item $f_n(x)=n^2xe^{-nx} \to 0, \forall x \geq 0$
+
+  \begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[x=3.2cm, y=2cm, >=latex, font=\small, scale=0.65]
+
+      \colorlet{fOne}{cyan!70!black}   % n = 1
+\colorlet{fThree}{blue}          % n = 3
+\colorlet{fFive}{blue!60!black}
+
+  % grid
+  \draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,2);
+
+  % the limit f = 0 is the x-axis itself: draw it thick
+  \draw[very thick, ->] (0,0) -- (2.6,0) node[below] {$x$};
+  \draw[->] (0,0) -- (0,2.12) node[left] {$y$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \x in {0.5,1,1.5,2,2.5}
+    \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
+  \foreach \y in {0.5,1,1.5,2}
+    \draw (2pt,\y) -- (-2pt,\y) node[left] {$\y$};
+
+  % the sequence f_n on x >= 0
+  \draw[fOne,   thick, domain=0:2.5, samples=201] plot (\x, {\x*exp(-\x)});
+  \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {9*\x*exp(-3*\x)});
+  \draw[fFive,  thick, domain=0:2.5, samples=201] plot (\x, {25*\x*exp(-5*\x)});
+
+  % legend
+  \begin{scope}[every node/.style={font=\small}]
+    \draw[fOne,   thick] (2.75,1.75) -- (3.15,1.75)
+      node[right, black] {$f_1$};
+    \draw[fThree, thick] (2.75,1.45) -- (3.15,1.45)
+      node[right, black] {$f_3$};
+    \draw[fFive,  thick] (2.75,1.15) -- (3.15,1.15)
+      node[right, black] {$f_5$};
+    \draw[very thick] (2.75,0.82) -- (3.15,0.82)
+      node[right, black] {$\equiv 0$};
+  \end{scope}
+
+\end{tikzpicture}
+  \end{figure}
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  Bodová konvergence má svá úskalí.
+  \begin{itemize}
+    \item $f_n(x)$ spojité, $f_n(x) \to f(x) \cancel{\implies} f(x)$ spojité
+    \item $f_n(x) \to f(x)$ v $[a,b] \cancel{\implies} \int_a^b f_n \to \int_a^b f$
+  \end{itemize}
+\end{poznamka}
+
+\begin{motivace}
+  Přepisujme ekvivalentně:
+
+  $f_n(x) \to f(x), \forall x \in I$
+
+  $(\forall x \in I)[\lim_{n\to \infty} f_n(x)=f(x)]$
+
+  $(\forall x \in I)(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
+
+  $(\forall \varepsilon > 0)(\forall x \in I)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
+\end{motivace}
+
+\begin{definice}
+  Řekneme, že $f_n(x)$ konvergují stejnoměrně k $f(x)$ v $I$, jestliže
+  $$(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall x \in I)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon].$$
+  Značíme $f_n(x) \toto f(x)$ v $I$.
+
+\begin{figure}[ht!]
+    \centering
+
+    \begin{tikzpicture}[x=1.6cm, y=2.2cm, >=latex, font=\small, scale=0.5]
+
+      % axes: domain E, values in R
+      \draw[->] (0,-0.55) -- (0,2.55) node[above left] {$\mathbb{R}$};
+      \draw[->] (-0.1,-0.55) -- (7.45,-0.55) node[below] {$E$};
+
+      % shaded eps-tube between f+eps and f-eps
+      \fill[gray!25]
+        plot[domain=0:7, samples=120]
+          (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4)) + 0.35})
+        -- plot[domain=7:0, samples=120]
+          (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4)) - 0.35})
+        -- cycle;
+
+      % dashed boundary curves of the tube
+      \draw[gray!70!black, dashed, domain=0:7, samples=120]
+        plot (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4)) + 0.35});
+      \draw[gray!70!black, dashed, domain=0:7, samples=120]
+        plot (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4)) - 0.35});
+      \node[right, black] at (7,0.967) {$f+\varepsilon$};
+      \node[right, black] at (7,0.267) {$f-\varepsilon$};
+
+      % the limit function f
+      \draw[black, very thick, domain=0:7, samples=200]
+        plot (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4))});
+      \node[right] at (7,0.617) {$f$};
+
+      % f_1 (red): starts near the tube, bulges out, returns for large x
+      \draw[red, thick, domain=0:7, samples=200]
+        plot (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4))
+                   + 1.3*\x*exp(-0.55*\x) + 0.35*exp(-0.25*\x)});
+      \node[above, red] at (2.8,2.15) {$f_1$};
+
+      % f_N (green): oscillates around f but stays inside the tube
+      \draw[green!55!black, thick, domain=0:7, samples=200]
+        plot (\x, {0.55 + 0.08*\x + 0.5*sin(deg(0.85*\x - 1.4))
+                   + 0.3*exp(-0.25*\x)*sin(deg(3.5*\x + 2))});
+      \node[below, green!55!black] at (4.3,1.18) {$f_N$};
+
+    \end{tikzpicture}
+\end{figure}
+\end{definice}
+
+\begin{veta}[Zachování spojitosti při stejnoměrné konvergenci]
+  Nechť $f_n \in C(I)$, nechť $f_n \toto f$ v $I$. Pak $f \in C(I)$.
+\end{veta}
+
+\begin{proof}
+  cíl: $(\forall x_0 \in I)(\forall \varepsilon > 0)(\exists \delta >0)[\underbrace{x \in \mathscr U(x_0, \delta)\cap I}_{|x-x_0|<\delta, x \in I}\implies \underbrace{f(x) \in \mathscr U(f(x_0),\varepsilon)}_{|f(x)-f(x_0)|<\varepsilon}]$
+
+  $x_0 \in I, \varepsilon_0 >0$ libovolné, pevné
+
+  víme: $f_n \toto f$ v $I$, a tedy $\exists n_0 \in \mathbb N$ t. ž. $|f(x)-f_{n_0}(x)|<\frac{\varepsilon}{3}, \forall x \in I \quad (+)$
+
+  dále: $f_{n_0} \in C(I)$, a tedy $\exists \delta > 0$ t. ž. $x \in \mathscr U(x_0,\delta) \cap I \implies |f_{n_0}(x)-f_{n_0}(x_0)|<\frac{\varepsilon}{3} \quad (++)$
+
+  \textsc{celkem}: $\forall x \in \mathscr U(x_0, \delta) \cap I\colon |f(x)-f(x_0)|=|f(x)-f_{n_0}(x)+f_{n_0}(x)-f_{n_0}(x_0)+f_{n_0}(x_0)-f(x_0)| \leq |f(x)-f_{n_0}(x)|+|f_{n_0}(x)-f_{n_0}(x_0)|+|f_{n_0}(x_0)-f(x_0)|<\footnotesize\underbrace{\frac{\varepsilon}{3}}_{(+)}+\underbrace{\frac{\varepsilon}{3}}_{(++)}+\underbrace{\frac{\varepsilon}{3}}_{(+)}=\varepsilon$
+\end{proof}
+
+\begin{veta}[Záměna limity a integrálu při stejnoměrné konvergenci]\label{16zamenalimint}
+  Nechť $f_n \in C(I)$, nechť $f_n \toto f$ v $I$, kde $I=[a,b]$ je omezený a uzavřený. Pak
+  $$\int_a^b f_n \to \int_a^b f, n \to \infty \quad \forall x \in I.$$
+\end{veta}
+
+\begin{proof}
+  cíl: $\forall \varepsilon > 0 \; \exists n_0 \colon n \geq n_0 \implies |\int_a^b f_n - \int_a^b f|<\varepsilon$
+
+  $\varepsilon > 0$ dáno, víme: $f_n \toto f$ v $[a, b]$, a tedy $\exists n_0 \in \mathbb N\colon |f_n(x)-f(x)|<\frac{\varepsilon}{b-a}, \forall x \in [a,b]$
+
+  nechť $n \geq n_0\colon |\int_a^b f_n(x) \,\d x - \int_a^b f(x) \,\d x|=|\int_a^b(f_n(x)-f(x)) \,\d x| \leq \int_a^b (f_n(x)-f(x)) \,\d x < \frac{\varepsilon}{b-a}(b-a)=\varepsilon$
+\end{proof}
+
+\begin{poznamka}
+  \begin{enumerate}
+    \item $\lim_{n \to \infty}(\int_a^b f_n(x) \,\d x)\underbrace{=}_{\mathclap{\text{\uv{záměna} lim a } \int}}$
+    \item Věta \ref{16zamenalimint} je \uv{příliš jednoduchá} (srovnej Leviho resp. Lebesgueova věta)
+    \item Pro který integrál věta platí? Pro jakýkoliv!
+  \end{enumerate}
+\end{poznamka}
+
+\begin{poznamka}
+  Opakuj definici suprema (viz definice \ref{1supremum}).
+\end{poznamka}
+
+\begin{lemma}
+  Nechť $f_n(x), f(x)\colon I \to \mathbb R$. Pak je ekvivalentní
+  \begin{enumerate}[1.]
+    \item $f_n \toto f$ v $I$,
+    \item $\sigma_n \to 0, n \to \infty$, kde $\sigma_n \coloneq \sup\limits_{x \in I}|f_n(x)-f(x)|$,
+    \item $\forall$ posloupnosti $\{x_n\}\subset I$ platí, že $f_n(x_n) - f(x_n) \to 0, n \to \infty$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Dokážeme řetězec implikací.
+  \begin{itemize}
+    \item[$1. \implies 2.$] cíl: $\forall \varepsilon >0\; \exists n_0\colon n \geq n_0 \implies |\sigma_n| < \varepsilon$, tj. $\sigma_n < \varepsilon$, neboť $\sigma_n \geq 0$
+
+    $\varepsilon >0$ dáno: díky $1.$ $\underbrace{\exists n_0\colon n \geq n_0 \implies |f_n(x)-f(x)|<\frac{\varepsilon}{2}}_{\textstyle \mathclap{\implies \sigma_n \underbrace{\leq}_{\textstyle \mathclap{\text{dle def. suprema}}} \frac{\varepsilon}{2}, \forall n \geq n_0 \implies \sigma_n < \varepsilon, \forall n \geq n_0}}, \forall x \in I$
+
+    \item[$2. \implies 3.$] zřejmě platí $|f_n(x) -f(x)|\leq \sigma_n, \forall n \geq n_0, \forall x \in I$ dle definice suprema, a tedy pro libovolné $x_n \in I \colon |f_n(x_n)-f(x_n)|\leq \sigma_n, \forall n \geq n_0; \sigma_n \to 0$ dle $2.$, dále dle Věty TODO (VoDP)
+
+    \item[$2. \implies 3.$] obměnou: $\neg 1. \implies \neg 3.$
+
+    nechť $f_n \cancel{\toto} f$ v $I$, rozepišme
+
+    $\neq (\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall x \in I)[n \geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$, tj.
+
+    $(\exists \varepsilon >0)(\forall n_0 \in \mathbb N)(\exists x \in I)(\exists n \geq n_0\colon |f_n(x)-f(x)|\geq \varepsilon)$
+
+    fixuji TODO
+  \end{itemize}
+\end{proof}
