@@ -113,19 +113,8 @@
     \item $f_n(x)$ spojité, $f_n(x) \to f(x) \cancel{\implies} f(x)$ spojité
     \item $f_n(x) \to f(x)$ v $[a,b] \cancel{\implies} \int_a^b f_n \to \int_a^b f$
   \end{itemize}
+  Zavedeme tedy silnější pojem.
 \end{poznamka}
-
-\begin{motivace}
-  Přepisujme ekvivalentně:
-
-  $f_n(x) \to f(x), \forall x \in I$
-
-  $(\forall x \in I)[\lim_{n\to \infty} f_n(x)=f(x)]$
-
-  $(\forall x \in I)(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
-
-  $(\forall \varepsilon > 0)(\forall x \in I)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
-\end{motivace}
 
 \begin{definice}
   Řekneme, že $f_n(x)$ konvergují stejnoměrně k $f(x)$ v $I$, jestliže
@@ -178,6 +167,20 @@
 \end{figure}
 \end{definice}
 
+\begin{poznamka}
+  Přepisujme ekvivalentně definici bodové konvergence.
+
+  $f_n(x) \to f(x), \forall x \in I$
+
+  $(\forall x \in I)[\lim_{n\to \infty} f_n(x)=f(x)]$
+
+  $(\forall x \in I)(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
+
+  $(\forall \varepsilon > 0)(\forall x \in I)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
+
+  Rozdíl je v pořadí kvantifikace $x$ a $n_0$. Při bodové konvergenci nejprve fixuji $x$, pak volím $n_0$, tj. $n_0$ může obecně záviset na $x$. Při stejnoměrné konvergenci zvolené $n_0$ nezávisí na $x \in I$.
+\end{poznamka}
+
 \begin{veta}[Zachování spojitosti při stejnoměrné konvergenci]
   Nechť $f_n \in C(I)$, nechť $f_n \toto f$ v $I$. Pak $f \in C(I)$.
 \end{veta}
@@ -218,7 +221,7 @@
 \end{poznamka}
 
 \begin{poznamka}
-  Opakuj definici suprema (viz definice \ref{1supremum}).
+  Opakuj definici suprema (viz definice \ref{supremum}).
 \end{poznamka}
 
 \begin{lemma}
