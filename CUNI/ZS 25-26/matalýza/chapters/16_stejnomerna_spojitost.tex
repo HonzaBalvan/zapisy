@@ -244,12 +244,129 @@
 
     \item[$2. \implies 3.$] obměnou: $\neg 1. \implies \neg 3.$
 
+    cíl: sestrojit $\{x_n\}$ t. ž. neplatí $3.$
+
     nechť $f_n \cancel{\toto} f$ v $I$, rozepišme
 
-    $\neq (\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall x \in I)[n \geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$, tj.
+    $\neg (\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall x \in I)[n \geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$, tj.
 
     $(\exists \varepsilon >0)(\forall n_0 \in \mathbb N)(\exists x \in I)(\exists n \geq n_0\colon |f_n(x)-f(x)|\geq \varepsilon)$
 
-    fixuji TODO
+    $\varepsilon > 0$ fixuji, volím $n_0 = 1\colon \exists x = x_{k_1}, \exists n = k_1$ t. ž. $|f_{k_1}(x_k)-f(x_k)|\geq \varepsilon$
+
+    indukcí: volím $n_0 = k_n + 1, \exists x = x_{k_{n+1}}, n = k_{n+1}$ t. ž. $|f_{k_n}(x_{k_n})-f(x_{k_n})|\geq \varepsilon$
+
+    tj. máme podposloupnost indexů $k_1 < k_2 < \dots < k_n \to \infty$ t. ž. neplatí bod $3.$
+
+    doplňme na posloupnost indexy $x_m \in I$, pro $m \notin \{k_n\}_{n=1}^{\infty}$ libovolně, a posloupnost stále nekonverguje do nuly (protože $\exists$ nekonvergující podposloupnost)
   \end{itemize}
 \end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item $f_n(x) = \frac{nx}{1+n^2x^2}=f_1(nx)$, kde $f_1(x) = \frac{x}{1+x^2}$; $x \in [0, \infty)$
+
+\begin{minipage}{0.58\textwidth}
+
+    \begin{tikzpicture}[x=3.2cm, y=4cm, >=latex, font=\small, scale=0.65]
+
+      \colorlet{fOne}{cyan!70!black}   % n = 1
+      \colorlet{fThree}{blue}          % n = 3
+      \colorlet{fFive}{blue!60!black}                % n = 5
+
+  % grid
+  \draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,1.25);
+
+  % the limit f = 0 is the x-axis itself: draw it thick
+  \draw[very thick, ->] (0,0) -- (2.6,0) node[below] {$x$};
+  \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \x in {1,2}
+    \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
+  \foreach \y in {0.5}
+    \draw (2pt,2*\y) -- (-2pt,2*\y) node[left] {$\y$};
+
+  % peaks: max = 1/2 at x = 1/n -> add a dashed guide line at y = 1/2
+  \draw[gray!60, dashed] (0,2*0.5) -- (2.5,2*0.5);
+
+  % the sequence f_n on x >= 0
+  \draw[fOne,   thick, domain=0:2.5, samples=201] plot (\x, {2*\x/(1+\x*\x)});
+  \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
+  \draw[fFive,  thick, domain=0:2.5, samples=201] plot (\x, {2*5*\x/(1+25*\x*\x)});
+
+  % legend
+  \begin{scope}[every node/.style={font=\small}]
+    \draw[fOne,   thick] (2.75,1.1) -- (3.15,1.1)
+      node[right, black] {$f_1$};
+    \draw[fThree, thick] (2.75,0.85) -- (3.15,0.85)
+      node[right, black] {$f_3$};
+    \draw[fFive,  thick] (2.75,0.6) -- (3.15,0.6)
+      node[right, black] {$f_5$};
+    \draw[very thick] (2.75,0.32) -- (3.15,0.32)
+      node[right, black] {$\equiv 0$};
+  \end{scope}
+
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.42\textwidth}
+$f_n(x) \to 0, n \to \infty, x \in I$ pevné
+
+volme $x_n=\frac{1}{n}\in I$
+
+$\left|f_n(x_n) - f(x_n)\right|=\left|\frac{n \frac{1}{n}}{1+\frac{n^2}{n^2}}-0\right|=\frac{1}{2} \cancel{\to} 0$
+
+tj. $f_n \cancel{\toto} 0$ v $[0, \infty)$
+\end{minipage}
+
+A co $(0, \infty)$? Stejným argumentem $f_n \cancel{\toto} 0$ v $(0,\infty)$
+
+A co $J=[\Delta, \infty), \Delta >0$ pevné?
+
+\begin{minipage}{0.58\textwidth}
+\begin{tikzpicture}[x=3.2cm, y=4cm, >=latex, font=\small, scale=0.65]
+
+  \colorlet{fOne}{cyan!70!black}   % n = 1
+  \colorlet{fThree}{blue}          % n = 3
+  \colorlet{fFive}{blue!60!black}                % n = 5
+
+% grid
+\draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,1.25);
+
+% the limit f = 0 is the x-axis itself: draw it thick
+\draw[very thick, ->] (0,0) -- (2.6,0) node[below] {$x$};
+\draw[->] (0,0) -- (0,1.32) node[left] {$y$};
+\node[below left] at (0,0) {$0$};
+\foreach \x in {1,2}
+\draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
+\foreach \y in {0.5}
+\draw (2pt,2*\y) -- (-2pt,2*\y) node[left] {$\y$};
+
+% peaks: max = 1/2 at x = 1/n -> add a dashed guide line at y = 1/2
+\draw[gray!60, dashed] (0,2*0.5) -- (2.5,2*0.5);
+
+% the sequence f_n on x >= 0
+\draw[fOne,   thick, domain=0:2.5, samples=201] plot (\x, {2*\x/(1+\x*\x)});
+\draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
+\draw[fFive,  thick, domain=0:2.5, samples=201] plot (\x, {2*5*\x/(1+25*\x*\x)});
+
+% legend
+\begin{scope}[every node/.style={font=\small}]
+\draw[fOne,   thick] (2.75,1.1) -- (3.15,1.1)
+  node[right, black] {$f_1$};
+\draw[fThree, thick] (2.75,0.85) -- (3.15,0.85)
+  node[right, black] {$f_3$};
+\draw[fFive,  thick] (2.75,0.6) -- (3.15,0.6)
+  node[right, black] {$f_5$};
+\draw[very thick] (2.75,0.32) -- (3.15,0.32)
+  node[right, black] {$\equiv 0$};
+\end{scope}
+
+\end{tikzpicture}
+\end{minipage}\begin{minipage}{0.42\textwidth}
+$x_n = \frac{1}{n}<\Delta$ od jistého $n \geq n_0$
+
+$\implies f_n$ klesá v $[\Delta, \infty]$, a tedy
+
+$\sigma_n \coloneq \sup\limits{x \in J} \left|f_n(x)-f(x)\right|=f_n(\Delta) \to 0, n \to \infty$
+\end{minipage}
+  \end{enumerate}
+\end{priklad}
