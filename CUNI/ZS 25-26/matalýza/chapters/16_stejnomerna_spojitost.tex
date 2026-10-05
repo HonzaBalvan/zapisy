@@ -332,7 +332,7 @@ A co $J=[\Delta, \infty), \Delta >0$ pevné?
 \draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,1.25);
 
 % the limit f = 0 is the x-axis itself: draw it thick
-\draw[very thick, ->] (0,0) -- (2.6,0) node[below] {$x$};
+\draw[->] (0,0) -- (2.6,0) node[below] {$x$};
 \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
 \node[below left] at (0,0) {$0$};
 \foreach \x in {1,2}
@@ -348,17 +348,6 @@ A co $J=[\Delta, \infty), \Delta >0$ pevné?
 \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
 \draw[fFive,  thick, domain=0:2.5, samples=201] plot (\x, {2*5*\x/(1+25*\x*\x)});
 
-% legend
-\begin{scope}[every node/.style={font=\small}]
-\draw[fOne,   thick] (2.75,1.1) -- (3.15,1.1)
-  node[right, black] {$f_1$};
-\draw[fThree, thick] (2.75,0.85) -- (3.15,0.85)
-  node[right, black] {$f_3$};
-\draw[fFive,  thick] (2.75,0.6) -- (3.15,0.6)
-  node[right, black] {$f_5$};
-\draw[very thick] (2.75,0.32) -- (3.15,0.32)
-  node[right, black] {$\equiv 0$};
-\end{scope}
 
 \end{tikzpicture}
 \end{minipage}\begin{minipage}{0.42\textwidth}
@@ -368,5 +357,97 @@ $\implies f_n$ klesá v $[\Delta, \infty]$, a tedy
 
 $\sigma_n \coloneq \sup\limits{x \in J} \left|f_n(x)-f(x)\right|=f_n(\Delta) \to 0, n \to \infty$
 \end{minipage}
+
+tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   \end{enumerate}
 \end{priklad}
+
+\begin{definice}
+  Řekneme, že $f_n(x)$ konvergují lokálně stejnoměrně k $f(x)$ v $I$, jestliže
+  $$(\forall x_0 \in I)(\exists \delta >0)[f_n \toto f \text{ v } \mathscr U(x_0, \delta) \cap I].$$
+  Značíme $f_n \stackrel{\text{loc}}{\toto} f$ v $I$.
+\end{definice}
+
+\begin{priklad}
+  $f_n(x)=\frac{nx}{1+n^2x^2} \stackrel{\text{loc}}{\toto} 0$ v $(0, \infty)$
+
+  \begin{minipage}{0.58\textwidth}
+  \begin{tikzpicture}[x=3.2cm, y=4cm, >=latex, font=\small, scale=0.65]
+
+    \colorlet{fOne}{cyan!70!black}   % n = 1
+    \colorlet{fThree}{blue}          % n = 3
+    \colorlet{fFive}{blue!60!black}                % n = 5
+
+  % grid
+  \draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,1.25);
+
+  % the limit f = 0 is the x-axis itself: draw it thick
+  \draw[->] (0,0) -- (2.6,0) node[below] {$x$};
+  \draw[very thick, ->] (0.75,0) -- (2.6,0) node[below] {$J$};
+  \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
+  \node[below left] at (0,0) {$0$};
+  \foreach \x in {1,2}
+  \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
+  \foreach \y in {0.5}
+  \draw (2pt,2*\y) -- (-2pt,2*\y) node[left] {$\y$};
+
+  % peaks: max = 1/2 at x = 1/n -> add a dashed guide line at y = 1/2
+  \draw[gray!60, dashed] (0,2*0.5) -- (2.5,2*0.5);
+
+  % the sequence f_n on x >= 0
+  \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
+
+  \end{tikzpicture}
+  \end{minipage}\begin{minipage}{0.42\textwidth}
+  vezmu pro libovolné $x_0, \delta$ tak, aby bylo odražené od $0$, pak dle předchozího příkladu $\Delta, J$ TODO
+  \end{minipage}
+\end{priklad}
+
+\begin{poznamka}
+  \begin{itemize}
+    \item $f_n \toto f$ v $J$, $\tilde{J} \subseteq J \implies f_n \toto f$ v $\tilde{J}$
+    \item stejnoměrná konvergence $\implies$ lokální stejnoměrná konvergence $\implies$ bodová konvergence, žádnou implikaci nelze obrátit
+  \end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+  Opakuj definici Cauchyho-Bolzanovy podmínky pro posloupnosti a pro řady (definice \ref{7bc} a \ref{10bcr}) a věty o ekvivalenci B. C. podmínky a konvergence (věty \ref{7bckonv} a \ref{10bckonv}).
+\end{poznamka}
+
+\begin{definice}
+  Řekneme, že posloupnost funkcí $\{f_n(x)\}_{n=1}^\infty$ splňuje Bolzanovu-Cauchyho podmínku stejnoměrné konvergence, jestliže
+  $$(\forall \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall x \in I)(\forall m,n \geq n_0)[|f_m(x)-f_n(x)|<\varepsilon]. \qquad \text{(B.C. st)}$$
+\end{definice}
+
+\begin{veta}
+  Nechť $f_n(x)\colon I \to \mathbb R$ jsou dány. Pak je ekvivalentní
+  \begin{enumerate}[1.]
+    \item $\exists f(x)\colon I \to \mathbb R$ t. ž. $f_n(x) \toto f(x)$ v $I$,
+    \item $\{f_n(x)\}$ splňuje (B.C. st)
+  \end{enumerate}
+\end{veta}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{dusledek}
+  $C_b(I)$ je úplný metrický prostor (fakticky i normovaný, tj. dokonce Banachův metrický prostor), kde $C_b(I) \coloneq \left\{f(x); f(x)\colon I \to \mathbb R\text{ spojité, omezené (b jako bounded)}\right\}$ a $\varrho(f,g) \coloneq \|f-g\|_\infty = \sup\limits_{x \in I} |f(x)-g(x)|$
+\end{dusledek}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{poznamka}
+  \begin{itemize}
+    \item $f_n \toto f$ v $I$ je ekvivalentní konvergenci vzhledem k $\|\cdot\|_\infty$, kde $\|f(x)\|_\infty = \sum\limits_{x \in I} |f(x)|$
+    \item bodová (též slabá) konvergence nelze popsat ani normou, ani metrikou (pro $I$ nespočetné)
+  \end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+  Nechť $f_n(x) \colon (0, \infty) \to \mathbb R, n=1,2,\dots$ Pak
+  $$\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right)\stackrel{?}{=}\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right)$$
+  Obecně ne, ale někdy ano. Např. pro $f_n(x)=\arctg(\frac{x}{n})$ máme $\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right) = \frac{\pi}{2}$, ale $\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right) = 0$. Rovnost platí, pokud je alespoň jedna limita stejnoměrná.
+\end{poznamka}
