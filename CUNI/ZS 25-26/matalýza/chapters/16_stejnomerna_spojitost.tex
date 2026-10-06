@@ -224,7 +224,7 @@
   Opakuj definici suprema (viz definice \ref{supremum}).
 \end{poznamka}
 
-\begin{lemma}
+\begin{lemma}\label{16sigman}
   Nechť $f_n(x), f(x)\colon I \to \mathbb R$. Pak je ekvivalentní
   \begin{enumerate}[1.]
     \item $f_n \toto f$ v $I$,
@@ -436,7 +436,12 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{dusledek}
 
 \begin{proof}
-  TODO
+  \begin{enumerate}[1.]
+    \item \underbrace{$f_n \to f$ v $C_b(I)$}_{$\iff \|f_n-f\|_\infty\to0, n \to \infty$,}$\iff$$f_n(x) \toto f(x)$ v $I$
+
+    kde $\sup\limits_{x \in I} |f_n(x)-f(x)|=\sigma_n$ a užiji lemma \ref{16sigman}.
+    \item TODO
+  \end{enumerate}
 \end{proof}
 
 \begin{poznamka}
