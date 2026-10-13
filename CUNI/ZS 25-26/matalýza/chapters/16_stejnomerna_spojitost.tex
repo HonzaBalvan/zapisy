@@ -263,6 +263,7 @@
 \end{proof}
 
 \begin{priklad}
+<<<<<<< HEAD
   \begin{enumerate}[1.]
     \item $f_n(x) = \frac{nx}{1+n^2x^2}=f_1(nx)$, kde $f_1(x) = \frac{x}{1+x^2}$; $x \in [0, \infty)$
 
@@ -456,3 +457,229 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   $$\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right)\stackrel{?}{=}\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right)$$
   Obecně ne, ale někdy ano. Např. pro $f_n(x)=\arctg(\frac{x}{n})$ máme $\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right) = \frac{\pi}{2}$, ale $\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right) = 0$. Rovnost platí, pokud je alespoň jedna limita stejnoměrná.
 \end{poznamka}
+=======
+    TODO
+\end{priklad}
+
+\begin{definice}
+    Řekneme, že $f_n$ konvergují lokálně stejnoměrně k $f(x)$ v $I$, jestliže
+    $$(\forall x_0 \in I)(\exists \delta >0)\left[f_n \toto f \text{ v } \mathscr U(x_0, \delta) \cap I\right].$$
+    Značíme $f_n \stackrel{loc}{\toto} f$ v $I$.
+\end{definice}
+
+\begin{priklad}
+    TODO
+\end{priklad}
+
+\begin{poznamka}
+    \begin{itemize}
+        \item $f_n \toto f$ v $J$, $\tilde J \subseteq J \implies f_n \toto f$ v $\tilde J$
+        \item $\toto \implies \stackrel{loc}{\toto} \implies \to$, žádnou implikaci nelze obrátit
+    \end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+    Opakuj (B.C.) (viz definice TODO) a větu \ref{7bckonv} a obdobně (B. C. - r) a větu TODO
+\end{poznamka}
+
+\begin{definice}
+    Řekneme, že posloupnost funkcí $\{f_n(x)\}_{n=1}^\infty$ splňuje Bolzanovu-Cauchyho podmínku stejnoměrné konvergence v $I$, jestliže
+    $$(\forall \varepsilon >0)(\exists n_0 \in \N)(\forall x \in I)(\forall m,n \geq n_0)\left[|f_m(x)-f_n(x)|<\varepsilon\right].$$
+\end{definice}
+
+\begin{veta}
+    Nechť $f_n(x)\colon I \to \R$ jsou dány. Pak je ekvivalentní
+    \begin{enumerate}[1.]
+        \item $\exists f(x)\colon I \to \R$ t. ž. $f_n(x) \toto f(x)$ v $I$,
+        \item $\{f_n(x)\}$ splňuje (B. C. - st)
+    \end{enumerate}
+\end{veta}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{dusledek}
+    $C_b(I)$ je úplný metrický prostor (fakticky i normovaný, tj. dohromady dokonce Banachův), kde $C_b(I) = \{f(x); f(x)\colon I \to \R\text{ spojíté, omezené (}b\text{ jako bounded)}\}$ a metrika je $\varrho(f,g)\coloneq \|f-g\|_\infty=\sup\limits_{x \in I} |f(x)-g(x)|$
+\end{dusledek}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{poznamka}
+    \begin{itemize}
+        \item $f_n \toto f$ v $I$ je ekvivalentní konvergenci vzhledem k $\|\cdot\|_\infty$, kde $\|f(x)\|_\infty = \sup\limits_{x \in I} |f(x)|$
+        \item bodová konvergence (též slabá konvergence) nelze popsat normou ani metrikou (obecně pro $I$ nespočetné)
+    \end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+    Nechť $f_n(x)\colon (0, \infty)\to \R, n = 1, 2, \dots$.
+    $$\lim_{n\to\infty}\left(\lim_{x\to\infty}f_n(x)\right)\stackrel{?}{=}\lim_{x\to\infty}\left(\lim_{n\to\infty}f_n(x)\right)$$
+    Obecně ne, ale někdy ano. Protipříklad např. $f_n(x)=\arctg\frac{x}{n}.$
+    OBRAZEKOBRAZEK
+    Rovnost bude platit, pokud je alespoň jedna z limit \uv{stejnoměrná}.
+\end{poznamka}
+
+\begin{veta}[Mooreova-Osgoodova]
+    Nechť $f_n(x), f(x)\colon \mathscr P(x_0, \delta)\to \mathbb R, x_0 \in \mathbb R, \delta>0$ pevné. Nechť
+    \begin{enumerate}[1.]
+        \item $f_n(x)\toto f(x)$ na $\mathscr P(x_0, \delta)$,
+        \item $\exists \lim_{x \to x_0} f_n(x)\eqcolon c_n\in \mathbb R, \forall n \in \mathbb N$.
+    \end{enumerate}
+    Pak
+    \begin{enumerate}[1.]
+        \item $\exists \lim_{n\to\infty}c_n\eqcolon c \in \mathbb R$,
+        \item $\lim_{x\to x_0}f(x)=c$.
+    \end{enumerate}
+\end{veta}
+
+\begin{poznamka}
+    Závěr říká jinými slovy:
+    $$\lim_{n\to\infty}\underbrace{\left(\lim_{x\to x_0}f_n(x)\right)}_{\mathclap{c_n}}=\lim_{x\to x_0}\underbrace{\left(\lim_{n\to\infty}f_n(x)\right)}_{\mathclap{f(x)}}$$
+\end{poznamka}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{poznamka}
+    Platí i varianty pro $x_0=\pm\infty, x \to x_0^\pm$.
+\end{poznamka}
+
+\begin{dusledek}
+    $f_n(x)\stackrel{loc}{\toto}f(x), f_n(x)$ spojité v $I=(a,b) \implies f(x)$ spojitá.
+\end{dusledek}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{poznamka}
+    Problém derivace vs. konvergence (posloupnosti funkcí):
+    $$f_n(x)\toto f(x)\cancel{\implies}f_n^\prime(x)\to f^\prime(x).$$
+    OBRAZEKOBRAZEK
+\end{poznamka}
+
+\begin{veta}[Derivace člen po členu]\label{16derivacecpc}
+    Nechť $I = (a, b)$ je omezený, otevřený interval. Nechť $\exists f^\prime_n(x)$ vlastní pro každé $x \in I, \forall n$ a nechť existuje bod $x_0 \in I$ a funkce $g(x)$ tak, že
+    \begin{enumerate}[1.]
+        \item $\left\{f(x_0)\right\}$ konverguje,
+        \item $f^\prime_n(x)\toto g(x)$ v $I$.
+    \end{enumerate}
+    Pak
+    \begin{enumerate}[1.]
+        \item $\exists f(x)$ t. ž. $f_n(x)\toto f(x)$ v $I$,
+        \item $f^\prime(x)=g(x), \forall x \in I$.
+    \end{enumerate}
+\end{veta}
+
+\begin{poznamka}
+    Věta říká jinými slovy:
+    $$\underbrace{\left(\lim_{n\to\infty}f_n(x)\right)}_{\mathclap{f(x)}}^\prime=\lim_{n\to\infty}\underbrace{f_n^\prime(x)}_{\mathclap{g(x)}}.$$
+\end{poznamka}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{veta}[Integrace člen po členu ŠPATNĚ NUMBERING TODO]
+    Nechť $I=(a,b)$ je otevřený, omezený interval. Nechť $u_n(x) \toto u(x)$ v $I$, nechť $\int u_n(x) \,\d x \eqcolon U_n(x)$ v $I$ a nechť $\exists x_0 \in I$ t. ž. $\exists \lim_{n\to\infty}U_n(x_0)\in \mathbb R$. Pak $\int u(x) \,\d x = U(x)$ v $I$.
+\end{veta}
+
+\begin{poznamka}
+    Věta říká jinými slovy:
+    $$\int\left(\lim_{n\to\infty}u_n(x)\right)\,\d x = \lim_{n\to\infty}\underbrace{\left(\int u_n(x) \,\d x + c_n\right)}_{\mathclap{U_n(x)}}$$
+\end{poznamka}
+
+\begin{proof}
+    Převedením na \ref{16derivacecpc}
+\end{proof}
+
+\begin{definice}
+    Nechť $f_k(x)\colon I \to \mathbb C$ jsou dány. Řekneme, že řada funkcí $\sum_{k=1}^{\infty}f_k(x)$ konverguje stejnoměrně v $I$, jestliže $\exists s(x)\colon I \to \mathbb C$ t. ž. $s_n(x)\toto s(x)$ v $I$, kde $s_n(x)\coloneq \sum_{k=1}^{n} f_k(x)$, pro pevné $x \in I$.
+
+    Pokud $s_n(x)\stackrel{loc}{\toto}s(x)$, řada konverguje lokálně stejnoměrně v $I$ a pokud $s_n(x)\to s(x)$, řada konverguje bodově v $I$, tj. $\sum_{k=1}^{\infty}f_k(x)$ konverguje $\forall x \in I$ pevné.
+\end{definice}
+
+\begin{poznamka}
+    Opakuj definice TODO a věty \ref{10NPK} a \ref{10BCr}.
+\end{poznamka}
+
+\begin{veta}[Nutná podmínka stejnoměrné konvergence řady]
+    Nechť $\sum^\infty f_k(x)$ konverguje stejnoměrně v $I$. Pak $f_k(x)\toto 0, k \to \infty$ v $I$.
+\end{veta}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{definice}
+    Řekneme, že $\sum^\infty f_k(x)$ splňuje \textbf{Cauchyho-Bolzanovu podmínku stejnoměrné konvergence řady v intervalu} $I$, jestliže
+    $$\left(\forall \varepsilon>0\right)\left(\exists n_0 \in \mathbb N\right)\left(\forall x \in I\right)\left(\forall n \geq n_0, p \geq 1\right)\left[\left|\sum_{k=n+1}^{n+p}f_k(x)\right|<\varepsilon\right].\qquad (B.C.-st r)$$
+\end{definice}
+
+\begin{veta}
+    $\sum^\infty f_k(x)$ konverguje stejnoměrně v $I\iff$ $\sum f_k(x)$ splňuje (B.C.-st r)
+\end{veta}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{definice}
+    Řekneme, že řada $\sum f_k(x)$ \textbf{konverguje absolutně stejnoměrně v intevalu} $I$, jestliže $\sum|f_k(x)|$ konverguje stejnoměrně v $I$.
+\end{definice}
+
+\begin{veta}[O absolutní stejnoměrné konvergenci řady]\label{16NPK}
+    Nechť $\sum f_k(x)$ konverguje absolutně stejnoměrně v $I$. Pak i konverguje stejnoměrně v $I$.
+\end{veta}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{veta}[Weierstrassova]\label{16weierstrass}
+    Nechť jsou dány funkce $f_k(x)\colon I \to \mathbb C$ a čísla $a_k\geq 0$ (nezávislá na $x$) t. ž.
+    \begin{enumerate}[1.]
+        \item $|f_k(x)|\leq a_k, \forall k \in \mathbb N, x \in I$,
+        \item $\sum a_k$ konverguje.
+    \end{enumerate}
+    Pak $\sum f_k(x)$ konverguje absolutně stejnoměrně v $I$.
+\end{veta}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\begin{priklad}
+    $\sum \sin \left(\frac{x}{k^2}\right)$
+    OBRAZEKOBRAZEK
+    N. P. K. (věta \ref{16NPK}): $f_k(x)\stackrel{?}{\toto}0, k \to \infty$ -- ne, protože konverguje $\stackrel{L. \ref{16sigman}}{\iff} \sigma_n \to 0, n \to \infty$, kde $\sigma_n\coloneq \sup\limits_{x\in \mathbb R}|f_k(x)-0|$, ale $\sigma_n = 1$ (sin osciluje)
+
+    $\implies\sum f_k(x)$ nekonverguje stejnoměrně v $\mathbb R$, ale vidíme, že konverguje aboslutně stejnoměrně v $[-M, M]$ pro $M>0$ pevné, neboť $|\sin y|\leq y$ a dle věty \ref{16weierstrass} TODO
+\end{priklad}
+
+\begin{veta}[Stejnoměrná verze Leibnizova kritéria]
+    Nechť $g_k(x) \toto 0$ v $I$, nechť $\forall x \in  I$ pevné je posloupnost $\left\{g_k(x)\right\}_{k=1}^\infty$ monotónní. Pak $\sum (-1)^k g_k(x)$ konverguje stejnoměrně v $I$.
+\end{veta}
+
+\begin{proof}
+    bez důkazu? TODO
+\end{proof}
+
+\begin{poznamka}
+    Monotonie stačí od jistého $k \geq k_0$, ale $k_0$ musí být nezávislé na $x\in I$ (tj. pozor na pořadí kvantifikátorů).
+\end{poznamka}
+
+\begin{priklad}
+    $\sum (-1)^k \frac{kx}{1+k^2x^2}$
+    OBRAZEKOBRAZEK
+    $g_k(x)\cancel{\toto}0$ v $(0, \infty)$
+
+    tvrdíme ale , že $g_k(x)\toto 0$ v $I_\delta$, kde $I_\delta = [\delta,\infty), \delta>0$ pevné, a dále že $\left\{g_k(x)\right\}_k$ klesá $\forall k \geq k_0$ (nezávisle na $x\in I_\delta$)
+
+    tedy $|g_k(x)|=\frac{kx}{1+k^2x^2}\leq \frac{kx}{k^2x^2}=\frac{1}{kx}\leq \frac{1}{k\delta}$
+\end{priklad}
+>>>>>>> 4a95b14 (maf 26/10/12)
