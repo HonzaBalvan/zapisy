@@ -1,7 +1,7 @@
 \section{Stejnoměrná spojitost}
 
 \begin{definice}
-  Řekneme, že fce $f_n(x) \colon I \to \mathbb R$ konvergují v $I$ bodově k funkci $f(x)\colon I \to \mathbb R$, jestliže
+  Řekneme, že \textbf{funkce} $f_n(x) \colon I \to \mathbb R$ \textbf{konvergují bodově v intervalu} $I$ k funkci $f(x)\colon I \to \mathbb R$, jestliže
   $$\lim_{n \to \infty} f_n(x)\to f(x) \quad \forall x \in I \text{ pevné.}$$
   Značíme $f_n(x) \to f(x)$ v $I$.
 \end{definice}
@@ -117,7 +117,7 @@
 \end{poznamka}
 
 \begin{definice}
-  Řekneme, že $f_n(x)$ konvergují stejnoměrně k $f(x)$ v $I$, jestliže
+  Řekneme, že \textbf{funkce} $f_n(x)$ \textbf{konvergují stejnoměrně v intervalu} $I$ k $f(x)$, jestliže
   $$(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)(\forall x \in I)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon].$$
   Značíme $f_n(x) \toto f(x)$ v $I$.
 
@@ -263,7 +263,6 @@
 \end{proof}
 
 \begin{priklad}
-<<<<<<< HEAD
   \begin{enumerate}[1.]
     \item $f_n(x) = \frac{nx}{1+n^2x^2}=f_1(nx)$, kde $f_1(x) = \frac{x}{1+x^2}$; $x \in [0, \infty)$
 
@@ -364,7 +363,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{priklad}
 
 \begin{definice}
-  Řekneme, že $f_n(x)$ konvergují lokálně stejnoměrně k $f(x)$ v $I$, jestliže
+  Řekneme, že \textbf{funkce} $f_n(x)$ \textbf{konvergují lokálně stejnoměrně v intervalu} $I$ k $f(x)$, jestliže
   $$(\forall x_0 \in I)(\exists \delta >0)[f_n \toto f \text{ v } \mathscr U(x_0, \delta) \cap I].$$
   Značíme $f_n \stackrel{\text{loc}}{\toto} f$ v $I$.
 \end{definice}
@@ -412,19 +411,19 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{poznamka}
 
 \begin{poznamka}
-  Opakuj definici Cauchyho-Bolzanovy podmínky pro posloupnosti a pro řady (definice \ref{7bc} a \ref{10bcr}) a věty o ekvivalenci B. C. podmínky a konvergence (věty \ref{7bckonv} a \ref{10bckonv}).
+  Opakuj definici Cauchyho-Bolzanovy podmínky pro posloupnosti a pro řady (definice \ref{7bc} a \ref{10bcr}) a věty o ekvivalenci B. C. podmínky a konvergence (věty \ref{7bckonv} a \ref{10bcrkonv}).
 \end{poznamka}
 
 \begin{definice}
-  Řekneme, že posloupnost funkcí $\{f_n(x)\}_{n=1}^\infty$ splňuje Bolzanovu-Cauchyho podmínku stejnoměrné konvergence, jestliže
-  $$(\forall \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall x \in I)(\forall m,n \geq n_0)[|f_m(x)-f_n(x)|<\varepsilon]. \qquad \text{(B.C. st)}$$
+  Řekneme, že posloupnost funkcí $\{f_n(x)\}_{n=1}^\infty$ splňuje \textbf{Bolzanovu-Cauchyho podmínku stejnoměrné konvergence}, jestliže
+  $$(\forall \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall x \in I)(\forall m,n \geq n_0)[|f_m(x)-f_n(x)|<\varepsilon]. \qquad \text{(B.C.-st)}$$
 \end{definice}
 
 \begin{veta}
   Nechť $f_n(x)\colon I \to \mathbb R$ jsou dány. Pak je ekvivalentní
   \begin{enumerate}[1.]
     \item $\exists f(x)\colon I \to \mathbb R$ t. ž. $f_n(x) \toto f(x)$ v $I$,
-    \item $\{f_n(x)\}$ splňuje (B.C. st)
+    \item $\{f_n(x)\}$ splňuje (B.C.-st)
   \end{enumerate}
 \end{veta}
 
@@ -458,73 +457,6 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   Obecně ne, ale někdy ano. Např. pro $f_n(x)=\arctg(\frac{x}{n})$ máme $\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right) = \frac{\pi}{2}$, ale $\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right) = 0$. Rovnost platí, pokud je alespoň jedna limita stejnoměrná.
 \end{poznamka}
 
-PROBLÉM
-
-\begin{priklad}
-    TODO
-\end{priklad}
-
-\begin{definice}
-    Řekneme, že $f_n$ konvergují lokálně stejnoměrně k $f(x)$ v $I$, jestliže
-    $$(\forall x_0 \in I)(\exists \delta >0)\left[f_n \toto f \text{ v } \mathscr U(x_0, \delta) \cap I\right].$$
-    Značíme $f_n \stackrel{loc}{\toto} f$ v $I$.
-\end{definice}
-
-\begin{priklad}
-    TODO
-\end{priklad}
-
-\begin{poznamka}
-    \begin{itemize}
-        \item $f_n \toto f$ v $J$, $\tilde J \subseteq J \implies f_n \toto f$ v $\tilde J$
-        \item $\toto \implies \stackrel{loc}{\toto} \implies \to$, žádnou implikaci nelze obrátit
-    \end{itemize}
-\end{poznamka}
-
-\begin{poznamka}
-    Opakuj (B.C.) (viz definice TODO) a větu \ref{7bckonv} a obdobně (B. C. - r) a větu TODO
-\end{poznamka}
-
-\begin{definice}
-    Řekneme, že posloupnost funkcí $\{f_n(x)\}_{n=1}^\infty$ splňuje Bolzanovu-Cauchyho podmínku stejnoměrné konvergence v $I$, jestliže
-    $$(\forall \varepsilon >0)(\exists n_0 \in \N)(\forall x \in I)(\forall m,n \geq n_0)\left[|f_m(x)-f_n(x)|<\varepsilon\right].$$
-\end{definice}
-
-\begin{veta}
-    Nechť $f_n(x)\colon I \to \R$ jsou dány. Pak je ekvivalentní
-    \begin{enumerate}[1.]
-        \item $\exists f(x)\colon I \to \R$ t. ž. $f_n(x) \toto f(x)$ v $I$,
-        \item $\{f_n(x)\}$ splňuje (B. C. - st)
-    \end{enumerate}
-\end{veta}
-
-\begin{proof}
-    TODO
-\end{proof}
-
-\begin{dusledek}
-    $C_b(I)$ je úplný metrický prostor (fakticky i normovaný, tj. dohromady dokonce Banachův), kde $C_b(I) = \{f(x); f(x)\colon I \to \R\text{ spojíté, omezené (}b\text{ jako bounded)}\}$ a metrika je $\varrho(f,g)\coloneq \|f-g\|_\infty=\sup\limits_{x \in I} |f(x)-g(x)|$
-\end{dusledek}
-
-\begin{proof}
-    TODO
-\end{proof}
-
-\begin{poznamka}
-    \begin{itemize}
-        \item $f_n \toto f$ v $I$ je ekvivalentní konvergenci vzhledem k $\|\cdot\|_\infty$, kde $\|f(x)\|_\infty = \sup\limits_{x \in I} |f(x)|$
-        \item bodová konvergence (též slabá konvergence) nelze popsat normou ani metrikou (obecně pro $I$ nespočetné)
-    \end{itemize}
-\end{poznamka}
-
-\begin{poznamka}
-    Nechť $f_n(x)\colon (0, \infty)\to \R, n = 1, 2, \dots$.
-    $$\lim_{n\to\infty}\left(\lim_{x\to\infty}f_n(x)\right)\stackrel{?}{=}\lim_{x\to\infty}\left(\lim_{n\to\infty}f_n(x)\right)$$
-    Obecně ne, ale někdy ano. Protipříklad např. $f_n(x)=\arctg\frac{x}{n}.$
-    OBRAZEKOBRAZEK
-    Rovnost bude platit, pokud je alespoň jedna z limit \uv{stejnoměrná}.
-\end{poznamka}
-
 \begin{veta}[Mooreova-Osgoodova]
     Nechť $f_n(x), f(x)\colon \mathscr P(x_0, \delta)\to \mathbb R, x_0 \in \mathbb R, \delta>0$ pevné. Nechť
     \begin{enumerate}[1.]
@@ -548,7 +480,7 @@ PROBLÉM
 \end{proof}
 
 \begin{poznamka}
-    Platí i varianty pro $x_0=\pm\infty, x \to x_0^\pm$.
+    Předchozí platí i varianty pro $x_0=\pm\infty, x \to x_0^\pm$.
 \end{poznamka}
 
 \begin{dusledek}
@@ -566,9 +498,9 @@ PROBLÉM
 \end{poznamka}
 
 \begin{veta}[Derivace člen po členu]\label{16derivacecpc}
-    Nechť $I = (a, b)$ je omezený, otevřený interval. Nechť $\exists f^\prime_n(x)$ vlastní pro každé $x \in I, \forall n$ a nechť existuje bod $x_0 \in I$ a funkce $g(x)$ tak, že
+    Nechť $I = (a, b)$ je omezený, otevřený interval. Nechť $\exists f^\prime_n(x)$ vlastní $\forall x \in I, \forall n \in \N$ a nechť existuje bod $x_0 \in I$ a funkce $g(x)$ tak, že
     \begin{enumerate}[1.]
-        \item $\left\{f(x_0)\right\}$ konverguje,
+        \item $\left\{f_n(x_0)\right\}$ konverguje,
         \item $f^\prime_n(x)\toto g(x)$ v $I$.
     \end{enumerate}
     Pak
@@ -597,17 +529,17 @@ PROBLÉM
 \end{poznamka}
 
 \begin{proof}
-    Převedením na \ref{16derivacecpc}
+    Převedením na větu \ref{16derivacecpc}, tj. TODO.
 \end{proof}
 
 \begin{definice}
-    Nechť $f_k(x)\colon I \to \mathbb C$ jsou dány. Řekneme, že řada funkcí $\sum_{k=1}^{\infty}f_k(x)$ konverguje stejnoměrně v $I$, jestliže $\exists s(x)\colon I \to \mathbb C$ t. ž. $s_n(x)\toto s(x)$ v $I$, kde $s_n(x)\coloneq \sum_{k=1}^{n} f_k(x)$, pro pevné $x \in I$.
+    Nechť $f_k(x)\colon I \to \mathbb C$ jsou dány. Řekneme, že \textbf{řada funkcí} $\sum_{k=1}^{\infty}f_k(x)$ \textbf{konverguje stejnoměrně v intervalu} $I$, jestliže $\exists s(x)\colon I \to \mathbb C$ t. ž. $s_n(x)\toto s(x)$ v $I$, kde $s_n(x)\coloneq \sum_{k=1}^{n} f_k(x)$, pro pevné $x \in I$.
 
-    Pokud $s_n(x)\stackrel{loc}{\toto}s(x)$, řada konverguje lokálně stejnoměrně v $I$ a pokud $s_n(x)\to s(x)$, řada konverguje bodově v $I$, tj. $\sum_{k=1}^{\infty}f_k(x)$ konverguje $\forall x \in I$ pevné.
+    Pokud $s_n(x)\stackrel{loc}{\toto}s(x)$, \textbf{řada konverguje lokálně stejnoměrně v intervalu} $I$ a pokud $s_n(x)\to s(x)$, \textbf{řada konverguje bodově v intervalu} $I$, tj. $\sum_{k=1}^{\infty}f_k(x)$ konverguje $\forall x \in I$ pevné.
 \end{definice}
 
 \begin{poznamka}
-    Opakuj definice TODO a věty \ref{10NPK} a \ref{10BCr}.
+    Opakuj definice TODO a věty \ref{10npk} a \ref{10bcrkonv}.
 \end{poznamka}
 
 \begin{veta}[Nutná podmínka stejnoměrné konvergence řady]
@@ -635,7 +567,7 @@ PROBLÉM
     Řekneme, že řada $\sum f_k(x)$ \textbf{konverguje absolutně stejnoměrně v intevalu} $I$, jestliže $\sum|f_k(x)|$ konverguje stejnoměrně v $I$.
 \end{definice}
 
-\begin{veta}[O absolutní stejnoměrné konvergenci řady]\label{16NPK}
+\begin{veta}[O absolutní stejnoměrné konvergenci řady]\label{16npk}
     Nechť $\sum f_k(x)$ konverguje absolutně stejnoměrně v $I$. Pak i konverguje stejnoměrně v $I$.
 \end{veta}
 
