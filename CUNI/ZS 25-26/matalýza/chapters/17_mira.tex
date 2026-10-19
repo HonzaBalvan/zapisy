@@ -1,0 +1,108 @@
+\section{Míra, Lebesgueova míra}
+
+\begin{poznamka}
+  Značení:
+  \begin{itemize}
+    \item $X\dots$ obecný prostor (množina)
+    \item $2^X\dots$ potenční množina aneb systém podmnožin $X$
+    \item $\bigcup_j A_j = \bigcup\limits_{j=1}^\infty A_j = \left\{x; \exists j \in \N \text{ t. ž. } x \in A_j\right\} \dots$ spočetné sjednocení
+  \end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+  Opakuj DeMorganova pravidla: $B \smallsetminus \left(\bigcup_j A_j\right) = \bigcap_j(B \smallsetminus A_j)$
+\end{poznamka}
+
+\begin{definice}
+  Nechť $X$ je množina. Řekneme, že $\mathscr S \subseteq 2^X$ je \textbf{$\sigma$-algebra}, jestliže
+  \begin{enumerate}[1.]
+    \item $\emptyset \in \mathscr S$;
+    \item $A \in \mathscr S \implies A^C \in \mathscr S$, kde $A^C = X \smallsetminus A$;
+    \item $A_j \in \mathscr S, \forall j \in \mathbb N \implies\bigcup_j A_j \in \mathscr S$, tj. je uzavřená na spočetná sjednocení.
+  \end{enumerate}
+\end{definice}
+
+\begin{poznamka}
+  $\sigma \approx$ spočetný.
+
+  Z vlastností v definici plyne plyne uzavřenost na všechny \uv{spočetné} operace, tj. např.
+  \begin{itemize}
+    \item $A, B \in \mathscr S \implies A \smallsetminus B \in \mathscr S$
+    \item $B_j \in \mathscr S, \forall j \in \N\implies \bigcap_j B_j \in \mathscr S$
+  \end{itemize}
+\end{poznamka}
+
+\begin{proof}
+  \begin{itemize}
+    \item $A\smallsetminus B = A \cap B^C \in \mathscr S = \left(A^C \cup \left(B^C\right)^C\right)^C$,
+    \item $\bigcap_j B_j = \left(\left(\bigcap_j B_j\right)^C\right)^C\stackrel{DeMorg.}{=}\left(\bigcup_j B_j^C\right)^C$.
+  \end{itemize}
+\end{proof}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item triviální $\mathscr S = \{\emptyset, X\}$ nebo $\mathscr S = 2^X$
+    \item $\mathscr S = \{A \in 2^{\R}; A \text{ je spočetné nebo }A^C\text{ je spočetné}\}$
+    \item $\mathscr M_n \subseteq 2^{\R^n}$ -- Lebesgueovsky měřitelné množiny (viz později TODO)
+  \end{enumerate}
+\end{priklad}
+
+\begin{definice}
+  Nechť $X$ je množina. $\mathscr S \subseteq 2^X$ je $\sigma$-algebra. Funkce $\mu\colon \mathscr S \to [0, \infty]$ se nazve \textbf{míra}, jestliže
+  \begin{enumerate}[1.]
+    \item $\mu(\emptyset) = 0$.
+    \item $A_j \in \mathscr S, j \in \N$ disjunktní $\implies \mu\left(\bigcup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$ (tzv. $\sigma$-aditivita).
+  \end{enumerate}
+  Trojici $(X, \mathscr S, \mu)$ nazveme \textbf{prostorem s mírou}.
+\end{definice}
+
+\begin{priklad}
+  \begin{enumerate}[1.]
+    \item počítací míra: $X$ je libovolné, $\mathscr S=2^X$, $p(A)=\begin{cases}
+        0 & A = \emptyset\\
+        |A| & A \text{ konečná}\\
+        \infty & A \text{ nekonečná}
+      \end{cases}$
+    \item Diracova míra v bodě: $X$ je libovolné, $\mathscr S = 2^X$, $a \in X$ pevné, $\delta_a(A)=\begin{cases}
+        0 & a \notin A\\
+        1 & a \in A
+      \end{cases}$
+    \item $\lambda_n$ -- Lebesgueova míra v $\R^n$ (zobecněný objem)
+    \item souvislost s teorií pravděpodobnosti: $X=\{0,1\}^{\N}=\left\{f; f\colon \N \to \{0, 1\}\right\}$ tj. všechny posloupnosti nul a jedniček, pravděpodobnostní míra $0\leq \pi \leq 1, \pi\left(\{a_1 = 0\}\cap \{a_2 = 1\}\right)=\frac{1}{4}, \dots$
+  \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+  Existují tzv. neměřitelné množiny, tj. takové, v nichž snaha zavést míru vede k nějakému sporu, tedy zpravidla $\mathscr S \subset 2^X$.
+\end{poznamka}
+
+\begin{veta}[Základní vlastnosti míry]
+Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
+\begin{enumerate}[1.]
+  \item $A, B \in \mathscr S, A \subseteq B \implies \mu A \leq \mu B$
+  \item $A_j \in \mathscr S$ libovolné (nedisjunktní), $\forall j \in N \implies \mu\left(\bigcup_j A_j\right)\leq \sum_j \mu A_j$ (tzv. $\sigma$-subaditivita)
+  \item $A_j \in \mathscr S, A_j \subseteq A_{j+1}, \forall j \in \N \implies \mu\left(\bigcup_j A_j \right) = \lim_{j\to \infty} \mu A_j$
+  \item $B_j \in \mathscr S, B_j \supseteq B_{j+1}, \forall j \in N$, navíc $\mu B_i < \infty \implies \mu\left(\bigcap_jB_j\right) = \lim_{j\to \infty} \mu B_j$
+\end{enumerate}
+\end{veta}
+
+\begin{proof}
+  \begin{enumerate}[ad 1.]
+    \item pišme $B=\underbrace{A}_{\in \mathscr S}\cup\underbrace{(B\smallsetminus A)}_{\in \mathscr S}$ jsou disjunktní
+
+    $\stackrel{\sigma-aditivita}{\implies} \mu B = \mu A+ \mu (B \smallsetminus A)\underbrace{\geq}_{pozor na \infty? TODO} \mu A$
+    \item \textsc{trik} zdisjunktnění: definujme množiny $\tilde{A}_j, j \in \N$ takto:
+
+    $\tilde{A}_1 = A_1$
+
+    $\tilde{A}_2 = A_2 \smallsetminus A_1$
+
+    $\tilde{A}_n = A_n \smallsetminus \left(\bigcup_{j=1}^n A_j\right)$
+
+    OBRAZEKOBRAZEK
+
+    zřejmě platí: $\tilde{A}_j\subseteq A_j, \tilde{A}_j \in \mathscr S, \tilde{A}_j$ jsou po dvou disjunktní a $\bigcup_{j=1}^n \tilde{A}_j = \bigcup_{j=1}^n A_j, \forall \N$ a též pro $n=\infty$
+
+    \textsc{celkem}: $\mu \left(\bigcup_j A_j\right) = \mu \left(\bigcup_j \tilde{A}_j \right) \stackrel{\sigma-aditivita}{=} \sum_j \mu \tilde{A}_j \stackrel{dle 1.}{\leq} \sum_j \mu A_j$
+  \end{enumerate}
+\end{proof}

@@ -1,4 +1,4 @@
-\section{Stejnoměrná spojitost}
+\section{Stejnoměrná spojitost}\label{16}
 
 \begin{definice}
   Řekneme, že \textbf{funkce} $f_n(x) \colon I \to \mathbb R$ \textbf{konvergují bodově v intervalu} $I$ k funkci $f(x)\colon I \to \mathbb R$, jestliže
@@ -437,7 +437,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 
 \begin{proof}
   \begin{enumerate}[1.]
-    \item \underbrace{$f_n \to f$ v $C_b(I)$}_{$\iff \|f_n-f\|_\infty\to0, n \to \infty$,}$\iff$$f_n(x) \toto f(x)$ v $I$
+    \item $\underbrace{f_n \to f \text{ v } C_b(I)}_{\iff \|f_n-f\|_\infty\to 0, n \to \infty,}\iff f_n(x) \toto f(x)$ v $I$
 
     kde $\sup\limits_{x \in I} |f_n(x)-f(x)|=\sigma_n$ a užiji lemma \ref{16sigman}.
     \item TODO
@@ -519,9 +519,13 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
     TODO
 \end{proof}
 
-\begin{veta}[Integrace člen po členu ŠPATNĚ NUMBERING TODO]
+\renewcommand{\theveta}{\arabic{section}.$\arabic{veta}^\prime$}
+\setcounter{veta}{4}
+\begin{veta}[Integrace člen po členu]
     Nechť $I=(a,b)$ je otevřený, omezený interval. Nechť $u_n(x) \toto u(x)$ v $I$, nechť $\int u_n(x) \,\d x \eqcolon U_n(x)$ v $I$ a nechť $\exists x_0 \in I$ t. ž. $\exists \lim_{n\to\infty}U_n(x_0)\in \mathbb R$. Pak $\int u(x) \,\d x = U(x)$ v $I$.
 \end{veta}
+\renewcommand{\theveta}{\arabic{section}.\arabic{veta}}
+\setcounter{veta}{5}
 
 \begin{poznamka}
     Věta říká jinými slovy:
@@ -617,3 +621,36 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 
     tedy $|g_k(x)|=\frac{kx}{1+k^2x^2}\leq \frac{kx}{k^2x^2}=\frac{1}{kx}\leq \frac{1}{k\delta}$
 \end{priklad}
+
+TODO začátek 12.,13.10.
+\begin{definice}
+  Řekneme, že $f_n(x)$ jsou \textbf{stejnoměrně omezené v intervalu} $I$, jestliže
+  $$(\exists M>0)(\forall x \in I)(\forall n \in \N)\left[\left|f_n(x)\right|\leq M\right].$$
+  Řekneme, že řada $\sum_{k=1}^\infty f_k(x)$ má \textbf{stejnoměrně omezené částečné součty v intervalu} $I$, jestliže
+  $$(\exists M >0)(\forall x \in I)(\forall n \in N)\left[\left|\sum_{k=1}^\infty f_k(x)\right|\leq M\right].$$
+\end{definice}
+TODO konec 12., 13. 10.
+
+\begin{veta}[Záměna sumy a derivace při stejnoměrné konvergenci]
+  Nechť $I=(a,b)$ je omezený otevřený interval, $\exists f^\prime (x) \in \R, \forall k \in \N \forall x \in I$. Nechť $\sum f^\prime_k (x)$ konverguje stejnoměrně v $I$, nechť $\exists x_0 \in I$ t. ž. $\sum f_k(x_0)$ konverguje. Pak $\sum f_k (x)$ konverguje stejnoměrně v $I$ a platí
+  $$\left(\sum_{k=1}^{\infty}f_k(x)\right)^\prime=\sum_{k=1}^{\infty}f^\prime_k(x) \qquad \forall x \in I.$$
+\end{veta}
+
+\begin{proof}
+  Aplikací věty \ref{16derivacecpc} na $s_n \coloneq \sum_{k=1}^{m} f_k(x)$, tj. TODO
+\end{proof}
+
+\renewcommand{\theveta}{\arabic{section}.$\arabic{veta}^\prime$}
+\setcounter{veta}{10}
+\begin{veta}[Integrace člen po členu při stejnoměrné konvergenci]
+  Nechť $\sum u_k(x)$ konverguje stejnoměrně v $I=(a,b)$, nechť $\exists \int u_k(x)\,\d x$ v $I, \forall k \in \N$. Pak
+  $$\int\left(\sum_{k=1}^\infty u_k(x)\right)\d x = \sum_{k=1}^\infty\left(\int u_k(x) \,\d x +c_k\right) \text{ v } I \text{ pro vhodné }c_k.$$
+\end{veta}
+\renewcommand{\theveta}{\arabic{section}.\arabic{veta}}
+\setcounter{veta}{11}
+
+\begin{poznamka}
+  Výsledky kapitoly \ref{16} lze víceméně přímočaře zobecnit na funkce $f_k(x) \colon X \to Y$, kde $(X, \varrho), (Y, \sigma)$ jsou metrické prostory. Např. $f_n \in C(X, Y), f_n \toto f$ v $X\implies f \in C(X, Y)$ atd.
+
+  V případě sumy musí být $Y$ vektorový prostor (aby dávalo smysl sčítání), pro použití B.C. podmínek je potřeba, aby $Y$ byl úplný metrický prostor (aby platily věty o ekvivalenci s konvergencí).
+\end{poznamka}
