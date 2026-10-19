@@ -33,6 +33,7 @@
 \end{poznamka}
 
 \begin{proof}
+  Jednotlivě po bodech.
   \begin{itemize}
     \item $A\smallsetminus B = A \cap B^C \in \mathscr S = \left(A^C \cup \left(B^C\right)^C\right)^C$,
     \item $\bigcap_j B_j = \left(\left(\bigcap_j B_j\right)^C\right)^C\stackrel{DeMorg.}{=}\left(\bigcup_j B_j^C\right)^C$.
@@ -50,7 +51,7 @@
 \begin{definice}
   Nechť $X$ je množina. $\mathscr S \subseteq 2^X$ je $\sigma$-algebra. Funkce $\mu\colon \mathscr S \to [0, \infty]$ se nazve \textbf{míra}, jestliže
   \begin{enumerate}[1.]
-    \item $\mu(\emptyset) = 0$.
+    \item $\mu(\emptyset) = 0$;
     \item $A_j \in \mathscr S, j \in \N$ disjunktní $\implies \mu\left(\bigcup_{j=1}^\infty A_j \right) = \sum_{j=1}^\infty \mu(A_j)$ (tzv. $\sigma$-aditivita).
   \end{enumerate}
   Trojici $(X, \mathscr S, \mu)$ nazveme \textbf{prostorem s mírou}.
@@ -87,10 +88,10 @@ Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
 \end{veta}
 
 \begin{proof}
-  \begin{enumerate}[ad 1.]
+  \begin{enumerate}[{ad} 1.]
     \item pišme $B=\underbrace{A}_{\in \mathscr S}\cup\underbrace{(B\smallsetminus A)}_{\in \mathscr S}$ jsou disjunktní
 
-    $\stackrel{\sigma-aditivita}{\implies} \mu B = \mu A+ \mu (B \smallsetminus A)\underbrace{\geq}_{pozor na \infty? TODO} \mu A$
+    $\stackrel{\sigma-aditivita}{\Longrightarrow} \mu B = \mu A+ \mu (B \smallsetminus A)\underbrace{\geq}_{pozor na \infty? TODO} \mu A$
     \item \textsc{trik} zdisjunktnění: definujme množiny $\tilde{A}_j, j \in \N$ takto:
 
     $\tilde{A}_1 = A_1$

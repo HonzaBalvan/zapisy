@@ -7,6 +7,7 @@
 \end{definice}
 
 \begin{priklad}
+  Bodové konvergence s obrázky.
   \begin{enumerate}[1)]
     \item $f_n(x) = (1+\frac{x}{n})^n \to e^x, x \in \mathbb R$; neboť $f_n(x) = e^{g_n(x)}$
 
@@ -80,9 +81,9 @@
   \draw[very thick, ->] (0,0) -- (2.6,0) node[below] {$x$};
   \draw[->] (0,0) -- (0,2.12) node[left] {$y$};
   \node[below left] at (0,0) {$0$};
-  \foreach \x in {0.5,1,1.5,2,2.5}
+  \foreach \x in {0.5,1,1.5,2}
     \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
-  \foreach \y in {0.5,1,1.5,2}
+  \foreach \y in {0.5,1,1.5}
     \draw (2pt,\y) -- (-2pt,\y) node[left] {$\y$};
 
   % the sequence f_n on x >= 0
@@ -170,25 +171,70 @@
 \begin{poznamka}
   Přepisujme ekvivalentně definici bodové konvergence.
 
-  $f_n(x) \to f(x), \forall x \in I$
-
-  $(\forall x \in I)[\lim_{n\to \infty} f_n(x)=f(x)]$
-
-  $(\forall x \in I)(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
-
-  $(\forall \varepsilon > 0)(\forall x \in I)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$
+  $$f_n(x) \to f(x), \forall x \in I$$
+  $$(\forall x \in I)[\lim_{n\to \infty} f_n(x)=f(x)]$$
+  $$(\forall x \in I)(\forall \varepsilon > 0)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon]$$
+  $$(\forall \varepsilon > 0)(\forall x \in I)(\exists n_0 \in \mathbb N)[n\geq n_0 \implies |f_n(x)-f(x)|<\varepsilon].$$
 
   Rozdíl je v pořadí kvantifikace $x$ a $n_0$. Při bodové konvergenci nejprve fixuji $x$, pak volím $n_0$, tj. $n_0$ může obecně záviset na $x$. Při stejnoměrné konvergenci zvolené $n_0$ nezávisí na $x \in I$.
 \end{poznamka}
 
-\begin{veta}[Zachování spojitosti při stejnoměrné konvergenci]
+\begin{veta}[Zachování spojitosti při stejnoměrné konvergenci]\label{16zachspoj}
   Nechť $f_n \in C(I)$, nechť $f_n \toto f$ v $I$. Pak $f \in C(I)$.
 \end{veta}
 
 \begin{proof}
   cíl: $(\forall x_0 \in I)(\forall \varepsilon > 0)(\exists \delta >0)[\underbrace{x \in \mathscr U(x_0, \delta)\cap I}_{|x-x_0|<\delta, x \in I}\implies \underbrace{f(x) \in \mathscr U(f(x_0),\varepsilon)}_{|f(x)-f(x_0)|<\varepsilon}]$
 
-  OBRAZEKOBRAZEK
+  \begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[scale=1]
+    % Axes
+    \draw[->] (-0.2,0) -- (5.5,0);
+    \draw[->] (0,-0.2) -- (0,4);
+
+    % Define x positions
+    \def\xval{1.5}
+    \def\xzero{4.0}
+
+    % Define curves using functions
+    % Upper curve f
+    \draw[thick, domain=1.0:4.5, variable=\x] plot (\x, {0.8 + 0.15*\x + 0.08*\x*\x}) node[right] {$f$};
+
+    % Lower curve f_{n_0}
+    \draw[thick, domain=1.0:4.5, variable=\x] plot (\x, {0.3 + 0.10*\x + 0.06*\x*\x}) node[right] {$f_{n_0}$};
+
+    % Coordinates for the intersection points on the curves
+    \coordinate (A) at (\xval, {0.8 + 0.15*\xval + 0.08*\xval*\xval});
+    \coordinate (B) at (\xval, {0.3 + 0.10*\xval + 0.06*\xval*\xval});
+    \coordinate (C) at (\xzero, {0.8 + 0.15*\xzero + 0.08*\xzero*\xzero});
+    \coordinate (D) at (\xzero, {0.3 + 0.10*\xzero + 0.06*\xzero*\xzero});
+    \coordinate (E) at (\xzero, {0.3 + 0.10*\xval + 0.06*\xval*\xval});
+
+    % Vertical lines and bottom connector region
+    \draw[thick] (A) -- (B);
+    \draw[thick] (C) -- (D);
+    \draw[thick] (B) -- (E);
+    \draw[thick] (E) -- (D);
+
+    % X-axis ticks and labels
+    \draw (\xval, 0.1) -- (\xval, -0.1) node[below] {$x$};
+    \draw (\xzero, 0.1) -- (\xzero, -0.1) node[below] {$x_0$};
+
+    % Projection dashed lines to y-axis
+    \coordinate (YA) at (0, {0.8 + 0.15*\xval + 0.08*\xval*\xval});
+    \coordinate (YD) at (0, {0.3 + 0.10*\xzero + 0.06*\xzero*\xzero});
+
+    \draw[dashed, thin] (A) -- (YA);
+    \draw[dashed, thin] (D) -- (YD);
+
+    % Curly brace on the y-axis representing the difference/bound
+    \draw[decorate, decoration={brace, mirror, amplitude=6pt}]
+        (0, {0.3 + 0.10*\xzero + 0.06*\xzero*\xzero}) -- (0, {0.8 + 0.15*\xval + 0.08*\xval*\xval})
+        node[midway, left=8pt] {?};
+
+\end{tikzpicture}
+  \end{figure}
 
   $x_0 \in I, \varepsilon_0 >0$ libovolné, pevné
 
@@ -214,8 +260,8 @@
 
 \begin{poznamka}
   \begin{enumerate}
-    \item $\lim_{n \to \infty}(\int_a^b f_n(x) \,\d x)\underbrace{=}_{\mathclap{\text{\uv{záměna} lim a } \int}}$
-    \item Věta \ref{16zamenalimint} je \uv{příliš jednoduchá} (srovnej Leviho resp. Lebesgueova věta)
+    \item $\lim_{n \to \infty}(\int_a^b f_n(x) \,\d x)\underbrace{=}_{\mathclap{\text{\uv{záměna} lim a } \int}}\int_a^b \left(\lim_{n\to \infty} f_n(x)\right)\d x.$
+    \item Věta \ref{16zamenalimint} je \uv{příliš jednoduchá} (srovnej Leviho resp. Lebesgueova věta).
     \item Pro který integrál věta platí? Pro jakýkoliv!
   \end{enumerate}
 \end{poznamka}
@@ -224,11 +270,11 @@
   Opakuj definici suprema (viz definice \ref{supremum}).
 \end{poznamka}
 
-\begin{lemma}\label{16sigman}
+\begin{lemma}[$\sigma_n$]\label{16sigman}
   Nechť $f_n(x), f(x)\colon I \to \mathbb R$. Pak je ekvivalentní
   \begin{enumerate}[1.]
-    \item $f_n \toto f$ v $I$,
-    \item $\sigma_n \to 0, n \to \infty$, kde $\sigma_n \coloneq \sup\limits_{x \in I}|f_n(x)-f(x)|$,
+    \item $f_n \toto f$ v $I$;
+    \item $\sigma_n \to 0, n \to \infty$, kde $\sigma_n \coloneq \sup\limits_{x \in I}|f_n(x)-f(x)|$;
     \item $\forall$ posloupnosti $\{x_n\}\subset I$ platí, že $f_n(x_n) - f(x_n) \to 0, n \to \infty$.
   \end{enumerate}
 \end{lemma}
@@ -294,6 +340,8 @@
   \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
   \draw[fFive,  thick, domain=0:2.5, samples=201] plot (\x, {2*5*\x/(1+25*\x*\x)});
 
+
+
   % legend
   \begin{scope}[every node/.style={font=\small}]
     \draw[fOne,   thick] (2.75,1.1) -- (3.15,1.1)
@@ -333,6 +381,7 @@ A co $J=[\Delta, \infty), \Delta >0$ pevné?
 
 % the limit f = 0 is the x-axis itself: draw it thick
 \draw[->] (0,0) -- (2.6,0) node[below] {$x$};
+\draw[very thick, ->] (0.5,0) -- (2.6,0) node[midway, below] {$J$};
 \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
 \node[below left] at (0,0) {$0$};
 \foreach \x in {1,2}
@@ -342,6 +391,11 @@ A co $J=[\Delta, \infty), \Delta >0$ pevné?
 
 % peaks: max = 1/2 at x = 1/n -> add a dashed guide line at y = 1/2
 \draw[gray!60, dashed] (0,2*0.5) -- (2.5,2*0.5);
+
+% sigma n
+\draw (0.5, 0) -- (0.5,0.68965);
+\draw[gray!60, dashed] (0,0.68965) -- (0.5,0.68965);
+\draw (0,0.68965) -- (0,0.68965) node[left] {$\sigma_n$};
 
 % the sequence f_n on x >= 0
 \draw[fOne,   thick, domain=0:2.5, samples=201] plot (\x, {2*\x/(1+\x*\x)});
@@ -398,6 +452,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
 
   \end{tikzpicture}
+  DODELATOBRAZEK -- doposud kontrola
   \end{minipage}\begin{minipage}{0.42\textwidth}
   vezmu pro libovolné $x_0, \delta$ tak, aby bylo odražené od $0$, pak dle předchozího příkladu $\Delta, J$ TODO
   \end{minipage}
@@ -484,7 +539,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{poznamka}
 
 \begin{dusledek}
-    $f_n(x)\stackrel{loc}{\toto}f(x), f_n(x)$ spojité v $I=(a,b) \implies f(x)$ spojitá.
+    $f_n(x)\stackrel{\text{loc}}{\toto}f(x), f_n(x)$ spojité v $I=(a,b) \implies f(x)$ spojitá.
 \end{dusledek}
 
 \begin{proof}
@@ -539,7 +594,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \begin{definice}
     Nechť $f_k(x)\colon I \to \mathbb C$ jsou dány. Řekneme, že \textbf{řada funkcí} $\sum_{k=1}^{\infty}f_k(x)$ \textbf{konverguje stejnoměrně v intervalu} $I$, jestliže $\exists s(x)\colon I \to \mathbb C$ t. ž. $s_n(x)\toto s(x)$ v $I$, kde $s_n(x)\coloneq \sum_{k=1}^{n} f_k(x)$, pro pevné $x \in I$.
 
-    Pokud $s_n(x)\stackrel{loc}{\toto}s(x)$, \textbf{řada konverguje lokálně stejnoměrně v intervalu} $I$ a pokud $s_n(x)\to s(x)$, \textbf{řada konverguje bodově v intervalu} $I$, tj. $\sum_{k=1}^{\infty}f_k(x)$ konverguje $\forall x \in I$ pevné.
+    Pokud $s_n(x)\stackrel{\text{loc}}{\toto}s(x)$, \textbf{řada konverguje lokálně stejnoměrně v intervalu} $I$ a pokud $s_n(x)\to s(x)$, \textbf{řada konverguje bodově v intervalu} $I$, tj. $\sum_{k=1}^{\infty}f_k(x)$ konverguje $\forall x \in I$ pevné.
 \end{definice}
 
 \begin{poznamka}
@@ -595,7 +650,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \begin{priklad}
     $\sum \sin \left(\frac{x}{k^2}\right)$
     OBRAZEKOBRAZEK
-    N. P. K. (věta \ref{16NPK}): $f_k(x)\stackrel{?}{\toto}0, k \to \infty$ -- ne, protože konverguje $\stackrel{L. \ref{16sigman}}{\iff} \sigma_n \to 0, n \to \infty$, kde $\sigma_n\coloneq \sup\limits_{x\in \mathbb R}|f_k(x)-0|$, ale $\sigma_n = 1$ (sin osciluje)
+    N. P. K. (věta \ref{16NPK}): $f_k(x)\stackrel{?}{\toto}0, k \to \infty$ -- ne, protože konverguje $\stackrel{\text{L.}\ref{16sigman}}{\iff} \sigma_n \to 0, n \to \infty$, kde $\sigma_n\coloneq \sup\limits_{x\in \mathbb R}|f_k(x)-0|$, ale $\sigma_n = 1$ (sin osciluje)
 
     $\implies\sum f_k(x)$ nekonverguje stejnoměrně v $\mathbb R$, ale vidíme, že konverguje aboslutně stejnoměrně v $[-M, M]$ pro $M>0$ pevné, neboť $|\sin y|\leq y$ a dle věty \ref{16weierstrass} TODO
 \end{priklad}
@@ -605,7 +660,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{veta}
 
 \begin{proof}
-    bez důkazu? TODO
+    TODO viz foto
 \end{proof}
 
 \begin{poznamka}
@@ -622,14 +677,43 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
     tedy $|g_k(x)|=\frac{kx}{1+k^2x^2}\leq \frac{kx}{k^2x^2}=\frac{1}{kx}\leq \frac{1}{k\delta}$
 \end{priklad}
 
-TODO začátek 12.,13.10.
 \begin{definice}
   Řekneme, že $f_n(x)$ jsou \textbf{stejnoměrně omezené v intervalu} $I$, jestliže
   $$(\exists M>0)(\forall x \in I)(\forall n \in \N)\left[\left|f_n(x)\right|\leq M\right].$$
   Řekneme, že řada $\sum_{k=1}^\infty f_k(x)$ má \textbf{stejnoměrně omezené částečné součty v intervalu} $I$, jestliže
   $$(\exists M >0)(\forall x \in I)(\forall n \in N)\left[\left|\sum_{k=1}^\infty f_k(x)\right|\leq M\right].$$
 \end{definice}
-TODO konec 12., 13. 10.
+
+\begin{veta}[Stejnoměrná verze Dirichletova kritéria*]
+  Nechť $\sum f_k(x)$ má stejnoměrně omezené částečné součty v $I$, nechť $g_k(x) \toto 0$ v $I$, nechť $\{g_k(x)\}_k$ je monotónní $\forall x \in I$ pevné. Pak $\sum f_k(x)g_k(x)$ konverguje stejnoměrně v $I$.
+\end{veta}
+
+\begin{veta}[Stejnoměrná verze Abelova kritéria*]
+  Nechť $\sum f_k(x)$ konverguje stejnoměrně v $I$, nechť $\{g_k(x)\}_k$ je stejnoměrně omezená v $I$ a navíc monotónní $\forall x \in I$ pevné. Pak $\sum f_k(x)g_k(x)$ konverguje stejnoměrně v $I$.
+\end{veta}
+
+\begin{veta}[Zachování spojitosti při stejnoměrné konvergenci řady]
+  Nechť $f_k(x) \in C(I), \forall k \in \N$, nechť $s(x) \coloneq \sum_{k=1}^\infty f_k(x)$ konverguje stejnoměrně v $I$. Pak $s(x) \in C(I)$.
+\end{veta}
+
+\begin{proof}
+  označ: $s_n(x) \coloneq \sum_{k=1}^n f_k(x), n \in \N$, vidíme $s_n(x)\in C(I)$
+
+  $\stackrel{V. 2.4. TODO, indukce}{\implies}$ víme: $s_n(x) \toto s(x)$ v $I \stackrel{\text{V.}\ref{16zachspoj}}{\implies} s(x) \in C(I)$
+\end{proof}
+
+\begin{veta}[Záměna sumy a integrálu při stejnoměrné konvergenci]
+  Nechť $f_k(x) \in C([a, b]), \forall k \in \N$, nechť $\sum_{k=1}^\infty f_k(x)$ konverguje stejnoměrně v $[a,b]$. Pak
+  $$\int_a^b \left(\sum_{k=1}^\infty f_k(x)\right)\d x = \sum_{k=1}^\infty\left(\int_a^b f_k(x) \, \d x\right).$$
+\end{veta}
+
+\begin{proof}
+  označ: $s_n(x) \coloneq \sum_{k=1}^n f_k(x)$
+
+  víme: $\exists s(x)$ t. ž. $s_n(x)\toto s(x)$ v $[a,b]$, a tedy
+
+  $\stackrel{\text{V.}\ref{16zamenalimint}}{\implies} \lim_{n\to\infty} \underbrace{\int_a^b s_n(x) \, \d x}_{\mathclap{\textstyle \hspace{26 em} = \int_a^b \sum_{k=1}^n f_k(x) \, \d x \stackrel{V 9.3. TODO}{\implies}\sum_{k=1}^n \int_a^b f_k(x) \, \d x \stackrel{n\to\infty}{\longrightarrow}\sum_{k=1}^\infty \int_a^b f_k(x) \, \d x}} = \int_a^b s(x) = \int_a^b \sum_{k=1}^\infty f_k(x) \, \d x$
+\end{proof}
 
 \begin{veta}[Záměna sumy a derivace při stejnoměrné konvergenci]
   Nechť $I=(a,b)$ je omezený otevřený interval, $\exists f^\prime (x) \in \R, \forall k \in \N \forall x \in I$. Nechť $\sum f^\prime_k (x)$ konverguje stejnoměrně v $I$, nechť $\exists x_0 \in I$ t. ž. $\sum f_k(x_0)$ konverguje. Pak $\sum f_k (x)$ konverguje stejnoměrně v $I$ a platí
