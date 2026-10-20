@@ -81,9 +81,9 @@
 Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
 \begin{enumerate}[1.]
   \item $A, B \in \mathscr S, A \subseteq B \implies \mu A \leq \mu B$
-  \item $A_j \in \mathscr S$ libovolné (nedisjunktní), $\forall j \in N \implies \mu\left(\bigcup_j A_j\right)\leq \sum_j \mu A_j$ (tzv. $\sigma$-subaditivita)
+  \item $A_j \in \mathscr S$ libovolné (nemusí být disjunktní), $\forall j \in N \implies \mu\left(\bigcup_j A_j\right)\leq \sum_j \mu A_j$ (tzv. $\sigma$-subaditivita)
   \item $A_j \in \mathscr S, A_j \subseteq A_{j+1}, \forall j \in \N \implies \mu\left(\bigcup_j A_j \right) = \lim_{j\to \infty} \mu A_j$
-  \item $B_j \in \mathscr S, B_j \supseteq B_{j+1}, \forall j \in N$, navíc $\mu B_i < \infty \implies \mu\left(\bigcap_jB_j\right) = \lim_{j\to \infty} \mu B_j$
+  \item $B_j \in \mathscr S, B_j \supseteq B_{j+1}, \forall j \in N$, navíc $\mu B_1 < \infty \implies \mu\left(\bigcap_jB_j\right) = \lim_{j\to \infty} \mu B_j$
 \end{enumerate}
 \end{veta}
 
@@ -105,5 +105,107 @@ Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
     zřejmě platí: $\tilde{A}_j\subseteq A_j, \tilde{A}_j \in \mathscr S, \tilde{A}_j$ jsou po dvou disjunktní a $\bigcup_{j=1}^n \tilde{A}_j = \bigcup_{j=1}^n A_j, \forall \N$ a též pro $n=\infty$
 
     \textsc{celkem}: $\mu \left(\bigcup_j A_j\right) = \mu \left(\bigcup_j \tilde{A}_j \right) \stackrel{\sigma-aditivita}{=} \sum_j \mu \tilde{A}_j \stackrel{dle 1.}{\leq} \sum_j \mu A_j$
+\item \textsc{trik} zdisjunktnění: $\tilde{A}_j \coloneq A_n \smallsetminus\left(\bigcup_{j<n}A_j\right)$
+
+    $\mu \left(\bigcup_j A_j\right)\stackrel{\sigma-aditivita}{=} \mu \left(\bigcup_j \tilde{A}_j\right)=\sum_j \mu \tilde{A}_j \stackrel{def. sumy}{=} \lim_{n\to\infty}\left(\sum_{j=1}^{n}\mu \tilde A_j\right) \stackrel{kon. aditivita}{=} \lim_{n\to\infty}\left(\mu\left(\bigcup_{j=1}^n \tilde A_j\right)\right)= \lim_{n\to\infty} \mu A_n$
+    \item převedeme na bod 3.
+
+        pomocné množiny $A_j\coloneq B_1 \smallsetminus B_j, j = 1, 2, \dots$
+
+        OBRAZEKOBRAZEK mezikruží
+
+          platí: $A_j \in \mathscr S, A_j \subseteq eq? TODO A_j+1$, a tedy $\bigcup_j A_j = B_1 \smallsetminus \bigcap_j B_j$ (dle DeMorgana)
+
+          díky 3.: $\mu \left(B_1 \smallsetminus \bigcap_j B_j\right) = \lim_{n\to \infty} \mu \left(B_1 \smallsetminus B_n\right)$
+
+          \textsc{trik}: $B_1 = (B_1 \smallsetminus B_n)\cup B_n$, dále $B_1 = \left(B_1 \smallsetminus \bigcap_j B_j\right)\cup \left(\bigcap_j B_j\right)$, přičemž závorky jsou disjunktní
+
+          $\implies \mu B_1 = \mu \left(B_1 \smallsetminus B_n\right)+\mu B_n$ a dále $\mu B_1 = \mu \left(B_1 \smallsetminus \bigcap_j B_j\right)+\mu \left(\bigcap_j B_j\right)$, přičemž vím, že první člen prvního zápisu konverguje k prvnímu členu druhého zápisu $\implies$ druhý člen prvního zápisu konverguje k druhému členu druhého zápisu
+
+          a co předpoklad o konečnosti $\mu B_1$? Použili jsem jej při porovnání obou zápisů, fakticky jsem je odečetl, a musím tak použít VoAL konečnou verzi.
   \end{enumerate}
+\end{proof}
+
+\begin{priklad}
+    Předpoklad $\mu B_1<\infty$ (obecněji $\mu B_k<\infty$ pro nějaké $k$) v bodě 4. předchozí věty je nutný. Mějme $X=\N$, $\mu\dots$ počítací míra, $B_j=\left\{j, j+1, j+2, \dots\right\}\dots$ vidíme, že $B_j \supseteq B_{j+1}$, nicméně $\mu B_n = \infty \cancel{\to} \mu (\bigcap_j B_j) = \mu\emptyset = 0$.
+\end{priklad}
+
+\begin{poznamka}
+    V předchozím důkazu jsme využili tzv. konečnou aditivitu, neboť $\sigma$-aditivita $\implies$ konečná aditivita, tj. $A_1, A_2, \dots, A_n \in \mathscr S$ disjunktní $\implies \mu \left(\bigcup_{j=1}^n A_j\right) = \sum_{j=1}^n \mu A_j$, neboť lze doplnit do spoečetného sjednocení prázdnými množinami (s nulovou mírou).
+\end{poznamka}
+
+\begin{definice}
+    Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Řekneme, že $N\subseteq X$ je \textbf{množina míry nula} (též \textbf{$\mu$-nulová množina}), jestliže $N\in \mathscr S$ a $\mu N = 0$.
+
+    Řekneme, že výrok $V(x)$ platí \textbf{$\mu$-skoro všude} v $X$, jestliže existuje $\mu$-nulová množina $N\subseteq X$ t. ž. $V(x)$ platí $\forall X \in X \smallsetminus N$.
+\end{definice}
+
+\begin{priklad}
+    \begin{enumerate}[1.]
+    \item $N\subset \R^n$ spočetná je $\lambda_n$-nulová (Lebesgueova míra).
+    \item Dirichletova funkce je rovna nule $\lambda_1$-skoro všude v $\R$.
+    \end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+    Nyní je naším cílem konstrukce Lebesgueovy míry $\lambda_n$ v $\R^n$.
+    Plán:
+    \begin{enumerate}[1.]
+        \item objem $l_n$ (pouze pro intervaly),
+        \item vnější Lebesgueova míra $\lambda^*_n$ (pro všechny podmnožiny $\R^n$),
+        \item Lebesgueova míra $\lambda_n$.
+    \end{enumerate}
+\end{poznamka}
+
+\begin{definice}
+    Intervalem v $\R$ nazveme množiny $I = (a, b), [a, b), (a,b], [a,b]; a, b \in \R, a\leq b$; připouštíme prázdné, jednobodové i neomezené intervaly.
+
+    \textbf{Délkou intervalu} $I$ nazveme $l_1(I) \coloneq b-a\in[0, \infty]$.
+
+    Intevalem v $\R^n$ nazveme množiny $Q=I_1 \times \dots \times I_n = \left\{\vec x \in \R^n;x_i \in I_i, \forall i\right\}$.
+
+    \textbf{Objemem intervalu} $Q$ nazveme $l_n(Q)\coloneq l_1(I_1)\cdot l_2(I_2)\cdot\dots\cdot l_n(I_n)$ s úmluvou $0\cdot\infty = 0$.
+    OBRAZEKOBRAZEK
+
+    Interval $Q\subseteq \mathbb R^n$ nazveme \textbf{otevřený} (resp. \textbf{uzavřený}), pokud $Q = I_1\times\dots\times I_n$, kde $I_j \subseteq \mathbb R$ jsou všechny otevřené (resp. uzavřené).
+\end{definice}
+
+\begin{definice}
+    Pro libovolnou množinu $M \subseteq \mathbb R^n$ definujeme \textbf{vnější Lebsgueovu míru} v $\mathbb R^n$ jako $\lambda_n^*(M)\coloneq \inf\left\{\sum_{j=1}^{\infty}l_n(Q_j); Q_j \subseteq \mathbb R^n \text{ jsou intervaly pro } j \in \mathbb N \text{ t. ž. } M\subseteq \bigcup_{j=1}^\infty Q_j\right\}$.
+\end{definice}
+
+\begin{poznamka}
+    Zpravidla jsme v $\mathbb R^n$ pro $n$ pevné, a tak píšeme jen $l, \lambda^*$, místo $l_n, \lambda_n^*$.
+\end{poznamka}
+
+\begin{poznamka}
+    Některé zřejmé vlastnosti vnější Lebesgueovy míry:
+    \begin{itemize}
+        \item $0\leq \lambda^*(M)\leq \infty$;
+        \item $\lambda^*(\emptyset)=\lambda^*(\{a\})=0$, obecněji pro $N\subset\R^n$ spočetnou platí $\lambda^*(N)=0$;
+            \begin{proof}
+                $N=\left\{a_j; j \in \mathbb N\right\}$, tj. $N=\bigcup_j \left\{a_j\right\}$, a tedy $l(\{a_j\})=0, \sum_j l(\{a_j\})=0$ TODO
+            \end{proof}
+        \item $A \subseteq B\implies \lambda^*(A)\leq \lambda^*(B)$ (neboť $A$ má více pokrytí, a tedy menší nebo stejné infimum).
+    \end{itemize}
+\end{poznamka}
+
+\begin{veta}[Subaditivita $\lambda^*$]
+    Nechť $M_j \subseteq \mathbb R^n, j \in \mathbb N$ libovolné. Pak
+    $$\lambda^*\left(\bigcup_j M_j\right)\leq \sum_{j} \lambda^*\left(M_j\right).$$
+\end{veta}
+
+\begin{proof}
+    BÚNO: $\lambda^*(M_j)<\infty, \forall j \in \mathbb N$ (jinak PS = $\infty$ a závěr jistě platí)
+
+    cíl: $\lambda^*\left(\bigcup_j M_j\right)<\sum_{j} \lambda^*(M_j)+\varepsilon$, kde $\varepsilon>0$ je libovolné, pevné
+
+    $\varepsilon>0$ dáno: pro $j=1$: $\lambda^*(M_1)+\frac{\varepsilon}{2}>\lambda^*(M_1)= \inf\left\{\sum_{i} l(Q_{1,i});Q_{1,i} \text{ intervaly t. ž } M_1 \subseteq \bigcup_i Q_{1,i}\right\}$
+
+   $\stackrel{2. vl. inf TODO}{\implies}\exists$ pokrytí $\left\{Q_{1,i}\right\}_{i=1}^\infty$ t. ž. $\sum_{i} l\left(Q_{1,i}\right)<\lambda^*(M_1)+\frac{\varepsilon}{2}$
+    
+    pro $j\in \mathbb N$ obecné:$\exists$ intervaly $\{Q_{j, i}\}_{i=1}^\infty$ t. ž. $M_j \subseteq \bigcup_i Q_{j, i}$ a platí, že $\sum_i l(Q_{j, i}<\lambda^*(M_j)+\frac{\varepsilon}{2^j}$
+
+    \textsc{celkem}: $\bigcup_j M_j \subseteq \bigcup_{j, i} Q_{j,i}$, kde pravá strana je spočetná ($\mathbb N \times \mathbb N$) a tedy $\lambda^*\left(\bigcup_j M_j\right)\leq \sum_{j, i} l(Q_{j,i})=\sum_j\left(\sum_i l\left(Q_{j,i}\right)\right)<\sum_j \lambda^*(M_j)+\frac{\varepsilon}{2^j}= \sum_j \lambda^*(M_j)+\sum_j \frac{\varepsilon}{2^j} = \sum_j \lambda^*(M_j)+\varepsilon$
+    OBRAZEKOBRAZEK
 \end{proof}

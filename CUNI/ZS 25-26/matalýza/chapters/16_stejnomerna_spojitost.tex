@@ -381,7 +381,7 @@ A co $J=[\Delta, \infty), \Delta >0$ pevné?
 
 % the limit f = 0 is the x-axis itself: draw it thick
 \draw[->] (0,0) -- (2.6,0) node[below] {$x$};
-\draw[very thick, ->] (0.5,0) -- (2.6,0) node[midway, below] {$J$};
+\draw[ultra thick, ->] (0.5,0) -- (2.6,0) node[midway, below] {$J$};
 \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
 \node[below left] at (0,0) {$0$};
 \foreach \x in {1,2}
@@ -436,11 +436,11 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   \draw[gray!25, very thin] (0,0) grid[step=0.5] (2.5,1.25);
 
   % the limit f = 0 is the x-axis itself: draw it thick
-  \draw[->] (0,0) -- (2.6,0) node[below] {$x$};
-  \draw[very thick, ->] (0.75,0) -- (2.6,0) node[below] {$J$};
+  \draw[->] (0,0) -- (2.6,0);
+  \draw[ultra thick, ->] (0.75,0) -- (2.6,0) node[midway, below] {$J$};
   \draw[->] (0,0) -- (0,1.32) node[left] {$y$};
   \node[below left] at (0,0) {$0$};
-  \foreach \x in {1,2}
+  \foreach \x in {}
   \draw (\x,2pt) -- (\x,-2pt) node[below] {$\x$};
   \foreach \y in {0.5}
   \draw (2pt,2*\y) -- (-2pt,2*\y) node[left] {$\y$};
@@ -448,25 +448,30 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   % peaks: max = 1/2 at x = 1/n -> add a dashed guide line at y = 1/2
   \draw[gray!60, dashed] (0,2*0.5) -- (2.5,2*0.5);
 
+  % braces
+\draw[decorate, decoration={brace, mirror, amplitude=6pt}] (0, 0) -- (0.75, 0) node[midway, below=8pt] {$\Delta$};
+\draw[decorate, decoration={brace, mirror, amplitude=6pt}] (0.75, 0) -- (1, 0) node[midway, below=8pt] {$\delta$};
+\draw[decorate, decoration={brace, mirror, amplitude=6pt}] (1, 0) -- (1.25, 0) node[midway, below=8pt] {$\delta$};
+\draw (1,2pt) -- (1,-2pt) node[above] {$x_0$};
   % the sequence f_n on x >= 0
   \draw[fThree, thick, domain=0:2.5, samples=201] plot (\x, {2*3*\x/(1+9*\x*\x)});
 
   \end{tikzpicture}
-  DODELATOBRAZEK -- doposud kontrola
   \end{minipage}\begin{minipage}{0.42\textwidth}
-  vezmu pro libovolné $x_0, \delta$ tak, aby bylo odražené od $0$, pak dle předchozího příkladu $\Delta, J$ TODO
+  vezmu pro libovolné $x_0, \delta$ tak, aby bylo odražené od $0$, pak dle předchozího příkladu $\Delta, J$
   \end{minipage}
 \end{priklad}
 
 \begin{poznamka}
+    Vlastnosti konvergencí funkcí:
   \begin{itemize}
     \item $f_n \toto f$ v $J$, $\tilde{J} \subseteq J \implies f_n \toto f$ v $\tilde{J}$
-    \item stejnoměrná konvergence $\implies$ lokální stejnoměrná konvergence $\implies$ bodová konvergence, žádnou implikaci nelze obrátit
+    \item stejnoměrná konvergence$\implies$lokální stejnoměrná konvergence$\implies$bodová konvergence, žádnou implikaci nelze obrátit
   \end{itemize}
 \end{poznamka}
 
 \begin{poznamka}
-  Opakuj definici Cauchyho-Bolzanovy podmínky pro posloupnosti a pro řady (definice \ref{7bc} a \ref{10bcr}) a věty o ekvivalenci B. C. podmínky a konvergence (věty \ref{7bckonv} a \ref{10bcrkonv}).
+  Opakuj definici Cauchyho-Bolzanovy podmínky pro posloupnosti a pro řady (definice \nameref{7bc} a \nameref{10bcr} podmínky) a věty o ekvivalenci B. C. podmínky a konvergence (věty \ref{7bckonv} a \ref{10bcrkonv}).
 \end{poznamka}
 
 \begin{definice}
@@ -483,16 +488,36 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{veta}
 
 \begin{proof}
-  TODO
+    Dokážeme postupně obě implikace.
+    \begin{itemize}
+        \item[$1. \implies 2.$] $\varepsilon>0$ dáno: víme, že $f_n(x)\toto f(x)$ v $I$, a tedy
+
+            $\exists n_0 \in \mathbb N, \forall n \geq n_0\colon\left|f_n(x)-f(x)\right|<\frac{\varepsilon}{2}, \forall x \in I$
+
+            a tedy $\forall m,n \geq n_0, \forall x \in I\colon\left|f_m(x)-f(x)+f(x)-f_n(x)\right|\leq\left|f_n(x)-f(x)\right|+\left|f(x)-f_n(x)\right|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$
+        \item[$2. \implies 1.$] \faEye: $(B.C.-st)\implies (B.C.)$ pro $\left\{f_n(x)\right\}_n$ pro $x$ pevné
+
+            $\stackrel{\text{V.}\ref{7bckonv}}{\implies}\exists \lim_{n\to\infty} f_n(x)$ vlastní $\eqcolon f(x)$ -- bodová konvergence
+
+            zbývá: $f_n\toto f$ v $I$, tedy pro $\varepsilon>0$ dáno užijme (B.C.-st) pro $\frac{\varepsilon}{2}$
+
+            $\implies\exists n_0 \in \mathbb N, \forall x \in I, \forall m,n \geq n_0\colon\left|f_m(x)-f_n(x)\right|<\frac{\varepsilon}{2}$
+
+            fixuji $x, n; m \to \infty\colon\left|f(x)-f_n(x)\right|\leq \frac{\varepsilon}{2}$
+
+            a tedy $\forall n \geq n_0, \forall x \in I\colon\left|f(x)-f_n(x)\right|\leq \frac{\varepsilon}{2}<\varepsilon$
+    \end{itemize}
 \end{proof}
 
 \begin{dusledek}
-  $C_b(I)$ je úplný metrický prostor (fakticky i normovaný, tj. dokonce Banachův metrický prostor), kde $C_b(I) \coloneq \left\{f(x); f(x)\colon I \to \mathbb R\text{ spojité, omezené (b jako bounded)}\right\}$ a $\varrho(f,g) \coloneq \|f-g\|_\infty = \sup\limits_{x \in I} |f(x)-g(x)|$
+  $C_b(I)$ je úplný metrický prostor (fakticky i normovaný, tj. dokonce Banachův metrický prostor), kde $C_b(I) \coloneq \left\{f(x); f(x)\colon I \to \mathbb R\text{ spojité, omezené (b jako bounded)}\right\}$ a $\varrho(f,g) \coloneq \|f-g\|_\infty = \sup\limits_{x \in I} |f(x)-g(x)|$.
 \end{dusledek}
+KONECKONTROLY
 
 \begin{proof}
+    Ve dvou bodech:
   \begin{enumerate}[1.]
-    \item $\underbrace{f_n \to f \text{ v } C_b(I)}_{\iff \|f_n-f\|_\infty\to 0, n \to \infty,}\iff f_n(x) \toto f(x)$ v $I$
+      \item $\underbrace{f_n \to f \text{ v } C_b(I)}_{\mathclap{\textstyle \iff \|f_n-f\|_\infty\to 0, n \to \infty,}}\iff f_n(x) \toto f(x)$ v $I$
 
     kde $\sup\limits_{x \in I} |f_n(x)-f(x)|=\sigma_n$ a užiji lemma \ref{16sigman}.
     \item TODO
@@ -500,6 +525,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{proof}
 
 \begin{poznamka}
+    Souvislosti konvergencí funkcí s metrickými prostory:
   \begin{itemize}
     \item $f_n \toto f$ v $I$ je ekvivalentní konvergenci vzhledem k $\|\cdot\|_\infty$, kde $\|f(x)\|_\infty = \sum\limits_{x \in I} |f(x)|$
     \item bodová (též slabá) konvergence nelze popsat ani normou, ani metrikou (pro $I$ nespočetné)
@@ -515,7 +541,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \begin{veta}[Mooreova-Osgoodova]
     Nechť $f_n(x), f(x)\colon \mathscr P(x_0, \delta)\to \mathbb R, x_0 \in \mathbb R, \delta>0$ pevné. Nechť
     \begin{enumerate}[1.]
-        \item $f_n(x)\toto f(x)$ na $\mathscr P(x_0, \delta)$,
+        \item $f_n(x)\toto f(x)$ na $\mathscr P(x_0, \delta)$;
         \item $\exists \lim_{x \to x_0} f_n(x)\eqcolon c_n\in \mathbb R, \forall n \in \mathbb N$.
     \end{enumerate}
     Pak
@@ -531,7 +557,15 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 \end{poznamka}
 
 \begin{proof}
-    TODO
+    Ve dvou krocích:
+    \begin{enumerate}[1. \textsc{krok}]
+        \item cíl: $f(x)\to c, x \to x_0$, neboli $\forall \varepsilon>0\;\exists \tilde \delta>0 \; \forall x \in \mathscr P(x_0, \tilde \delta)\colon\left|f(x)-c\right|<\varepsilon$
+            \begin{minipage}{0.58\textwidth}
+                OBRAZEKOBRAZEK
+            \end{minipage}\begin{minipage}{0.42\textwidth}
+                $\left|f(x)-c\right|=\left|f(x)-f_n(x)+f_n(x)-c_n+c_n-c\right|\leq\left|f(x)-f_n(x)\right|+\left|f_n(x)-c_n\right|+\left|c_n-c\right|$
+            \end{minipage}
+    \end{enumerate}
 \end{proof}
 
 \begin{poznamka}
