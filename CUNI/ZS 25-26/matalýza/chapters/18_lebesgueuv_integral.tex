@@ -1,0 +1,758 @@
+\section{Lebesgueův integrál}
+
+\noindent
+Cíl kapitoly: definovat $\int_M f \, d\lambda$, kde
+$M \subset \mathbb{R}^n$ je měřitelná množina, $f(x) : M \to \mathbb{R}$
+je funkce a $\lambda = \lambda_n$ je Lebesgueova míra v $\mathbb{R}^n$.
+
+Chceme, aby integrál fungoval pro co nejširší třídu funkcí, a měl
+některé rozumné vlastnosti:
+\begin{itemize}
+\item $\int_M (f + g) = \int_M f + \int_M g$ (linearita)
+\item $f \le g \Rightarrow \int_M f \le \int_M g$ (monotonie)
+\item $\int_M c = c\lambda(M)$
+\item rozumné věty o \uv{záměně limity a integrálu}, tj. (za vhodných
+předpokladů):
+\[
+\lim_{j \to \infty} \int_M f_j = \int_M \lim_{j \to \infty} f_j,
+\quad
+\frac{d}{da} \int_M f = \int_M \frac{\partial f}{\partial a},
+\quad
+\text{atd.}
+\]
+\end{itemize}
+
+Nám dosud známé integrály (Riemannův a Newtonův) fungují jenom pro $M$
+rovná se reálný interval; především však integrují příliš málo funkcí
+a nemají žádné (rozumně použitelné) věty o záměně limity a integrálu.
+
+Názorný význam integrálu je \uv{objem pod grafem funkce}. Protože míru
+(objem) už umíme měřit ve všech $\mathbb{R}^n$, mohli bychom rovnou
+definovat:
+\[
+\int_M f \, d\lambda_n
+= \lambda_{n+1}(\Gamma^+) - \lambda_{n+1}(\Gamma^-), \tag{3}
+\]
+má-li pravá strana smysl, kde
+\[
+\Gamma^+ = \{(x, y) \in \mathbb{R}^{n+1}; \ x \in M, \ 0 < y < f(x)\},
+\]
+\[
+\Gamma^- = \{(x, y) \in \mathbb{R}^{n+1}; \ x \in M, \ f(x) < y < 0\}.
+\]
+My podáme složitější (nicméně ekvivalentní) definici -- ze dvou důvodů:
+\begin{enumerate}[1.]
+\item z definice (3) bychom těžko dokazovali například linearitu;
+\item níže uvedená definice zahrne obecnou situaci integrování podle
+libovolné míry (tj. nejen Lebesgueovy).
+\end{enumerate}
+
+\begin{poznamka}[Značení TODO]
+Máme prostor s mírou $(X, \mathcal{M}, \lambda)$, tj. $\mathcal{M}$ je
+$\sigma$-algebra měřitelných podmnožin $X$ a $\lambda$ je míra. Dále
+bude $f : M \to \mathbb{R}$, kde $M \in \mathcal{M}$. (Lebesgueova míra
+bude důležitý speciální případ.) Budeme také značit:
+\[
+\{f > c\} = \{x \in M; \ f(x) > c\}, \quad
+\{f \in I\} = \{x \in M; \ f(x) \in I\}, \quad
+\text{atd.}
+\]
+\end{poznamka}
+
+\begin{definice}
+Funkce $f : M \to \mathbb{R}^*$ se nazve měřitelná, jestliže $M$ je
+měřitelná množina a dále pro každé $c \in \mathbb{R}$ je množina
+$\{f > c\}$ měřitelná.
+\end{definice}
+
+\begin{lemma}[Ekvivalentní definice měřitelnosti.]
+Nechť $M$ je měřitelná množina a $f : M \to \mathbb{R}^*$. Potom je
+ekvivalentní:
+\begin{enumerate}[1.]
+\item $f$ je měřitelná;
+\item pro $\forall c \in \mathbb{R}$ je množina $\{f \ge c\}$
+měřitelná;
+\item pro $\forall c \in \mathbb{R}$ je množina $\{f < c\}$
+měřitelná;
+\item pro $\forall c \in \mathbb{R}$ je množina $\{f \le c\}$
+měřitelná;
+\item pro každý interval $I \subset \mathbb{R}^*$ je množina
+$\{f \in I\}$ měřitelná;
+\item pro každou otevřenou $G \subset \mathbb{R}^*$ je množina
+$\{f \in G\}$ měřitelná.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+Nechť $M \subset \mathbb{R}^n$ je měřitelná množina, $f : M \to
+\mathbb{R}$. Nechť $M = G \cup N$, kde $G$ je otevřená v
+$\mathbb{R}^n$, $f$ je spojitá v $G$, a $N$ je množina míry nula.
+Potom $f$ je měřitelná v $M$.
+\end{lemma}
+
+\begin{dusledek}
+Je-li $f(x) \colon (a, b) \to \mathbb{R}$ spojitá všude až na konečně
+mnoho bodů, je měřitelná v $(a, b)$.
+\end{dusledek}
+
+\begin{lemma}
+Nechť $f \colon M \to \mathbb{R}$ je měřitelná, nechť $f(M) \subset G$, kde
+$G$ je otevřená (v $\mathbb{R}$). Nechť $\phi \colon G \to \mathbb{R}$ je
+spojitá. Potom $\phi \circ f$ je měřitelná v $M$.
+\end{lemma}
+
+\begin{poznamka}
+Obecně při skládání měřitelných funkcí nemusí vyjít měřitelná funkce,
+dokonce ani složení měřitelná (vnější) a spojitá (vnitřní) nemusí být
+měřitelné.
+\end{poznamka}
+
+\begin{veta}[Zachování měřitelnosti TODO Důkaz pouze pro součet a supremum]
+Nechť $f$, $g$, $f_j : M \to \mathbb{R}^*$ jsou měřitelné funkce.
+Potom
+\begin{enumerate}[1.]
+\item $\alpha f$, $f + g$, $f - g$, $fg$, $f / g$ jsou měřitelné na
+množině $S \subset M$, kde má daná operace smysl;
+\item $\max\{f, g\}$, $\min\{f, g\}$, $f^+$, $f^-$, $|f|$ jsou
+měřitelné v $M$;
+\item $\sup_j f_j$, $\inf_j f_j$ jsou měřitelné v $M$; funkce
+$\lim_j f_j$ na množině, na níž je definována.
+\end{enumerate}
+\end{veta}
+
+\begin{definice}
+Charakteristickou funkcí množiny $A$ rozumíme
+\[
+\chi_A(x) = \begin{cases} 1, & x \in A, \\ 0, & x \notin A.
+\end{cases}
+\]
+Funkce $f : M \to \mathbb{R}$ se nazve jednoduchá v $M$, jestliže
+existují množiny $A_j \subset M$ a čísla $c_j \in \mathbb{R}$,
+$j = 1, \ldots, n$ tak, že
+\[
+f(x) = \sum_{j=1}^n c_j \chi_{A_j}(x), \qquad x \in M.
+\]
+Jsou-li navíc $A_j$ měřitelné, hovoříme o jednoduché měřitelné funkci.
+\end{definice}
+
+\begin{poznamka}
+\begin{enumerate}{1.}
+\item Jednoduchou funkci lze vyjádřit více způsoby; vyjádření je
+jednoznačné, pokud požadujeme, aby $A_j$ byly disjunktní a čísla $c_j$
+vzájemně různá, nenulová.
+
+\item Pozorování: $f$ je jednoduchá měřitelná v $M \iff f$ je
+měřitelná v $M$ a $f(M)$ je konečná množina.
+\end{enumerate}
+
+\end{poznamka}
+
+\begin{veta}
+Nechť $f$ je nezáporná, měřitelná funkce v $M$. Potom existují
+nezáporné, jednoduché měřitelné funkce $f_k$ takové, že
+$f_k(x) \to f(x)$ a navíc posloupnost $\{f_k(x)\}_k$ je neklesající pro
+každé $x \in M$.
+\end{veta}
+
+\begin{poznamka}[Značení TODO]
+Výše uvedený způsob konvergence značíme stručně:
+$0 \le f_k \nearrow f$ v $M$.
+\end{poznamka}
+
+\begin{definice}[Abstraktní Lebesgueův integrál]
+Nechť $f : M \to \mathbb{R}^*$ je měřitelná funkce.
+\begin{enumerate}[1.]
+\item je-li $f$ jednoduchá, tj.
+$f = \sum_{j=1}^n c_j \chi_{A_j}$, definujeme
+$\int_M f \, d\lambda = \sum_{j=1}^n c_j \lambda(A_j)$.
+\item je-li $f$ nezáporná, klademe
+\[
+\int_M f \, d\lambda = \sup \left\{ \int_M s \, d\lambda;
+\ s \text{ jednoduchá měřitelná v } M, \ 0 \le s \le f \right\}.
+\]
+\item pro obecnou $f$ definujeme
+($f^+ = \max\{0, f\}$, $f^- = \max\{0, -f\}$)
+\[
+\int_M f \, d\lambda = \int_M f^+ \, d\lambda - \int_M f^- \, d\lambda,
+\]
+má-li pravá strana smysl (tj. není-li tvaru $+\infty - \infty$).
+\end{enumerate}
+\end{definice}
+
+\begin{poznamka}
+Ohledně korektnosti definice je třeba si rozmyslet: integrál jednoduché
+funkce nezávisí na jejím vyjádření, a jsou-li $s \le t$ jednoduché,
+pak $\int_M s \, d\lambda \le \int_M t \, d\lambda$.
+\end{poznamka}
+
+\begin{poznamka}[Terminologie a značení TODO]
+Chceme-li zvýraznit proměnnou, píšeme $\int_M f(x) \, d\lambda(x)$.
+Naopak v případě $M \subset \mathbb{R}^n$ a $\lambda$ Lebesgueova míra
+zpravidla vynecháváme symbol pro míru, tj. píšeme pouze
+$\int_M f(x) \, dx$.
+
+Symbolem $\mathcal{L}^*(M)$ značíme funkce, pro něž je integrál
+definován (může být nekonečný). Symbolem $\mathcal{L}(M)$ značíme
+funkce, pro něž je integrál definován a navíc je konečný. V této
+situaci říkáme, že integrál konverguje, neboli funkce je
+integrovatelná.
+\end{poznamka}
+
+\begin{veta}
+Nechť $f$, $g : M \to \mathbb{R}^*$ se rovnají skoro všude v $M$.
+Potom $f$ je měřitelná, právě když $g$ je měřitelná, a
+\[
+\int_M f \, d\lambda = \int_M g \, d\lambda,
+\]
+-- má-li jedna strana smysl, má ho i druhá a rovnají se.
+\end{veta}
+
+\begin{definice}[Zobecnění abstraktního Lebesgueova intergálu]
+Nechť $f$ je definována skoro všude v $M$. Tj.
+$f(x) : \tilde{M} \to \mathbb{R}^*$, kde $M = \tilde{M} \cup N$,
+$\lambda(N) = 0$. Definujme $\tilde{f} : M \to \mathbb{R}$ takto:
+\[
+\tilde{f}(x) := \begin{cases}
+f(x), & x \in \tilde{M}, \\
+\text{libovolně (např. } 0), & x \in N.
+\end{cases}
+\]
+Funkce $f$ se nazve měřitelná v $M$, je-li $\tilde{f}$ měřitelná v $M$;
+a definujeme
+\[
+\int_M f \, d\lambda = \int_M \tilde{f} \, d\lambda,
+\]
+má-li výraz vpravo smysl. (Díky předchozí větě nezávisí výsledek na
+dodefinování v množině $N$.)
+\end{definice}
+
+\begin{priklad}
+\begin{enumerate}[1.]
+\item $f(x) = 1/x$ je měřitelná v $\mathbb{R}$ ($N = \{0\}$).
+
+\item Je-li $D(x)$ Dirichletova funkce, pak
+$\int_{\mathbb{R}} D \, d\lambda_1 = 0$. Například proto, že $D = 0$
+skoro všude.
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Leviho věta.]
+Nechť $f_n$, $f$ jsou měřitelné v $M$, a nechť
+$0 \le f_n(x) \nearrow f(x)$ s.v. v $M$. Potom
+$\lim_{n \to \infty} \int_M f_n \, d\lambda = \int_M f \, d\lambda$.
+\end{veta}
+
+\begin{veta}[Vlastnosti Lebesgueova integrálu.]
+Nechť $f$, $g \in \mathcal{L}^*(M)$. Potom:
+\begin{enumerate}[1.]
+\item (i) $\int_M \alpha f \, d\lambda = \alpha \int_M f \, d\lambda$;
+
+(ii) $\int_M (f + g) \, d\lambda = \int_M f \, d\lambda +
+\int_M g \, d\lambda$, má-li pravá strana smysl;
+\item (i) $f \le g$ s.v. v $M \implies \int_M f \, d\lambda \le
+\int_M g \, d\lambda$;
+
+(ii) $\left| \int_M f \, d\lambda \right| \le \int_M |f| \, d\lambda$;
+\item je-li $f$ nezáporná s.v. v $M$, pak:
+
+(i) $\int_M f \, d\lambda < \infty \implies f < \infty$ s.v. v $M$;
+
+(ii) $\int_M f \, d\lambda = 0 \iff f = 0$ s.v. v $M$.
+\end{enumerate}
+\end{veta}
+
+\begin{poznamka}
+Vlastnosti množiny $\mathcal{L}(M)$ integrovatelných funkcí:
+\begin{enumerate}[1.]
+\item $f$, $g \in \mathcal{L}(M) \implies \alpha f$, $f + g \in
+\mathcal{L}(M)$ (vektorový prostor)
+
+\item $f \in \mathcal{L}(M) \iff f$ je měřitelná a
+$\int_M |f| \, d\lambda < \infty$
+
+\item $f$ měřitelná, $|f| \le g$ s.v. v $M$, kde
+$g \in \mathcal{L}(M) \implies f \in \mathcal{L}(M)$
+\end{enumerate}
+\end{poznamka}
+
+\begin{poznamka}
+Záměna limity a integrálu, neboli rovnost
+\[
+\lim_{n \to \infty} \int_M f_n \, d\lambda
+= \int_M \left( \lim_{n \to \infty} f_n \right) d\lambda \tag{$\ast$}
+\]
+obecně neplatí. Příklad: $f_n(x) = n\chi_{(0,1/n)}(x)$. Potom
+$\int_{\mathbb{R}} f_n = 1$, přitom $f_n(x) \to 0$ v $\mathbb{R}$, tedy
+vlevo je 1, vpravo 0. -- Rovnost ($\ast$) platí, pokud navíc
+předpokládáme:
+\begin{itemize}
+\item $f_n(x) \rightrightarrows f(x)$ v $M$, a $\lambda(M) < \infty$
+(viz Věta 16.2.) To jsou pro praktické účely příliš silné předpoklady.
+\item $0 \le f_n \nearrow f$ skoro všude v $M$ -- to je Leviho věta.
+\item třetí případ je následující věta.
+\end{itemize}
+\end{poznamka}
+
+\begin{veta}[Lebesgueova věta.]
+Nechť funkce $f_n$, $f$ jsou měřitelné v $M$, $f_n(x) \to f(x)$ pro
+skoro všechna $x \in M$. Nechť existuje $g \in \mathcal{L}(M)$ tak, že
+$|f_n(x)| \le g(x)$ skoro všude v $M$. Potom
+$\lim_{n \to \infty} \int_M f_n \, d\lambda = \int_M f \, d\lambda$.
+\end{veta}
+
+\begin{veta}[Leviho věta pro řady.]
+Nechť $f_k$ jsou nezáporné, měřitelné v $M$. Potom
+\[
+\int_M \left( \sum_{k=1}^{\infty} f_k \right) d\lambda
+= \sum_{k=1}^{\infty} \left( \int_M f_k \, d\lambda \right).
+\]
+\end{veta}
+
+\begin{priklad}
+\[
+\int_0^1 \frac{dx}{1 - x}
+= \int_0^1 \sum_{k=0}^{\infty} x^k \, dx
+= \sum_{k=0}^{\infty} \int_0^1 x^k \, dx
+= \sum_{k=0}^{\infty} \frac{1}{k+1}
+= +\infty.
+\]
+\end{priklad}
+
+\begin{veta}[Lebesgueova věta pro řady.]
+Nechť $f_k$ jsou měřitelné, nechť $\sum_{k=1}^{\infty} f_k(x)$
+konverguje s.v. v $M$. Nechť existuje $g \in \mathcal{L}(M)$ tak, že
+$\left| \sum_{k=1}^{n} f_k(x) \right| \le g(x)$ pro $\forall n$,
+s.v. $x \in M$. Potom
+\[
+\int_M \left( \sum_{k=1}^{\infty} f_k \right) \, d\lambda
+= \sum_{k=1}^{\infty} \left( \int_M f_k \, d\lambda \right).
+\]
+\end{veta}
+
+\begin{priklad}
+\[
+\int_0^1 \frac{dx}{1 + x}
+= \int_0^1 \sum_{k=0}^{\infty} (-1)^k x^k \, dx
+= \sum_{k=0}^{\infty} \int_0^1 (-1)^k x^k \, dx
+= \sum_{k=0}^{\infty} \frac{(-1)^k}{k+1}.
+\]
+Majorantou částečných součtů je -- vzhledem k teleskopičnosti sumy --
+první člen $f_0 = 1$.
+\end{priklad}
+
+\begin{poznamka}
+Na množinách konečné míry mi jako integrovatelná majoranta může
+posloužit konstantní funkce. Získáváme tím variantu Lebesgueovy věty:
+nechť $f_n(x) \to f(x)$ s.v. v $M$, nechť $|f_n(x)| \le C$ pro s.v.
+$x \in M$, a nechť $\lambda(M) < \infty$. Potom
+$\int_M f_n \, d\lambda \to \int_M f \, d\lambda$.
+\end{poznamka}
+
+\begin{veta}[Závislost integrálu na množině integrace.]
+Nechť $f$ je měřitelná v $M$. Potom:
+\begin{enumerate}[1.]
+\item Jestliže $M = \bigcup_{j=1}^{N} M_j$, kde $M_j$ jsou
+disjunktní, měřitelné, pak
+\[
+\int_M f \, d\lambda = \sum_{j=1}^{N} \int_{M_j} f \, d\lambda,
+\]
+má-li pravá strana smysl.
+\item Nechť $f \in \mathcal{L}^*(M)$, nechť
+$M = \bigcup_{j \in \mathbb{N}} M_j$, kde $M_j$ jsou disjunktní,
+měřitelné. Potom
+\[
+\int_M f \, d\lambda = \sum_{j=1}^{\infty} \int_{M_j} f \, d\lambda.
+\]
+\item Nechť $f \in \mathcal{L}^*(M)$, nechť
+$M = \bigcup_{j \in \mathbb{N}} M_j$, kde $M_j$ měřitelné a
+$M_j \subset M_{j+1}$. Potom
+\[
+\int_M f \, d\lambda = \lim_{j \to \infty} \int_{M_j} f \, d\lambda.
+\]
+\end{enumerate}
+\end{veta}
+
+\begin{poznamka}
+\begin{enumerate}[1.]
+\item V předchozím důkazu se používá důležitý vztah:
+\[
+\int_N f \, d\lambda = \int_M f \cdot \chi_N \, d\lambda
+\]
+pro libovolnou měřitelnou $N \subset M$. Speciální důsledek: jestliže
+$N \subset M$ a $\lambda(M \setminus N) = 0$, pak
+$\int_N f \, d\lambda = \int_M f \, d\lambda$.
+
+\item Předpoklad $f \in \mathcal{L}^*(M)$ v bodech 2, 3 předchozí
+věty je podstatný -- nestačilo by předpokládat \uv{má-li pravá strana
+smysl}.
+\end{enumerate}
+\end{poznamka}
+
+\begin{definice}[Lebesgueův integrál v $\mathbb{R}$.]
+Pro libovolná $a < b \in \mathbb{R}^*$ a funkci $f : (a, b) \to
+\mathbb{R}^*$ klademe
+\[
+(\mathscr{L}) \int_a^b f(x) \, dx = \int_{(a,b)} f \, d\lambda_1
+\]
+má-li pravá strana smysl. Pro $b < a$ dále klademe
+$(\mathscr{L}) \int_a^b f(x) \, dx = -(\mathscr{L}) \int_b^a$ a také
+$(\mathscr{L}) \int_a^a f(x) \, dx = 0$. Samozřejmě se nabízí otázka
+vztahu k Riemannovu resp. Newtonovu integrálu.
+\end{definice}
+
+\begin{poznamka}
+Tvrdíme:
+\begin{enumerate}[1.]
+\item Nechť $f \in \mathcal{R}([a, b])$. Potom též $f \in \mathcal{L}(a, b)$
+a platí
+\[
+(\mathscr{R}) \int_a^b f(x) \, dx
+= (\mathscr{L}) \int_a^b f(x) \, dx.
+\]
+
+\item Nechť $f : [a, b] \to \mathbb{R}$ je omezená funkce. Potom
+$f \in \mathcal{R}([a, b])$, právě když $f$ je spojitá skoro všude v
+$[a, b]$, tj. $\lambda_1(\mathcal{N}) = 0$, kde $\mathcal{N}$ je
+množina bodů nespojitosti $f$ v $[a, b]$.
+\end{enumerate}
+\end{poznamka}
+
+\begin{veta}[Výpočet Lebesgueova integrálu v $\mathbb{R}$.]
+Nechť $f(x) : I \to \mathbb{R}$ je spojitá, kde $I = (a, b) \subset
+\mathbb{R}$ je interval. Nechť je splněn jeden z předpokladů:
+\begin{enumerate}[1.]
+\item $f(x) \ge 0$ v $I$;
+\item $\int_a^b |f(x)| \, dx < \infty$.
+\end{enumerate}
+Potom
+\[
+(\mathscr{L}) \int_a^b f(x) \, dx
+= \lim_{x \to b^-} F(x) - \lim_{x \to a^+} F(x),
+\]
+kde $F(x)$ je primitivní funkce k $f(x)$.
+\end{veta}
+
+\begin{poznamka}
+\begin{itemize}
+\item věta jinými slovy tvrdí existenci a rovnost Lebesgueova a
+Newtonova integrálu (za daných předpokladů)
+\item předpoklad 1 nebo 2 je podstatný; lze najít (spojitou) funkci,
+jejíž Lebesgueův integrál neexistuje, avšak Newtonův integrál
+konverguje (tj. existuje a je konečný)
+\item předpoklad 2 se může ověřovat pomocí bodu 1 (neboť $|f| \ge 0$)
+\end{itemize}
+\end{poznamka}
+
+\begin{poznamka}
+Budeme studovat integrály závislé na parametru -- funkce tvaru
+\[
+F(a) = \int_M f(a, x) \, dx.
+\]
+Pozor: $F$ není primitivní funkce k $f$. Integruje se podle
+$x \in M$, zajímá nás závislost na parametru $a \in I$ -- zda je
+spojitá a zda platí
+\[
+\frac{\partial}{\partial a} \int_M f(a, x) \, dx
+= \int_M \frac{\partial}{\partial a} f(a, x) \, dx.
+\]
+\end{poznamka}
+
+\begin{priklad}
+\[
+F(a) = \int_0^{\infty} e^{-|a|x} \sin(ax) \, dx.
+\]
+Přímý výpočet dá $F(a) = \frac{1}{2a}$ pro $a \ne 0$, $F(0) = 0$.
+Vidíme, že $F(a)$ je nespojitá, třebaže integrand závisí na $a$
+spojitě.
+\end{priklad}
+
+\begin{poznamka}[Značení TODO]
+Je-li $f(a, x)$ funkce dvou proměnných, značí $f(a, \cdot)$ funkci
+druhé proměnné (tj. $x$), která vznikne, pokud $a$ fixujeme. Podobně
+$f(\cdot, x)$ je funkcí první proměnné $a$ při pevném $x$.
+\end{poznamka}
+
+\begin{veta}[Spojitá závislost integrálu na parametru.]
+Nechť $f(a, x) : I \times M \to \mathbb{R}$, kde
+$I \subset \mathbb{R}$ je interval, $M$ je měřitelná množina.
+Předpokládáme:
+\begin{enumerate}[i.]
+\item pro $\forall a \in I$ pevné je $f(a, \cdot)$ měřitelná v $M$;
+\item pro s.v. $x \in M$ pevné je $f(\cdot, x)$ spojitá v $I$;
+\item existuje $g \in \mathcal{L}(M)$ tak, že $|f(a, x)| \le g(x)$ pro
+s.v. $x \in M$, pro každé $a \in I$.
+\end{enumerate}
+Potom je funkce
+\[
+F(a) = \int_M f(a, x) \, dx
+\]
+konečná a spojitá v $I$.
+\end{veta}
+
+\begin{priklad}
+\begin{enumerate}[1.]
+\item Funkce
+\[
+F(a) = \int_0^{100} \frac{a^2x^2}{a^4 + x^4} \, dx
+\]
+je spojitá v $\mathbb{R}$.
+
+\item Gamma funkce
+\[
+\Gamma(s) = \int_0^{\infty} x^{s-1} e^{-x} \, dx
+\]
+je spojitá v $(0, \infty)$.
+\end{enumerate}
+\end{priklad}
+
+\begin{veta}[Derivace integrálu podle parametru.]
+Nechť $f(a, x) : I \times M \to \mathbb{R}$, kde
+$I \subset \mathbb{R}$ je otevřený interval, $M$ je měřitelná
+množina. Předpokládáme:
+\begin{enumerate}[i.]
+\item pro $\forall a \in I$ pevné je $f(a, \cdot)$ měřitelná v $M$;
+\item pro s.v. $x \in M$ pevné je $f(\cdot, x)$ diferencovatelná v $I$
+(tj. $\exists$ konečná $\frac{\partial}{\partial a} f(a, x)$ pro
+$\forall a \in I$);
+\item existuje $g \in \mathcal{L}(M)$ tak, že
+$\left| \frac{\partial}{\partial a} f(a, x) \right| \le g(x)$ pro s.v.
+$x \in M$, pro každé $a \in I$;
+\item existuje $a_0 \in I$ tak, že $f(a_0, \cdot) \in \mathcal{L}(M)$,
+(tj. $\int_M |f(a_0, x)| \, dx < \infty$.)
+\end{enumerate}
+Potom funkce $F(a) = \int_M f(a, x) \, dx$ je konečná a
+\[
+F'(a) = \int_M \frac{\partial}{\partial a} f(a, x) \, dx
+\]
+pro každé $a \in I$.
+\end{veta}
+
+\begin{priklad}
+\begin{enumerate}[1.]
+\item $F(a) = \int_0^{\infty} e^{-bx} \frac{\sin(ax)}{x} \, dx$,
+$a \in \mathbb{R}$, $b > 0$ pevné. Potom
+\[
+F'(a) = \int_0^{\infty} e^{-bx} \cos(ax) \, dx
+= \frac{b}{a^2 + b^2}
+\]
+odtud pak $F(a) = \operatorname{arctg}(a/b)$.
+
+\item Pro gamma funkci platí:
+$\Gamma'(s) = \int_0^\infty (\ln x)\, x^{s-1} e^{-x} \, dx$,
+\[
+\Gamma''(s) = \int_0^\infty (\ln x)^2 x^{s-1} e^{-x} \, dx > 0,
+\]
+-- a tedy je ryze konvexní.
+\end{enumerate}
+\end{priklad}
+
+\begin{poznamka}
+Ještě ke značení: je-li $f : M \to \mathbb{R}$, kde
+$M \subset \mathbb{R}^n$, tak Lebesgueův integrál značíme
+$\int_M f \, d\lambda_n$, nebo $\int_M f(x) \, dx$, nebo
+$\int_M f(x) \, d\lambda_n(x)$. Závisí na tom, zda chceme zdůraznit
+míru, nebo proměnnou, nebo obojí. Pokud chceme vyznačit jednotlivé
+složky proměnné, píšeme $\int_M f(x, y) \, dx\, dy$, nebo
+$\int_M f(x, y, z) \, dx\, dy\, dz$.
+
+Význam symbolu je ale vždy tentýž. Někdy se také píše $\iint$,
+$\iiint$ místo $\int$, aby se zdůraznilo, že jde o dvourozměrný
+(třírozměrný) integrál.
+\end{poznamka}
+
+\begin{poznamka}[Značení TODO]
+Pro $M \subset \mathbb{R}^{n+m}$ značíme proměnnou $(x, y)$,
+$x \in \mathbb{R}^n$, $y \in \mathbb{R}^m$. Definujeme projekci $M$
+do $\mathbb{R}^n$
+\[
+\Pi_n M = \{x \in \mathbb{R}^n; \ \exists y \in \mathbb{R}^m,
+\ (x, y) \in M\}
+\]
+a pro $x \in \Pi_n M$ pevné definujeme řez množiny $M$ vzhledem k $y$
+\[
+M^x = \{y \in \mathbb{R}^m; \ (x, y) \in M\}.
+\]
+Jestliže $f = f(x, y)$, tak $f(x, \cdot)$ značí funkci proměnné $y$,
+která vznikne fixováním $x$.
+\end{poznamka}
+
+\begin{veta}[Fubiniho věta.]
+(S použitím předchozího značení.) Nechť $M \subset \mathbb{R}^{n+m}$,
+nechť $f(x, y) \in \mathcal{L}^*(M)$. Potom pro $\lambda_n$-skoro
+všechna $x \in \Pi_n M$ je $M^x \subset \mathbb{R}^m$ měřitelná
+množina, a $f(x, \cdot) \in \mathcal{L}^*(M^x)$.
+
+Označíme-li $g(x) = \int_{M^x} f(x, \cdot) \, d\lambda_m$, je
+$g \in \mathcal{L}^*(\Pi_n M)$ a platí
+\[
+\int_M f \, d\lambda_{n+m} = \int_{\Pi_n M} g \, d\lambda_n
+\]
+neboli (v názornějším značení)
+\[
+\int_M f(x, y) \, dx\, dy
+= \int_{\Pi_n M} \left( \int_{M^x} f(x, y) \, dy \right) dx.
+\]
+\end{veta}
+
+\begin{priklad}
+$M = \{(x, y) \in \mathbb{R}^2; \ x^2 + y^2 < 1\}$, $f(x, y) = |x|$.
+Potom $\Pi_1 M = (-1, 1)$,
+$M^x = (-\sqrt{1-x^2}, \sqrt{1-x^2})$, tedy
+\[
+\int_M |x| \, dx\, dy
+= \int_{-1}^1 \left( \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} |x| \, dy
+\right) dx = \frac{4}{3}.
+\]
+\end{priklad}
+
+\begin{poznamka}
+Mechanické použití Fubiniho věty v případě, že
+$f \notin \mathcal{L}^*(M)$, tj. původní vícenásobný integrál
+neexistuje, vede k nesmyslným výsledkům:
+\[
+M = (0, \infty) \times (0, \infty) \subset \mathbb{R}^2,
+\]
+\[
+f(x, y) = \begin{cases}
+1, & x < y < x+1 \\
+-1, & y < x < y+1 \\
+0 & \text{jinde}
+\end{cases}
+\]
+Potom $\int_M f(x, y) \, dx\, dy$ neexistuje (integrál kladné i záporné
+části je $+\infty$), avšak
+\[
+\int_0^\infty \left\{ \int_0^\infty f(x, y) \, dy \right\} dx
+= +\frac{1}{2},
+\]
+zatímco
+\[
+\int_0^\infty \left\{ \int_0^\infty f(x, y) \, dx \right\} dy
+= -\frac{1}{2}.
+\]
+
+\begin{itemize}
+\item předpoklad $f \in \mathcal{L}^*(M)$ je určitě splněn, pokud $f$
+je měřitelná a buď $f \ge 0$, nebo
+$\int_M |f| \, d\lambda < \infty$. (Druhý předpoklad můžeme ověřit
+pomocí Fubiniho věty, neboť $|f| \ge 0$.)
+\item speciálně, výpočet objemu $M \subset \mathbb{R}^{n+m}$ pomocí
+Fubiniho věty:
+\[
+\lambda_{n+m}(M) = \int_M 1 \, d\lambda_{n+m}
+= \int_{\Pi_n M} \left\{ \int_{M^x} 1 \, d\lambda_m \right\}
+d\lambda_n
+= \int_{\Pi_n M} \lambda_m(M^x) \, d\lambda_n
+\]
+\end{itemize}
+\end{poznamka}
+
+\begin{priklad}
+Použití Fubiniho věty k výpočtu původně jednorozměrného integrálu:
+\[
+I = \int_0^1 \frac{x^b - x^a}{\ln x} \, dx.
+\]
+Integrovaná funkce je přírustek, tj. integrál derivace
+\[
+\frac{x^b - x^a}{\ln x}
+= \left[ \frac{x^y}{\ln x} \right]_{y=a}^{y=b}
+= \int_a^b x^y \, dy.
+\]
+Dvojím užitím Fubiniho věty na $M = (0, 1) \times (a, b)$,
+$f = x^y > 0$ máme
+\[
+I = \int_0^1 \left( \int_a^b x^y \, dy \right) dx
+= \int_M x^y \, dx\, dy
+= \int_a^b \left( \int_0^1 x^y \, dx \right) dy
+= \ln \frac{b+1}{a+1}.
+\]
+\end{priklad}
+
+\begin{poznamka}
+Opakuj větu o substituci pro Newtonův integrál:
+\[
+\int_a^b f(x) \, dx
+= \int_\alpha^\beta f(\varphi(y)) \cdot |\varphi'(y)| \, dy
+\]
+kde $\varphi(y) : (\alpha, \beta) \to (a, b)$ je vzájemně jednoznačná,
+a $\varphi'(x) \ne 0$.
+\end{poznamka}
+
+\begin{definice}
+Pro $\varphi(y) : \mathbb{R}^n \to \mathbb{R}^n$ definujeme Jakobián
+\[
+J\varphi(y) = \det \nabla\varphi(y) = \begin{vmatrix}
+\frac{\partial \varphi_1(y)}{\partial y_1} & \dots &
+\frac{\partial \varphi_1(y)}{\partial y_n} \\
+\vdots & & \vdots \\
+\frac{\partial \varphi_n(y)}{\partial y_1} & \dots &
+\frac{\partial \varphi_n(y)}{\partial y_n}
+\end{vmatrix}
+\]
+\end{definice}
+
+\begin{definice}
+Nechť $\Omega$, $M \subset \mathbb{R}^n$ jsou otevřené množiny.
+Zobrazení $\varphi(y) : \Omega \to M$ se nazve difeomorfismus,
+jestliže:
+\begin{enumerate}[1.]
+\item $\varphi(y)$ je vzájemně jednoznačné,
+\item $\varphi(y)$ je $C^1$ (tj. všechny parciální derivace řádu 1
+jsou spojité),
+\item $J\varphi(y) \ne 0$ pro $\forall y \in \Omega$.
+\end{enumerate}
+\end{definice}
+
+\begin{veta}[Věta o substituci.]
+Nechť $\Omega$, $M \subset \mathbb{R}^n$ jsou otevřené množiny,
+$\varphi(y) : \Omega \to M$ je difeomorfismus a
+$f(x) : M \to \mathbb{R} \cup \{\pm\infty\}$ měřitelná funkce. Potom
+\[
+\int_M f(x) \, dx = \int_\Omega f(\varphi(y))\, |J\varphi(y)| \, dy,
+\]
+neboli
+\[
+\int_M f \, d\lambda_n
+= \int_\Omega (f \circ \varphi)\, |J\varphi| \, d\lambda_n,
+\]
+má-li jedna strana smysl.
+\end{veta}
+
+\begin{poznamka}
+Praktický význam věty o substituci pro vícerozměrné integrály je v tom,
+že získám příjemnější (z hlediska Fubiniho věty) tvar množiny, přes
+kterou integruji.
+\end{poznamka}
+
+\begin{priklad}
+Plocha množiny $M$, ohraničené přímkami: $x + y = 1$, $x + y = 2$,
+$y = 3x$, $y = 4x$. Substituce: $u = x+y$, $v = y/x$, neboli toto je
+zobrazení $\varphi^{-1} : M \to \Omega$, kde
+$\Omega = (1, 2) \times (3, 4)$. $\varphi : \Omega \to M$ má tvar
+$x = u/(1+v)$, $y = uv/(1+v)$, jakobián $J\varphi = u/(1+v)^2$. Tedy
+\[
+\lambda_2(M) = \int_M 1 \, dx\, dy
+= \int_\Omega \frac{u}{(1+v)^2} \, du\, dv
+= \int_1^2 \left( \int_3^4 \frac{u}{(1+v)^2} \, dv \right) du
+= \frac{3}{40}.
+\]
+\end{priklad}
+
+\textbf{Polární souřadnice}
+Substituce $x = r\cos u$, $y = r\sin u$, tj.
+$\varphi : (r, u) \mapsto (x, y)$ je difeomorfismus z
+$\Omega = (0, \infty) \times (0, 2\pi)$ do
+$\mathbb{R}^2 \setminus N$, kde
+$N = \{(x, y); \ x \ge 0, y = 0\}$. (To, že obrazem není celé
+$\mathbb{R}^2$, nevadí, neboť chybějící množina $N$ má dvourozměrnou
+míru 0.) Jakobián je $r$.
+
+\textbf{Sférické součadnice}
+Substituce $x = r\cos u\cos v$, $y = r\sin u\cos v$, $z = r\sin v$.
+Zobrazení $\varphi : \langle r, u, v \rangle \mapsto \langle x, y, z
+\rangle$ je difeomorfismus z
+$\Omega = (0, \infty) \times (0, 2\pi) \times (-\pi/2, \pi/2)$ do
+$\mathbb{R}^3 \setminus N$, kde $N$ je polorovina $y = 0$,
+$x \ge 0$, tj. opět množina míry nula. Jakobián je $r^2\cos v$.
+Názorně: $u$\ldots zeměpisná délka, $v$\ldots zeměpisná šířka (póly
+leží na ose $z$.)
