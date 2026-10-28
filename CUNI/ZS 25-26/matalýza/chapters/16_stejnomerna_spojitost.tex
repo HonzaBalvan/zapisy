@@ -279,7 +279,7 @@
   \end{enumerate}
 \end{lemma}
 
-\begin{proof}
+\begin{proof}\namelabel{16sigmandk}{16.1}
   Dokážeme řetězec implikací.
   \begin{itemize}
     \item[$1. \implies 2.$] cíl: $\forall \varepsilon >0\; \exists n_0\colon n \geq n_0 \implies |\sigma_n| < \varepsilon$, tj. $\sigma_n < \varepsilon$, neboť $\sigma_n \geq 0$
@@ -479,7 +479,7 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
   $$(\forall \varepsilon >0)(\exists n_0 \in \mathbb N)(\forall x \in I)(\forall m,n \geq n_0)[|f_m(x)-f_n(x)|<\varepsilon]. \qquad \text{(B.C.-st)}$$
 \end{definice}
 
-\begin{veta}
+\begin{veta}\label{16bckonv}
   Nechť $f_n(x)\colon I \to \mathbb R$ jsou dány. Pak je ekvivalentní
   \begin{enumerate}[1.]
     \item $\exists f(x)\colon I \to \mathbb R$ t. ž. $f_n(x) \toto f(x)$ v $I$,
@@ -515,12 +515,21 @@ tudíž $f_n \toto 0$ v $J$ dle věty \ref{16zamenalimint}, bod 2.
 KONECKONTROLY
 
 \begin{proof}
-    Ve dvou bodech:
+    Ve dvou bodech a půl bodech:
   \begin{enumerate}[1.]
-      \item $\underbrace{f_n \to f \text{ v } C_b(I)}_{\mathclap{\textstyle \iff \|f_n-f\|_\infty\to 0, n \to \infty,}}\iff f_n(x) \toto f(x)$ v $I$
+      \item $\underbrace{f_n \to f \text{ v } C_b(I)}_{\mathclap{\hspace{6em}\textstyle \iff \|f_n-f\|_\infty\to 0, n \to \infty,}}\iff f_n(x) \toto f(x)$ v $I$
 
     kde $\sup\limits_{x \in I} |f_n(x)-f(x)|=\sigma_n$ a užiji lemma \ref{16sigman}.
-    \item TODO
+\item $\left\{f_n\right\}\subseteq C_b(I)$ je cauchyovské $\iff \left\{f_n(x)\right\}$ splňují (B.C.-st), to se dokáže podobně jako v důkazu \nameref{16sigmandk}
+\item[\textsc{celkem}:] buď $\left\{f_n\right\}\subseteq C_b(I)$ cauchyovská posloupnost
+
+    $\stackrel{\text{bod }2.}{\implies} \left\{f_n(x)\right\}$ splní (B.C.-st)
+
+          $\stackrel{\text{V. }\ref{16bckonv}}{\implies} \exists f(x)$ t. ž. $f_n(x)\toto f(x)$
+
+          $\stackrel{\text{bod }1.}{\implies}f_n\to f$ v $C_b(I)$
+
+          $\stackrel{\text{V. }\ref{16zachspoj}}{\implies}f(x)$ je spojité v $C_b(I)$, tj. $f\in C_b(I)$
   \end{enumerate}
 \end{proof}
 
@@ -528,7 +537,7 @@ KONECKONTROLY
     Souvislosti konvergencí funkcí s metrickými prostory:
   \begin{itemize}
     \item $f_n \toto f$ v $I$ je ekvivalentní konvergenci vzhledem k $\|\cdot\|_\infty$, kde $\|f(x)\|_\infty = \sum\limits_{x \in I} |f(x)|$
-    \item bodová (též slabá) konvergence nelze popsat ani normou, ani metrikou (pro $I$ nespočetné)
+    \item bodová (též někdy slabá) konvergence nelze popsat ani normou, ani metrikou (pro $I$ nespočetné)
   \end{itemize}
 \end{poznamka}
 
@@ -538,7 +547,7 @@ KONECKONTROLY
   Obecně ne, ale někdy ano. Např. pro $f_n(x)=\arctg(\frac{x}{n})$ máme $\lim_{x\to \infty}\left(\lim_{n\to\infty}f_n(x)\right) = \frac{\pi}{2}$, ale $\lim_{n\to \infty}\left(\lim_{x\to\infty}f_n(x)\right) = 0$. Rovnost platí, pokud je alespoň jedna limita stejnoměrná.
 \end{poznamka}
 
-\begin{veta}[Mooreova-Osgoodova]
+\begin{veta}[Mooreova-Osgoodova]\label{16mooreosgood}
     Nechť $f_n(x), f(x)\colon \mathscr P(x_0, \delta)\to \mathbb R, x_0 \in \mathbb R, \delta>0$ pevné. Nechť
     \begin{enumerate}[1.]
         \item $f_n(x)\toto f(x)$ na $\mathscr P(x_0, \delta)$;
@@ -559,25 +568,45 @@ KONECKONTROLY
 \begin{proof}
     Ve dvou krocích:
     \begin{enumerate}[1. \textsc{krok}]
+        \item cíl: $\left\{c_n\right\}$ splňuje (B.C.), a tedy $\exists \lim_{n\to\infty} c_n \in \mathbb R$
+
+            $\varepsilon>0$ dáno: víme $f_n \toto f$, tj. dle V.\ref{16bckonv} splní (B.C.-st) na $\mathscr P(x_0, \delta)$
+
+            $\implies \exists c_0 \in \mathbb N, \forall m, n \geq n_0\colon\left|f_m(x)-f_n(x)\right|<\frac{\varepsilon}{2}, \forall x \in \mathscr P(x_0, \delta)$
+
+            když fixuji $m,n$: $\lim_{x \to x_0} \left|f_m(x)-f_n(x)\right|=\left|c_n-c_m\right|\leq \frac{\varepsilon}{2}<\varepsilon$
         \item cíl: $f(x)\to c, x \to x_0$, neboli $\forall \varepsilon>0\;\exists \tilde \delta>0 \; \forall x \in \mathscr P(x_0, \tilde \delta)\colon\left|f(x)-c\right|<\varepsilon$
             \begin{minipage}{0.58\textwidth}
                 OBRAZEKOBRAZEK
             \end{minipage}\begin{minipage}{0.42\textwidth}
-                $\left|f(x)-c\right|=\left|f(x)-f_n(x)+f_n(x)-c_n+c_n-c\right|\leq\left|f(x)-f_n(x)\right|+\left|f_n(x)-c_n\right|+\left|c_n-c\right|$
+                $\left|f(x)-c\right|=\left|f(x)-f_n(x)+f_n(x)-\right.$
+
+                $\left.-c_n+c_n-c\right|\leq\left|f(x)-f_n(x)\right|+$
+
+                $+\left|f_n(x)-c_n\right|+\left|c_n-c\right|\eqcolon P_1 + P_2 + P_3$
             \end{minipage}
+            $\varepsilon>0$ dáno: $\exists n \in \mathbb N\colon\left|f_n(x)-f(x)\right|<\frac{\varepsilon}{3}, \forall x \in \mathscr P(x_0, \delta)$, navíc $\left|c_n-c\right|<\frac{\varepsilon}{3}$
+
+            když fixuji $n$: $f_n \toto f$, $c_n \toto c$
+
+            \textsc{celkem}: $f_n(x)\to c_n, x \to x_0\implies\exists \tilde \delta>0$, BÚNO $\tilde \delta<\delta$ t. ž. $\left|f_n(x)-c_n\right|<\frac{\varepsilon}{3}, \forall x \in \mathscr P (x_0, \tilde \delta)$, tj. $P_1+P_2+P_3<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+ \frac{\varepsilon}{3}=\varepsilon$\qedhere
     \end{enumerate}
 \end{proof}
 
 \begin{poznamka}
-    Předchozí platí i varianty pro $x_0=\pm\infty, x \to x_0^\pm$.
+    Předchozí platí i pro varianty $x_0=\pm\infty, x \to x_0^\pm$.
 \end{poznamka}
 
 \begin{dusledek}
-    $f_n(x)\stackrel{\text{loc}}{\toto}f(x), f_n(x)$ spojité v $I=(a,b) \implies f(x)$ spojitá.
+    $f_n(x)\stackrel{\text{loc}}{\toto}f(x), f_n(x)$ spojité v $I=(a,b) \implies f(x)$ spojitá v $I$.
 \end{dusledek}
 
 \begin{proof}
-    TODO
+    stačí dk.: $\forall x_0 \in I$ pevné $f(x)$ spojité v $x_0 \stackrel{\text{V.}TODO\text{, V.}TODO}{\iff}\lim_{x\to x_0} f(x) = f(x_0)$
+
+    lokální stejoměrná konvergence$\implies \exists \delta>0\colon f_n(x) \toto f(x)$ na $\mathscr U(x_0, \delta)$
+
+    $\stackrel{\text{V.}\ref{16mooreosgood}}{\implies}$
 \end{proof}
 
 \begin{poznamka}

@@ -122,7 +122,7 @@ Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
 
           $\implies \mu B_1 = \mu \left(B_1 \smallsetminus B_n\right)+\mu B_n$ a dále $\mu B_1 = \mu \left(B_1 \smallsetminus \bigcap_j B_j\right)+\mu \left(\bigcap_j B_j\right)$, přičemž vím, že první člen prvního zápisu konverguje k prvnímu členu druhého zápisu $\implies$ druhý člen prvního zápisu konverguje k druhému členu druhého zápisu
 
-          a co předpoklad o konečnosti $\mu B_1$? Použili jsem jej při porovnání obou zápisů, fakticky jsem je odečetl, a musím tak použít VoAL konečnou verzi.
+          a co předpoklad o konečnosti $\mu B_1$? Použili jsem jej při porovnání obou zápisů, fakticky jsem je odečetli, a museli jsme tak použít VoAL konečnou verzi. \qedhere
   \end{enumerate}
 \end{proof}
 
@@ -170,6 +170,11 @@ Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
     Interval $Q\subseteq \mathbb R^n$ nazveme \textbf{otevřený} (resp. \textbf{uzavřený}), pokud $Q = I_1\times\dots\times I_n$, kde $I_j \subseteq \mathbb R$ jsou všechny otevřené (resp. uzavřené).
 \end{definice}
 
+\begin{poznamka}
+    Otevřený (resp. uzavřený) interval lze napsat jako průnik konečně mnoha
+otevřených (resp. uzavřených) poloprostorů.
+\end{poznamka}
+
 \begin{definice}
     Pro libovolnou množinu $M \subseteq \mathbb R^n$ definujeme \textbf{vnější Lebsgueovu míru} v $\mathbb R^n$ jako $\lambda_n^*(M)\coloneq \inf\left\{\sum_{j=1}^{\infty}l_n(Q_j); Q_j \subseteq \mathbb R^n \text{ jsou intervaly pro } j \in \mathbb N \text{ t. ž. } M\subseteq \bigcup_{j=1}^\infty Q_j\right\}$.
 \end{definice}
@@ -209,3 +214,108 @@ Nechť $(X, \mathscr S, \mu)$ je prostor s mírou. Pak
     \textsc{celkem}: $\bigcup_j M_j \subseteq \bigcup_{j, i} Q_{j,i}$, kde pravá strana je spočetná ($\mathbb N \times \mathbb N$) a tedy $\lambda^*\left(\bigcup_j M_j\right)\leq \sum_{j, i} l(Q_{j,i})=\sum_j\left(\sum_i l\left(Q_{j,i}\right)\right)<\sum_j \lambda^*(M_j)+\frac{\varepsilon}{2^j}= \sum_j \lambda^*(M_j)+\sum_j \frac{\varepsilon}{2^j} = \sum_j \lambda^*(M_j)+\varepsilon$
     OBRAZEKOBRAZEK
 \end{proof}
+
+zacatek stroje
+TODO chybi  banachuv-tarskiho paradox
+TODO subset/subseteq, :/colon, setminus/smallsetminus, ...
+
+\begin{lemma}[O konečném podpokrytí]
+Nechť $(X, \rho)$ je metrický prostor, $K \subset X$ kompaktní, nechť
+$K \subset \bigcup_{j=1}^\infty A_j$, kde $A_j \subset X$ jsou otevřené.
+Pak $\exists n \in \mathbb{N}$ t. ž.
+$K \subset \bigcup_{j=1}^n A_j$.
+\end{lemma}
+
+\begin{lemma}[*]
+Nechť $Q$, $Q_j \subset \mathbb{R}^n$ jsou intervaly takové, že
+$Q \subset \bigcup_j Q_j$. Pak $\ell(Q) \le \sum_j \ell(Q_j)$.
+\end{lemma}
+
+\begin{dusledek}
+Pro každý interval $Q \subset \mathbb{R}^n$ je $\lambda^*(Q) = \ell(Q)$.
+\end{dusledek}
+
+\begin{definice}
+Množina $A \subset \mathbb{R}^n$ se nazve \textbf{měřitelná podle
+Carathéodoryho}, jestliže rovnost
+\[
+\lambda^*(T) = \lambda^*(T \cap A) + \lambda^*(T \setminus A)
+\]
+platí pro libovolnou \uv{testovací} množinu $T \subset \mathbb{R}^n$.
+\end{definice}
+
+\begin{veta}[Carathéodoryho]
+Označme
+\[
+\mathcal{M}_n = \{M \subset \mathbb{R}^n; \ M \text{ je měřitelná dle
+Carathéodoryho}\}.
+\]
+Potom $\mathcal{M}_n$ je $\sigma$-algebra a
+$\lambda_n^* : \mathcal{M}_n \to [0, +\infty]$ je míra.
+\end{veta}
+
+\begin{poznamka}[Značení TODO]
+$\mathcal{M}_n$ nazýváme Lebesgueovsky měřitelné podmnožiny
+$\mathbb{R}^n$; Lebesgueovu míru množiny $M \subset \mathbb{R}^n$
+definujeme takto:
+\[
+\lambda_n(M) := \begin{cases}
+\lambda_n^*(M), & \text{pokud } M \in \mathcal{M}_n, \\
+\text{není definováno pro } M \notin \mathcal{M}_n.
+\end{cases}
+\]
+Píšeme obvykle $\mathcal{M}$, $\lambda$, tj. symbol $n$ se vynechává,
+je-li z kontextu jasné, v jakém $\mathbb{R}^n$ se pohybujeme.
+\end{poznamka}
+
+\begin{lemma}
+Každý interval $Q \subset \mathbb{R}^n$ je měřitelný a
+$\lambda(Q) = \ell(Q)$.
+\end{lemma}
+
+\begin{veta}[Další vlastnosti Lebesgueovy míry]
+\begin{enumerate}[1.]
+\item Otevřené a uzavřené množiny jsou měřitelné.
+\item Lebesgueova míra je translačně invariantní.
+\item $\ast$ Lebesgueova míra je rotačně invariantní.
+\end{enumerate}
+\end{veta}
+
+\begin{poznamka}
+Z důkazu předchozí věty též vyplývá, že je-li $G \subset \mathbb{R}^n$
+neprázdná, otevřená množina, pak $\lambda(G) > 0$.
+\end{poznamka}
+
+\begin{definice}
+Množina $A \subset \mathbb{R}^n$ se nazve množina (Lebesgueovy) míry
+nula (též nulová množina), jestliže $A \in \mathcal{M}_n$ a
+$\lambda_n(A) = 0$.
+\end{definice}
+
+\begin{veta}[Vlastnosti Lebesgueovsky nulových množin.]
+\begin{enumerate}[1.]
+\item $A$ je množina míry nula právě tehdy, když$\lambda^*(A) = 0$.
+\item $A$ je množina míry nula,
+$B \subset A \implies B$ je množina míry nula.
+\item $A_j$ jsou množiny míry nula,
+$j \in \mathbb{N} \Rightarrow \bigcup_j A_j$ je množina míry nula.
+\item Každá spočetná množina má Lebesgueovu míru nula.
+\end{enumerate}
+\end{veta}
+
+\begin{definice}
+Nechť $M \subset \mathbb{R}^n$ je měřitelná. Řekneme, že výrok $V(x)$
+platí skoro všude (zkratka \uv{s.v.}) v $M$, jestliže existuje množina
+míry nula $N \subset M$ tak, že $V(x)$ platí pro každé
+$x \in M \setminus N$.
+\end{definice}
+
+\begin{priklad}
+\begin{enumerate}[1.]
+\item Skoro všechna reálná čísla jsou iracionální ($N = \mathbb{Q}$).
+\item Funkce $\varphi \colon (x, y) \mapsto |x| + |y|$ je diferencovatelná
+skoro všude v $\mathbb{R}^2$. Zde
+$N = \{(x, y) \in \mathbb{R}^2; \ x = 0 \text{ nebo } y = 0\}$, což je
+sjednocení dvou přímek (intervaly nulového objemu).
+\end{enumerate}
+\end{priklad}

@@ -15,6 +15,7 @@
 \usepackage{tabularx}
 \usepackage{subcaption}
 \usepackage{hyperref}
+\usepackage{nameref}
 \usepackage{comment}
 \usepackage{lscape}
 \usepackage{xcolor}
@@ -24,6 +25,7 @@
 \usepackage{caption}
 \usepackage{cancel}
 \usepackage{marvosym}
+\usepackage{fontawesome}
 \usepackage{etoolbox}
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathreplacing, calc}
@@ -34,6 +36,14 @@
     \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
   mu$}\hfill}{}{}
 \makeatother
+
+\makeatletter
+\newcommand{\namelabel}[2]{%
+  \phantomsection
+  \gdef\@currentlabelname{#2}%
+  \label{#1}}
+\makeatother
+
 \graphicspath{{images/}}
 \pgfplotsset{width=10cm,compat=1.9}
 
@@ -213,6 +223,7 @@
 \input{chapters/15_variacni_pocet}
 \input{chapters/16_stejnomerna_spojitost}
 \input{chapters/17_mira}
+\input{chapters/18_lebesgueuv_integral}
 
 % \listoffigures
 
